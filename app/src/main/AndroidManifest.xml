@@ -13,7 +13,19 @@
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presenter.screen.dummy.DummyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.screen.onboarding.OnBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.screen.auth.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.screen.splash.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.screen.home.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
