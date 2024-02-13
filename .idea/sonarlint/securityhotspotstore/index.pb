@@ -1,0 +1,33 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+Ñ
+Tapp/src/main/java/com/newsapp/presenter/screen/auth/onboading/splash/SplashScreen.kt,0\9\09f86c2e701ba16fdc0cc8e383b0a4dd4f735d73
+Å
+Q.idea/sonarlint/securityhotspotstore/0/9/09f86c2e701ba16fdc0cc8e383b0a4dd4f735d73,4\c\4cfcba55123316c0e231f1636456956afe9310cb
+Q
+!.idea/modules/app/NewsApp.app.iml,0\1\01e7afb10e3872c524eba1989484717c2680a2bb
+I
+.idea/modules/NewsApp.iml,d\6\d6fa8202d558df65c14bcaa051add7ac0559ed7f
+V
+&.idea/modules/app/NewsApp.app.main.iml,2\7\27b4447b345c03169875cce9a22cbf0968e7e08b
+Z
+*.idea/modules/app/NewsApp.app.unitTest.iml,b\8\b8447cdc32a8bec7eb7f8134bccb82cddf48425c
+Å
+Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1\0\10a03f31c4dce92cb371e761ce9429428bb6c176
+w
+G.idea/sonarlint/issuestore/0/9/09f86c2e701ba16fdc0cc8e383b0a4dd4f735d73,a\0\a0f76c544976342b2fc4134a1888917ef3b608f9
+]
+-.idea/modules/app/NewsApp.app.androidTest.iml,2\a\2a092e095bff6cf5a7b4db9e84de6099321a418d
+w
+G.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e,3\2\32813322c99a6c8a141ab2dc12bc10af3425f1b4
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+Å
+Q.idea/sonarlint/securityhotspotstore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e,1\f\1fe398aa86b382486ed27d0a69bf92f68bd5edaa
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
+w
+G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b\4\b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
