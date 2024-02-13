@@ -16,5 +16,6 @@ class AllSetFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_all__set_, container, false)
         //comment added.
+        //Second commit added.
     }
 }
