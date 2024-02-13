@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presenter.screen.auth.All_Set_Fragment">
+    tools:context=".presenter.screen.auth.AllSetFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

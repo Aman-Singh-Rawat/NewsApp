@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth.onboading.newsfeedrecycler.datamodel
+package com.newsapp.presenter.screen.onboading.newsfeedrecycler.datamodel
 
 import android.view.LayoutInflater
 import android.view.View

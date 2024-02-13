@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/public_Profile_Fragment"
-        android:name="com.newsapp.presenter.screen.auth.Public_Profile_Fragment"
+        android:name="com.newsapp.presenter.screen.auth.PublicProfileFragment"
         android:label="Public_Profile_Fragment"
         tools:layout="@layout/fragment_profile_">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/all_Set_Fragment"
-        android:name="com.newsapp.presenter.screen.auth.All_Set_Fragment"
+        android:name="com.newsapp.presenter.screen.auth.AllSetFragment"
         android:label="fragment_all__set_"
         tools:layout="@layout/fragment_all__set_" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth.onboading
+package com.newsapp.presenter.screen.onboading
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

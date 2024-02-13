@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth.onboading.newsfeedrecycler.datamodel
+package com.newsapp.presenter.screen.onboading.newsfeedrecycler.datamodel
 
 data class NewsFeedClass(
     val image: Int,

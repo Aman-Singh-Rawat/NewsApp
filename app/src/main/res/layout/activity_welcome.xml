@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_white"
     android:fillViewport="true"
-    tools:context=".presenter.screen.auth.onboading.WelcomeActivity">
+    tools:context=".presenter.screen.onboading.WelcomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

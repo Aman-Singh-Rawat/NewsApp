@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsFeedBinding
-import com.newsapp.presenter.screen.auth.onboading.newsfeedrecycler.datamodel.NewsFeedClass
-import com.newsapp.presenter.screen.auth.onboading.newsfeedrecycler.datamodel.NewsFeedRecycler
+import com.newsapp.presenter.screen.onboading.newsfeedrecycler.datamodel.NewsFeedClass
+import com.newsapp.presenter.screen.onboading.newsfeedrecycler.datamodel.NewsFeedRecycler
 
 class NewsFeedFragment : Fragment() {
     private lateinit var binding: FragmentNewsFeedBinding
