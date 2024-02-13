@@ -16,6 +16,9 @@
             android:name=".presenter.screen.auth.onboading.WelcomeActivity"
             android:exported="false" />
         <activity
+            android:name=".presenter.screen.auth.SignUp"
+            android:exported="false" />
+        <activity
             android:name=".presenter.screen.auth.onboading.splash.SplashScreen"
             android:exported="true">
             <intent-filter>

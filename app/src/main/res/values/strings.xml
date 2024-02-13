@@ -3,12 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="newsline">Newsline</string>
-    <string name="welcome_let_s_dive_in_into_your_account">Welcome! Let\'s dive in into your account!</string>
-    <string name="continue_with_google">Continue with Google</string>
-    <string name="continue_with_apple">Continue with Apple</string>
-    <string name="continue_with_meta">Continue with Meta</string>
-    <string name="continue_with_x">Continue with X</string>
-    <string name="sign_in_with_password">Sign in with password</string>
-    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign up</string>
+    <string name="txt_join_our_community">Join our community and personalize your news experience.</string>
+    <string name="txt_create_account">Create Account</string>
+    <string name="txt_i_agree_to_newsline">I agree to Newsline </string>
+    <string name="txt_terms_and_policy">Terms.And Policy</string>
+    <string name="txt_already">Already have an account?</string>
+    <string name="txt_signin">Sign in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
