@@ -10,4 +10,18 @@
         android:name="com.newsapp.presenter.screen.auth.Create_Account_Fragment"
         android:label="fragment_create__account_"
         tools:layout="@layout/fragment_create__account_" />
+    <fragment
+        android:id="@+id/public_Profile_Fragment"
+        android:name="com.newsapp.presenter.screen.auth.Public_Profile_Fragment"
+        android:label="Public_Profile_Fragment"
+        tools:layout="@layout/fragment_profile_">
+        <action
+            android:id="@+id/action_public_Profile_Fragment_to_all_Set_Fragment"
+            app:destination="@id/all_Set_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/all_Set_Fragment"
+        android:name="com.newsapp.presenter.screen.auth.All_Set_Fragment"
+        android:label="fragment_all__set_"
+        tools:layout="@layout/fragment_all__set_" />
 </navigation>
