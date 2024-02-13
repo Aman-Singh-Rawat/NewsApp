@@ -5,7 +5,7 @@
     style="@style/myTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F2F3"
+    android:background="@color/dark_white"
     tools:context=".presenter.screen.auth.onboading.splash.SplashScreen">
 
     <androidx.appcompat.widget.AppCompatImageView
