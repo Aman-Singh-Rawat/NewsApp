@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="@id/imgNews"
             app:layout_constraintEnd_toEndOf="@id/imgNews"
             app:layout_constraintTop_toBottomOf="@id/imgNews"
-            android:text="@string/newsline"
+            android:text="@string/app_name"
             style="@style/textSize"/>
 
         <androidx.appcompat.widget.AppCompatTextView

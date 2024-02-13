@@ -7,9 +7,22 @@
 
     <fragment
         android:id="@+id/signUp"
-        android:name="com.newsapp.presenter.screen.auth.Create_Account_Fragment"
+        android:name="com.newsapp.presenter.screen.auth.CreateAccountFragment"
         android:label="fragment_create__account_"
-        tools:layout="@layout/fragment_create__account_" />
+        tools:layout="@layout/fragment_create__account_">
+
+        <action
+            android:id="@+id/action_signUpFragment_to_NewsFeedFragment"
+            app:destination="@+id/newsFeedFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsFeedFragment"
+        android:name="com.newsapp.presenter.screen.auth.NewsFeedFragment"
+        android:label="News_Feed_Fragment"
+        tools:layout="@layout/fragment_news_feed"/>
+
     <fragment
         android:id="@+id/public_Profile_Fragment"
         android:name="com.newsapp.presenter.screen.auth.Public_Profile_Fragment"

@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.onboading
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
@@ -8,6 +9,7 @@ import android.text.style.ForegroundColorSpan
 import androidx.core.content.ContextCompat
 import com.newsapp.R
 import com.newsapp.databinding.ActivityWelcomeBinding
+import com.newsapp.presenter.screen.auth.SignUp
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
@@ -18,6 +20,10 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(view)
 
         textColorChange() // Change the color of "Don't have an account?  Sign up"
+
+        binding.tvWelNotAccount.setOnClickListener {
+            openSignUpActivity() // opening sign up activity
+        }
     }
     val textColorChange = {
         val spannableString = SpannableString("Don't have an account?  Sign up")
@@ -29,5 +35,12 @@ class WelcomeActivity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         binding.tvWelNotAccount.text = spannableString
+    }
+
+    val openSignUpActivity = {
+        startActivity(Intent(
+            this@WelcomeActivity,
+            SignUp::class.java
+        ))
     }
 }

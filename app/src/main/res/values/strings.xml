@@ -15,4 +15,12 @@
     <string name="email">Email</string>
     <string name="txt_this_profile">This profile will appear public so people can find you and the stories you share</string>
     <string name="txt_create_pub">Create Public Profile</string>
+
+    <string name="continue_with_google">"Continue with Google"</string>
+    <string name="continue_with_apple">"Continue with Apple"</string>
+    <string name="welcome_let_s_dive_in_into_your_account">"Welcome! Let's dive in into your account!"</string>
+    <string name="continue_with_meta">"Continue with Meta"</string>
+    <string name="continue_with_x">"Continue with X"</string>
+    <string name="sign_in_with_password">"Sign in with password"</string>
+    <string name="don_t_have_an_account_sign_up">"Don't have an account?  Sign up"</string>
 </resources>
