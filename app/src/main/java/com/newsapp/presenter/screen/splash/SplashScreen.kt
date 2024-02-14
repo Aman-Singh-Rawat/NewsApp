@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.newsapp.R
+import com.newsapp.presenter.screen.onboading.TrendingDemo
 import com.newsapp.presenter.screen.onboading.WelcomeActivity
 
 class SplashScreen : AppCompatActivity() {
@@ -15,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(mainLooper).postDelayed({
             startActivity(Intent(
                 this@SplashScreen,
-                WelcomeActivity::class.java
+                TrendingDemo::class.java
             ))
             finish()
         },3000)
