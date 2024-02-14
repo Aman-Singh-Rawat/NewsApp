@@ -154,7 +154,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/cream"
+                android:background="@color/grey"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/tvTerms" />
@@ -165,9 +165,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
+                app:layout_constraintHorizontal_bias="0.4"
                 android:text="@string/txt_already"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/vDivider" />
 
