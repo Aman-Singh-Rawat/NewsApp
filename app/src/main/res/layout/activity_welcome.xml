@@ -23,7 +23,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvWelNewsLine"
             android:layout_width="wrap_content"

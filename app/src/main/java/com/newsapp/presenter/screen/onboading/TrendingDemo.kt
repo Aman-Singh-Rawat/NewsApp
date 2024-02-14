@@ -15,18 +15,25 @@ class TrendingDemo : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnTrendingContinue.setOnClickListener {
-            openWelcomeActivity()
+            openProfileDemo()
         }
 
         binding.btnTrendingSkip.setOnClickListener {
-
+            openWelcomeActivity()
         }
     }
 
-    val openWelcomeActivity = {
+    private val openWelcomeActivity = {
         startActivity(Intent(
             this@TrendingDemo,
             WelcomeActivity::class.java
+        ))
+    }
+
+    private val openProfileDemo = {
+        startActivity(Intent(
+            this@TrendingDemo,
+            ProfileDemo::class.java
         ))
     }
 }
