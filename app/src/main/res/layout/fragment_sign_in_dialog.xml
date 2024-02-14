@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBackGround"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glPopSecondStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.08" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glPopSecondEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.92" />
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_profile"
+                android:src="@drawable/ic_profile_signin"
+                app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
+                app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.2"/>
+            <TextView
+                android:id="@+id/tvSignInSucc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/greenColorText"
+                android:textSize="20dp"
+                android:text="Sign in succssful!"
+                app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
+                app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
+                app:layout_constraintTop_toBottomOf="@id/ivProfile"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/tvPleaseWait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/smallText"
+                android:text="Please wait..."
+                app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
+                app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
+                app:layout_constraintTop_toBottomOf="@id/tvSignInSucc"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/tvHomePage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/smallText"
+                android:text="You will be directed to the homepage."
+                app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
+                app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
+                app:layout_constraintTop_toBottomOf="@id/tvPleaseWait"
+                android:layout_marginTop="10dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
