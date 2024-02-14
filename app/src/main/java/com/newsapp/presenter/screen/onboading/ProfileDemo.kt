@@ -8,23 +8,29 @@ import com.newsapp.databinding.ActivityProfileDemoBinding
 import com.newsapp.databinding.ActivityTrendingDemoBinding
 
 class ProfileDemo : AppCompatActivity() {
-    lateinit var binding: ActivityProfileDemoBinding
+    private lateinit var binding: ActivityProfileDemoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileDemoBinding
             .inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnTrendingContinue.setOnClickListener {
-            openWelcomeActivity()
+        binding.btnProfileContinue.setOnClickListener {
+            openElevateActivity()
         }
 
-        binding.btnTrendingSkip.setOnClickListener {
-
+        binding.btnProfileSkip.setOnClickListener {
+            openWelcomeActivity()
         }
     }
 
-    val openWelcomeActivity = {
+    private val openElevateActivity = {
+        startActivity(Intent(
+            this@ProfileDemo,
+            ElevateDemo::class.java
+        ))
+    }
+    private val openWelcomeActivity = {
         startActivity(Intent(
             this@ProfileDemo,
             WelcomeActivity::class.java
