@@ -12,7 +12,7 @@
     <style name="headText" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/roboto_bold</item>
     </style>
     <style name="smallText" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textSize">15sp</item>

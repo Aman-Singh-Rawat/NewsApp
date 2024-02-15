@@ -22,11 +22,18 @@ class CreateAccountFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             openNewsFeed()
         }
+        binding.ivBackArrowCreate.setOnClickListener { // this function work on back button
+            onBackPressed()
+        }
         return binding.root
     }
 
     private fun openNewsFeed() {
         findNavController().navigate(R.id.action_signUpFragment_to_NewsFeedFragment)
+    }
+    private val onBackPressed = { // previous activity navigate
+        findNavController().navigateUp()
+        true
     }
 
 }

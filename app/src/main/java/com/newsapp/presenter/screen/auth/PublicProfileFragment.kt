@@ -8,23 +8,34 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
+import com.newsapp.databinding.FragmentProfileBinding
 
 class PublicProfileFragment : Fragment() {
+    private lateinit var binding: FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val btnFinish = view.findViewById<Button>(R.id.btnFinish)
-        btnFinish.setOnClickListener{
-            findNavController().navigate(R.id.action_public_Profile_Fragment_to_all_Set_Fragment)
+    ): View {
+        binding = FragmentProfileBinding.inflate(
+            inflater, container, false
+        )
+        binding.btnFinish.setOnClickListener {
+            openAllSetFragment()
         }
+        binding.ivBackArrowProfile.setOnClickListener {
+            onBackPressed()
+        }
+        return binding.root
     }
 
+    val onBackPressed = {
+        findNavController().navigateUp()
+        true
+    }
+    val openAllSetFragment = {
+        findNavController().navigate(
+            R.id.action_public_Profile_Fragment_to_all_Set_Fragment
+        )
+    }
 
 }
