@@ -13,15 +13,6 @@
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".presenter.screen.onboading.TrendingDemo"
-            android:exported="false" />
-        <activity
-            android:name=".presenter.screen.onboading.ProfileDemo"
-            android:exported="false" />
-        <activity
-            android:name=".presenter.screen.onboading.ElevateDemo"
-            android:exported="false" />
-        <activity
             android:name=".presenter.screen.onboading.WelcomeActivity"
             android:exported="false" />
         <activity
