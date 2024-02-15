@@ -94,19 +94,21 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvFullName"
-                android:layout_marginTop="2dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@id/tvFullName">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="e.g. Andrew Ainsley"/>
+                    android:background="@drawable/bg_rectangle"
+                    android:hint="e.g. Andrew Ainsley"
+                    android:textColor="@color/black" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,23 +125,23 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername"
-                android:layout_marginTop="2dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@id/tvUsername">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="e.g. @andrew_ainsley"/>
-
+                    android:background="@drawable/bg_rectangle"
+                    android:hint="e.g. @andrew_ainsley"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <TextView
                 android:id="@+id/tvBio"
@@ -153,19 +155,21 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvBio"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:layout_constraintTop_toBottomOf="@id/tvBio">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etBio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tech enthusiast, likes to share stories a..." />
+                    android:background="@drawable/bg_rectangle"
+                    android:hint="Tech enthusiast, likes to share stories a..."
+                    android:textColor="@color/black" />
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -178,8 +182,8 @@
         android:id="@+id/clBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp"
         android:background="@color/white"
+        android:paddingVertical="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

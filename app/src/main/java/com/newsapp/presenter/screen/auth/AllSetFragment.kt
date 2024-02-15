@@ -22,7 +22,6 @@ class AllSetFragment : Fragment() {
             onBackPressed()
         }
         return binding.root
-
     }
     private val onBackPressed = {
         findNavController()
