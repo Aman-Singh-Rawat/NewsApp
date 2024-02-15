@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.onboading
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentWelcomeBinding
+import com.newsapp.presenter.screen.auth.SignUp
 
 class WelcomeFragment : Fragment() {
     lateinit var binding: FragmentWelcomeBinding
@@ -24,9 +26,7 @@ class WelcomeFragment : Fragment() {
         )
 
         textColorChange() // Change the color of "Don't have an account?  Sign up"
-        binding.tvWelNotAccount.setOnClickListener {
-            tvWelNotAccount()
-        }
+
 
         binding.btnWelSignInWith.setOnClickListener {
             openSignInFragment()
@@ -47,8 +47,12 @@ class WelcomeFragment : Fragment() {
         binding.tvWelNotAccount.text = spannableString
     }
 
-    private val tvWelNotAccount = {
-        findNavController().navigate(R.id.action_welcomeFragment_to_createAccountFragment)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.tvWelNotAccount.setOnClickListener {
+        val intent = Intent(requireContext(),SignUp::class.java)
+        startActivity(intent)
+        }
     }
     private val openSignInFragment = {
         findNavController().navigate(R.id.action_welcomeFragment_to_signInFragment)

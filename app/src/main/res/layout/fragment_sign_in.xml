@@ -180,7 +180,7 @@
                 android:id="@+id/btnSignIn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/bg_button"
                 android:text="Sign In"
                 android:textAllCaps="false"

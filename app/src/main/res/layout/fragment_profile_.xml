@@ -33,7 +33,7 @@
                 app:layout_constraintGuide_percent="0.95" />
 
             <ImageView
-                android:id="@+id/ivBackArrow"
+                android:id="@+id/ivBackArrowProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -47,8 +47,8 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_button"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toEndOf="@+id/ivBackArrow"
-                app:layout_constraintTop_toTopOf="@id/ivBackArrow" />
+                app:layout_constraintStart_toEndOf="@+id/ivBackArrowProfile"
+                app:layout_constraintTop_toTopOf="@id/ivBackArrowProfile" />
 
             <TextView
                 android:id="@+id/tvCreateProfile"
@@ -58,7 +58,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/txt_create_pub"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/ivBackArrow" />
+                app:layout_constraintTop_toBottomOf="@id/ivBackArrowProfile" />
 
             <TextView
                 android:id="@+id/tvNewsExperience"

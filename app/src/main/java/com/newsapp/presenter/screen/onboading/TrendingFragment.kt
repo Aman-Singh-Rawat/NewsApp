@@ -8,15 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
-import com.newsapp.databinding.FragmentTrendingBinding
+import com.newsapp.databinding.FragmentTrendingDemoBinding
 
 class TrendingFragment : Fragment() {
-    private lateinit var binding: FragmentTrendingBinding
+    private lateinit var binding: FragmentTrendingDemoBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTrendingBinding.inflate(
+        binding = FragmentTrendingDemoBinding.inflate(
             inflater, container, false
         )
 

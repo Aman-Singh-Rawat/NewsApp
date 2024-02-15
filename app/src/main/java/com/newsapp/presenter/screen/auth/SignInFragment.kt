@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
-
-@Suppress("UNREACHABLE_CODE")
+import com.newsapp.presenter.screen.onboading.WelcomeActivity
+import com.newsapp.presenter.screen.onboading.WelcomeFragment
 class SignInFragment : Fragment() {
 
     override fun onCreateView(
@@ -21,19 +21,23 @@ class SignInFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val btnSignIn = view.findViewById<Button>(R.id.btnSignIn)
+        btnSignIn.setOnClickListener{
+            findNavController().navigate(R.id.action_signInFragment_to_signInDialogFragment)
+        }
     }
 
 
 
-//    private fun diloge(){
-//        Handler(Looper.getMainLooper()).postDelayed({
-//           val btnSignIn = view?.findViewById<Button>(R.id.btnSignIn)
-//            btnSignIn?.setOnClickListener{
-//                findNavController().navigate()
-//            }
-//        },3000)
-//    }
+
+
+
+
+
 
 
 

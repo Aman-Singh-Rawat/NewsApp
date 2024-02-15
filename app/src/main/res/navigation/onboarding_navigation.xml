@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/trendingFragment"
         android:name="com.newsapp.presenter.screen.onboading.TrendingFragment"
-        tools:layout="@layout/fragment_trending"
+        tools:layout="@layout/fragment_trending_demo"
         android:label="fragment_trending">
 
         <action
@@ -57,21 +57,20 @@
         <action
             android:id="@+id/action_welcomeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
-
-        <action
-            android:id="@+id/action_welcomeFragment_to_createAccountFragment"
-            app:destination="@id/createAccountFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.newsapp.presenter.screen.auth.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signInDialogFragment"
+            app:destination="@id/signInDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/signInDialogFragment"
+        tools:layout="@layout/fragment_sign_in_dialog"
+        android:name="com.newsapp.presenter.screen.auth.SignInDialogFragment"
+        android:label="SignInDialog" />
 
-    <fragment
-        android:id="@+id/createAccountFragment"
-        android:name="com.newsapp.presenter.screen.auth.CreateAccountFragment"
-        android:label="CreateAccountFragment"
-        tools:layout="@layout/fragment_create__account_"/>
 </navigation>
