@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_navigation"
+    app:startDestination="@id/trendingFragment">
+
+    <fragment
+        android:id="@+id/trendingFragment"
+        android:name="com.newsapp.presenter.screen.onboading.TrendingFragment"
+        tools:layout="@layout/fragment_trending"
+        android:label="fragment_trending">
+
+        <action
+            android:id="@+id/action_trendingFragment_to_profileFragment"
+            app:destination="@+id/profileFragment"/>
+
+        <action
+            android:id="@+id/action_trendingFragment_to_WelcomeFragment"
+            app:destination="@+id/welcomeFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.newsapp.presenter.screen.onboading.ProfileDemoFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/fragment_profile_demo">
+
+        <action
+            android:id="@+id/action_profileFragment_to_elevateFragment"
+            app:destination="@+id/elevateFragment"/>
+
+        <action
+            android:id="@+id/action_profileFragment_to_WelcomeFragment"
+            app:destination="@+id/welcomeFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/elevateFragment"
+        android:name="com.newsapp.presenter.screen.onboading.ElevateFragment"
+        tools:layout="@layout/fragment_elevate"
+        android:label="elevate_fragment">
+
+        <action
+            android:id="@+id/action_elevateFragment_to_WelcomeFragment"
+            app:destination="@+id/welcomeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.newsapp.presenter.screen.onboading.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+
+        <action
+            android:id="@+id/action_welcomeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+
+        <action
+            android:id="@+id/action_welcomeFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.newsapp.presenter.screen.auth.CreateAccountFragment"
+        android:label="CreateAccountFragment"
+        tools:layout="@layout/fragment_create__account_"/>
+</navigation>

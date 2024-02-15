@@ -18,29 +18,6 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        textColorChange() // Change the color of "Don't have an account?  Sign up"
-
-        binding.tvWelNotAccount.setOnClickListener {
-            openSignUpActivity() // opening sign up activity
-        }
-    }
-    val textColorChange = {
-        val spannableString = SpannableString("Don't have an account?  Sign up")
-        val signUpColor = ContextCompat.getColor(this, R.color.green)
-        val startIndex = spannableString.indexOf("Sign up")
-        spannableString.setSpan(
-            ForegroundColorSpan(signUpColor),
-            startIndex, startIndex + "Sign up".length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.tvWelNotAccount.text = spannableString
     }
 
-    val openSignUpActivity = {
-        startActivity(Intent(
-            this@WelcomeActivity,
-            SignUp::class.java
-        ))
-    }
 }

@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
-import com.newsapp.presenter.screen.onboading.TrendingDemo
 
 @Suppress("UNREACHABLE_CODE")
 class SignInFragment : Fragment() {
