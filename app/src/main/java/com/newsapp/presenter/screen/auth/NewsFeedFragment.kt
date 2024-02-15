@@ -28,10 +28,12 @@ class NewsFeedFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = newsFeedRecycler
 
-        return binding.root
         binding.btnNext.setOnClickListener {
-        nextPage()
-    }
+            nextPage()
+        }
+
+        return binding.root
+
     }
     private fun addValueOnList() {
         arrayList.add(
