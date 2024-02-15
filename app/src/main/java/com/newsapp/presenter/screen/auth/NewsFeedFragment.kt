@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsFeedBinding
 import com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel.NewsFeedClass
 import com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel.NewsFeedRecycler
 
+@Suppress("UNREACHABLE_CODE")
 class NewsFeedFragment : Fragment() {
     private lateinit var binding: FragmentNewsFeedBinding
     private val arrayList = ArrayList<NewsFeedClass>()
@@ -26,7 +28,12 @@ class NewsFeedFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = newsFeedRecycler
 
+        binding.btnNext.setOnClickListener {
+            nextPage()
+        }
+
         return binding.root
+
     }
     private fun addValueOnList() {
         arrayList.add(
@@ -72,6 +79,9 @@ class NewsFeedFragment : Fragment() {
             NewsFeedClass(R.drawable.img_finance,
                 "Finance")
         )
+    }
+    private fun nextPage(){
+        findNavController().navigate(R.id.action_newsFeedFragment_to_public_Profile_Fragment)
     }
 
 }

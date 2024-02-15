@@ -71,8 +71,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="161" />
-                            <option name="y" value="-99" />
+                            <option name="x" value="185" />
+                            <option name="y" value="-131" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -107,6 +107,15 @@
                             <option name="x" value="-33" />
                             <option name="y" value="-142" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_signUpFragment_to_NewsFeedFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
