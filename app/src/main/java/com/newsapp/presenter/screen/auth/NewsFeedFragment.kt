@@ -32,6 +32,10 @@ class NewsFeedFragment : Fragment() {
             nextPage()
         }
 
+        binding.ivArrowFeed.setOnClickListener { // navigate previous fragment
+            onBackPressed()
+        }
+
         return binding.root
 
     }
@@ -82,6 +86,11 @@ class NewsFeedFragment : Fragment() {
     }
     private fun nextPage(){
         findNavController().navigate(R.id.action_newsFeedFragment_to_public_Profile_Fragment)
+    }
+
+    private val onBackPressed = {
+        findNavController().navigateUp()
+        true
     }
 
 }
