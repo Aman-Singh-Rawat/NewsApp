@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.newsapp.R
@@ -20,9 +21,12 @@ class PublishFragment : Fragment() {
         binding = FragmentPublishBinding.inflate(
             inflater, container, false
         )
-
         spinnerFunctionality()
         recyclerViewFunctionality()
+
+        binding.tvPublish.setOnClickListener {
+            openStoryPublished()
+        }
         return binding.root
     }
 
@@ -48,6 +52,11 @@ class PublishFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerPublish.adapter = arrayAdapter
+    }
+
+    val openStoryPublished = {
+        findNavController().navigate(
+            R.id.action_fragmentPublish_to_fragmentStoryPublished)
     }
 
 }

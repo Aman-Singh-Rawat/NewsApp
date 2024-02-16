@@ -10,24 +10,36 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
+import com.newsapp.databinding.FragmentPreviewStoryBinding
 import com.newsapp.presenter.screen.auth.SignInFragment
 
 class PreviewStoryFragment : Fragment() {
-
+    private lateinit var binding: FragmentPreviewStoryBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_preview_story, container, false)
+    ): View {
+        binding = FragmentPreviewStoryBinding.inflate(
+            inflater, container, false
+        )
+        binding.ivArrowStory.setOnClickListener { // back button
+            onBackPressed()
+        }
+        binding.tvContinue.setOnClickListener {
+            openFragmentPublish()
+        }
+        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val ivArrowStory = view.findViewById<ImageView>(R.id.ivArrowStory)
-        ivArrowStory.setOnClickListener {
-         findNavController().navigateUp()
-        }
+    val openFragmentPublish = {
+        findNavController().navigate(
+            R.id.action_previewStoryFragment_to_fragmentPublish
+        )
+    }
+    val onBackPressed = {
+        findNavController()
+            .navigateUp()
+        true
     }
 
 }

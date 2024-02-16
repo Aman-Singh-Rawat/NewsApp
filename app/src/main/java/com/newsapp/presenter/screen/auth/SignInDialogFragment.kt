@@ -5,19 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import com.newsapp.MainActivity
 import com.newsapp.R
-import com.newsapp.presenter.screen.Profile.CreateStoryFragment
-import com.newsapp.presenter.screen.onboading.WelcomeActivity
-import com.newsapp.presenter.screen.onboading.WelcomeFragment
 
 @Suppress("UNREACHABLE_CODE")
 class SignInDialogFragment : DialogFragment() {
