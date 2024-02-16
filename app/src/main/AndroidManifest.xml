@@ -13,9 +13,7 @@
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
 
-        <activity
-            android:name=".presenter.screen.profile.WritingStoryActivity"
-            android:exported="false" />
+
         <activity
             android:name=".presenter.screen.onboading.WelcomeActivity"
             android:exported="false" />
