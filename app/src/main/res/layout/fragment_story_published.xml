@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".presenter.screen.profile.StoryPublishedFragment"
-    android:layout_margin="20dp">
+    android:layout_margin="14dp">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgStoryBackArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +51,7 @@
         android:layout_marginTop="22dp"
         android:text="Don't forget to share with your friends to let them know you have an amazing story!"
         android:lineSpacingExtra="12dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:letterSpacing="0.01"/>
@@ -67,15 +68,14 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_continue"
             android:backgroundTint="@color/light_green"
             android:fontFamily="@font/roboto_bold"
             android:text="Back to home"
             android:textAllCaps="false"
-            android:textColor="@color/green"
-            android:textSize="16sp" />
+            android:textColor="@color/green"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
@@ -87,7 +87,9 @@
             android:text="View Story"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
