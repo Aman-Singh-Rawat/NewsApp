@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/trendingFragment"
-        android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
-        tools:layout="@layout/fragment_publish"
+        android:name="com.newsapp.presenter.screen.onboading.TrendingFragment"
+        tools:layout="@layout/fragment_trending_demo"
         android:label="fragment_trending">
 
         <action
