@@ -27,6 +27,9 @@ class PublishFragment : Fragment() {
         binding.tvPublish.setOnClickListener {
             openStoryPublished()
         }
+        binding.imgPublishBack.setOnClickListener {
+            onBackPressed()
+        }
         return binding.root
     }
 
@@ -59,4 +62,9 @@ class PublishFragment : Fragment() {
             R.id.action_fragmentPublish_to_fragmentStoryPublished)
     }
 
+    val onBackPressed = {
+        findNavController()
+            .navigateUp()
+        true
+    }
 }
