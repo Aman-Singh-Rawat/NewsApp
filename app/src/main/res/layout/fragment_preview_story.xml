@@ -56,7 +56,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvImage"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/dark_white"
         app:cardCornerRadius="12dp"
@@ -68,11 +68,10 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/bg_rectangle"
+            android:layout_height="wrap_content"
             android:elevation="12dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/img_non_blur"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_cute_girl_with_robot"
             app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
             app:layout_constraintStart_toStartOf="@id/glPreViewStart"
             app:layout_constraintTop_toBottomOf="@id/ivArrowStory" />

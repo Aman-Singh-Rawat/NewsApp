@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/createStoryFragment"
-        android:name="com.newsapp.presenter.screen.Profile.CreateStoryFragment"
+        android:name="com.newsapp.presenter.screen.profile.CreateStoryFragment"
         android:label="fragment_create_story"
         tools:layout="@layout/fragment_create_story" >
         <action
@@ -39,5 +39,30 @@
         android:id="@+id/previewStoryFragment"
         android:name="com.newsapp.presenter.screen.Profile.PreviewStoryFragment"
         android:label="fragment_preview_story"
-        tools:layout="@layout/fragment_preview_story" />
+        tools:layout="@layout/fragment_preview_story" >
+
+        <action
+            android:id="@+id/action_previewStoryFragment_to_fragmentPublish"
+            app:destination="@id/fragmentPublish"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentPublish"
+        android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
+        android:label="fragment_publish"
+        tools:layout="@layout/fragment_publish">
+
+        <action
+            android:id="@+id/action_fragmentPublish_to_fragmentStoryPublished"
+            app:destination="@+id/fragmentStoryPublished"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentStoryPublished"
+        android:name="com.newsapp.presenter.screen.profile.StoryPublishedFragment"
+        tools:layout="@layout/fragment_story_published"
+        android:label="story_publish_fragment"/>
+
 </navigation>
