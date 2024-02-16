@@ -13,6 +13,7 @@ import android.view.Window
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
+import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.presenter.screen.onboading.WelcomeActivity
 import com.newsapp.presenter.screen.onboading.WelcomeFragment
@@ -36,7 +37,7 @@ class SignInDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(requireContext(), WelcomeActivity::class.java)//WelcomeActivity switch with any Continue Acivity
+            val intent = Intent(requireContext(), MainActivity::class.java)//WelcomeActivity switch with any Continue Acivity
             startActivity(intent)
         },2000)
     }
