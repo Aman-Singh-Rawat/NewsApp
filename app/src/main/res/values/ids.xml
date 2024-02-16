@@ -15,4 +15,5 @@
     <item name="vDivider" type="id" />
     <item name="tvTerms" type="id" />
     <item name="tvAgree" type="id" />
+    <item name="ivArrowBack" type="id" />
 </resources>

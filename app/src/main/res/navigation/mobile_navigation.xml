@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/createStoryFragment">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.newsapp.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_createStoryFragment"
+            app:destination="@id/createStoryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,18 @@
         android:name="com.newsapp.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/createStoryFragment"
+        android:name="com.newsapp.presenter.screen.Profile.CreateStoryFragment"
+        android:label="fragment_create_story"
+        tools:layout="@layout/fragment_create_story" >
+        <action
+            android:id="@+id/action_createStoryFragment_to_previewStoryFragment"
+            app:destination="@id/previewStoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewStoryFragment"
+        android:name="com.newsapp.presenter.screen.Profile.PreviewStoryFragment"
+        android:label="fragment_preview_story"
+        tools:layout="@layout/fragment_preview_story" />
 </navigation>
