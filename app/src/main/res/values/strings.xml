@@ -23,6 +23,7 @@
     <string name="continue_with_x">"Continue with X"</string>
     <string name="sign_in_with_password">"Sign in with password"</string>
     <string name="don_t_have_an_account_sign_up">"Don't have an account?  Sign up"</string>
+<<<<<<< HEAD
 
     <!-- String array for Spinner -->
     <string-array name="stringSelectTopic">
@@ -38,4 +39,7 @@
         <item>Finance</item>
 
     </string-array>
+=======
+    <string name="txt_add_cover_image">Add cover image</string>
+>>>>>>> 128a5a860b09da7b784ab07bada481f2fed88cec
 </resources>

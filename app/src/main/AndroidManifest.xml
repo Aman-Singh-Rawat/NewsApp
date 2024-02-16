@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
+<<<<<<< HEAD
         <activity
             android:name=".presenter.screen.profile.WritingStoryActivity"
             android:exported="false" />
+=======
+
+>>>>>>> 128a5a860b09da7b784ab07bada481f2fed88cec
         <activity
             android:name=".presenter.screen.onboading.WelcomeActivity"
             android:exported="false" />
