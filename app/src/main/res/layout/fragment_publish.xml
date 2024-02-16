@@ -84,7 +84,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSelectTopic"
-            android:background="@color/dark_white"
+            android:background="@drawable/bg_rectangle"
             android:paddingVertical="20dp"
             android:layout_marginTop="12dp"/>
 
@@ -107,8 +107,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAddTags"
-            android:background="@color/dark_white"
             android:padding="20dp"
+            android:background="@drawable/bg_rectangle"
             android:hint="Type tag and enter ..."
             android:layout_marginTop="12dp"/>
 
