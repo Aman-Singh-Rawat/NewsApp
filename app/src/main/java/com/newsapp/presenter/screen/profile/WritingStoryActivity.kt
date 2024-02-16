@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.Profile
+package com.newsapp.presenter.screen.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

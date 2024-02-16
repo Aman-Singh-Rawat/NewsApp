@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Skip"
             android:textAllCaps="false"
-            android:backgroundTint="#F0FBFA"
+            android:backgroundTint="@color/light_green"
             android:background="@drawable/bg_btn_continue"
             android:layout_weight="1"
             android:layout_margin="5dp"
