@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_white"
     android:fillViewport="true"
-    tools:context=".presenter.screen.auth.SignUp">
+    tools:context=".presenter.screen.auth.WelcomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="@id/imgNews"
             app:layout_constraintTop_toBottomOf="@id/imgNews"
             android:text="@string/app_name"
-            style="@style/textSize"/>
+            style="@style/textTheme"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvWelcome"

@@ -1,11 +1,13 @@
 
-?kotlin:S6624*" Do not hardcode version numbers.(œÇùÃ8ñÍ¿³Ú1
-=kotlin:S6624," Do not hardcode version numbers.(ôĞ¬úÿÿÿÿ
-=kotlin:S6624-" Do not hardcode version numbers.(Î¹×•ÿÿÿÿÿ
-=kotlin:S6624." Do not hardcode version numbers.(€ü“Ùúÿÿÿÿ
-=kotlin:S6624/" Do not hardcode version numbers.(Œ¹Š’ıÿÿÿÿ
-=kotlin:S66240" Do not hardcode version numbers.(÷”¬òşÿÿÿÿ
-8kotlin:S66241" Do not hardcode version numbers.(½¼äæ
-8kotlin:S66242" Do not hardcode version numbers.(™«¶Ô
-8kotlin:S66243" Do not hardcode version numbers.(‘•«Ã
-Dkotlin:S66244" Do not hardcode version numbers.(˜°Ö“üÿÿÿÿ8ñÍ¿³Ú1
+?kotlin:S6624*" Do not hardcode version numbers.(œÇùÃ8ªûÉ³Û1
+Dkotlin:S6624," Do not hardcode version numbers.(ôĞ¬úÿÿÿÿ8±ûÉ³Û1
+Dkotlin:S6624-" Do not hardcode version numbers.(Î¹×•ÿÿÿÿÿ8±ûÉ³Û1
+Dkotlin:S6624." Do not hardcode version numbers.(€ü“Ùúÿÿÿÿ8±ûÉ³Û1
+Dkotlin:S6624/" Do not hardcode version numbers.(Œ¹Š’ıÿÿÿÿ8²ûÉ³Û1
+Dkotlin:S66240" Do not hardcode version numbers.(÷”¬òşÿÿÿÿ8²ûÉ³Û1
+?kotlin:S66241" Do not hardcode version numbers.(½¼äæ8²ûÉ³Û1
+?kotlin:S66242" Do not hardcode version numbers.(™«¶Ô8²ûÉ³Û1
+?kotlin:S66243" Do not hardcode version numbers.(‘•«Ã8³ûÉ³Û1
+Dkotlin:S66244" Do not hardcode version numbers.(˜°Ö“üÿÿÿÿ8³ûÉ³Û1
+Dkotlin:S66248" Do not hardcode version numbers.(ëŠµ›ıÿÿÿÿ8Õˆ°¶Û1
+Lkotlin:S6629)"(Group dependencies by their destination.(«±°¢ùÿÿÿÿ8ïˆ°¶Û1

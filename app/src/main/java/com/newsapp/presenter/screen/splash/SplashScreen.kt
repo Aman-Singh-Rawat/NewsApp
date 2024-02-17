@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.newsapp.R
-import com.newsapp.presenter.screen.onboading.WelcomeActivity
+import com.newsapp.presenter.screen.onboading.OnboardingActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(mainLooper).postDelayed({
             startActivity(Intent(
                 this@SplashScreen,
-                WelcomeActivity::class.java
+                OnboardingActivity::class.java
             ))
             finish()
         },3000)
