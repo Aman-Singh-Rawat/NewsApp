@@ -367,8 +367,6 @@ u
 Eapp/src/main/java/com/newsapp/presenter/screen/auth/AllSetFragment.kt,f\0\f0ffb3822462e3b31bdad9501947cafd4c0bfd9c
 u
 Eapp/src/main/java/com/newsapp/presenter/screen/splash/SplashScreen.kt,3\7\37dd3251c806c8928983a670dddc5961a8fded01
-{
-Kapp/src/main/java/com/newsapp/presenter/screen/onboading/WelcomeActivity.kt,9\b\9b304552893e33788c2120276768c9d45e77043f
 w
 G.idea/sonarlint/issuestore/9/b/9b304552893e33788c2120276768c9d45e77043f,7\7\776e6313e374cd7c6154a1b6dd2318acca9863a4
 w
@@ -3627,14 +3625,6 @@ w
 G.idea/sonarlint/issuestore/0/8/0823b6c59753ef9bddeca383b7f41ec418b0273a,3\c\3cb34249ac7230063600c4bd00d022d02246e7f4
 w
 G.idea/sonarlint/issuestore/0/8/0801bab2f2fc63e046e24f2ac25fa8df2dc1ea10,d\b\db1572f03e262cf0a78befe3cb758e92d34f5bbe
-{
-Kapp/src/main/java/com/newsapp/presenter/screen/onboading/WelcomeFragment.kt,5\8\58cd43855b802bd2141c35f00eb8f81ddb67ef1d
-{
-Kapp/src/main/java/com/newsapp/presenter/screen/onboading/ElevateFragment.kt,7\8\78348f17ebd41035523baa34fb71d7a641886e0e
-|
-Lapp/src/main/java/com/newsapp/presenter/screen/onboading/TrendingFragment.kt,a\9\a9248ae7a436b03eefcc0b849bc4d5909d1927df
-
-Oapp/src/main/java/com/newsapp/presenter/screen/onboading/ProfileDemoFragment.kt,4\4\44575ffd3c872b3e575ee78bf49c9e3214788bda
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 X
@@ -3751,5 +3741,3 @@ v
 Fapp/src/main/java/com/newsapp/presenter/screen/auth/WelcomeFragment.kt,5\c\5cb92f27ca7b656e235ed8cccddb6a99b0965aa7
 ~
 Napp/src/main/java/com/newsapp/presenter/screen/onboading/OnboardingActivity.kt,1\d\1d7e396b0726038666a9e08ec57fa2945ddf6101
-‰
-Yapp/src/main/java/com/newsapp/presenter/screen/auth/newsfeedrecycler/WelcomeFragment.java,9\0\909067261655775984c00e7c2ad66dc7378d2f5b

@@ -18,6 +18,6 @@ class SplashScreen : AppCompatActivity() {
                 OnboardingActivity::class.java
             ))
             finish()
-        },200000)
+        },3000)
     }
 }
