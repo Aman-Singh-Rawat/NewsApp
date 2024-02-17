@@ -3667,8 +3667,6 @@ G.idea/sonarlint/issuestore/7/3/73cc6b092a3c38fe034ec006b683bb86934d4937,5\9\59
 Q.idea/sonarlint/securityhotspotstore/a/1/a188297ebe557ef29bf3bfae082d74efaa44681d,7\5\759ceae3f23883e4709f18e66b6102df0959ae83
 Å
 Q.idea/sonarlint/securityhotspotstore/7/8/7877dae93eb7075e7b1a16cdfdd518c7d2c294fe,0\3\034ccb3e712845fde8c57fd123e97451a3e055ed
-Å
-Q.idea/sonarlint/securityhotspotstore/3/9/39de664fcafcdda70e955beca336a0e75221b27d,d\c\dcd5523003694430f528b8f52c3e05783f769539
 w
 G.idea/sonarlint/issuestore/a/1/a188297ebe557ef29bf3bfae082d74efaa44681d,c\5\c5d3df1264d85e2c524494e1235df1c73a54e5ed
 Å
@@ -3731,14 +3729,10 @@ Papp/src/main/java/com/newsapp/presenter/screen/profile/StoryPublishedFragment.k
 Napp/src/main/java/com/newsapp/presenter/screen/profile/PreviewStoryFragment.kt,6\3\63a455338cba9a2bea724d93f63e306c07c888b1
 }
 Mapp/src/main/java/com/newsapp/presenter/screen/profile/CreateStoryFragment.kt,0\7\07a033ebda2cfaa757b84cb717cb0cc76c45d47a
-~
-Napp/src/main/java/com/newsapp/presenter/screen/Profile/WritingStoryActivity.kt,b\e\be5f1da9412d5ef029c6747463e0b705fc4f44ae
 Å
 Qapp/src/main/java/com/newsapp/presenter/screen/Profile/publish/PublishFragment.kt,f\8\f8cf53971b5e68f4df54ea4c1614db2013f469ee
 Ä
 Papp/src/main/java/com/newsapp/presenter/screen/Profile/StoryPublishedFragment.kt,0\4\044dfb41634b8005ad796293f7f993a6fa5b517b
-~
-Napp/src/main/java/com/newsapp/presenter/screen/profile/WritingStoryActivity.kt,c\d\cdfa2ee945c3343940e277b089c60e0ece0783b5
 }
 Mapp/src/main/java/com/newsapp/presenter/screen/Profile/CreateStoryFragment.kt,3\d\3d01e33966204c28f4148dd882a9bf249651634d
 Å
@@ -3761,3 +3755,5 @@ Q.idea/sonarlint/securityhotspotstore/6/3/63a455338cba9a2bea724d93f63e306c07c888
 Q.idea/sonarlint/securityhotspotstore/c/d/cdfa2ee945c3343940e277b089c60e0ece0783b5,f\9\f947e99a56cb34b46d03855c6f21a9867914eb4a
 w
 G.idea/sonarlint/issuestore/c/d/cdfa2ee945c3343940e277b089c60e0ece0783b5,a\4\a4ead89b83424816ba1870e713bab38e467a9516
+y
+Iapp/src/main/java/com/newsapp/presenter/screen/onboading/ElevateDemo.java,e\4\e4c6cf4306a68a6c969ad04c31031f3b77028263
