@@ -62,43 +62,68 @@
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreateAccunt" />
 
-            <include
+            <TextView
                 android:id="@+id/tvEmail"
-                layout="@layout/common_sub_title"
+                style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:hint="@string/email"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
 
-            <include
-                android:id="@+id/etEmailText"
-                layout="@layout/common_detail_fill"
+            <EditText
+                android:id="@+id/etFillEmail"
+                style="@style/singleBoldText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_rectangle"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/email"
+                android:maxLength="10"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+                app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                android:autofillHints="Email" />
 
-            <include
+            <TextView
                 android:id="@+id/tvPassword"
-                layout="@layout/common_sub_title"
+                style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:hint="@string/password"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/etEmailText" />
+                app:layout_constraintTop_toBottomOf="@id/etFillEmail" />
 
-            <include
-                android:id="@+id/etPasswordText"
-                layout="@layout/common_detail_fill"
+            <EditText
+                android:id="@+id/etFillPassWord"
+                style="@style/singleBoldText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_rectangle"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawableEnd="@drawable/selector_eyes"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/password"
+                android:maxLength="10"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+                app:layout_constraintTop_toBottomOf="@id/tvPassword"
+                android:autofillHints="Password" />
 
             <CheckBox
                 android:id="@+id/cbIAgree"
@@ -107,7 +132,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPasswordText" />
+                app:layout_constraintTop_toBottomOf="@id/etFillPassWord" />
 
             <TextView
                 android:id="@+id/tvAgree"
@@ -161,12 +186,17 @@
                 app:layout_constraintStart_toEndOf="@+id/tvAlreadyAccount"
                 app:layout_constraintTop_toTopOf="@id/tvAlreadyAccount" />
 
-            <include
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn"
-                layout="@layout/common_btn"
+                style="@style/singleBoldText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_button"
+                android:paddingVertical="15dp"
+                android:text="@string/txt_signup"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart" />
@@ -174,10 +204,10 @@
             <View
                 android:id="@+id/vDividerlast"
                 android:layout_width="0dp"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/grey"
+                android:background="@color/lightGrey"
                 app:layout_constraintBottom_toTopOf="@+id/btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -185,5 +215,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-></androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
