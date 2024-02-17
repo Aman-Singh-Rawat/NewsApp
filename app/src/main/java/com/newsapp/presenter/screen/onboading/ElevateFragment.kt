@@ -20,7 +20,7 @@ class ElevateFragment : Fragment() {
         )
 
         binding.btnElevateContinue.setOnClickListener {
-            
+
         }
 
         return binding.root
