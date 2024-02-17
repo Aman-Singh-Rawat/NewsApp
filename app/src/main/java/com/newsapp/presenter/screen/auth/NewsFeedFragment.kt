@@ -12,7 +12,7 @@ import com.newsapp.databinding.FragmentNewsFeedBinding
 import com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel.NewsFeedClass
 import com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel.NewsFeedRecycler
 
-@Suppress("UNREACHABLE_CODE")
+
 class NewsFeedFragment : Fragment() {
     private lateinit var binding: FragmentNewsFeedBinding
     private val arrayList = ArrayList<NewsFeedClass>()
@@ -28,7 +28,7 @@ class NewsFeedFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = newsFeedRecycler
 
-        binding.btnNext.setOnClickListener {
+        binding.btnNewFeed.setOnClickListener {
             nextPage()
         }
 

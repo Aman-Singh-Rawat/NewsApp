@@ -16,11 +16,11 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-        binding.btnSignIn.root.setOnClickListener {
+        binding.btnWelcome.setOnClickListener {
             signInDialogFragment()
         }
 
-        binding.ivArrow.setOnClickListener {
+        binding.ivArrowWelcomeBack.setOnClickListener {
             onBackPressed()
         }
         return binding.root
@@ -33,6 +33,7 @@ class SignInFragment : Fragment() {
         findNavController().navigateUp()
         return true
     }
+
 
 
 

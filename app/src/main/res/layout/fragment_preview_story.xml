@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_bold"
-        android:hint="TITLE"
+        android:text="Your Title "
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
@@ -103,11 +103,12 @@
         android:id="@+id/tvProfileName"
         style="@style/smallText"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Andrew Ainsley  ."
+        android:text="Andrew Ainsley  "
         app:layout_constraintStart_toEndOf="@id/ivProfile"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+        app:layout_constraintTop_toTopOf="@+id/ivProfile" />
 
     <TextView
         android:id="@+id/tvYou"
@@ -117,7 +118,8 @@
         android:layout_marginStart="10dp"
         android:text="You"
         app:layout_constraintStart_toEndOf="@id/tvProfileName"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toTopOf="@id/tvProfileName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileName"/>
 
     <TextView
         android:id="@+id/tvStory"
@@ -126,7 +128,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
         android:gravity="top"
-        android:text=""
+        android:text="Your Story"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"

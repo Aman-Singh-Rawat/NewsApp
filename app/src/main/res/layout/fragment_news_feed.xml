@@ -1,68 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presenter.screen.auth.NewsFeedFragment"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".presenter.screen.auth.NewsFeedFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="0dp"
+
+            <ImageView
+                android:id="@+id/ivArrowFeed"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="80dp"
-                android:layout_marginTop="40dp"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_back_arrow"
                 app:layout_constraintStart_toStartOf="@id/guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center">
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/ivArrowFeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_back_arrow"/>
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_weight="2"
-                    android:background="@color/green"
-                    android:layout_marginStart="40dp"/>
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_weight="2.2"
-                    android:background="#E2DEDE" />
-
-            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCustomize"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Customize your news feed"
-                android:drawablePadding="10dp"
                 android:layout_marginTop="40dp"
-                android:textSize="28sp"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="5dp"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/roboto_bold"
+                android:lineSpacingExtra="5dp"
+                android:text="Customize your news feed"
+                android:textColor="@color/black"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/ivArrowFeed" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
@@ -82,37 +62,55 @@
                 android:id="@+id/tvVeryLong"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/guideline"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintTop_toBottomOf="@id/tvCustomize"
-                android:textSize="14sp"
-                android:textColor="@color/grey"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto"
                 android:lineSpacingExtra="5dp"
-                android:layout_marginTop="20dp"
-                android:text="Tell us what you're interested in to tailor your news experience. Don't worry, you can always update your preference later"/>
+                android:text="Tell us what you're interested in to tailor your news experience. Don't worry, you can always update your preference later"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/tvCustomize" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@id/guideline"
-                    app:layout_constraintEnd_toEndOf="@id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@id/tvVeryLong"
-                    android:layout_marginTop="26dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/tvVeryLong" />
+
+            <View
+                android:id="@+id/vDividerlast"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/btnNewFeed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNewFeed"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_button"
+                android:paddingVertical="15dp"
+                android:text="@string/txt_continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-    
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Continue"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:background="@drawable/bg_btn_continue"/>
+
 
 </LinearLayout>

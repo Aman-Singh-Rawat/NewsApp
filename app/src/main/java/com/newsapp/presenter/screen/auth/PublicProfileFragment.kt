@@ -11,7 +11,7 @@ import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
 
 class PublicProfileFragment : Fragment() {
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding:FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,7 +19,7 @@ class PublicProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(
             inflater, container, false
         )
-        binding.btnFinish.root.setOnClickListener {
+        binding.btnFinish.setOnClickListener {
             openAllSetFragment()
         }
         binding.ivBackArrowProfile.setOnClickListener {

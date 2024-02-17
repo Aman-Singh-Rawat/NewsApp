@@ -30,7 +30,7 @@ class OnboardingActivity : AppCompatActivity() {
         binding.viewPager2.clipChildren = false
         binding.viewPager2.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
 
-        binding.dotsIndicator.attachTo(binding.viewPager2)
+//        binding.dotsIndicator.attachTo(binding.viewPager2)
 
         onPageChangeCallback()
 
