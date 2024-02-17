@@ -1,188 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".presenter.screen.auth.CreateAccountFragment">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:orientation="vertical">
+        android:background="@color/white"
+        tools:context=".presenter.screen.auth.CreateAccountFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glVerticalStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glVerticalEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.95" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/glVerticalStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
 
-            <ImageView
-                android:id="@+id/ivBackArrowCreate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_back_arrow"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/glVerticalEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
 
-            <TextView
-                android:id="@+id/tvCreateAccunt"
-                style="@style/headText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/txt_create_account"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/ivBackArrowCreate" />
+                <ImageView
+                    android:id="@+id/ivBackArrowCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_back_arrow"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvNewsExperience"
-                style="@style/smallText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/txt_join_our_community"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvCreateAccunt" />
+                <TextView
+                    android:id="@+id/tvCreateAccunt"
+                    style="@style/headText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/txt_create_account"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/ivBackArrowCreate" />
 
-            <include
-                android:id="@+id/tvEmail"
-                layout="@layout/common_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
+                <TextView
+                    android:id="@+id/tvNewsExperience"
+                    style="@style/smallText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/txt_join_our_community"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCreateAccunt" />
 
-            <include
-                android:id="@+id/etEmailText"
-                layout="@layout/common_detail_fill"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+                <include
+                    android:id="@+id/tvEmail"
+                    layout="@layout/common_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
 
-            <include
-                android:id="@+id/tvPassword"
-                layout="@layout/common_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/etEmailText" />
+                <include
+                    android:id="@+id/etEmailText"
+                    layout="@layout/common_detail_fill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
-            <include
-                android:id="@+id/etPasswordText"
-                layout="@layout/common_detail_fill"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+                <include
+                    android:id="@+id/tvPassword"
+                    layout="@layout/common_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/etEmailText" />
 
-            <CheckBox
-                android:id="@+id/cbIAgree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPasswordText" />
+                <include
+                    android:id="@+id/etPasswordText"
+                    layout="@layout/common_detail_fill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/tvPassword" />
 
-            <TextView
-                android:id="@+id/tvAgree"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/txt_i_agree_to_newsline"
-                app:layout_constraintStart_toEndOf="@+id/cbIAgree"
-                app:layout_constraintTop_toTopOf="@id/cbIAgree" />
+                <CheckBox
+                    android:id="@+id/cbIAgree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etPasswordText" />
 
-            <TextView
-                android:id="@+id/tvTerms"
-                style="@style/greenColorText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:text="@string/txt_terms_and_policy"
-                app:layout_constraintStart_toEndOf="@+id/tvAgree"
-                app:layout_constraintTop_toTopOf="@id/tvAgree" />
+                <TextView
+                    android:id="@+id/tvAgree"
+                    style="@style/singleBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/txt_i_agree_to_newsline"
+                    app:layout_constraintStart_toEndOf="@+id/cbIAgree"
+                    app:layout_constraintTop_toTopOf="@id/cbIAgree" />
 
-            <View
-                android:id="@+id/vDivider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/tvTerms" />
+                <TextView
+                    android:id="@+id/tvTerms"
+                    style="@style/greenColorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/txt_terms_and_policy"
+                    app:layout_constraintStart_toEndOf="@+id/tvAgree"
+                    app:layout_constraintTop_toTopOf="@id/tvAgree" />
 
-            <TextView
-                android:id="@+id/tvAlreadyAccount"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/txt_already"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintHorizontal_bias="0.4"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:layout_constraintTop_toBottomOf="@id/vDivider" />
+                <View
+                    android:id="@+id/vDivider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/grey"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/tvTerms" />
 
-            <TextView
-                android:id="@+id/tvSgnIn"
-                style="@style/greenColorText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:text="@string/txt_signin"
-                app:layout_constraintStart_toEndOf="@+id/tvAlreadyAccount"
-                app:layout_constraintTop_toTopOf="@id/tvAlreadyAccount" />
+                <TextView
+                    android:id="@+id/tvAlreadyAccount"
+                    style="@style/singleBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/txt_already"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart"
+                    app:layout_constraintTop_toBottomOf="@id/vDivider" />
 
-            <include
-                android:id="@+id/btn"
-                layout="@layout/common_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
-                app:layout_constraintStart_toStartOf="@id/glVerticalStart"
-                app:text="@{Signup}" />
-            <View
-                android:id="@+id/vDividerlast"
-                android:layout_width="0dp"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/grey"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/btn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/tvSgnIn"
+                    style="@style/greenColorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/txt_signin"
+                    app:layout_constraintStart_toEndOf="@+id/tvAlreadyAccount"
+                    app:layout_constraintTop_toTopOf="@id/tvAlreadyAccount" />
+
+                <include
+                    android:id="@+id/btn"
+                    layout="@layout/common_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                    app:layout_constraintStart_toStartOf="@id/glVerticalStart" />
+
+                <View
+                    android:id="@+id/vDividerlast"
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/grey"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 

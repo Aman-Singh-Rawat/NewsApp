@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="text"
+            name="btnText"
             type="String" />
     </data>
 
@@ -16,7 +16,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_button"
             android:paddingVertical="20dp"
-            android:text="@{text}"
+            android:text="@{btnText}"
             style="@style/singleBoldText"
             android:textAllCaps="false"
             android:textColor="@color/white" />

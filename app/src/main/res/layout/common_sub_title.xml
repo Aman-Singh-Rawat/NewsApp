@@ -5,7 +5,9 @@
     tools:ignore="MissingDefaultResource">
 
     <data>
-
+<variable
+    name="title"
+    type="String" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -15,6 +17,7 @@
         android:id="@+id/tvSubHeadline"
         style="@style/singleBoldText"
         android:layout_width="wrap_content"
+        android:text="@{title}"
         android:layout_height="wrap_content"
         android:hint="@string/password"
         app:layout_constraintStart_toStartOf="parent"

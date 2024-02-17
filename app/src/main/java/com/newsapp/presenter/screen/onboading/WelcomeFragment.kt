@@ -50,8 +50,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvWelNotAccount.setOnClickListener {
-        val intent = Intent(requireContext(),SignUp::class.java)
-        startActivity(intent)
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
     }
     private val openSignInFragment = {
