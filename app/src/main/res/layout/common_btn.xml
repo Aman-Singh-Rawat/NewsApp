@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_button"
-            android:paddingVertical="20dp"
+            android:paddingVertical="15dp"
             android:text="@{btnText}"
             style="@style/singleBoldText"
             android:textAllCaps="false"
