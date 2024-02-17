@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presenter.screen.onboading.OnboardingActivity"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:background="@color/dark_white">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/dots_indicator"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="25dp"/>
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:dotsColor="@android:color/darker_gray"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="8dp"
+                app:dotsSpacing="4dp"
+                app:dotsWidthFactor="4.5"
+                app:selectedDotColor="@color/green"
+                app:progressMode="true"
+                android:layout_margin="18dp"
+                app:layout_constraintBottom_toTopOf="@+id/trendingLinearLayout"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/trendingLinearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOnboardingSkip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Skip"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/light_green"
+                    android:background="@drawable/bg_btn_continue"
+                    android:layout_weight="1"
+                    android:textColor="@color/green"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginVertical="5dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOnboardingContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Continue"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_btn_continue"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_marginVertical="5dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</ScrollView>

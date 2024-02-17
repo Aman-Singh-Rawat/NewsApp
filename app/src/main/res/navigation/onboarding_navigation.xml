@@ -12,35 +12,15 @@
         android:label="fragment_trending">
 
         <action
-            android:id="@+id/action_trendingFragment_to_profileFragment"
-            app:destination="@+id/profileFragment"/>
-
-        <action
             android:id="@+id/action_trendingFragment_to_WelcomeFragment"
             app:destination="@+id/welcomeFragment"/>
 
     </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.newsapp.presenter.screen.onboading.ProfileDemoFragment"
-        android:label="profile_fragment"
-        tools:layout="@layout/fragment_profile_demo">
-
-        <action
-            android:id="@+id/action_profileFragment_to_elevateFragment"
-            app:destination="@+id/elevateFragment"/>
-
-        <action
-            android:id="@+id/action_profileFragment_to_WelcomeFragment"
-            app:destination="@+id/welcomeFragment"/>
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/elevateFragment"
-        android:name="com.newsapp.presenter.screen.onboading.ElevateFragment"
-        tools:layout="@layout/fragment_elevate"
-        android:label="elevate_fragment"/>
+        android:id="@+id/welcomeFragment"
+        android:label="welcome_fragment"
+        tools:layout="@layout/fragment_welcome"
+        android:name="com.newsapp.presenter.screen.auth.WelcomeFragment"/>
 
 </navigation>

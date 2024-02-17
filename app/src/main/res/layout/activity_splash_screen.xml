@@ -5,33 +5,32 @@
     style="@style/myTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_white"
+    android:background="@android:color/holo_blue_dark"
     tools:context=".presenter.screen.splash.SplashScreen">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/splashLogo"
+        android:id="@+id/icAppLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:src="@drawable/newslogo"/>
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_logo"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNewsLine"
-        style="@style/textSize"
+        style="@style/textTheme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="Newsline"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/splashLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/icAppLogo" />
 
     <ProgressBar
         android:id="@+id/progressBar"
