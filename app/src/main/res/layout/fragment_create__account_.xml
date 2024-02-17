@@ -220,6 +220,5 @@
             app:layout_constraintEnd_toEndOf="@id/glProfileEndChild"
             app:layout_constraintStart_toStartOf="@id/glProfileStartChild" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

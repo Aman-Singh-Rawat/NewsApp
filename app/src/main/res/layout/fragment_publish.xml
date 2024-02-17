@@ -55,15 +55,15 @@
             android:id="@+id/tvTheRise"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardViewPublish"
             android:layout_marginTop="20dp"
-            android:text="The Rise of Artifical Intelligence: How AI is Shaping Our Lives"
-            android:textSize="18sp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/txt_the_rise"
             android:textColor="@color/black"
-            android:fontFamily="@font/roboto_medium"
-            android:lineSpacingExtra="8dp"/>
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewPublish" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSelectTopic"

@@ -42,6 +42,17 @@
                 app:layout_constraintStart_toStartOf="@id/glAllStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAllSet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_circular_true"
+                app:layout_constraintBottom_toTopOf="@+id/tvAllSet"
+                app:layout_constraintEnd_toEndOf="@id/glAllEnd"
+                app:layout_constraintStart_toStartOf="@id/glAllStart" />
+
             <TextView
                 android:id="@+id/tvAllSet"
                 style="@style/headText"
