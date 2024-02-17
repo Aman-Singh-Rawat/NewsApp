@@ -41,36 +41,6 @@
         android:id="@+id/elevateFragment"
         android:name="com.newsapp.presenter.screen.onboading.ElevateFragment"
         tools:layout="@layout/fragment_elevate"
-        android:label="elevate_fragment">
-
-        <action
-            android:id="@+id/action_elevateFragment_to_WelcomeFragment"
-            app:destination="@+id/welcomeFragment"/>
-    </fragment>
-
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.newsapp.presenter.screen.onboading.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-
-        <action
-            android:id="@+id/action_welcomeFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
-        <action
-            android:id="@+id/action_signInFragment_to_signInDialogFragment"
-            app:destination="@id/signInDialogFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/signInDialogFragment"
-        tools:layout="@layout/fragment_sign_in_dialog"
-        android:name="com.newsapp.presenter.screen.auth.SignInDialogFragment"
-        android:label="SignInDialog" />
+        android:label="elevate_fragment"/>
 
 </navigation>

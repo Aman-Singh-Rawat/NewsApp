@@ -20,13 +20,10 @@ class ElevateFragment : Fragment() {
         )
 
         binding.btnElevateContinue.setOnClickListener {
-            openWelcomeActivity()
+            
         }
 
         return binding.root
     }
 
-    private val openWelcomeActivity = {
-        findNavController().navigate(R.id.action_elevateFragment_to_WelcomeFragment)
-    }
 }
