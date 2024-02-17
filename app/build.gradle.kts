@@ -4,6 +4,11 @@ plugins {
 }
 
 android {
+
+    dataBinding{
+        enable = true
+    }
+
     namespace = "com.newsapp"
     compileSdk = 34
 
@@ -36,6 +41,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {

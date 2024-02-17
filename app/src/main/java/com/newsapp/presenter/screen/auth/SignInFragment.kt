@@ -16,7 +16,7 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-        binding.btnSignIn.setOnClickListener {
+        binding.btnSignIn.root.setOnClickListener {
             signInDialogFragment()
         }
 
@@ -47,3 +47,5 @@ class SignInFragment : Fragment() {
 
 
 }
+
+

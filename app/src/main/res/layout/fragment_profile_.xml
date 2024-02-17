@@ -8,11 +8,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/clBottom"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -82,139 +80,95 @@
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
 
-            <TextView
+            <include
                 android:id="@+id/tvFullName"
-                style="@style/singleBoldText"
+                layout="@layout/common_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Full Name"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/ivProfile" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <include
+                android:id="@+id/etName"
+                layout="@layout/common_detail_fill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvFullName">
+                app:layout_constraintTop_toBottomOf="@id/tvFullName" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rectangle"
-                    android:hint="e.g. Andrew Ainsley"
-                    android:textColor="@color/black" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
+            <include
                 android:id="@+id/tvUsername"
-                style="@style/singleBoldText"
+                layout="@layout/common_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Username"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+                app:layout_constraintTop_toBottomOf="@id/etName" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <include
+                android:id="@+id/etUserName"
+                layout="@layout/common_detail_fill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername">
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rectangle"
-                    android:hint="e.g. @andrew_ainsley"
-                    android:textColor="@color/black" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
+            <include
                 android:id="@+id/tvBio"
-                style="@style/singleBoldText"
+                layout="@layout/common_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Bio"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout2" />
+                app:layout_constraintTop_toBottomOf="@id/etUserName" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+
+            <EditText
+                android:id="@+id/etBio"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_rectangle"
+                style="@style/singleBoldText"
+                android:paddingHorizontal="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Bio"
+                android:gravity="start"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@id/vDividerlast"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/tvBio" />
+
+            <include
+                android:id="@+id/btnFinish"
+                layout="@layout/common_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvBio">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rectangle"
-                    android:hint="Tech enthusiast, likes to share stories a..."
-                    android:textColor="@color/black" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintStart_toStartOf="@id/glProfileStart" />
+            <View
+                android:id="@+id/vDividerlast"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/dark_white"
+                app:layout_constraintBottom_toTopOf="@+id/btnFinish"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingVertical="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glProfileChildStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glProfileChildEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFinish"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_button"
-            android:text="Finish"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/glProfileChildEnd"
-            app:layout_constraintStart_toStartOf="@id/glProfileChildStart" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

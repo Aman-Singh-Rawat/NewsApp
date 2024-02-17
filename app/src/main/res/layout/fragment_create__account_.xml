@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,11 +10,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/clBottom"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -63,59 +62,40 @@
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreateAccunt" />
 
-            <TextView
+            <include
                 android:id="@+id/tvEmail"
-                style="@style/singleBoldText"
+                layout="@layout/common_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/email"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
 
-            <EditText
+            <include
                 android:id="@+id/etEmailText"
+                layout="@layout/common_detail_fill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_rectangle"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="10dp"
-                android:hint="@string/email"
-                android:maxLength="30"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
-            <TextView
+            <include
                 android:id="@+id/tvPassword"
-                style="@style/singleBoldText"
+                layout="@layout/common_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/password"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/etEmailText" />
 
-            <EditText
+            <include
                 android:id="@+id/etPasswordText"
+                layout="@layout/common_detail_fill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_rectangle"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawableEnd="@drawable/selector_eyes"
-                android:drawablePadding="10dp"
-                android:hint="@string/password"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/tvPassword" />
@@ -165,9 +145,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                app:layout_constraintHorizontal_bias="0.4"
                 android:text="@string/txt_already"
                 app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@id/glVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/vDivider" />
 
@@ -180,45 +160,30 @@
                 android:text="@string/txt_signin"
                 app:layout_constraintStart_toEndOf="@+id/tvAlreadyAccount"
                 app:layout_constraintTop_toTopOf="@id/tvAlreadyAccount" />
+
+            <include
+                android:id="@+id/btn"
+                layout="@layout/common_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/glVerticalEnd"
+                app:layout_constraintStart_toStartOf="@id/glVerticalStart" />
+
+            <View
+                android:id="@+id/vDividerlast"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+></androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingVertical="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glProfileStartChild"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/glProfileEndChild"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSignUp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_button"
-            android:text="Sign Up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/glProfileEndChild"
-            app:layout_constraintStart_toStartOf="@id/glProfileStartChild" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,9 +69,10 @@
                 android:layout_marginTop="20dp"/>
             <TextView
                 android:id="@+id/tvHomePage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/smallText"
+                android:gravity="center"
                 android:text="You will be directed to the homepage."
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"

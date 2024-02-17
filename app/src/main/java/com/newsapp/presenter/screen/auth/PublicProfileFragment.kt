@@ -19,7 +19,7 @@ class PublicProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(
             inflater, container, false
         )
-        binding.btnFinish.setOnClickListener {
+        binding.btnFinish.root.setOnClickListener {
             openAllSetFragment()
         }
         binding.ivBackArrowProfile.setOnClickListener {
