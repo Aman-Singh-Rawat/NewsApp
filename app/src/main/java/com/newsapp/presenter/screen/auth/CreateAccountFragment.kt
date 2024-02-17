@@ -19,7 +19,7 @@ class CreateAccountFragment : Fragment() {
         binding = FragmentCreateAccountBinding
             .inflate(inflater, container, false)
 
-        binding.btnSignUp.setOnClickListener {
+        binding.btn.setOnClickListener {
             openNewsFeed()
         }
         binding.ivBackArrowCreate.setOnClickListener { // this function work on back button
