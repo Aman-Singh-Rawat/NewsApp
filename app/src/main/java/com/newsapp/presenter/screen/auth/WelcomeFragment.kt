@@ -9,13 +9,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
-    lateinit var binding: FragmentWelcomeBinding
+    private lateinit var binding: FragmentWelcomeBinding
+    private var btnAllInOne: Button? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,13 +25,15 @@ class WelcomeFragment : Fragment() {
         binding = FragmentWelcomeBinding.inflate(
             inflater, container, false
         )
+        btnAllInOne = binding.btnWelSignInWith.root.findViewById(R.id.btnAllInOne)
 
         textColorChange() // Change the color of "Don't have an account?  Sign up"
 
 
-        binding.btnWelSignInWith.setOnClickListener {
+        btnAllInOne?.setOnClickListener {
             openSignInFragment()
         }
+        btnAllInOne?.text = "Sign in with password"
         return binding.root
     }
     private val textColorChange = {

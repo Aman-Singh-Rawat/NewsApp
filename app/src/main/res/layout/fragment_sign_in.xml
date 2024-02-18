@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".presenter.screen.auth.SignInFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glSignStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glSignEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.95" />
+            android:layout_height="0dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp">
 
             <ImageView
-                android:id="@+id/ivArrowWelcomeBack"
+                android:id="@+id/ivBackArrowSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -48,171 +35,127 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Welcome Back"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/ivArrowWelcomeBack" />
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:drawableEnd="@drawable/img_hello_emojy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivBackArrowSignIn" />
 
             <TextView
-                android:id="@+id/tvWelcomeDetail"
+                android:id="@+id/tvEnterNameOrEmail"
                 style="@style/smallText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Please enter your email and password to sign in."
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/tvWelcomeBack" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWelcomeBack" />
 
-            <TextView
-                android:id="@+id/tvEmail"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSignIn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/email"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/tvWelcomeDetail" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterNameOrEmail">
 
-            <EditText
-                android:id="@+id/etEmailSignIn"
-                style="@style/singleBoldText"
+                <include
+                    android:id="@+id/includeFragSignIn"
+                    layout="@layout/layout_email_password"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutRemember"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:autofillHints="Email"
-                android:background="@drawable/bg_rectangle"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="@string/email"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/tvEmail" />
-
-            <TextView
-                android:id="@+id/tvPassword"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/password"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/etEmailSignIn" />
-
-            <EditText
-                android:id="@+id/etPassWordSignIn"
-                style="@style/singleBoldText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:autofillHints="Password"
-                android:background="@drawable/bg_rectangle"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawableEnd="@drawable/selector_eyes"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="@string/password"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/tvPassword" />
-
-            <CheckBox
-                android:id="@+id/cbRemember"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPassWordSignIn" />
-
-            <TextView
-                android:id="@+id/tvRememberMe"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Remember me"
-                app:layout_constraintBottom_toBottomOf="@id/cbRemember"
-                app:layout_constraintStart_toEndOf="@+id/cbRemember"
-                app:layout_constraintTop_toTopOf="@id/cbRemember" />
-
-            <TextView
-                android:id="@+id/tvForgetPass"
-                style="@style/greenColorText"
-                android:textColor="@color/blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forget password?"
-                app:layout_constraintBottom_toBottomOf="@id/tvRememberMe"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintTop_toTopOf="@id/tvRememberMe" />
-
-            <View
-                android:id="@+id/vDividerSign"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/cbRemember" />
-
-            <TextView
-                android:id="@+id/tvDonotAccount"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Don't have an account?"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintHorizontal_bias="0.4"
-                app:layout_constraintStart_toStartOf="@id/glSignStart"
-                app:layout_constraintTop_toBottomOf="@id/vDividerSign" />
-
-            <TextView
-                style="@style/greenColorText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="SignUp"
-                android:textColor="@color/blue"
-                app:layout_constraintBottom_toBottomOf="@+id/tvDonotAccount"
-                app:layout_constraintStart_toEndOf="@+id/tvDonotAccount"
-                app:layout_constraintTop_toTopOf="@+id/tvDonotAccount" />
-
-            <View
-                android:id="@+id/vDividerlast"
-                android:layout_width="0dp"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/grey"
-                app:layout_constraintBottom_toTopOf="@+id/btnWelcome"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnWelcome"
-                style="@style/singleBoldText"
+                app:layout_constraintTop_toBottomOf="@id/clSignIn"
+                android:gravity="center_vertical">
+
+                <CheckBox
+                    android:id="@+id/chRemember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/singleBoldText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/remember_me"
+                    android:paddingStart="5dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/etFillPassWord" />
+
+                <TextView
+                    android:id="@+id/tvTerms"
+                    style="@style/greenColorText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/forget_password" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="1.5dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutRemember"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/dark_white"
+                android:layout_marginTop="25dp"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_button"
-                android:paddingVertical="15dp"
-                android:text="@string/txt_signin"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/glSignEnd"
-                app:layout_constraintStart_toStartOf="@id/glSignStart" />
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view">
+
+                <TextView
+                    android:id="@+id/tvAlreadyAccount"
+                    style="@style/singleBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSgnIn"
+                    style="@style/greenColorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="@string/txt_signup"
+                    android:textColor="@color/blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <include
+                    android:id="@+id/btnSignUP"
+                    layout="@layout/layout_one_button" />
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

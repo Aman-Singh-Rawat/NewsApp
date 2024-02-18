@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presenter.screen.auth.PublicProfileFragment">
 
-
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/glProfileStart"
@@ -47,6 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/txt_create_pub"
+                android:drawableRight="@drawable/img_earth"
+                android:drawablePadding="10dp"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/ivBackArrowProfile" />
 
@@ -62,84 +63,40 @@
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreateProfile" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfile"
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/img_back"
+            
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewProfile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
-
-<!--           <ImageView-->
-<!--               android:id="@+id/ivProfileCamra"-->
-<!--               android:layout_width="20dp"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:src="@drawable/ic_floatbtn"-->
-<!--               android:layout_margin="2dp"-->
-<!--               app:layout_constraintEnd_toEndOf="@id/ivProfile"-->
-<!--               app:layout_constraintBottom_toBottomOf="@id/ivProfile"/>-->
-
-            <TextView
-                android:id="@+id/tvFullName"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience"
                 android:layout_marginTop="20dp"
-                android:text="@string/full_name"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+                app:cardElevation="20dp"
+                app:cardCornerRadius="60dp">
+                
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/imp_person_one"
+                    android:layout_gravity="center"/>
+                
+            </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/etFullName"
-                style="@style/singleBoldText"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_rectangle"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="@string/full_name"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvFullName" />
+                app:layout_constraintEnd_toEndOf="@+id/glProfileEnd"
+                app:layout_constraintTop_toBottomOf="@id/cardViewProfile">
 
+                <include
+                    android:id="@+id/includeProfile"
+                    layout="@layout/layout_email_password"/>
 
-            <TextView
-                android:id="@+id/tvUsername"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/user_name"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/etFullName" />
-
-            <EditText
-                android:id="@+id/etUserName"
-                style="@style/singleBoldText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:autofillHints="Password"
-                android:background="@drawable/bg_rectangle"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="@string/user_name"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tvBio"
@@ -149,7 +106,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/bio"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/etUserName" />
+                app:layout_constraintTop_toBottomOf="@id/clProfile" />
 
 
             <EditText
@@ -169,40 +126,27 @@
                 android:paddingVertical="20dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
-                app:layout_constraintBottom_toBottomOf="@id/vDividerlast"
+                app:layout_constraintBottom_toBottomOf="@id/linearLayoutProfile"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/tvBio" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnFinish"
-                style="@style/singleBoldText"
+            <LinearLayout
+                android:id="@+id/linearLayoutProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_button"
-                android:paddingVertical="15dp"
-                android:text="Finish"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart" />
+                app:layout_constraintStart_toStartOf="@id/glProfileStart">
 
-            <View
-                android:id="@+id/vDividerlast"
-                android:layout_width="0dp"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/dark_white"
-                app:layout_constraintBottom_toTopOf="@+id/btnFinish"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                <include
+                    android:id="@+id/includeProfileFragment"
+                    layout="@layout/layout_one_button"/>
 
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.newsapp.R
+import com.newsapp.databinding.ActivitySplashScreenBinding
 import com.newsapp.presenter.screen.onboading.OnboardingActivity
 
 class SplashScreen : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         Handler(mainLooper).postDelayed({
             startActivity(Intent(

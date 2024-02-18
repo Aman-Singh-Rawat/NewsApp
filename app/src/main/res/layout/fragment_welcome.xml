@@ -8,13 +8,11 @@
     android:fillViewport="true"
     tools:context=".presenter.screen.auth.WelcomeFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp">
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgNews"
@@ -41,10 +39,11 @@
             style="@style/smallText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:text="@string/welcome_let_s_dive_in_into_your_account"
-            app:layout_constraintEnd_toEndOf="@id/tvWelNewsLine"
-            app:layout_constraintStart_toStartOf="@+id/tvWelNewsLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWelNewsLine" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -56,12 +55,11 @@
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_google"
             android:gravity="center"
+            android:padding="15dp"
             android:text="@string/continue_with_google"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/tvWelcome"
-            app:layout_constraintStart_toStartOf="@+id/tvWelcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -69,83 +67,74 @@
             style="@style/singleBoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_apple_logo"
             android:gravity="center"
+            android:padding="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/continue_with_apple"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/tvWelcome"
-            app:layout_constraintStart_toStartOf="@+id/tvWelcome"
-            app:layout_constraintTop_toBottomOf="@id/tvContinueWithGoogle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContinueWithGoogle" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContinueWithMeta"
             style="@style/singleBoldText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_meta"
             android:gravity="center"
+            android:padding="15dp"
             android:text="@string/continue_with_meta"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/tvWelcome"
-            app:layout_constraintStart_toStartOf="@+id/tvWelcome"
-            app:layout_constraintTop_toBottomOf="@id/tvContinueWithApple" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContinueWithApple" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContinueWithTwitter"
             style="@style/singleBoldText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_twitter"
             android:gravity="center"
+            android:padding="15dp"
             android:text="@string/continue_with_x"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/tvWelcome"
-            app:layout_constraintStart_toStartOf="@+id/tvWelcome"
-            app:layout_constraintTop_toBottomOf="@id/tvContinueWithMeta" />
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContinueWithMeta" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnWelSignInWith"
-            style="@style/singleBoldText"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clWelSignInWith"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/bg_button"
-            android:paddingVertical="16dp"
-            android:text="@string/txt_signup"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/tvContinueWithTwitter"
-            app:layout_constraintStart_toStartOf="@id/tvContinueWithTwitter"
-            app:layout_constraintTop_toBottomOf="@id/tvContinueWithTwitter" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvContinueWithTwitter" >
+            
+            <include
+                android:id="@+id/btnWelSignInWith"
+                layout="@layout/layout_one_button"/>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvWelNotAccount"
             style="@style/smallText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
             android:gravity="center"
             android:text="@string/don_t_have_an_account_sign_up"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnWelSignInWith"
-            app:layout_constraintStart_toStartOf="@+id/btnWelSignInWith"
-            app:layout_constraintTop_toBottomOf="@+id/btnWelSignInWith" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clWelSignInWith" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
