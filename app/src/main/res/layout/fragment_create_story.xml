@@ -62,6 +62,13 @@
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toBottomOf="@+id/tvPreview">
+        <ImageView
+            android:id="@+id/ivStory"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src=""
+            />
+
 
         <TextView
             android:id="@+id/tvGetImage"

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
 
@@ -26,6 +27,7 @@ class PublicProfileFragment : Fragment() {
             onBackPressed()
         }
         return binding.root
+
     }
 
     val onBackPressed = {
@@ -36,6 +38,16 @@ class PublicProfileFragment : Fragment() {
         findNavController().navigate(
             R.id.action_public_Profile_Fragment_to_all_Set_Fragment
         )
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+    }
+
+
 
 }
