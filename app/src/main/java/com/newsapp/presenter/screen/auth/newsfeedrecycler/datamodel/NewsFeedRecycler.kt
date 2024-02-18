@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 
 class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adapter<NewsFeedRecycler.NewsFeedAdapter>() {
+    private var currentPosition = -1
+    private var flag = false
     class NewsFeedAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
         val imgNewsFeed: ImageView = itemView.findViewById(R.id.imgNewsFeed)
         val tvNewsFeed: TextView = itemView.findViewById(R.id.tvNewsFeed)
@@ -30,5 +32,11 @@ class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adap
     override fun onBindViewHolder(holder: NewsFeedAdapter, position: Int) {
         holder.tvNewsFeed.text = list[position].communityName
         holder.imgNewsFeed.setImageResource(list[position].image)
+
+        holder.itemView.isSelected = position == currentPosition
+        holder.itemView.setOnClickListener {
+            currentPosition = position
+            notifyDataSetChanged()
+        }
     }
 }

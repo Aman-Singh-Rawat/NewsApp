@@ -5,22 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
+    private var btnSignUP: Button? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-        binding.btnWelcome.setOnClickListener {
+        btnSignUP = binding.btnSignUP.root.findViewById(R.id.btnAllInOne)
+
+        btnSignUP?.setOnClickListener {
             signInDialogFragment()
         }
 
-        binding.ivArrowWelcomeBack.setOnClickListener {
+        binding.ivBackArrowSignIn.setOnClickListener {
             onBackPressed()
         }
         return binding.root

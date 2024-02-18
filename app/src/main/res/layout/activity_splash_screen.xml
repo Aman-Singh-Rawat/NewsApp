@@ -4,29 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@color/blue"
     tools:context=".presenter.screen.splash.SplashScreen">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icAppLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/ic_logo"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNewsLine"
-        style="@style/textTheme"
+        style="@style/splashText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:text="Newsline"
-        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icAppLogo" />
@@ -38,6 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:indeterminateTint="@color/white"
+        style="?android:attr/progressBarStyleLargeInverse"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,21 +3,30 @@ package com.newsapp.presenter.screen.onboading
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import android.widget.Button
+import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.viewpager2.widget.ViewPager2
 import com.newsapp.R
 import com.newsapp.databinding.ActivityOnboardingBinding
+import com.newsapp.databinding.LayoutTwoButtonBinding
 import com.newsapp.presenter.screen.auth.SignUp
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
+    private var btnGetStarted: Button? = null
+    private var btnOnboardingSkip: TextView? = null
+    private var btnOnboardingContinue: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        btnOnboardingSkip = binding.twoButton.root.findViewById(R.id.btnOnboardingSkip)
+        btnOnboardingContinue = binding.twoButton.root.findViewById(R.id.btnOnboardingContinue)
+        btnGetStarted = binding.btnGetStarted.root.findViewById(R.id.btnAllInOne)
 
         viewPagerFunctionality()
 
@@ -34,7 +43,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         onPageChangeCallback()
 
-        binding.btnOnboardingSkip.setOnClickListener {
+        btnOnboardingSkip?.setOnClickListener {
             openNewActivity()
         }
     }
@@ -47,23 +56,37 @@ class OnboardingActivity : AppCompatActivity() {
 
                 when(position) {
                     0 -> {
-                        binding.btnOnboardingContinue.setOnClickListener {
+                        btnOnboardingContinue?.setOnClickListener {
                             binding.viewPager2.setCurrentItem(1, true)
                         }
+                        btnGetStartedInvisible()
                     }
                     1 -> {
-                        binding.btnOnboardingContinue.setOnClickListener {
+                        btnOnboardingContinue?.setOnClickListener {
                             binding.viewPager2.setCurrentItem(2, true)
                         }
+                        btnGetStartedInvisible()
                     }
                     2 -> {
-                        binding.btnOnboardingContinue.setOnClickListener {
+                        btnGetStarted?.setOnClickListener {
                             openNewActivity()
                         }
+                        btnGetStartedVisible()
                     }
                 }
             }
         })
+    }
+    private fun btnGetStartedVisible() {
+        binding.btnGetStarted.root.visibility = View.VISIBLE
+        btnOnboardingSkip?.visibility = View.GONE
+        btnOnboardingContinue?.visibility = View.GONE
+        btnGetStarted?.text = "Get Started"
+    }
+    private fun btnGetStartedInvisible() {
+        btnOnboardingContinue?.visibility = View.VISIBLE
+        btnOnboardingSkip?.visibility = View.VISIBLE
+        binding.btnGetStarted.root.visibility = View.GONE
     }
     private fun openNewActivity() {
         startActivity(Intent(

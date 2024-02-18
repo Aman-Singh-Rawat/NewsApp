@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.newsapp.R
@@ -15,6 +16,8 @@ import com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel.NewsFeedRecy
 
 class NewsFeedFragment : Fragment() {
     private lateinit var binding: FragmentNewsFeedBinding
+    private var btnNewFeed: Button? = null
+
     private val arrayList = ArrayList<NewsFeedClass>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,12 +26,14 @@ class NewsFeedFragment : Fragment() {
         val binding = FragmentNewsFeedBinding.inflate(
             inflater, container, false
         )
+        btnNewFeed = binding.btnNewFeed.root.findViewById(R.id.btnAllInOne)
+
         addValueOnList()
         val newsFeedRecycler = NewsFeedRecycler(arrayList)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = newsFeedRecycler
 
-        binding.btnNewFeed.setOnClickListener {
+        btnNewFeed?.setOnClickListener {
             nextPage()
         }
 
