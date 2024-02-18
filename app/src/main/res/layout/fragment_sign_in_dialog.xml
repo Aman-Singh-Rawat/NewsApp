@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 style="@style/greenColorText"
                 android:textSize="20dp"
+                android:textColor="@color/blue"
                 android:text="Sign in succssful!"
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"

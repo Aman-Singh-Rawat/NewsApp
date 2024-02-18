@@ -35,7 +35,7 @@ class WelcomeFragment : Fragment() {
     private val textColorChange = {
         val spannableString = SpannableString("Don't have an account?  Sign up")
         val signUpColor = ContextCompat.getColor(
-            requireContext(), R.color.green
+            requireContext(), R.color.blue
         )
         val startIndex = spannableString.indexOf("Sign up")
         spannableString.setSpan(

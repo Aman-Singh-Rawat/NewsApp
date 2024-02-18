@@ -147,6 +147,7 @@
             <TextView
                 android:id="@+id/tvForgetPass"
                 style="@style/greenColorText"
+                android:textColor="@color/blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Forget password?"
@@ -182,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="SignUp"
+                android:textColor="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/tvDonotAccount"
                 app:layout_constraintStart_toEndOf="@+id/tvDonotAccount"
                 app:layout_constraintTop_toTopOf="@+id/tvDonotAccount" />
