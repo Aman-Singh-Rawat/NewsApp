@@ -60,6 +60,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:paddingVertical="15dp"
+                android:textColor="@color/blue"
                 android:background="@drawable/bg_button"
                 android:backgroundTint="@color/light_green"
                 android:text="Skip"
