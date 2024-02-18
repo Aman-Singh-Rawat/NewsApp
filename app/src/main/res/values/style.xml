@@ -31,7 +31,7 @@
     </style>
     <style name="greenColorText" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/teal_700</item>
+        <item name="android:textColor">@color/blue</item>
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
 

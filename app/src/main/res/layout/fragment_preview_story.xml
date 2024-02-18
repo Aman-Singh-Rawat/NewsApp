@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="continue"
+        android:textColor="@color/blue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
         app:layout_constraintTop_toTopOf="parent" />
@@ -117,6 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="You"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toEndOf="@id/tvProfileName"
         app:layout_constraintTop_toTopOf="@id/tvProfileName"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileName"/>
