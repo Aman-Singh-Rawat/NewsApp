@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glProfileStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glProfileEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <ImageView
+                android:id="@+id/ivBackArrowProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tvCreateProfile"
+                style="@style/headText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/txt_create_pub"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/ivBackArrowProfile" />
+
+            <TextView
+                android:id="@+id/tvNewsExperience"
+                style="@style/smallText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/txt_this_profile"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvCreateProfile" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/img_back"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
+
+
+            <TextView
+                android:id="@+id/tvFullName"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/full_name"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+
+            <EditText
+                android:id="@+id/etFullName"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_rectangle"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/full_name"
+                android:maxLength="10"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/tvFullName" />
+
+
+            <TextView
+                android:id="@+id/tvUsername"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/user_name"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/etFullName" />
+
+            <EditText
+                android:id="@+id/etUserName"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autofillHints="Password"
+                android:background="@drawable/bg_rectangle"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/user_name"
+                android:maxLength="10"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+            <TextView
+                android:id="@+id/tvBio"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/bio"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/etUserName" />
+
+
+            <EditText
+                android:id="@+id/etBio"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="Password"
+                android:background="@drawable/bg_rectangle"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="top"
+                android:hint="@string/bio"
+                android:maxLength="10"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@id/vDividerlast"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/tvBio" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFinish"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_button"
+                android:paddingVertical="15dp"
+                android:text="Finish"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart" />
+
+            <View
+                android:id="@+id/vDividerlast"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/dark_white"
+                app:layout_constraintBottom_toTopOf="@+id/btnFinish"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/createStoryFragment">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.newsapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_createStoryFragment"
+            app:destination="@id/createStoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.newsapp.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.newsapp.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/createStoryFragment"
+        android:name="com.newsapp.presenter.screen.profile.CreateStoryFragment"
+        android:label="fragment_create_story"
+        tools:layout="@layout/fragment_create_story" >
+        <action
+            android:id="@+id/action_createStoryFragment_to_previewStoryFragment"
+            app:destination="@id/previewStoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewStoryFragment"
+        android:name="com.newsapp.presenter.screen.Profile.PreviewStoryFragment"
+        android:label="fragment_preview_story"
+        tools:layout="@layout/fragment_preview_story" >
+
+        <action
+            android:id="@+id/action_previewStoryFragment_to_fragmentPublish"
+            app:destination="@id/fragmentPublish"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentPublish"
+        android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
+        android:label="fragment_publish"
+        tools:layout="@layout/fragment_publish">
+
+        <action
+            android:id="@+id/action_fragmentPublish_to_fragmentStoryPublished"
+            app:destination="@+id/fragmentStoryPublished"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentStoryPublished"
+        android:name="com.newsapp.presenter.screen.profile.StoryPublishedFragment"
+        tools:layout="@layout/fragment_story_published"
+        android:label="story_publish_fragment"/>
+
+</navigation>

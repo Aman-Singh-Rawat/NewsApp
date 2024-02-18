@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/tvRecyclerAddTags"
+    android:text="technology"
+    android:drawableEnd="@drawable/img_cross"
+    android:background="@drawable/drawable_add_tags"
+    android:textColor="@color/black"
+    android:fontFamily="@font/roboto_medium"
+    android:drawablePadding="10dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"/>
