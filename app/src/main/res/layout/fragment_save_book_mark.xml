@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".SaveBookMarkFragment">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/txt_saved_to_bookmark"
+    style="@style/greenColorText"
+    android:textSize="15sp"
+    android:drawablePadding="20dp"
+    android:background="@drawable/bg_save_diloge"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="25dp"
+    app:drawableStartCompat="@drawable/ic_tick" />
+
+</androidx.cardview.widget.CardView>
