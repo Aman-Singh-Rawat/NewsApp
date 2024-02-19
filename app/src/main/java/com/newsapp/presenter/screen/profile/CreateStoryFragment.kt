@@ -31,35 +31,32 @@ class CreateStoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tvPreview = view.findViewById<TextView>(R.id.tvPreview)
-//        val imgBackArrow = view.findViewById<ImageView>(R.id.imgBackArrow)
-//        imgBackArrow.setOnClickListener {
-//          val intent = Intent(requireContext(),MainActivity::class.java)
-//            startActivity(intent)
-//        }
-            val cvImage = view.findViewById<CardView>(R.id.cvImage)
-        cvImage.setOnClickListener {
-            val ivStory = view.findViewById<ImageView>(R.id.ivStory)
-            uploadImage(ivStory)
-        }
+
+
 
         tvPreview.setOnClickListener {
             findNavController().navigate(R.id.action_createStoryFragment_to_previewStoryFragment)
         }
     }
 
-    private fun uploadImage(image: ImageView?) {
-        val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
-        intent.type = "ivStory/*"
-        startActivityForResult(intent,1)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode==1){
-            ivStory.setImageURI(data?.data)
-        }
-
-    }
+//    private fun uploadImage(image: ImageView?) {
+//        val cvImage = view.findViewById<CardView>(R.id.cvImage)
+//        cvImage.setOnClickListener {
+//            val ivStory = view.findViewById<ImageView>(R.id.ivStory)
+//            uploadImage(ivStory)
+//        }
+//        val intent = Intent()
+//        intent.action = Intent.ACTION_GET_CONTENT
+//        intent.type = "ivStory/*"
+//        startActivityForResult(intent,1)
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if(requestCode==1){
+//            ivStory.setImageURI(data?.data)
+//        }
+//
+//    }
 
 }
