@@ -11,7 +11,6 @@ import com.newsapp.R
 
 class TrendingFragment : Fragment() {
     private lateinit var nAdapter: TrendingAdapter
-    private lateinit var recyclerView: RecyclerView
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +22,7 @@ class TrendingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_News)
         recyclerView.adapter = nAdapter
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

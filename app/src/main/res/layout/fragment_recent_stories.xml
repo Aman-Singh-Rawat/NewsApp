@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.home.Trending.TrendingFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.RecentStories.RecentStoriesFragment">
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glTrendingStart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.05"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
+        android:id="@+id/glRecentStart"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glTrendingEnd"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.95"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        android:id="@+id/glRecentEnd"/>
 
     <ImageView
-        android:id="@+id/imgBackArrow"
+        android:id="@+id/imgBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="@id/glTrendingStart"
+        app:layout_constraintStart_toStartOf="@id/glRecentStart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTrending"
+        android:id="@+id/tvRecent"
         style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Treding"
+        android:text="Recent Stories"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/IvScr"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/imgBackArrow"
+        app:layout_constraintStart_toEndOf="@id/imgBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -50,20 +47,28 @@
         android:layout_marginTop="23dp"
         android:src="@drawable/ic_search"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@id/glTrendingEnd"
+        app:layout_constraintEnd_toEndOf="@id/glRecentEnd"
         app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_News"
+        android:id="@+id/rvFeature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/recent_stories"
+        app:layout_constraintStart_toStartOf="@id/glRecentStart"
+        app:layout_constraintTop_toBottomOf="@id/tvRecent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNewsArticle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="@id/glTrendingStart"
-        app:layout_constraintTop_toBottomOf="@id/tvTrending"
-        app:layout_constraintEnd_toEndOf="@id/glTrendingEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/trending_recycle_item"/>
+        tools:listitem="@layout/recent_recycle_item"
+        app:layout_constraintStart_toStartOf="@id/glRecentStart"
+        app:layout_constraintTop_toBottomOf="@id/rvFeature"
+        app:layout_constraintEnd_toEndOf="@id/glRecentEnd"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

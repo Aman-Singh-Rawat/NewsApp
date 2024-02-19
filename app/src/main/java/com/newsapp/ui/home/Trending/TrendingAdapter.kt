@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
@@ -63,13 +62,15 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.ViewTrendingHolder>
         return ViewTrendingHolder(list)
     }
 
+    override fun onBindViewHolder(holder: TrendingAdapter.ViewTrendingHolder, position: Int) {
+        holder.onBind(holder.itemView, trendingList[position])
+    }
+
     override fun getItemCount(): Int {
         return trendingList.size
     }
 
-    override fun onBindViewHolder(holder: ViewTrendingHolder, position: Int) {
-        holder.onBind(holder.itemView, trendingList[position])
-    }
+
 
 
 }
