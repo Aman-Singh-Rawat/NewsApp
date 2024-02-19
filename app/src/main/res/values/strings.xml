@@ -39,7 +39,7 @@
 
     </string-array>
 
-    <string name="txt_add_cover_image">Add cover image 16:9</string>
+    <string name="txt_add_cover_image">Add cover image </string>
     <string name="txt_the_rise">The Rise of Artifical Intelligence: How AI is Shaping Our Lives</string>
     <string name="txt_signup">Sign Up</string>
     <string name="txt_continue">continue</string>

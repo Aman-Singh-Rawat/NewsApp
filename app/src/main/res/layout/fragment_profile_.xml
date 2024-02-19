@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presenter.screen.auth.PublicProfileFragment">
 
     <ScrollView
@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/txt_create_pub"
                 android:drawableRight="@drawable/img_earth"
                 android:drawablePadding="10dp"
+                android:text="@string/txt_create_pub"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/ivBackArrowProfile" />
 
@@ -63,38 +63,38 @@
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreateProfile" />
 
-            
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewProfile"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="20dp"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience"
-                android:layout_marginTop="20dp"
-                app:cardElevation="20dp"
-                app:cardCornerRadius="60dp">
-                
-                <androidx.appcompat.widget.AppCompatImageView
+                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience">
+                <com.google.android.material.imageview.ShapeableImageView
+                    app:strokeColor="@android:color/darker_gray"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:id="@+id/ivProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/imp_person_one"
-                    android:layout_gravity="center"/>
-                
+                    style="@style/roundedImageViewRounded"
+                    android:layout_gravity="center"
+                    android:src="@drawable/imp_person_one"/>
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintEnd_toEndOf="@+id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/cardViewProfile">
 
                 <include
                     android:id="@+id/includeProfile"
-                    layout="@layout/layout_email_password"/>
+                    layout="@layout/layout_email_password" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,7 +142,7 @@
 
                 <include
                     android:id="@+id/includeProfileFragment"
-                    layout="@layout/layout_one_button"/>
+                    layout="@layout/layout_one_button" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

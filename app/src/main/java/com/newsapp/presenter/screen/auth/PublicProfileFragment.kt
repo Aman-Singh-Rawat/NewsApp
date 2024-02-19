@@ -1,5 +1,7 @@
 package com.newsapp.presenter.screen.auth
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
@@ -8,15 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
 
 class PublicProfileFragment : Fragment() {
-    private lateinit var binding:FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
     private var tvName: TextView? = null
     private var tvUserName: TextView? = null
     private var etName: EditText? = null
@@ -40,9 +44,12 @@ class PublicProfileFragment : Fragment() {
             onBackPressed()
         }
         initializingInclude()
+
+
         return binding.root
 
     }
+
     private fun initializingInclude() {
         tvName = binding.includeProfile.root.findViewById(R.id.tvEmail)
         tvUserName = binding.includeProfile.root.findViewById(R.id.tvPassword)
@@ -62,6 +69,7 @@ class PublicProfileFragment : Fragment() {
         etUserName?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
 
     }
+
     val onBackPressed = {
         findNavController().navigateUp()
         true
@@ -75,11 +83,35 @@ class PublicProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val cardViewProfile = view.findViewById<CardView>(R.id.cardViewProfile)
+        val ivProfile = view.findViewById<ImageView>(R.id.ivProfile)
+        cardViewProfile.setOnClickListener {
+            uploadImage(ivProfile)
+        }
 
 
     }
 
+    private fun uploadImage(ivProfile: ImageView?) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        startActivityForResult(intent, 1)
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val ivProfile = view?.findViewById<ImageView>(R.id.ivProfile)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 1) {
+                val uri = data?.data
+                ivProfile?.setImageURI(uri)
+            }
+
+
+        }
+    }
 
 }
+
+

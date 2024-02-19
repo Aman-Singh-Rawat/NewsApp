@@ -56,19 +56,22 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvImage"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/dark_white"
         app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="false"
+
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toBottomOf="@+id/tvPreview">
 
         <ImageView
             android:id="@+id/ivStory"
+            android:scaleType="fitXY"
+            android:elevation="2dp"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="wrap_content" />
 
 
         <TextView
@@ -125,16 +128,7 @@
         android:text="Story"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
-    <!--    <com.github.irshulx.Editor-->
-    <!--        android:id="@+id/editor"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:render_type="Editor"-->
-    <!--        app:placeholder="Start writing here..."-->
-    <!--        android:paddingTop="10dp"-->
-    <!--        android:paddingLeft="10dp"-->
-    <!--        android:paddingRight="10dp"-->
-    <!--        android:paddingBottom="100dp"-->/>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etStory"
