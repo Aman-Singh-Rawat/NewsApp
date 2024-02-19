@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adap
         return list.size
     }
 
-    override fun onBindViewHolder(holder: NewsFeedAdapter, position: Int) {
+    override fun onBindViewHolder(holder: NewsFeedAdapter, @SuppressLint("RecyclerView") position: Int) {
         holder.tvNewsFeed.text = list[position].communityName
         holder.imgNewsFeed.setImageResource(list[position].image)
 

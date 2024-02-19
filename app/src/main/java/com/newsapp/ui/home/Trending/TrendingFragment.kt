@@ -23,14 +23,52 @@ class TrendingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       recyclerView.adapter = nAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        recyclerView.adapter = nAdapter
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         nAdapter.updateUi(getTrendingdata())
     }
-    private fun getTrendingdata():List<TrendingDataClass>{
-        return listOf(
 
-        )
+    private fun getTrendingdata(): List<TrendingData> {
+        return listOf(
+            TrendingData(
+                "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
+                R.drawable.img_back,
+                "CNN News",
+                R.drawable.img_non_blur,
+                "6 day ago",
+                "132.2k",
+                "2.3k"
+            ),
+            TrendingData(
+                "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
+                R.drawable.img_back,
+                "CNN News",
+                R.drawable.img_non_blur,
+                "6 day ago",
+                "132.2k",
+                "2.3k"
+            ),
+            TrendingData(
+                "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
+                R.drawable.img_back,
+                "CNN News",
+                R.drawable.img_non_blur,
+                "6 day ago",
+                "132.2k",
+                "2.3k"
+            ),
+            TrendingData(
+                "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
+                R.drawable.img_back,
+                "CNN News",
+                R.drawable.img_non_blur,
+                "6 day ago",
+                "132.2k",
+                "2.3k"
+            ),
+
+            )
     }
 
 }
