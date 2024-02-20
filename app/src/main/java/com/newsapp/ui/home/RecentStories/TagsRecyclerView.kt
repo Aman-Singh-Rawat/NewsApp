@@ -9,9 +9,19 @@ import com.newsapp.R
 
 class TagsRecyclerView(private val list: List<String>):
     RecyclerView.Adapter<TagsRecyclerView.TagsRecyclerAdapter>() {
-    class TagsRecyclerAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvRecyclerAddTags: TextView =
-            itemView.findViewById(R.id.tvRecyclerAddTags)
+    private var selectedIndex = 0
+
+    inner class TagsRecyclerAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
+        fun onBind(itemView: View, s: String, position: Int) {
+
+            itemView.isSelected = selectedIndex == position
+            val tvRecyclerAddTags: TextView = itemView.findViewById(R.id.tvRecyclerAddTags)
+            tvRecyclerAddTags.text = s
+            itemView.setOnClickListener {
+                selectedIndex = position
+                notifyDataSetChanged()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsRecyclerAdapter {
@@ -26,6 +36,6 @@ class TagsRecyclerView(private val list: List<String>):
     }
 
     override fun onBindViewHolder(holder: TagsRecyclerAdapter, position: Int) {
-        holder.tvRecyclerAddTags.text = list[position]
+        holder.onBind(holder.itemView, list[position], position)
     }
 }

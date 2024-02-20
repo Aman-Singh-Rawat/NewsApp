@@ -43,8 +43,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecentTag"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:orientation="horizontal"
+            tools:listitem="@layout/recent_stories"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"/>
@@ -52,6 +53,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNewsArticles"
             android:layout_width="match_parent"
+            tools:listitem="@layout/recent_recycle_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             android:layout_height="match_parent"
