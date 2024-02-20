@@ -48,6 +48,8 @@ class WelcomeFragment : Fragment() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         binding.tvWelNotAccount.text = spannableString
+        binding.tvContinueWithGoogle.setOnClickListener{
+        findNavController().navigate(R.id.action_loginFragment_to_bookMarkFragment)}
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

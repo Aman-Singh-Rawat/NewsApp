@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_bookMarkFragment"
+            app:destination="@id/bookMarkFragment" />
 
     </fragment>
 
@@ -73,4 +76,9 @@
         tools:layout="@layout/fragment_sign_in_dialog"
         android:name="com.newsapp.presenter.screen.auth.SignInDialogFragment"
         android:label="SignInDialog" />
+    <fragment
+        android:id="@+id/bookMarkFragment"
+        android:name="com.newsapp.ui.home.Bookmark.BookMarkFragment"
+        android:label="fragment_book_mark"
+        tools:layout="@layout/fragment_book_mark" />
 </navigation>

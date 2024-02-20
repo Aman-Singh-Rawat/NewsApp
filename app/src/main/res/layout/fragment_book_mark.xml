@@ -33,11 +33,13 @@
         android:id="@+id/ivBookMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:src="@drawable/selecter_bookmark"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="22dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ivShare" />
+        app:layout_constraintEnd_toStartOf="@id/ivShare"
+        android:focusable="true" />
     <ImageView
         android:id="@+id/ivShare"
         android:layout_width="wrap_content"
@@ -74,7 +76,6 @@
         android:id="@+id/fullImg"
         android:scaleType="fitXY"
         android:elevation="2dp"
-        android:src=""
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -95,7 +96,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_Channel"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
+        android:layout_height="20dp"
         android:layout_marginBottom="25dp"
         app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
         app:layout_constraintTop_toBottomOf="@id/tv_Head_Line">
@@ -116,6 +117,7 @@
             android:id="@+id/imgProfile"
             android:layout_width="14dp"
             android:layout_height="14dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_profile_signin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvNameChannel"
@@ -126,6 +128,7 @@
             android:layout_height="wrap_content"
             android:text="Following"
             style="@style/greenColorText"
+            android:layout_marginTop="5dp"
             app:layout_constraintStart_toEndOf="@id/tvNameChannel"
             app:layout_constraintTop_toTopOf="@id/tvNameChannel"
             app:layout_constraintBottom_toBottomOf="@id/tvNameChannel"
@@ -175,7 +178,7 @@
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_open_eye"
+            android:src="@drawable/ic_eye"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvEyes" />
     </androidx.constraintlayout.widget.ConstraintLayout>
