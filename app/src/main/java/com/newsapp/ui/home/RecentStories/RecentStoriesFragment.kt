@@ -35,12 +35,9 @@ class RecentStoriesFragment : Fragment() {
         binding.rvRecentTag.adapter = TagsRecyclerView(tagList())
     }
 
-    /* =============================== Inserting Data =============================== */
     private fun tagList(): List<String> {
         return listOf("All", "Politics", "Technology", "Business")
     }
-
-    /* =============================== Inserting Data =============================== */
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(

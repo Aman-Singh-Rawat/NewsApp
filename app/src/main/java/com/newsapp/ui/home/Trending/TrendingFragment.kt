@@ -33,7 +33,6 @@ class TrendingFragment : Fragment() {
         )
         binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
     }
-    /* =============================== Inserting Data =============================== */
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(
