@@ -15,7 +15,7 @@ class TagsRecycler(private val list: List<String>): RecyclerView.Adapter<TagsRec
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsAdapter {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_add_tags, parent, false)
+            .inflate(R.layout.recent_stories, parent, false)
 
         return TagsAdapter(view)
     }

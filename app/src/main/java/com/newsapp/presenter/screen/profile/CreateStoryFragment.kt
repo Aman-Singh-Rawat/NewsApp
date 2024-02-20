@@ -35,7 +35,7 @@ class CreateStoryFragment : Fragment() {
 
 
         tvPreview.setOnClickListener {
-            findNavController().navigate(R.id.action_createStoryFragment_to_previewStoryFragment)
+            //findNavController().navigate(R.id.action_createStoryFragment_to_previewStoryFragment)
         }
     }
 
