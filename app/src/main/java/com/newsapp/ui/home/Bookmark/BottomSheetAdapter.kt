@@ -12,6 +12,7 @@ import com.newsapp.R
 class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
 
     private var bottomSheet = mutableListOf<String>()
+
     @SuppressLint("NotifyDataSetChanged")
     fun update(bottomSheet: List<String>) {
         this.bottomSheet = bottomSheet.toMutableList()
@@ -19,13 +20,10 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>()
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(itemView: View,s: String) {
+        fun onBind(itemView: View, s: String) {
             val tvSaveName = itemView.findViewById<TextView>(R.id.tvSaveName)
-
             tvSaveName.text = s
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

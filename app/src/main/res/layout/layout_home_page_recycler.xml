@@ -32,8 +32,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:ellipsize="end"
-        android:lines="5"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Unmasking the Truth: Investigative Report Exposes Widespread Political Corruption"
         app:layout_constraintStart_toStartOf="parent"

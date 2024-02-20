@@ -26,10 +26,7 @@ class TrendingFragment : Fragment() {
         )
         setUpArticleRecycler()
         return binding.root
-
     }
-
-
     private fun setUpArticleRecycler() {
         binding.rvTrendArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
@@ -73,6 +70,9 @@ class TrendingFragment : Fragment() {
                 "2 days ago",
                 "193.3k",
                 "2.4k"
-            ))
+            )
+        )
     }
+
+
 }

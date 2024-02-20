@@ -67,10 +67,19 @@
         android:id="@+id/trendingFragment"
         android:name="com.newsapp.ui.home.Trending.TrendingFragment"
         android:label="fragment_trending"
-        tools:layout="@layout/fragment_trending" />
+        tools:layout="@layout/fragment_trending" >
+        <action
+            android:id="@+id/action_trendingFragment_to_bookMarkFragment"
+            app:destination="@id/bookMarkFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recentStoriesFragment"
         android:name="com.newsapp.ui.home.RecentStories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
+    <fragment
+        android:id="@+id/bookMarkFragment"
+        android:name="com.newsapp.ui.home.Bookmark.BookMarkFragment"
+        android:label="fragment_book_mark"
+        tools:layout="@layout/fragment_book_mark" />
 </navigation>
