@@ -10,7 +10,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnOnboardingSkip"
-            style="@style/greenColorText"
+            style="@style/mediumTextBlack"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnOnboardingContinue"
-            style="@style/singleBoldText"
+            style="@style/mediumTextBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
