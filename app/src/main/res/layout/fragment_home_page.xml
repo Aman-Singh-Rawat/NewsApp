@@ -125,7 +125,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                tools:listitem=""
+                tools:listitem="@layout/recent_stories"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/tvViewAllRecent" />
@@ -134,8 +134,8 @@
                 android:id="@+id/rvNewsGroups"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:layout_marginTop="20dp"
+                tools:listitem="@layout/recent_recycle_item"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
