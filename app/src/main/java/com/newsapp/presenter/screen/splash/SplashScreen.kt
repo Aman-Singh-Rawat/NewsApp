@@ -7,6 +7,7 @@ import android.os.Handler
 import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.databinding.ActivitySplashScreenBinding
+import com.newsapp.presenter.screen.auth.SignUp
 import com.newsapp.presenter.screen.onboading.OnboardingActivity
 
 class SplashScreen : AppCompatActivity() {
@@ -20,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(mainLooper).postDelayed({
             startActivity(Intent(
                 this@SplashScreen,
-                MainActivity::class.java
+                OnboardingActivity::class.java
             ))
             finish()
         },3000)
