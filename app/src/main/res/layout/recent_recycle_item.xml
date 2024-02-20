@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:layout_marginBottom="20dp">
 
     <TextView
         android:id="@+id/tvHeadline"
@@ -12,7 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@id/cl_Channel"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivNewsImg"
         app:layout_constraintEnd_toStartOf="@id/ivNewsImg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,144 +21,23 @@
     <ImageView
         android:id="@+id/ivNewsImg"
         android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_height="130dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_non_blur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_Channel"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHeadline">
 
-        <TextView
-            android:id="@+id/tvNameChannel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="CNN News"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imgProfile"
-            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/includeRecentItem"
+            layout="@layout/layout_artical_views_more"/>
 
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:src="@drawable/ic_profile_signin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvNameChannel"
-            tools:srcCompat="@tools:sample/avatars" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/iv_share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_share"
-        app:layout_constraintStart_toStartOf="@id/ivNewsImg"
-        app:layout_constraintTop_toBottomOf="@id/ivNewsImg" />
-
-    <ImageView
-        android:id="@+id/iv_Book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_bookmark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_share"
-        app:layout_constraintTop_toBottomOf="@id/ivNewsImg" />
-
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="6 day ago"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@id/iv_share"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_Channel" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_seens"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTime"
-        app:layout_constraintStart_toEndOf="@+id/tvTime"
-        app:layout_constraintTop_toTopOf="@+id/tvTime">
-
-        <TextView
-            android:id="@+id/tvEyes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="172.3k"
-            android:textColor="@color/grey"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imgEye"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imgEye"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_eye"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvEyes" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_Comment"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cl_seens"
-        app:layout_constraintStart_toEndOf="@+id/cl_seens"
-        app:layout_constraintTop_toTopOf="@+id/cl_seens">
-
-        <TextView
-            android:id="@+id/tvComment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="2.3k"
-            android:textColor="@color/grey"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/iv_msg"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_msg"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/ic_msg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvComment" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
