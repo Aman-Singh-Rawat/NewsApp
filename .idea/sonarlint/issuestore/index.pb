@@ -103,3 +103,5 @@ w
 Gapp/src/main/java/com/newsapp/ui/home/RecentStories/TagsRecyclerView.kt,7\9\79059db17410914b84f7c26402322b7c323a66e8
 
 Oapp/src/main/java/com/newsapp/ui/home/RecentStories/NewsArticlesRecyclerView.kt,b\4\b47059036b12aeef64dfbc4950fd2959aa2bc337
+}
+Mapp/src/main/java/com/newsapp/ui/home/Bookmark/BookMarkBottomSheetFragment.kt,8\b\8ba20b1b87a8bd64fe777f7434fd9495904ed992
