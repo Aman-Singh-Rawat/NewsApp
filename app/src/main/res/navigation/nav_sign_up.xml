@@ -8,19 +8,16 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.newsapp.presenter.screen.auth.WelcomeFragment"
-        tools:layout="@layout/fragment_welcome"
-        android:label="login_fragment">
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_welcome">
 
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUp"/>
+            app:destination="@id/signUp" />
 
         <action
             android:id="@+id/action_welcomeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_bookMarkFragment"
-            app:destination="@id/bookMarkFragment" />
 
     </fragment>
 
@@ -32,7 +29,7 @@
 
         <action
             android:id="@+id/action_signUpFragment_to_NewsFeedFragment"
-            app:destination="@+id/newsFeedFragment"/>
+            app:destination="@+id/newsFeedFragment" />
 
     </fragment>
 
@@ -65,7 +62,7 @@
         android:id="@+id/signInFragment"
         android:name="com.newsapp.presenter.screen.auth.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_signInDialogFragment"
             app:destination="@id/signInDialogFragment" />
@@ -73,12 +70,8 @@
 
     <dialog
         android:id="@+id/signInDialogFragment"
-        tools:layout="@layout/fragment_sign_in_dialog"
         android:name="com.newsapp.presenter.screen.auth.SignInDialogFragment"
-        android:label="SignInDialog" />
-    <fragment
-        android:id="@+id/bookMarkFragment"
-        android:name="com.newsapp.ui.home.Bookmark.BookMarkFragment"
-        android:label="fragment_book_mark"
-        tools:layout="@layout/fragment_book_mark" />
+        android:label="SignInDialog"
+        tools:layout="@layout/fragment_sign_in_dialog" />
+
 </navigation>

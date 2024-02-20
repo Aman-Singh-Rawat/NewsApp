@@ -7,17 +7,19 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvRecyclerImage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="16dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgHpNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:src="@drawable/img_cute_girl_with_robot"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,12 +29,12 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNewsHeading"
         style="@style/singleBoldText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="2dp"
         android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:lines="5"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="Unmasking the Truth: Investigative Report Exposes Widespread Political Corruption"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvRecyclerImage" />
@@ -40,6 +42,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/clGroup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNewsHeading">
 
