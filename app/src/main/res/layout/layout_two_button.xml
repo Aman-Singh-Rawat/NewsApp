@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnOnboardingSkip"
+            style="@style/mediumTextBlack"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:textColor="@color/blue"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="#edf2fb"
+            android:text="Skip"
+            android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnOnboardingContinue"
+            style="@style/mediumTextBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:paddingVertical="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/bg_button"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

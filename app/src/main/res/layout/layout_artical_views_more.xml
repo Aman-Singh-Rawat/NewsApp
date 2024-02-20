@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgChannelLogo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_cnn_news"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChannelName"
+            style="@style/smallTextTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:text="CNN News"
+            app:layout_constraintBottom_toBottomOf="@+id/imgChannelLogo"
+            app:layout_constraintStart_toEndOf="@+id/imgChannelLogo"
+            app:layout_constraintTop_toTopOf="@+id/imgChannelLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDaysAgo"
+            style="@style/verySmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="3 days ago"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgChannelLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="245.8k"
+            style="@style/verySmallText"
+            android:drawableStart="@drawable/ic_open_eye"
+            app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
+            app:layout_constraintTop_toTopOf="@+id/tvDaysAgo"
+            app:layout_constraintBottom_toBottomOf="@id/tvDaysAgo"
+            android:layout_marginStart="18dp"
+            android:gravity="center"
+            android:drawablePadding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.2k"
+            style="@style/verySmallText"
+            android:drawableStart="@drawable/img_msg"
+            app:layout_constraintStart_toEndOf="@+id/tvTotalViews"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalViews"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalViews"
+            android:layout_marginStart="18dp"
+            android:gravity="center"
+            android:drawablePadding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintEnd_toStartOf="@id/icDots"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalComments"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalComments"
+            android:src="@drawable/ic_share"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/icShare"
+            app:layout_constraintBottom_toBottomOf="@id/icShare"
+            android:src="@drawable/selecter_bookmark"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
