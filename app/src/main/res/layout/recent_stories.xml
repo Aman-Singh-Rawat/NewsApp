@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/drawable_add_tags"
+    android:background="@drawable/selecter_tag"
     android:id="@+id/tvRecyclerAddTags"
     style="@style/mediumTextBlack"
     android:layout_marginEnd="15dp"
