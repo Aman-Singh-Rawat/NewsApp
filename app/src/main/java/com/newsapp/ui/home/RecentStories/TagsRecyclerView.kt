@@ -17,8 +17,15 @@ class TagsRecyclerView(private val list: List<String>):
             itemView.isSelected = selectedIndex == position
             val tvRecyclerAddTags: TextView = itemView.findViewById(R.id.tvRecyclerAddTags)
             tvRecyclerAddTags.text = s
+
+            if (itemView.isSelected) {
+                tvRecyclerAddTags.setTextColor(itemView.context.resources.getColor(R.color.white))
+            } else {
+                tvRecyclerAddTags.setTextColor(itemView.context.resources.getColor(R.color.black))
+            }
             itemView.setOnClickListener {
                 selectedIndex = position
+
                 notifyDataSetChanged()
             }
         }
