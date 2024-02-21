@@ -69,22 +69,22 @@
                 app:layout_constraintGuide_end="18dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/singleBoldText"
+                style="@style/headingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:text="Trending"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/cvPageProfile" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViewAll"
-                style="@style/singleBoldText"
+                style="@style/headingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:drawableRight="@drawable/img_right_arrow"
-                android:drawablePadding="15dp"
+                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="View All"
                 android:textColor="@color/blue"
@@ -106,7 +106,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/singleBoldText"
+                style="@style/headingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -116,12 +116,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViewAllRecent"
-                style="@style/singleBoldText"
+                style="@style/headingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:drawableRight="@drawable/img_right_arrow"
-                android:drawablePadding="20dp"
+                android:drawablePadding="8dp"
                 android:gravity="center"
                 android:text="View All"
                 android:textColor="@color/blue"

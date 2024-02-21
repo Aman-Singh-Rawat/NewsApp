@@ -59,8 +59,8 @@
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/dark_white"
-        android:scaleType="fitXY"
         app:cardCornerRadius="12dp"
+        android:scaleType="fitXY"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
@@ -68,10 +68,10 @@
 
         <ImageView
             android:id="@+id/ivStory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:scaleType="center"
             android:elevation="2dp"
-            android:scaleType="fitXY" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
         <TextView
@@ -89,7 +89,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        style="@style/singleBoldText"
+        style="@style/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -97,61 +97,47 @@
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etTitle"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <EditText
+        android:id="@+id/etFillTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:background="@drawable/bg_rectangle"
+        android:hint="Your Title "
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        style="@style/mediumTextBlack"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:padding="20dp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFillTitle"
-            style="@style/singleBoldText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_rectangle"
-            android:hint="Your Title "
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tvStory"
-        style="@style/singleBoldText"
+        style="@style/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Story"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etStory"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFillStory"
+        style="@style/mediumTextBlack"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
+        android:background="@drawable/bg_rectangle"
+        android:gravity="top"
+        android:padding="10dp"
+        android:hint="Write your story here.."
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@id/tvStory">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFillStory"
-            style="@style/singleBoldText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_rectangle"
-            android:gravity="top"
-            android:hint="Write your story here.."
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@id/tvStory"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
