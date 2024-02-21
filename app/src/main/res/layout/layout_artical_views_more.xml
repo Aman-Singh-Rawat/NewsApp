@@ -73,7 +73,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tvTotalComments"
             android:src="@drawable/ic_share"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/icDots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

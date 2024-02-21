@@ -9,6 +9,7 @@ import com.newsapp.R
 
 class TagsRecyclerView(private val list: List<String>):
     RecyclerView.Adapter<TagsRecyclerView.TagsRecyclerAdapter>() {
+
     private var selectedIndex = 0
 
     inner class TagsRecyclerAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {

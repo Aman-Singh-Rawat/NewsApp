@@ -59,8 +59,8 @@
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/dark_white"
-        app:cardCornerRadius="12dp"
         android:scaleType="fitXY"
+        app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
@@ -68,10 +68,10 @@
 
         <ImageView
             android:id="@+id/ivStory"
-            android:scaleType="fitXY"
-            android:elevation="2dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:elevation="2dp"
+            android:scaleType="fitXY" />
 
 
         <TextView

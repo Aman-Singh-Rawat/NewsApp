@@ -7,6 +7,6 @@ class RecentDataClass (
     val imgChannelLogo: Int,
     val tvDaysAgo: String,
     val tvTotalViews: String,
-    val tvTotalComments: String
+    val tvTotalComments: String,
 )
 
