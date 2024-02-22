@@ -9,8 +9,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="20dp">
+        android:layout_height="match_parent"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="18dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgPublishBack"
@@ -97,26 +99,27 @@
             android:layout_marginTop="30dp"
             android:letterSpacing="0.1"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/etAddTags"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAddTags"
             android:padding="20dp"
             android:background="@drawable/bg_rectangle"
             android:hint="Type tag and enter ..."
+            style="@style/singleBoldText"
             android:layout_marginTop="12dp"/>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroup"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etAddTags"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="40dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

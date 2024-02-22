@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +28,17 @@ class PublishFragment : Fragment() {
         binding = FragmentPublishBinding.inflate(
             inflater, container, false
         )
+        binding.etAddTags.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (binding.etAddTags.text.isNotBlank()) {
+                    addChips(binding.etAddTags.text.toString())
+                    binding.etAddTags.setText("")
+                }
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+
         spinnerFunctionality()
         //recyclerViewFunctionality()
 
@@ -35,20 +48,7 @@ class PublishFragment : Fragment() {
         binding.imgPublishBack.setOnClickListener {
             onBackPressed()
         }
-        binding.etAddTags.setOnEditorActionListener { view, actionId, event ->
-            Log.d("addChipsAman", "Add chips executed")
-            if (actionId == EditorInfo.IME_ACTION_SEARCH
-                || actionId == EditorInfo.IME_ACTION_DONE
-                || event.action == KeyEvent.ACTION_DOWN
-                && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                if (binding.etAddTags.text?.isNotBlank() == true) {
-                    addChips()
-                }
-                Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
-                return@setOnEditorActionListener true
-            }
-            false
-        }
+
         return binding.root
     }
 
@@ -68,8 +68,8 @@ class PublishFragment : Fragment() {
     }
 
     val openStoryPublished = {
-//        findNavController().navigate(
-//            R.id.action_fragmentPublish_to_fragmentStoryPublished)
+        findNavController().navigate(
+            R.id.action_fragmentPublish_to_fragmentStoryPublished)
     }
 
     val onBackPressed = {
@@ -78,17 +78,14 @@ class PublishFragment : Fragment() {
         true
     }
 
-    private fun addChips() {
-        Log.d("addChipsSingh", "Add chips executed")
+    private fun addChips(text: String) {
         val chip = Chip(requireContext())
-        chip.text = binding.etAddTags.text
+        chip.text = text
+
         chip.isCloseIconVisible = true
-        chip.setChipIconResource(R.drawable.img_cross)
         chip.setOnCloseIconClickListener {
             binding.chipGroup.removeView(chip)
         }
-
         binding.chipGroup.addView(chip)
-
     }
 }
