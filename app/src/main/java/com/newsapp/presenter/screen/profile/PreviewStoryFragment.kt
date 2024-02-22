@@ -32,9 +32,7 @@ class PreviewStoryFragment : Fragment() {
     }
 
     val openFragmentPublish = {
-        findNavController().navigate(
-            R.id.action_previewStoryFragment_to_fragmentPublish
-        )
+        findNavController().navigate(R.id.fragmentPublish)
     }
     val onBackPressed = {
         findNavController()

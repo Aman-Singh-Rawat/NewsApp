@@ -1,23 +1,17 @@
 package com.newsapp.presenter.screen.profile.publish
 
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.chip.Chip
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPublishBinding
+import com.newsapp.util.hideKeyboard
 
 class PublishFragment : Fragment() {
     private lateinit var binding: FragmentPublishBinding
@@ -30,15 +24,15 @@ class PublishFragment : Fragment() {
         )
         binding.etAddTags.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (binding.etAddTags.text.isNotBlank()) {
+                if (!binding.etAddTags.text.isNullOrEmpty() && !binding.etAddTags.text.isNullOrBlank()) {
                     addChips(binding.etAddTags.text.toString())
                     binding.etAddTags.setText("")
+                    hideKeyboard(v)
                 }
                 return@setOnEditorActionListener true
             }
             false
         }
-        //Todo
 
         spinnerFunctionality()
         //recyclerViewFunctionality()
@@ -53,10 +47,13 @@ class PublishFragment : Fragment() {
         return binding.root
     }
 
-     private fun list(): List<String> {
-         return listOf<String>("Technology", "ai", "computer", "artificialIntelligence",
-             "innovation", "machine", "digital", "robot")
+    private fun list(): List<String> {
+        return listOf<String>(
+            "Technology", "ai", "computer", "artificialIntelligence",
+            "innovation", "machine", "digital", "robot"
+        )
     }
+
     private fun spinnerFunctionality() {
         val arrayAdapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.stringSelectTopic,
@@ -70,7 +67,8 @@ class PublishFragment : Fragment() {
 
     val openStoryPublished = {
         findNavController().navigate(
-            R.id.action_fragmentPublish_to_fragmentStoryPublished)
+            R.id.action_fragmentPublish_to_fragmentStoryPublished
+        )
     }
 
     val onBackPressed = {

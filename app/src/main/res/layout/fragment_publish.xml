@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presenter.screen.profile.publish.PublishFragment"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".presenter.screen.profile.publish.PublishFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="18dp">
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgPublishBack"
@@ -20,35 +20,35 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPublish"
+            style="@style/greenColorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Publish"
             android:textSize="20sp"
-           style="@style/greenColorText"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewPublish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvPublish"
-            app:layout_constraintStart_toStartOf="parent"
-            app:cardCornerRadius="12dp"
             android:layout_marginTop="20dp"
-            android:elevation="5dp">
+            android:elevation="5dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPublish">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgGirlWithRobot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_cute_girl_with_robot"
                 android:adjustViewBounds="true"
-                android:elevation="2dp"/>
+                android:elevation="2dp"
+                android:src="@drawable/img_cute_girl_with_robot" />
 
         </androidx.cardview.widget.CardView>
 
@@ -68,58 +68,62 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSelectTopic"
+            style="@style/singleBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Topic"
-            app:layout_constraintTop_toBottomOf="@id/tvTheRise"
-            app:layout_constraintStart_toStartOf="parent"
-           style="@style/singleBoldText"
             android:layout_marginTop="30dp"
-            android:letterSpacing="0.1"/>
+            android:letterSpacing="0.1"
+            android:text="Select Topic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTheRise" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinnerPublish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelectTopic"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_rectangle"
             android:paddingVertical="20dp"
-            android:layout_marginTop="12dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSelectTopic" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAddTags"
+            style="@style/singleBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Tags"
-            app:layout_constraintTop_toBottomOf="@id/spinnerPublish"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/singleBoldText"
             android:layout_marginTop="30dp"
-            android:letterSpacing="0.1"/>
+            android:letterSpacing="0.1"
+            android:text="Add Tags"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerPublish" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etAddTags"
+            style="@style/singleBoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddTags"
-            android:padding="20dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_rectangle"
             android:hint="Type tag and enter ..."
-            style="@style/singleBoldText"
-            android:layout_marginTop="12dp"/>
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddTags" />
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etAddTags"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="40dp"/>
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAddTags" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
