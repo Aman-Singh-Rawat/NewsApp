@@ -66,9 +66,7 @@ class PublishFragment : Fragment() {
     }
 
     val openStoryPublished = {
-        findNavController().navigate(
-            R.id.action_fragmentPublish_to_fragmentStoryPublished
-        )
+        findNavController().navigate(R.id.fragmentStoryPublished)
     }
 
     val onBackPressed = {

@@ -29,4 +29,11 @@ class StoryPublishedFragment : Fragment() {
         true
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnBackHome.setOnClickListener{
+            findNavController().navigate(R.id.navigation_home)
+        }
+    }
+
 }

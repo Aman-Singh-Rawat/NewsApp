@@ -119,4 +119,11 @@ class HomePageFragment : Fragment() {
                 .navigate(R.id.action_homePageFragment_to_recentStoriesFragment)
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.fbAddStory.setOnClickListener{
+            findNavController().navigate(R.id.navigation_CreateStory)
+        }
+    }
 }

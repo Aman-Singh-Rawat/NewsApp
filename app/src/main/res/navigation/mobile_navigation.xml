@@ -18,13 +18,12 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_CreateStory"
         android:name="com.newsapp.presenter.screen.profile.CreateStoryFragment"
-        android:label="@string/title_dashboard"
+        android:label="navigation_CreateStory"
         tools:layout="@layout/fragment_create_story" >
-        <action
-            android:id="@+id/action_navigation_dashboard_to_previewStoryFragment"
-            app:destination="@id/previewStoryFragment" />
+
+
     </fragment>
 
     <fragment
@@ -39,10 +38,6 @@
         android:label="fragment_preview_story"
         tools:layout="@layout/fragment_preview_story" >
 
-        <action
-            android:id="@+id/action_previewStoryFragment_to_fragmentPublish"
-            app:destination="@id/fragmentPublish"/>
-
     </fragment>
 
     <fragment
@@ -51,9 +46,7 @@
         android:label="fragment_publish"
         tools:layout="@layout/fragment_publish">
 
-        <action
-            android:id="@+id/action_fragmentPublish_to_fragmentStoryPublished"
-            app:destination="@+id/fragmentStoryPublished"/>
+
 
     </fragment>
 

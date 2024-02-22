@@ -33,7 +33,11 @@ class CreateStoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tvPreview = view.findViewById<TextView>(R.id.tvPreview)
         tvPreview.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_dashboard_to_previewStoryFragment)
+            findNavController().navigate(R.id.previewStoryFragment)
+        }
+        val imgBackArrow = view.findViewById<ImageView>(R.id.imgBackArrow)
+        imgBackArrow.setOnClickListener {
+            findNavController().navigateUp()
         }
         val cvImage = view.findViewById<CardView>(R.id.cvImage)
         val ivStory = view.findViewById<ImageView>(R.id.ivStory)
