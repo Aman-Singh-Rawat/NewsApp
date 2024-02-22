@@ -38,6 +38,7 @@ class PublishFragment : Fragment() {
             }
             false
         }
+        //Todo
 
         spinnerFunctionality()
         //recyclerViewFunctionality()
