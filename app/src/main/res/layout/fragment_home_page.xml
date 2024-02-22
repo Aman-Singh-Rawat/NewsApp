@@ -1,58 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.homepage.HomePageFragment"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.home.homepage.HomePageFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clProfileContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/img_girl_profile"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPersonName"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvWelcome" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWelcome"
+            style="@style/smallText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:layout_marginStart="14dp"
+            android:text="@string/txt_welcome_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPersonName"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="20sp"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="@string/txt_andrew_ainsley"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+            app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clProfileContainer">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvPageProfile"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="20dp"
-                android:layout_marginTop="25dp"
-                app:layout_constraintStart_toStartOf="@id/guideline3"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/img_girl_profile"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPageWelcome"
-                style="@style/smallText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:text="Welcome back"
-                android:layout_marginTop="30dp"
-                app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/headText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:text="Andrew Ainsley"
-                app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
-                app:layout_constraintTop_toBottomOf="@+id/tvPageWelcome" />
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
@@ -69,39 +87,38 @@
                 app:layout_constraintGuide_end="18dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="5dp"
                 style="@style/headingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:text="Trending"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/cvPageProfile" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViewAll"
+                style="@style/viewAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
                 android:drawableRight="@drawable/img_right_arrow"
                 android:gravity="center"
                 android:text="View All"
-                style="@style/viewAll"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/cvPageProfile" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTrending"
                 android:layout_width="0dp"
-                tools:listitem="@layout/layout_home_page_recycler"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvViewAll">
-            </androidx.recyclerview.widget.RecyclerView>
+                app:layout_constraintTop_toBottomOf="@id/tvViewAll"
+                tools:listitem="@layout/layout_home_page_recycler" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/headingText"
@@ -128,29 +145,31 @@
                 android:id="@+id/recyclerTag"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                tools:listitem="@layout/recent_stories"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/tvViewAllRecent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvViewAllRecent"
+                tools:listitem="@layout/recent_stories" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNewsGroups"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
-                tools:listitem="@layout/recent_recycle_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
-                app:layout_constraintTop_toBottomOf="@id/recyclerTag" />
+                app:layout_constraintTop_toBottomOf="@id/recyclerTag"
+                tools:listitem="@layout/recent_recycle_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
