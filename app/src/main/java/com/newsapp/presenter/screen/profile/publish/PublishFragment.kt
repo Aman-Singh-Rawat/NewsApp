@@ -1,21 +1,17 @@
 package com.newsapp.presenter.screen.profile.publish
 
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.chip.Chip
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPublishBinding
+import com.newsapp.util.hideKeyboard
 
 class PublishFragment : Fragment() {
     private lateinit var binding: FragmentPublishBinding
@@ -26,6 +22,18 @@ class PublishFragment : Fragment() {
         binding = FragmentPublishBinding.inflate(
             inflater, container, false
         )
+        binding.etAddTags.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (!binding.etAddTags.text.isNullOrEmpty() && !binding.etAddTags.text.isNullOrBlank()) {
+                    addChips(binding.etAddTags.text.toString())
+                    binding.etAddTags.setText("")
+                    hideKeyboard(v)
+                }
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+
         spinnerFunctionality()
         //recyclerViewFunctionality()
 
@@ -35,27 +43,17 @@ class PublishFragment : Fragment() {
         binding.imgPublishBack.setOnClickListener {
             onBackPressed()
         }
-        binding.etAddTags.setOnEditorActionListener { view, actionId, event ->
-            Log.d("addChipsAman", "Add chips executed")
-            if (actionId == EditorInfo.IME_ACTION_SEARCH
-                || actionId == EditorInfo.IME_ACTION_DONE
-                || event.action == KeyEvent.ACTION_DOWN
-                && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                if (binding.etAddTags.text?.isNotBlank() == true) {
-                    addChips()
-                }
-                Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
-                return@setOnEditorActionListener true
-            }
-            false
-        }
+
         return binding.root
     }
 
-     private fun list(): List<String> {
-         return listOf<String>("Technology", "ai", "computer", "artificialIntelligence",
-             "innovation", "machine", "digital", "robot")
+    private fun list(): List<String> {
+        return listOf<String>(
+            "Technology", "ai", "computer", "artificialIntelligence",
+            "innovation", "machine", "digital", "robot"
+        )
     }
+
     private fun spinnerFunctionality() {
         val arrayAdapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.stringSelectTopic,
@@ -68,8 +66,9 @@ class PublishFragment : Fragment() {
     }
 
     val openStoryPublished = {
-//        findNavController().navigate(
-//            R.id.action_fragmentPublish_to_fragmentStoryPublished)
+        findNavController().navigate(
+            R.id.action_fragmentPublish_to_fragmentStoryPublished
+        )
     }
 
     val onBackPressed = {
@@ -78,17 +77,14 @@ class PublishFragment : Fragment() {
         true
     }
 
-    private fun addChips() {
-        Log.d("addChipsSingh", "Add chips executed")
+    private fun addChips(text: String) {
         val chip = Chip(requireContext())
-        chip.text = binding.etAddTags.text
+        chip.text = text
+
         chip.isCloseIconVisible = true
-        chip.setChipIconResource(R.drawable.img_cross)
         chip.setOnCloseIconClickListener {
             binding.chipGroup.removeView(chip)
         }
-
         binding.chipGroup.addView(chip)
-
     }
 }
