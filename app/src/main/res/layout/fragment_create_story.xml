@@ -122,17 +122,17 @@
         android:text="Story"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
-    <com.github.irshulx.Editor
-        android:layout_width="match_parent"
-        android:id="@+id/editor"
-        app:render_type="Editor"
-        app:placeholder="Start writing here..."
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_height="40dp"
-        android:paddingBottom="100dp"
-       />
+<!--    <com.github.irshulx.Editor-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:id="@+id/editor"-->
+<!--        app:render_type="Editor"-->
+<!--        app:placeholder="Start writing here..."-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:paddingBottom="100dp"-->
+<!--       />-->
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etFillStory"
