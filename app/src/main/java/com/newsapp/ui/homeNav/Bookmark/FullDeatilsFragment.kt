@@ -18,6 +18,7 @@ class FullDeatilsFragment : Fragment() {
         // Inflate the main fragment layout
         return inflater.inflate(R.layout.fragment_full_details, container, false)
     }
+    //Todo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
