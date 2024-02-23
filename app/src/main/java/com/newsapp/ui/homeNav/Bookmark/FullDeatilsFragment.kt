@@ -1,4 +1,4 @@
-package com.newsapp.ui.home.Bookmark
+package com.newsapp.ui.homeNav.Bookmark
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.newsapp.R
 
-class SaveFragment : Fragment() {
+class FullDeatilsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the main fragment layout
-        return inflater.inflate(R.layout.fragment_save, container, false)
+        return inflater.inflate(R.layout.fragment_full_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

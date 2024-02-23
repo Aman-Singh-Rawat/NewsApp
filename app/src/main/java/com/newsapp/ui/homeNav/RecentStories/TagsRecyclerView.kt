@@ -1,4 +1,4 @@
-package com.newsapp.ui.home.RecentStories
+package com.newsapp.ui.homeNav.RecentStories
 
 import android.view.LayoutInflater
 import android.view.View

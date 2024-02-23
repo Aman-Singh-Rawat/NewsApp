@@ -1,4 +1,4 @@
-package com.newsapp.ui.home.homepage
+package com.newsapp.ui.homeNav.homepage
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-import com.newsapp.databinding.LayoutHomePageRecyclerBinding
-import com.newsapp.ui.home.RecentStories.RecentDataClass
+import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
 
 class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Adapter<HpTrendRecycler.HpTrendAdapter>() {
     inner class HpTrendAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {

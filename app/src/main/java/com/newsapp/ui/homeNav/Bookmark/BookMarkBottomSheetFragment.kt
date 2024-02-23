@@ -1,11 +1,10 @@
-package com.newsapp.ui.home.Bookmark
+package com.newsapp.ui.homeNav.Bookmark
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R

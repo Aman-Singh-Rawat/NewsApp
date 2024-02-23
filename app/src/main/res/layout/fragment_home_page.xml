@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.home.homepage.HomePageFragment">
+    tools:context=".ui.homeNav.homepage.HomePageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

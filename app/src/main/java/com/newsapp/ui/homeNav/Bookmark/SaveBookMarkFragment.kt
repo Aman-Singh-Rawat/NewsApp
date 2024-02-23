@@ -1,4 +1,4 @@
-package com.newsapp.ui.home.Bookmark
+package com.newsapp.ui.homeNav.Bookmark
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

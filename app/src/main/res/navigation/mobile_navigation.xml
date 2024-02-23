@@ -6,7 +6,7 @@
     app:startDestination="@id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.newsapp.ui.home.homepage.HomePageFragment"
+        android:name="com.newsapp.ui.homeNav.homepage.HomePageFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_page" >
     </fragment>
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.newsapp.ui.notifications.ProfileFragment"
+        android:name="com.newsapp.ui.profileNav.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
@@ -49,17 +49,17 @@
 
     <fragment
         android:id="@+id/trendingFragment"
-        android:name="com.newsapp.ui.home.Trending.TrendingFragment"
+        android:name="com.newsapp.ui.homeNav.Trending.TrendingFragment"
         android:label="fragment_trending"
         tools:layout="@layout/fragment_trending" />
     <fragment
         android:id="@+id/recentStoriesFragment"
-        android:name="com.newsapp.ui.home.RecentStories.RecentStoriesFragment"
+        android:name="com.newsapp.ui.homeNav.RecentStories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
         android:id="@+id/navigation_bookmark"
-        android:name="com.newsapp.ui.dashboard.BookMarkFragment"
+        android:name="com.newsapp.ui.bookMarkNav.BookMarkFragment"
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 </navigation>

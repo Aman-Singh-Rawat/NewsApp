@@ -1,68 +1,35 @@
-package com.newsapp.ui.home.homepage
+package com.newsapp.ui.homeNav.Trending
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-import com.newsapp.databinding.FragmentHomePageBinding
-import com.newsapp.ui.home.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.home.RecentStories.RecentDataClass
-import com.newsapp.ui.home.RecentStories.TagsRecyclerView
+import com.newsapp.databinding.FragmentTrendingBinding
+import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
 
-class HomePageFragment : Fragment() {
-    private lateinit var binding: FragmentHomePageBinding
+class TrendingFragment : Fragment() {
+    private lateinit var binding: FragmentTrendingBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomePageBinding.inflate(
+        binding = FragmentTrendingBinding.inflate(
             inflater, container, false
         )
-        setUpTrendRecycler()
-        setUpStoriesTag()
-        setUpStories()
-        navigation()
+        setUpArticleRecycler()
         return binding.root
     }
-
-    private fun setUpLinearLayout(recyclerView: RecyclerView) {
-        recyclerView.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL, false
-        )
-    }
-
-    // Recent Stories
-    private fun setUpStories() {
-        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
+    private fun setUpArticleRecycler() {
+        binding.rvTrendArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        binding.rvNewsGroups.adapter = NewsArticlesRecyclerView(insertInTagsRV())
-
+        binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
     }
-
-    // Recent Stories Types
-    private fun setUpStoriesTag() {
-
-        setUpLinearLayout(binding.recyclerTag)
-        binding.recyclerTag.adapter = TagsRecyclerView(featureList())
-    }
-
-
-
-    // Trending Recycler View
-    private fun setUpTrendRecycler() {
-        setUpLinearLayout(binding.rvTrending)
-        binding.rvTrending.adapter = HpTrendRecycler(insertInTagsRV())
-    }
-
-    /* Its return List of NewsArticlesRecycler */
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(
@@ -100,30 +67,16 @@ class HomePageFragment : Fragment() {
                 "2 days ago",
                 "193.3k",
                 "2.4k"
-            ))
-    }
-
-    /* return feature list */
-    private fun featureList(): List<String> {
-        return listOf(
-            "All","Politics","Technology","Business"
+            )
         )
-    }
-
-    private fun navigation() {
-        binding.tvViewAll.setOnClickListener {
-            findNavController().navigate(R.id.trendingFragment)
-        }
-        binding.tvViewAllRecent.setOnClickListener {
-            findNavController()
-                .navigate(R.id.recentStoriesFragment)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fbAddStory.setOnClickListener{
-            findNavController().navigate(R.id.navigation_CreateStory)
+        binding.imgTrendingBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
+
+
 }

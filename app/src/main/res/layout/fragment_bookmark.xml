@@ -4,6 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.BookMarkFragment">
+    android:background="@color/white"
+    tools:context=".ui.bookMarkNav.BookMarkFragment">
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.05"
+        android:orientation="vertical"
+        android:id="@+id/glStart"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.95"
+        android:orientation="vertical"
+        android:id="@+id/glEnd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
