@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvImage"
         android:layout_width="0dp"
