@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,12 +27,12 @@ class CreateStoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_story, container, false)
+        return inflater.inflate(com.newsapp.R.layout.fragment_create_story, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mEditor = view.findViewById<View>(jp.wasabeef.richeditor.R.id.editor) as RichEditor
+        mEditor = view.findViewById<View>(R.id.editor) as RichEditor
         mEditor!!.setEditorHeight(200)
         mEditor!!.setEditorFontSize(22)
 //        mEditor!!.setEditorFontColor(Color.RED)
@@ -48,21 +49,21 @@ class CreateStoryFragment : Fragment() {
         //mEditor.setInputEnabled(false);
         //mEditor.setInputEnabled(false);
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_bold)
+        view.findViewById<View>(R.id.action_bold)
             .setOnClickListener(View.OnClickListener { mEditor!!.setBold() })
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_italic)
+        view.findViewById<View>(R.id.action_italic)
             .setOnClickListener(View.OnClickListener { mEditor!!.setItalic() })
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_underline)
+        view.findViewById<View>(R.id.action_underline)
             .setOnClickListener(View.OnClickListener { mEditor!!.setUnderline() })
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_insert_bullets)
+        view.findViewById<View>(R.id.action_insert_bullets)
             .setOnClickListener(View.OnClickListener { mEditor!!.setBullets() })
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_insert_numbers)
+        view.findViewById<View>(R.id.action_insert_numbers)
             .setOnClickListener(View.OnClickListener { mEditor!!.setNumbers() })
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_insert_image)
+        view.findViewById<View>(R.id.action_insert_image)
             .setOnClickListener(View.OnClickListener {
                mEditor!!.insertImage(
                 "https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg",
@@ -70,7 +71,7 @@ class CreateStoryFragment : Fragment() {
                 )
             })
 
-        view.findViewById<View>(jp.wasabeef.richeditor.R.id.action_insert_link).setOnClickListener(View.OnClickListener {
+        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
             mEditor!!.insertLink(
                 "https://github.com/wasabeef",
                 "wasabeef"

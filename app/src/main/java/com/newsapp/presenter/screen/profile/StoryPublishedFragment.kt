@@ -21,6 +21,10 @@ class StoryPublishedFragment : Fragment() {
         binding.imgStoryBackArrow.setOnClickListener {
             onBackPressed()
         }
+        binding.includePublished.btnOnboardingSkip.setOnClickListener {
+            onBackPressed()
+        }
+        btnTextChange()
         return binding.root
     }
     val onBackPressed = {
@@ -28,12 +32,10 @@ class StoryPublishedFragment : Fragment() {
             .navigateUp()
         true
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.btnBackHome.setOnClickListener{
-            findNavController().navigate(R.id.navigation_home)
-        }
+    private fun btnTextChange() {
+        binding.includePublished.btnOnboardingSkip.text = "Back to Home"
+        binding.includePublished.btnOnboardingContinue.text = "View Story"
     }
+
 
 }

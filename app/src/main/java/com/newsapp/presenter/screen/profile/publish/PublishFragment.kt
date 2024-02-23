@@ -63,6 +63,7 @@ class PublishFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerPublish.adapter = arrayAdapter
+        binding.spinnerPublish
     }
 
     val openStoryPublished = {
