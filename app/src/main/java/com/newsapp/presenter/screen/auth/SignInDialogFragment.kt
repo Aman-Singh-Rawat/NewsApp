@@ -35,6 +35,8 @@ class SignInDialogFragment : DialogFragment() {
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
         },2000)
+
+        dialog?.setCancelable(false)
     }
 
 

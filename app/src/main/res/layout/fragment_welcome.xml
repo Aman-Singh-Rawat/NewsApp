@@ -26,7 +26,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvWelNewsLine"
-            style="@style/headText"
+            style="@style/splashText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text="@string/app_name"
@@ -52,12 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:textStyle="bold"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_google"
             android:gravity="center"
             android:padding="15dp"
+            android:letterSpacing="0.03"
             android:text="@string/continue_with_google"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
@@ -70,10 +71,11 @@
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_apple_logo"
             android:gravity="center"
+            android:textStyle="bold"
             android:padding="15dp"
+            android:letterSpacing="0.03"
             android:layout_marginTop="15dp"
             android:text="@string/continue_with_apple"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvContinueWithGoogle" />
@@ -82,14 +84,15 @@
             android:id="@+id/tvContinueWithMeta"
             style="@style/singleBoldText"
             android:layout_width="0dp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_meta"
             android:gravity="center"
             android:padding="15dp"
+            android:letterSpacing="0.03"
             android:text="@string/continue_with_meta"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvContinueWithApple" />
@@ -102,10 +105,11 @@
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_twitter"
             android:gravity="center"
+            android:textStyle="bold"
             android:padding="15dp"
             android:text="@string/continue_with_x"
-            android:textStyle="bold"
             android:layout_marginTop="15dp"
+            android:letterSpacing="0.03"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvContinueWithMeta" />
@@ -136,5 +140,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clWelSignInWith" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

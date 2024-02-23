@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.04" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glCreateEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.96" />
 
     <ImageView
         android:id="@+id/imgBackArrow"
@@ -30,12 +30,11 @@
 
     <TextView
         android:id="@+id/tvWriteStorie"
-        style="@style/singleBoldText"
+        style="@style/writeStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Write Stories"
-        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tvPreview"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@id/imgBackArrow"
@@ -43,112 +42,132 @@
 
     <TextView
         android:id="@+id/tvPreview"
-        style="@style/greenColorText"
+        style="@style/writeStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Preview"
         android:textColor="@color/blue"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvImage"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/dark_white"
-        app:cardCornerRadius="12dp"
-        android:scaleType="fitXY"
-        app:cardUseCompatPadding="false"
-        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
-        app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvPreview">
-
-        <ImageView
-            android:id="@+id/ivStory"
-            android:scaleType="center"
-            android:elevation="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-        <TextView
-            android:id="@+id/tvGetImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/txt_add_cover_image"
-            android:textSize="10sp"
-            app:drawableTopCompat="@drawable/ic_image"
-            tools:ignore="OnClick,SmallSp" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/tvTitle"
-        style="@style/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Title"
-        app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
-
-    <EditText
-        android:id="@+id/etFillTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/bg_rectangle"
-        android:hint="Your Title "
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey"
-        style="@style/mediumTextBlack"
-        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
-        app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        android:padding="20dp"/>
-
-
-    <TextView
-        android:id="@+id/tvStory"
-        style="@style/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Story"
-        app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
-<!--    <com.github.irshulx.Editor-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:id="@+id/editor"-->
-<!--        app:render_type="Editor"-->
-<!--        app:placeholder="Start writing here..."-->
-<!--        android:paddingTop="10dp"-->
-<!--        android:paddingLeft="10dp"-->
-<!--        android:paddingRight="10dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:paddingBottom="100dp"-->
-<!--       />-->
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etFillStory"
-        style="@style/mediumTextBlack"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/bg_rectangle"
-        android:gravity="top"
-        android:padding="10dp"
-        android:hint="Write your story here.."
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/glCreateStart"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
-        app:layout_constraintStart_toStartOf="@id/glCreateStart"
-        app:layout_constraintTop_toBottomOf="@id/tvStory"/>
+        app:layout_constraintTop_toBottomOf="@id/tvPreview">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvImage"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/dark_white"
+                app:cardCornerRadius="12dp"
+                android:scaleType="fitXY"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivStory"
+                    android:scaleType="center"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+                <TextView
+                    android:id="@+id/tvGetImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/txt_add_cover_image"
+                    android:textSize="10sp"
+                    app:drawableTopCompat="@drawable/ic_image"
+                    tools:ignore="OnClick,SmallSp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Title"
+                android:letterSpacing="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvImage" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFillTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_rectangle"
+                android:hint="Your Title "
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                style="@style/poppins"
+                android:letterSpacing="0.01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                android:padding="20dp"/>
+
+            <TextView
+                android:id="@+id/tvStory"
+                style="@style/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Story"
+                android:letterSpacing="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
+
+            <!--    <com.github.irshulx.Editor-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:id="@+id/editor"-->
+            <!--        app:render_type="Editor"-->
+            <!--        app:placeholder="Start writing here..."-->
+            <!--        android:paddingTop="10dp"-->
+            <!--        android:paddingLeft="10dp"-->
+            <!--        android:paddingRight="10dp"-->
+            <!--        android:layout_height="40dp"-->
+            <!--        android:paddingBottom="100dp"-->
+            <!--       />-->
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etFillStory"
+                style="@style/poppins"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_rectangle"
+                android:gravity="top"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:letterSpacing="0.01"
+                android:hint="Write your story here.."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStory"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
