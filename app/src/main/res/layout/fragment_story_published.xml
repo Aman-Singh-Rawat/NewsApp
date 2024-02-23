@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presenter.screen.profile.StoryPublishedFragment"
+    android:layout_margin="14dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgStoryBackArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_back_arrow"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgCircularTrue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/img_circular_true"
+        app:layout_constraintBottom_toTopOf="@+id/tvStoryPublished"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStoryPublished"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:lineSpacingExtra="10dp"
+        android:text="Your story has been\npublished!"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/clBottomBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvStoryPublished"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="22dp"
+        android:text="Don't forget to share with your friends to let them know you have an amazing story!"
+        android:lineSpacingExtra="12dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:letterSpacing="0.01"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clBottomBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBackHome"
+            style="@style/greenColorText"
+            android:layout_width="0dp"
+            android:textColor="@color/blue"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:paddingVertical="15dp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@color/light_green"
+            android:text="Back to home"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnViewStory"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnViewStory"
+            style="@style/singleBoldText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button"
+            android:text="View Story"
+            android:paddingVertical="15dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBackHome" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

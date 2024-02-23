@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glCreateStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glCreateEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/imgBackArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWriteStorie"
+        style="@style/singleBoldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/write_stories"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvPreview"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@id/imgBackArrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPreview"
+        style="@style/greenColorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/preview"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvImage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/dark_white"
+        android:scaleType="fitXY"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvPreview">
+
+        <ImageView
+            android:id="@+id/ivStory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="2dp"
+            android:scaleType="center" />
+
+
+        <TextView
+            android:id="@+id/tvGetImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/txt_add_cover_image"
+            android:textSize="10sp"
+            app:drawableTopCompat="@drawable/ic_image"
+            tools:ignore="OnClick,SmallSp" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/title"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toBottomOf="@+id/cvImage" />
+
+    <EditText
+        android:id="@+id/etFillTitle"
+        style="@style/mediumTextBlack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/bg_rectangle"
+        android:hint="@string/txt_your_title"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+    <TextView
+        android:id="@+id/tvStory"
+        style="@style/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/story"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:id="@+id/llRichEditor"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_rectangle"
+        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintTop_toBottomOf="@id/tvStory">
+
+        <ImageButton
+            android:id="@+id/action_bold"
+            android:layout_width="55dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_bold" />
+
+        <ImageButton
+            android:id="@+id/action_italic"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_italic" />
+        <ImageButton
+            android:id="@+id/action_underline"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_underlined" />
+
+        <ImageButton
+            android:id="@+id/action_insert_bullets"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_bullet" />
+
+        <ImageButton
+            android:id="@+id/action_insert_numbers"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_bullet" />
+
+        <ImageButton
+            android:id="@+id/action_insert_link"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_link" />
+
+        <ImageButton
+            android:id="@+id/action_insert_image"
+            android:layout_width="52dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_image_link" />
+    </LinearLayout>
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/editor"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/glCreateStart"
+        app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llRichEditor"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".presenter.screen.profile.publish.PublishFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPublishBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPublish"
+            style="@style/greenColorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publish"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewPublish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPublish">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGirlWithRobot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:elevation="2dp"
+                android:src="@drawable/img_cute_girl_with_robot" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTheRise"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/txt_the_rise"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewPublish" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSelectTopic"
+            style="@style/singleBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:letterSpacing="0.1"
+            android:text="Select Topic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTheRise" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerPublish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_rectangle"
+            android:paddingVertical="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSelectTopic" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddTags"
+            style="@style/singleBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:letterSpacing="0.1"
+            android:text="Add Tags"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerPublish" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etAddTags"
+            style="@style/singleBoldText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_rectangle"
+            android:hint="Type tag and enter ..."
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:maxLines="1"
+            android:padding="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddTags" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAddTags" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
