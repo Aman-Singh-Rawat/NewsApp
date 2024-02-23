@@ -18,9 +18,10 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
+import com.newsapp.databinding.FragmentProfilePublicBinding
 
 class PublicProfileFragment : Fragment() {
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentProfilePublicBinding
     private var tvName: TextView? = null
     private var tvUserName: TextView? = null
     private var etName: EditText? = null
@@ -31,7 +32,7 @@ class PublicProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProfileBinding.inflate(
+        binding = FragmentProfilePublicBinding.inflate(
             inflater, container, false
         )
         btnFinish = binding.includeProfileFragment.root.findViewById(R.id.btnAllInOne)

@@ -1,6 +1,8 @@
 package com.newsapp.presenter.screen.profile
 
+import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -21,33 +23,25 @@ class CreateStoryFragment : Fragment() {
 
     private var mEditor: RichEditor? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(com.newsapp.R.layout.fragment_create_story, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mEditor = view.findViewById<View>(R.id.editor) as RichEditor
+        mEditor!!.setEditorFontColor(Color.BLACK)
+        //mEditor.setEditorBackgroundColor(Color.BLUE);
+        //mEditor.setBackgroundColor(Color.BLUE);
+        //mEditor.setBackgroundResource(R.drawable.bg);
         mEditor!!.setEditorHeight(200)
-        mEditor!!.setEditorFontSize(22)
-//        mEditor!!.setEditorFontColor(Color.RED)
-        //mEditor.setEditorBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundResource(R.drawable.bg);
-        //mEditor.setEditorBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundResource(R.drawable.bg);
+        mEditor!!.setEditorFontSize(18)
         mEditor!!.setPadding(10, 10, 10, 10)
-        //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
-        //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
         mEditor!!.setPlaceholder("Write your story here")
-        //mEditor.setInputEnabled(false);
-        //mEditor.setInputEnabled(false);
 
         view.findViewById<View>(R.id.action_bold)
             .setOnClickListener(View.OnClickListener { mEditor!!.setBold() })
@@ -64,20 +58,19 @@ class CreateStoryFragment : Fragment() {
         view.findViewById<View>(R.id.action_insert_numbers)
             .setOnClickListener(View.OnClickListener { mEditor!!.setNumbers() })
         view.findViewById<View>(R.id.action_insert_image)
-            .setOnClickListener(View.OnClickListener {
-               mEditor!!.insertImage(
-                "https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg",
-                "dachshund", 320
-                )
-            })
+            .setOnClickListener {
+                val intent = Intent(Intent.ACTION_PICK)
+                intent.type = "image/*"
+                startActivityForResult(intent, 2)
+            }
 
-        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
-            mEditor!!.insertLink(
-                "https://github.com/wasabeef",
-                "wasabeef"
-            )
-        })
 
+//        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
+//            mEditor!!.insertLink(
+//                "https://github.com/wasabeef",
+//                "wasabeef"
+//            )
+//        })
         val tvPreview = view.findViewById<TextView>(R.id.tvPreview)
         tvPreview.setOnClickListener {
             findNavController().navigate(R.id.previewStoryFragment)
@@ -101,8 +94,25 @@ class CreateStoryFragment : Fragment() {
         startActivityForResult(intent, 1)
     }
 
+    fun setImage(imageUri: Context?) {
+
+    }
+
+// Usage
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+//        val editor = view?.findViewById<EditorView>(R.id.editor)
+//        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+//            val imageUri = data?.data
+//            editor.setImageURI(imageUri)
+//        }
+//            if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+//                val imageUri = data?.data
+//                editor?.setImageURI(imageUri)
+//            }
         val ivStory = view?.findViewById<ImageView>(R.id.ivStory)
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
@@ -112,3 +122,5 @@ class CreateStoryFragment : Fragment() {
         }
     }
 }
+
+

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">NewsApp</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_bookmark">BookMark</string>
+    <string name="title_profile">Profile</string>
     <string name="txt_join_our_community">Join our community and personalize your news experience.</string>
     <string name="txt_create_account">Create Account</string>
     <string name="txt_i_agree_to_newsline">I agree to Newsline </string>

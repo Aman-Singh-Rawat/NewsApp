@@ -9,12 +9,6 @@
         android:name="com.newsapp.ui.home.homepage.HomePageFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_page" >
-        <action
-            android:id="@+id/action_homePageFragment_to_trendingFragment"
-            app:destination="@id/trendingFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_recentStoriesFragment"
-            app:destination="@id/recentStoriesFragment" />
     </fragment>
 
     <fragment
@@ -27,10 +21,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.newsapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_profile"
+        android:name="com.newsapp.ui.notifications.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/previewStoryFragment"
@@ -45,9 +39,6 @@
         android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
         android:label="fragment_publish"
         tools:layout="@layout/fragment_publish">
-
-
-
     </fragment>
 
     <fragment
@@ -60,19 +51,15 @@
         android:id="@+id/trendingFragment"
         android:name="com.newsapp.ui.home.Trending.TrendingFragment"
         android:label="fragment_trending"
-        tools:layout="@layout/fragment_trending" >
-        <action
-            android:id="@+id/action_trendingFragment_to_bookMarkFragment"
-            app:destination="@id/bookMarkFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_trending" />
     <fragment
         android:id="@+id/recentStoriesFragment"
         android:name="com.newsapp.ui.home.RecentStories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
-        android:id="@+id/bookMarkFragment"
-        android:name="com.newsapp.ui.home.Bookmark.BookMarkFragment"
-        android:label="fragment_book_mark"
-        tools:layout="@layout/fragment_book_mark" />
+        android:id="@+id/navigation_bookmark"
+        android:name="com.newsapp.ui.dashboard.BookMarkFragment"
+        android:label="fragment_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
 </navigation>

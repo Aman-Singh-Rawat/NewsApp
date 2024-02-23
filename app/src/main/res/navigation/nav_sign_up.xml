@@ -47,7 +47,7 @@
         android:id="@+id/public_Profile_Fragment"
         android:name="com.newsapp.presenter.screen.auth.PublicProfileFragment"
         android:label="Public_Profile_Fragment"
-        tools:layout="@layout/fragment_profile_">
+        tools:layout="@layout/fragment_profile_public">
         <action
             android:id="@+id/action_public_Profile_Fragment_to_all_Set_Fragment"
             app:destination="@id/all_Set_Fragment" />

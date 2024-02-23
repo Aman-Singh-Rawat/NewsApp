@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setupWithNavController(binding.navView, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.navView.isVisible =
-                destination.id == R.id.navigation_home || destination.id == R.id.navigation_dashboard || destination.id == R.id.navigation_notifications
+                destination.id == R.id.navigation_home || destination.id == R.id.navigation_bookmark || destination.id == R.id.navigation_profile
         }
     }
 }

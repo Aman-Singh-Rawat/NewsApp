@@ -112,11 +112,11 @@ class HomePageFragment : Fragment() {
 
     private fun navigation() {
         binding.tvViewAll.setOnClickListener {
-            findNavController().navigate(R.id.action_homePageFragment_to_trendingFragment)
+            findNavController().navigate(R.id.trendingFragment)
         }
         binding.tvViewAllRecent.setOnClickListener {
             findNavController()
-                .navigate(R.id.action_homePageFragment_to_recentStoriesFragment)
+                .navigate(R.id.recentStoriesFragment)
         }
     }
 
