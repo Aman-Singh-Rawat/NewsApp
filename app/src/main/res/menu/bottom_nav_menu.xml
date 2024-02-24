@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/navigation_bookmark"
-        android:icon="@drawable/ic_bookmark"
+        android:icon="@drawable/selecter_bookmark"
         android:title="@string/title_bookmark" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_profile_signin"
+        android:icon="@drawable/ic_profile_nav"
         android:title="@string/title_profile" />
 
 </menu>

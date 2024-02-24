@@ -4,226 +4,396 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.homeNav.Bookmark.FullDeatilsFragment">
+    tools:context=".ui.homeNav.NewsDetails.FullDeatilsFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glBookMarkStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glBookMarkEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <ImageView
-        android:id="@+id/ivbackArrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivBookMark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/selecter_bookmark"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="22dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ivShare"
-        android:focusable="true" />
-    <ImageView
-        android:id="@+id/ivShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_share"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivBookMark"
-        app:layout_constraintTop_toTopOf="@+id/ivBookMark"
-        app:layout_constraintStart_toStartOf="@+id/ivBookMark"/>
-    <ImageView
-        android:id="@+id/ivThreeDot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:src="@drawable/ic_three_dot_chat"
-        app:layout_constraintTop_toTopOf="@+id/ivShare"
-        app:layout_constraintBottom_toBottomOf="@+id/ivShare"
-        app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-        app:layout_constraintStart_toStartOf="@+id/ivShare"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvNewsImage"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/dark_white"
-        app:cardCornerRadius="12dp"
-        app:cardUseCompatPadding="false"
-        app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintTop_toBottomOf="@+id/ivBookMark">
-
-    <ImageView
-        android:id="@+id/fullImg"
-        android:scaleType="fitXY"
-        android:elevation="2dp"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/tv_Head_Line"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        style="@style/singleBoldText"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:text="@string/txt_unmasking"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintTop_toBottomOf="@id/cvNewsImage"
-        app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"/>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_Channel"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintTop_toBottomOf="@id/tv_Head_Line">
-
-        <TextView
-            android:id="@+id/tvNameChannel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="CNN News"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imgProfile"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_profile_signin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvNameChannel"
-            tools:srcCompat="@tools:sample/avatars" />
-        <TextView
-            android:id="@+id/tvFollowing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Following"
-            style="@style/greenColorText"
-            android:layout_marginTop="5dp"
-            app:layout_constraintStart_toEndOf="@id/tvNameChannel"
-            app:layout_constraintTop_toTopOf="@id/tvNameChannel"
-            app:layout_constraintBottom_toBottomOf="@id/tvNameChannel"
-            android:layout_marginStart="10dp"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/poppins_light"
-        android:text="6 day ago"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintTop_toBottomOf="@id/cl_Channel" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_seens"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTime"
-        app:layout_constraintStart_toEndOf="@+id/tvTime"
-        app:layout_constraintTop_toTopOf="@+id/tvTime">
-
-        <TextView
-            android:id="@+id/tvEyes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="172.3k"
-            android:textColor="@color/grey"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imgEye"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imgEye"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_eye"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvEyes" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_Comment"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cl_seens"
-        app:layout_constraintStart_toEndOf="@+id/cl_seens"
-        app:layout_constraintTop_toTopOf="@+id/cl_seens">
-
-        <TextView
-            android:id="@+id/tvComment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="2.3k"
-            android:textColor="@color/grey"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/iv_msg"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_msg"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_msg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvComment" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <TextView
-        android:id="@+id/tvSubLine"
-        android:layout_width="0dp"
-        android:layout_marginTop="10dp"
         android:layout_height="0dp"
-        style="@style/smallText"
-        android:textSize="18sp"
-        android:text="@string/txt_in_a_groundbreaking"
-        app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-        app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-        app:layout_constraintTop_toBottomOf="@+id/cl_Comment"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glBookMarkStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glBookMarkEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+
+            <ImageView
+                android:id="@+id/ivbackArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBookMark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="22dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/selecter_bookmark"
+                app:layout_constraintEnd_toStartOf="@id/ivShare"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_share"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBookMark"
+                app:layout_constraintStart_toStartOf="@+id/ivBookMark"
+                app:layout_constraintTop_toTopOf="@+id/ivBookMark" />
+
+            <ImageView
+                android:id="@+id/ivThreeDot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/ic_three_dot_chat"
+                app:layout_constraintBottom_toBottomOf="@+id/ivShare"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@+id/ivShare"
+                app:layout_constraintTop_toTopOf="@+id/ivShare" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvNewsImage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/dark_white"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintDimensionRatio="16:10"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/ivBookMark">
+
+                <ImageView
+                    android:id="@+id/fullImg"
+                    android:src="@drawable/img_non_blur"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="2dp"
+                    android:scaleType="fitXY" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_Head_Line"
+                style="@style/singleBoldText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/txt_unmasking"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@id/cvNewsImage" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_Channel"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@id/tv_Head_Line">
+
+                <TextView
+                    android:id="@+id/tvNameChannel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="CNN News"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@+id/imgProfile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_profile_signin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvNameChannel"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvFollowing"
+                    style="@style/greenColorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Following"
+                    app:layout_constraintBottom_toBottomOf="@id/tvNameChannel"
+                    app:layout_constraintStart_toEndOf="@id/tvNameChannel"
+                    app:layout_constraintTop_toTopOf="@id/tvNameChannel" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="6 day ago"
+                android:textColor="@color/grey"
+                android:textSize="15sp"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@id/cl_Channel" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_seens"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+                app:layout_constraintStart_toEndOf="@+id/tvTime"
+                app:layout_constraintTop_toTopOf="@+id/tvTime">
+
+                <TextView
+                    android:id="@+id/tvEyes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="172.3k"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@+id/imgEye"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgEye"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_eye"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvEyes" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_Comment"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cl_seens"
+                app:layout_constraintStart_toEndOf="@+id/cl_seens"
+                app:layout_constraintTop_toTopOf="@+id/cl_seens">
+
+                <TextView
+                    android:id="@+id/tvComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="2.3k"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_msg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_msg"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_msg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvComment" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvSubLine"
+                style="@style/smallText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/txt_in_a_groundbreaking"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/cl_Comment" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@id/tvSubLine"
+                app:spanCount="3"
+                tools:listitem="@layout/tag_in_fullnews" />
+
+            <View
+                android:id="@+id/vDivideup"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/grey"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintTop_toBottomOf="@id/rvTag" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfile"
+                style="@style/roundedImageViewRounded"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_cnn_news"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/vDivideup" />
+
+            <TextView
+                android:id="@+id/tvCNN"
+                style="@style/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="CNN News"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintStart_toEndOf="@+id/ivProfile"
+                app:layout_constraintTop_toTopOf="@+id/ivProfile" />
+
+            <TextView
+                android:id="@+id/tvFollow"
+                style="@style/poppins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="19.2M follower"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintStart_toEndOf="@+id/ivProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvCNN" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selecter_tag"
+                android:id="@+id/tvRecyclerTags"
+                style="@style/smallTextTwo"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Following"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvFollow"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"/>
+
+            <TextView
+                android:id="@+id/tvChannelDetails"
+                style="@style/poppins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/the_cable_news"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@id/tvFollow" />
+
+            <View
+                android:id="@+id/vDivideDown"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/tvChannelDetails" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/vDivideDown">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/glStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/glEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <TextView
+                    android:id="@+id/tvCommentNumber"
+                    style="@style/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.2K comments"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/glStart"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvViewAll"
+                    style="@style/viewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/img_right_arrow"
+                    android:gravity="center"
+                    android:text="View All"
+                    app:layout_constraintEnd_toEndOf="@id/glEnd"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvComment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@id/glEnd"
+                    app:layout_constraintStart_toStartOf="@id/glStart"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCommentNumber"
+                    tools:listitem="@layout/comment_recycle_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

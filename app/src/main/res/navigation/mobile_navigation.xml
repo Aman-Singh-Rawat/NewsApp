@@ -10,43 +10,34 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_page" >
     </fragment>
-
     <fragment
         android:id="@+id/navigation_CreateStory"
         android:name="com.newsapp.presenter.screen.profile.CreateStoryFragment"
         android:label="navigation_CreateStory"
         tools:layout="@layout/fragment_create_story" >
-
-
     </fragment>
-
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.newsapp.ui.profileNav.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
-
     <fragment
         android:id="@+id/previewStoryFragment"
         android:name="com.newsapp.presenter.screen.Profile.PreviewStoryFragment"
         android:label="fragment_preview_story"
         tools:layout="@layout/fragment_preview_story" >
-
     </fragment>
-
     <fragment
         android:id="@+id/fragmentPublish"
         android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
         android:label="fragment_publish"
         tools:layout="@layout/fragment_publish">
     </fragment>
-
     <fragment
         android:id="@+id/fragmentStoryPublished"
         android:name="com.newsapp.presenter.screen.profile.StoryPublishedFragment"
         tools:layout="@layout/fragment_story_published"
         android:label="story_publish_fragment"/>
-
     <fragment
         android:id="@+id/trendingFragment"
         android:name="com.newsapp.ui.homeNav.Trending.TrendingFragment"
@@ -59,7 +50,23 @@
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
         android:id="@+id/navigation_bookmark"
-        android:name="com.newsapp.ui.bookMarkNav.BookMarkFragment"
+        android:name="com.newsapp.ui.bookMarkNav.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark2" />
+    <fragment
+        android:id="@+id/bookMarkBottomSheetFragment"
+        android:name="com.newsapp.ui.homeNav.Bookmark.BookMarkBottomSheetFragment"
+        android:label="fragment_book_mark_bottom_sheet"
+        tools:layout="@layout/fragment_book_mark_bottom_sheet" />
+    <fragment
+        android:id="@+id/fullDeatilsFragment"
+        android:name="com.newsapp.ui.homeNav.NewsDetails.FullDeatilsFragment"
+        android:label="fragment_full_details"
+        tools:layout="@layout/fragment_full_details" />
+    <fragment
+        android:id="@+id/saveDailogeFragment2"
+        android:name="com.newsapp.ui.homeNav.Bookmark.SaveDailogeFragment"
+        android:label="fragment_save_dailoge"
+        tools:layout="@layout/fragment_save_dailoge" />
+
 </navigation>

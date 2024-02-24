@@ -27,11 +27,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/img_girl_profile"
-            app:layout_constraintBottom_toBottomOf="@+id/tvPersonName"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPersonName"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@id/tvPageWelcome" />
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPageWelcome"

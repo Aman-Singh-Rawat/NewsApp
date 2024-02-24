@@ -122,7 +122,11 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fbAddStory.setOnClickListener{
-            findNavController().navigate(R.id.navigation_CreateStory)
+            findNavController().navigate(R.id.fullDeatilsFragment)
+//            findNavController().navigate(R.id.navigation_CreateStory)
+        }
+        binding.rvTrending.setOnClickListener{
+
         }
     }
 }

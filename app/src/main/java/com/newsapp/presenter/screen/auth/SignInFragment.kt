@@ -31,7 +31,7 @@ class SignInFragment : Fragment() {
     }
 
     val signInDialogFragment = {
-        findNavController().navigate(R.id.action_signInFragment_to_signInDialogFragment)
+        findNavController().navigate(R.id.signInDialogFragment)
     }
     private fun onBackPressed(): Boolean {
         findNavController().navigateUp()
