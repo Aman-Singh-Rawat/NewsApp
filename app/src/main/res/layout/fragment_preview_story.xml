@@ -69,25 +69,25 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvImage"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="12dp"
+                app:layout_constraintDimensionRatio="16:10"
+                app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
+                    android:id="@+id/imgPreview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:elevation="12dp"
-                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/img_cute_girl_with_robot"
                     app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
                     app:layout_constraintStart_toStartOf="@id/glPreViewStart"
                     app:layout_constraintTop_toBottomOf="@id/ivArrowStory" />
-
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -95,20 +95,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:includeFontPadding="false"
                 style="@style/articleHeading"
-                android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
-                android:textColor="@color/black"
                 android:lineSpacingExtra="4dp"
-                android:letterSpacing="0.01"
-                app:layout_constraintStart_toStartOf="parent"
+                android:letterSpacing="0.03"
+                android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvImage" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/img_girl_profile"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +186,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tvAgo"/>
 
             <TextView
-                android:id="@+id/textStory"
+                android:id="@+id/tvStory"
                 style="@style/poppins"
                 android:layout_width="0dp"
                 android:layout_height="0dp"

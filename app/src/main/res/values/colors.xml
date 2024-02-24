@@ -16,6 +16,7 @@
     <color name="light_green">#F0FBFA</color>
     <color name="lightBlue">#61B7DF</color>
     <color name="iconRichEditor">#4E4B66</color>
+    <color name="lightWhite">#FAFAFA</color>
     <color name="bottomselect">@color/bottom_navigation_color</color>
 
 </resources>
