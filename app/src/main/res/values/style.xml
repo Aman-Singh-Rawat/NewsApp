@@ -132,11 +132,46 @@
         <item name="fontFamily">@font/poppins_semibold</item>
     </style>
 
-<!--    <style name="continueWith" parent="CardView.Light">-->
-<!--        <item name="android:textSize">16sp</item>-->
-<!--        <item name="textInputStyle">bold</item>-->
-<!--        <item name="fontFamily">@font/poppins_medium</item>-->
-<!--        <item name="android:textColor">@color/black</item>-->
+    <style name="personName" parent="CardView.Light">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/urbanist_semi_bold</item>
+       <item name="android:textColor">@color/black</item>
+    </style>
 
-<!--    </style>-->
+    <style name="editProfile" parent="CardView.Light">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/urbanist_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="profileDesc" parent="CardView.Light">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/urbanist_medium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="followers" parent="CardView.Light">
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/urbanist_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="stories" parent="CardView.Light">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_light</item>
+    </style>
+
+    <style name="website" parent="CardView.Light">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/urbanist_medium</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="empty" parent="CardView.Light">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/urbanist_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
 </resources>

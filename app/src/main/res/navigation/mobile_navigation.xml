@@ -21,12 +21,14 @@
         android:name="com.newsapp.ui.profileNav.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/previewStoryFragment"
-        android:name="com.newsapp.presenter.screen.Profile.PreviewStoryFragment"
+        android:name="com.newsapp.presenter.screen.profile.PreviewStoryFragment"
         android:label="fragment_preview_story"
         tools:layout="@layout/fragment_preview_story" >
     </fragment>
+
     <fragment
         android:id="@+id/fragmentPublish"
         android:name="com.newsapp.presenter.screen.profile.publish.PublishFragment"
@@ -52,7 +54,8 @@
         android:id="@+id/navigation_bookmark"
         android:name="com.newsapp.ui.bookMarkNav.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark2" />
+        tools:layout="@layout/fragment_bookmark" />
+
     <fragment
         android:id="@+id/bookMarkBottomSheetFragment"
         android:name="com.newsapp.ui.homeNav.Bookmark.BookMarkBottomSheetFragment"
@@ -68,5 +71,15 @@
         android:name="com.newsapp.ui.homeNav.Bookmark.SaveDailogeFragment"
         android:label="fragment_save_dailoge"
         tools:layout="@layout/fragment_save_dailoge" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.newsapp.ui.profileNav.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <dialog
+        android:id="@+id/collectionBottomFragment"
+        android:name="com.newsapp.ui.bookMarkNav.CollectionBottomFragment"
+        android:label="fragment_collection_bottom"
+        tools:layout="@layout/fragment_collection_bottom" />
 
 </navigation>
