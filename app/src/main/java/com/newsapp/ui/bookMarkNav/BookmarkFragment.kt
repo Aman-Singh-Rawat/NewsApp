@@ -31,12 +31,10 @@ class BookmarkFragment : Fragment() {
     private fun openBottomSheet() {
         findNavController().navigate(R.id.collectionBottomFragment)
     }
-
     private fun setUpStoriesTag() {
 
         binding.rvBookmarkTag.adapter = TagsRecyclerView(featureList())
     }
-
     private fun featureList(): List<String> {
         return listOf(
             "All","Politics","Technology","Business"
