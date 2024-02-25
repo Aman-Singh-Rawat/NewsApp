@@ -12,7 +12,7 @@
         style="@style/empty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="26dp"
         android:gravity="center"
         android:text="Add New Collection"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
         style="@style/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="26dp"
         android:text="Collection Title"
         app:layout_constraintStart_toStartOf="@id/guideline15"
         app:layout_constraintTop_toBottomOf="@id/viewBottom" />
@@ -56,6 +56,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="@id/guideline16"
         app:layout_constraintStart_toStartOf="@id/guideline15"
         app:layout_constraintTop_toBottomOf="@id/etCollectionTitle">

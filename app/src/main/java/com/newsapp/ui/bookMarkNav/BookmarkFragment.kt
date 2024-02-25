@@ -1,10 +1,12 @@
 package com.newsapp.ui.bookMarkNav
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentBookmarkBinding
@@ -22,6 +24,7 @@ class BookmarkFragment : Fragment() {
         binding.fabButton.setOnClickListener {
             openBottomSheet()
         }
+        fabColorChange()
         setUpStoriesTag()
         return binding.root
     }
@@ -38,5 +41,9 @@ class BookmarkFragment : Fragment() {
         return listOf(
             "All","Politics","Technology","Business"
         )
+    }
+    private fun fabColorChange() {
+        val color = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.fabButton.imageTintList = ColorStateList.valueOf(color)
     }
 }
