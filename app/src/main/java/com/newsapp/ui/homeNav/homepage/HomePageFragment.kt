@@ -1,10 +1,12 @@
 package com.newsapp.ui.homeNav.homepage
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,7 @@ class HomePageFragment : Fragment() {
         binding = FragmentHomePageBinding.inflate(
             inflater, container, false
         )
+        fabColorChange()
         setUpTrendRecycler()
         setUpStoriesTag()
         setUpStories()
@@ -30,6 +33,10 @@ class HomePageFragment : Fragment() {
         return binding.root
     }
 
+    private fun fabColorChange() {
+        val color = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.fbAddStory.imageTintList = ColorStateList.valueOf(color)
+    }
     private fun setUpLinearLayout(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(),

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profileNav.EditProfileFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toTopOf="@+id/linearEdit"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditProfile"
+                style="@style/writeStories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgEditProfile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/img_girl_profile"
+                app:layout_constraintDimensionRatio="5:1"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@id/tvEditProfile" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@+id/imgEditProfile"
+                app:layout_constraintEnd_toEndOf="@+id/tvEditProfile" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSignIn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@id/imgEditProfile">
+
+                <include
+                    android:id="@+id/includeEditFragment"
+                    layout="@layout/layout_email_password" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBio"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Bio"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/clSignIn" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etBio"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_rectangle"
+                android:gravity="top"
+                android:padding="10dp"
+                style="@style/singleBoldText"
+                app:layout_constraintBottom_toTopOf="@+id/tvWebsite"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/tvBio" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWebsite"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Website"
+                app:layout_constraintBottom_toTopOf="@+id/etWebsite"
+                app:layout_constraintStart_toStartOf="@id/guideline11" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rectangle"
+                android:padding="15dp"
+                style="@style/singleBoldText"
+                android:inputType="textUri"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            layout="@layout/layout_one_button"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
