@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.NewsDetails
+package com.newsapp.ui.homeNav.newsdetails
 
 data class CommentData(val cvProfile :Int,
                        val tvUserName :String,

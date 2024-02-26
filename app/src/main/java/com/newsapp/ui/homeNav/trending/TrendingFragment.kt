@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.Trending
+package com.newsapp.ui.homeNav.trending
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentTrendingBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 
 class TrendingFragment : Fragment() {
     private lateinit var binding: FragmentTrendingBinding

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 
 class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Adapter<HpTrendRecycler.HpTrendAdapter>() {
     inner class HpTrendAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {

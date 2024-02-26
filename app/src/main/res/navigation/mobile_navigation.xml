@@ -42,12 +42,12 @@
         android:label="story_publish_fragment"/>
     <fragment
         android:id="@+id/trendingFragment"
-        android:name="com.newsapp.ui.homeNav.Trending.TrendingFragment"
+        android:name="com.newsapp.ui.homeNav.trending.TrendingFragment"
         android:label="fragment_trending"
         tools:layout="@layout/fragment_trending" />
     <fragment
         android:id="@+id/recentStoriesFragment"
-        android:name="com.newsapp.ui.homeNav.RecentStories.RecentStoriesFragment"
+        android:name="com.newsapp.ui.homeNav.recentstories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
@@ -58,17 +58,17 @@
 
     <fragment
         android:id="@+id/bookMarkBottomSheetFragment"
-        android:name="com.newsapp.ui.homeNav.Bookmark.BookMarkBottomSheetFragment"
+        android:name="com.newsapp.ui.homeNav.bookmark.BookMarkBottomSheetFragment"
         android:label="fragment_book_mark_bottom_sheet"
         tools:layout="@layout/fragment_book_mark_bottom_sheet" />
     <fragment
         android:id="@+id/fullDeatilsFragment"
-        android:name="com.newsapp.ui.homeNav.NewsDetails.FullDeatilsFragment"
+        android:name="com.newsapp.ui.homeNav.newsdetails.FullDeatilsFragment"
         android:label="fragment_full_details"
         tools:layout="@layout/fragment_full_details" />
     <fragment
         android:id="@+id/saveDailogeFragment2"
-        android:name="com.newsapp.ui.homeNav.Bookmark.SaveDailogeFragment"
+        android:name="com.newsapp.ui.homeNav.bookmark.SaveDailogeFragment"
         android:label="fragment_save_dailoge"
         tools:layout="@layout/fragment_save_dailoge" />
     <fragment

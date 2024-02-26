@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding

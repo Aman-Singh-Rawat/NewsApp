@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.Bookmark
+package com.newsapp.ui.homeNav.bookmark
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentBookMarkBottomSheetBinding
-import com.newsapp.databinding.FragmentFullDetailsBinding
 
 class BookMarkBottomSheetFragment : Fragment() {
     private lateinit var binding: FragmentBookMarkBottomSheetBinding

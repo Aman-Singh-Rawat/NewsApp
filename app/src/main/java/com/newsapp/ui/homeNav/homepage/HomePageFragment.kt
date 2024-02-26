@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentHomePageBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
-import com.newsapp.ui.homeNav.RecentStories.TagsRecyclerView
+import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.TagsRecyclerView
 
 class HomePageFragment : Fragment() {
     private lateinit var binding: FragmentHomePageBinding

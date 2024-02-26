@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.RecentStories
+package com.newsapp.ui.homeNav.recentstories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
