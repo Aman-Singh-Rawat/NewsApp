@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentBookmarkBinding
-import com.newsapp.ui.homeNav.RecentStories.TagsRecyclerView
+import com.newsapp.ui.homeNav.recentstories.TagsRecyclerView
 
 class BookmarkFragment : Fragment() {
     private lateinit var binding: FragmentBookmarkBinding

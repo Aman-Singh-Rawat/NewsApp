@@ -77,17 +77,16 @@ class PublicProfileFragment : Fragment() {
     }
     val openAllSetFragment = {
         findNavController().navigate(
-            R.id.action_public_Profile_Fragment_to_all_Set_Fragment
+            R.id.all_Set_Fragment
         )
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cardViewProfile = view.findViewById<CardView>(R.id.cardViewProfile)
-        val ivProfile = view.findViewById<ImageView>(R.id.ivProfile)
-        cardViewProfile.setOnClickListener {
-            uploadImage(ivProfile)
+
+        binding.ivProfile.setOnClickListener {
+            uploadImage(binding.ivProfile)
         }
 
 

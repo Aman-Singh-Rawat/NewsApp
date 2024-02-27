@@ -29,7 +29,7 @@ class NewsFeedFragment : Fragment() {
         btnNewFeed = binding.btnNewFeed.root.findViewById(R.id.btnAllInOne)
 
         addValueOnList()
-        val newsFeedRecycler = NewsFeedRecycler(arrayList)
+        val newsFeedRecycler = NewsFeedRecycler(requireContext(), arrayList)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = newsFeedRecycler
 
@@ -90,7 +90,7 @@ class NewsFeedFragment : Fragment() {
         )
     }
     private fun nextPage(){
-        findNavController().navigate(R.id.action_newsFeedFragment_to_public_Profile_Fragment)
+        findNavController().navigate(R.id.public_Profile_Fragment)
     }
 
     private val onBackPressed = {

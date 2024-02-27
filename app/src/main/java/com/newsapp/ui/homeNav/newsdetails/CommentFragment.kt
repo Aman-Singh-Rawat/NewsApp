@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.NewsDetails
+package com.newsapp.ui.homeNav.newsdetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.Bookmark
+package com.newsapp.ui.homeNav.bookmark
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

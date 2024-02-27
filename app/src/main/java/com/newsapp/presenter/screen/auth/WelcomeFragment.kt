@@ -17,7 +17,6 @@ import com.newsapp.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
-    private var btnAllInOne: Button? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,40 +24,24 @@ class WelcomeFragment : Fragment() {
         binding = FragmentWelcomeBinding.inflate(
             inflater, container, false
         )
-        btnAllInOne = binding.btnWelSignInWith.root.findViewById(R.id.btnAllInOne)
-
-        textColorChange() // Change the color of "Don't have an account?  Sign up"
-
-
-        btnAllInOne?.setOnClickListener {
+        binding.btnWelSignInWith.btnAllInOne.setOnClickListener {
             openSignInFragment()
         }
-        btnAllInOne?.text = "Sign in with password"
+        binding.includeWelSignUp.tvSgnIn.setOnClickListener {
+            openCreateAccountFragment()
+        }
+        changeText()
         return binding.root
     }
-    private val textColorChange = {
-        val spannableString = SpannableString("Don't have an account?  Sign up")
-        val signUpColor = ContextCompat.getColor(
-            requireContext(), R.color.blue
-        )
-        val startIndex = spannableString.indexOf("Sign up")
-        spannableString.setSpan(
-            ForegroundColorSpan(signUpColor),
-            startIndex, startIndex + "Sign up".length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.tvWelNotAccount.text = spannableString
+    private fun changeText() {
+        binding.btnWelSignInWith.btnAllInOne.text = "Sign in with password"
 
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.tvWelNotAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
-        }
+    private fun openCreateAccountFragment() {
+        findNavController().navigate(R.id.createAccountFragment)
     }
-    private val openSignInFragment = {
-        findNavController().navigate(R.id.action_welcomeFragment_to_signInFragment)
+    private fun openSignInFragment() {
+        findNavController().navigate(R.id.signInFragment)
     }
 
 }

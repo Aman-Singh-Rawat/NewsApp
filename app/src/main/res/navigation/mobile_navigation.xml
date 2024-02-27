@@ -42,12 +42,12 @@
         android:label="story_publish_fragment"/>
     <fragment
         android:id="@+id/trendingFragment"
-        android:name="com.newsapp.ui.homeNav.Trending.TrendingFragment"
+        android:name="com.newsapp.ui.homeNav.trending.TrendingFragment"
         android:label="fragment_trending"
         tools:layout="@layout/fragment_trending" />
     <fragment
         android:id="@+id/recentStoriesFragment"
-        android:name="com.newsapp.ui.homeNav.RecentStories.RecentStoriesFragment"
+        android:name="com.newsapp.ui.homeNav.recentstories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
@@ -56,21 +56,17 @@
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 
-    <dialog
+    <fragment
         android:id="@+id/bookMarkBottomSheetFragment"
-        android:name="com.newsapp.ui.homeNav.Bookmark.BookMarkBottomSheetFragment"
+        android:name="com.newsapp.ui.homeNav.bookmark.BookMarkBottomSheetFragment"
         android:label="fragment_book_mark_bottom_sheet"
         tools:layout="@layout/fragment_book_mark_bottom_sheet" />
     <fragment
         android:id="@+id/fullDeatilsFragment"
-        android:name="com.newsapp.ui.homeNav.NewsDetails.FullDeatilsFragment"
+        android:name="com.newsapp.ui.homeNav.newsdetails.FullDeatilsFragment"
         android:label="fragment_full_details"
         tools:layout="@layout/fragment_full_details" />
-    <fragment
-        android:id="@+id/saveDailogeFragment2"
-        android:name="com.newsapp.ui.homeNav.Bookmark.SaveDailogeFragment"
-        android:label="fragment_save_dailoge"
-        tools:layout="@layout/fragment_save_dailoge" />
+
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.newsapp.ui.profileNav.EditProfileFragment"
@@ -82,9 +78,9 @@
         android:label="fragment_collection_bottom"
         tools:layout="@layout/fragment_collection_bottom" />
     <fragment
-        android:id="@+id/commentFragment"
-        android:name="com.newsapp.ui.homeNav.NewsDetails.CommentFragment"
-        android:label="fragment_comment"
-        tools:layout="@layout/fragment_comment" />
+        android:id="@+id/signInFragment2"
+        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
 
 </navigation>

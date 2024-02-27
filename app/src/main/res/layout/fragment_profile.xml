@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="26dp"
         android:src="@drawable/ic_share"
         app:layout_constraintEnd_toStartOf="@+id/icLogout"
         app:layout_constraintTop_toTopOf="parent" />

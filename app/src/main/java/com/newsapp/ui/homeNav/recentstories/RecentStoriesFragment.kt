@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.Trending
+package com.newsapp.ui.homeNav.recentstories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,27 +8,35 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
-import com.newsapp.databinding.FragmentTrendingBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
+import com.newsapp.databinding.FragmentRecentStoriesBinding
 
-class TrendingFragment : Fragment() {
-    private lateinit var binding: FragmentTrendingBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentTrendingBinding.inflate(
+class RecentStoriesFragment : Fragment() {
+    private lateinit var binding: FragmentRecentStoriesBinding
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = FragmentRecentStoriesBinding.inflate(
             inflater, container, false
         )
+        setupTagRecycler()
         setUpArticleRecycler()
         return binding.root
     }
+
     private fun setUpArticleRecycler() {
-        binding.rvTrendArticles.layoutManager = LinearLayoutManager(
+        binding.rvNewsArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+        binding.rvNewsArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+    }
+    private fun setupTagRecycler() {
+        binding.rvRecentTag.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.HORIZONTAL, false
+        )
+        binding.rvRecentTag.adapter = TagsRecyclerView(tagList())
+    }
+
+    private fun tagList(): List<String> {
+        return listOf("All", "Politics", "Technology", "Business")
     }
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
@@ -73,10 +81,9 @@ class TrendingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.imgTrendingBack.setOnClickListener {
+        binding.imgRecentBack.setOnClickListener {
             findNavController().navigateUp()
         }
     }
-
 
 }

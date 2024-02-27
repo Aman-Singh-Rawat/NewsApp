@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.NewsDetails
+package com.newsapp.ui.homeNav.newsdetails
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

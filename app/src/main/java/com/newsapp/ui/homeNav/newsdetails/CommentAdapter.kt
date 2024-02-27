@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.NewsDetails
+package com.newsapp.ui.homeNav.newsdetails
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -18,12 +18,11 @@ class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
             val tvUserName = itemView.findViewById<TextView>(R.id.tvUserName)
             val tvCommentDays = itemView.findViewById<TextView>(R.id.tvCommentDays)
             val tvFullComment = itemView.findViewById<TextView>(R.id.tvFullComment)
-            val tvLikeNumber = itemView.findViewById<TextView>(R.id.tvLikeNumber)
+
             cvProfile.setImageResource(commentData.cvProfile)
             tvUserName.text = commentData.tvUserName
             tvCommentDays.text = commentData.tvCommentDays
             tvFullComment.text = commentData.tvFullComment
-            tvLikeNumber.text = commentData.tvLikeNumber
 
         }
     }

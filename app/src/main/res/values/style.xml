@@ -25,7 +25,7 @@
     </style>
 
     <style name="smallText" parent="CardView">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="fontFamily">@font/poppins_light</item>
         <item name="lineSpacing">5dp</item>
@@ -70,7 +70,7 @@
 
     <style name="verySmallText" parent="CardView">
         <item name="fontFamily">@font/poppins_light</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -173,5 +173,45 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="trending" parent="CardView.Light">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/urbanist_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="name" parent="CardView.Light">
+        <item name="android:textSize">23sp</item>
+        <item name="fontFamily">@font/urbanist_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="feedText" parent="CardView.Light">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="youAreAllSet" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="tvHeadLine" parent="CardView.Light">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="tvHeadLineTwo" parent="CardView.Light">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="channelFollowers" parent="CardView.Light">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/urbanist_medium</item>
+    </style>
 
 </resources>

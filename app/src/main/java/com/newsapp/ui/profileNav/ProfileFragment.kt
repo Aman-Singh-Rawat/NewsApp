@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
@@ -29,7 +28,13 @@ class ProfileFragment : Fragment() {
         binding.editProfile.setOnClickListener {
             navigateAnotherActivity()
         }
+        binding.icLogout.setOnClickListener {
+            openSignInFragment()
+        }
         return binding.root
+    }
+    private fun openSignInFragment() {
+        findNavController().navigate(R.id.signInFragment2)
     }
     private fun navigateAnotherActivity() {
         findNavController().navigate(R.id.editProfileFragment)
@@ -42,7 +47,6 @@ class ProfileFragment : Fragment() {
         binding.rvProfileNews.adapter = NewsArticlesRecyclerView(insertInTagsRV())
 
     }
-
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(

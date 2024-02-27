@@ -1,4 +1,4 @@
-package com.newsapp.ui.homeNav.RecentStories
+package com.newsapp.ui.homeNav.recentstories
 
 class RecentDataClass (
     val tvHeadline: String,
