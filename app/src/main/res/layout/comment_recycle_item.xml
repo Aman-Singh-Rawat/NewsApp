@@ -50,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        style="@style/channelFollowers"
+        style="@style/poppins"
         android:lineSpacingExtra="4dp"
         android:letterSpacing="0.02"
         android:text="@string/this_investigative"
