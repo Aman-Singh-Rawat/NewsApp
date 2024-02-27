@@ -1,15 +1,17 @@
 package com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 
-class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adapter<NewsFeedRecycler.NewsFeedAdapter>() {
+class NewsFeedRecycler(private val context: Context ,private val list: List<NewsFeedClass>): RecyclerView.Adapter<NewsFeedRecycler.NewsFeedAdapter>() {
     private val selectedItems = mutableSetOf<Int>()
     class NewsFeedAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
         val imgNewsFeed: ImageView = itemView.findViewById(R.id.imgNewsFeed)
@@ -21,7 +23,6 @@ class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adap
             .inflate(R.layout.recycler_news_feed,
                 parent, false
             )
-
         return NewsFeedAdapter(view)
     }
 
@@ -37,15 +38,21 @@ class NewsFeedRecycler(private val list: List<NewsFeedClass>): RecyclerView.Adap
 
         // Handle item clicks
         holder.itemView.setOnClickListener {
-            if (selectedItems.contains(position)) {
+            val currentPosition = holder.adapterPosition // Using adapterPosition to get current position
+
+            if (selectedItems.contains(currentPosition)) {
                 // Item is already selected, deselect it
-                selectedItems.remove(position)
+                selectedItems.remove(currentPosition)
+                holder.tvNewsFeed.setTextColor(ContextCompat.getColor(context, R.color.blue))
             } else {
                 // Item is not selected, select it
-                selectedItems.add(position)
+                selectedItems.add(currentPosition)
+                holder.tvNewsFeed.setTextColor(ContextCompat.getColor(context, R.color.black))
             }
+
             // Notify item change for clicked item to update its background
-            notifyItemChanged(position)
+            notifyItemChanged(currentPosition)
         }
+
     }
 }

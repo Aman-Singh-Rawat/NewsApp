@@ -66,11 +66,7 @@
         android:name="com.newsapp.ui.homeNav.newsdetails.FullDeatilsFragment"
         android:label="fragment_full_details"
         tools:layout="@layout/fragment_full_details" />
-    <fragment
-        android:id="@+id/saveDailogeFragment2"
-        android:name="com.newsapp.ui.homeNav.bookmark.SaveDailogeFragment"
-        android:label="fragment_save_dailoge"
-        tools:layout="@layout/fragment_save_dailoge" />
+
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.newsapp.ui.profileNav.EditProfileFragment"
@@ -81,5 +77,10 @@
         android:name="com.newsapp.ui.bookMarkNav.CollectionBottomFragment"
         android:label="fragment_collection_bottom"
         tools:layout="@layout/fragment_collection_bottom" />
+    <fragment
+        android:id="@+id/signInFragment2"
+        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
 
 </navigation>

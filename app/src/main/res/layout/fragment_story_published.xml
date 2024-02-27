@@ -30,15 +30,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvStoryPublished"
-        style="@style/headText"
+        style="@style/youAreAllSet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="5dp"
         android:text="Your story has been\npublished!"
-        android:textColor="@color/black"
-        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline6"
         app:layout_constraintStart_toStartOf="@id/guideline5"

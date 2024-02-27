@@ -28,7 +28,13 @@ class ProfileFragment : Fragment() {
         binding.editProfile.setOnClickListener {
             navigateAnotherActivity()
         }
+        binding.icLogout.setOnClickListener {
+            openSignInFragment()
+        }
         return binding.root
+    }
+    private fun openSignInFragment() {
+        findNavController().navigate(R.id.signInFragment2)
     }
     private fun navigateAnotherActivity() {
         findNavController().navigate(R.id.editProfileFragment)
@@ -41,7 +47,6 @@ class ProfileFragment : Fragment() {
         binding.rvProfileNews.adapter = NewsArticlesRecyclerView(insertInTagsRV())
 
     }
-
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(

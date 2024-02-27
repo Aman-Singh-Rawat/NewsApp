@@ -45,7 +45,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPersonName"
-            style="@style/headText"
+            style="@style/name"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,23 +81,26 @@
                 app:layout_constraintGuide_end="18dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/headingText"
+                style="@style/trending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Trending"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
                 app:layout_constraintTop_toTopOf="@+id/clBottom" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViewAll"
-                style="@style/viewAll"
+                style="@style/personName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
                 android:drawableRight="@drawable/img_right_arrow"
                 android:gravity="center"
+                android:textColor="@color/blue"
                 android:text="View All"
+                android:drawablePadding="10dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/clBottom" />
 
@@ -115,22 +118,25 @@
                 tools:listitem="@layout/layout_home_page_recycler" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/headingText"
+                style="@style/articleHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Recent Stories"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/rvTrending" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViewAllRecent"
-                style="@style/viewAll"
+                style="@style/personName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
                 android:drawableRight="@drawable/img_right_arrow"
                 android:gravity="center"
+                android:drawablePadding="10dp"
+                android:textColor="@color/blue"
                 android:text="View All"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintTop_toBottomOf="@+id/rvTrending" />

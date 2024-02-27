@@ -28,7 +28,7 @@ class TrendingFragment : Fragment() {
         binding.rvTrendArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+        binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(findNavController(), insertInTagsRV())
     }
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
