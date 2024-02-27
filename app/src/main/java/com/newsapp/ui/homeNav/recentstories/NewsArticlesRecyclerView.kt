@@ -11,7 +11,7 @@ import com.newsapp.R
 
 class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
     RecyclerView.Adapter<NewsArticlesRecyclerView.NewsArticlesAdapter>() {
-        private lateinit var navController: NavController
+        private var navController: NavController? = null
     class NewsArticlesAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvHeadline: TextView = itemView.findViewById(R.id.tvHeadline)
         val ivNewsImg: ImageView = itemView.findViewById(R.id.ivNewsImg)
@@ -51,7 +51,7 @@ class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
         holder.tvTotalComments.text = list[position].tvTotalComments
 
         holder.itemView.setOnClickListener {
-            navController.navigate(R.id.fullDeatilsFragment)
+            navController?.navigate(R.id.fullDeatilsFragment)
         }
     }
 }
