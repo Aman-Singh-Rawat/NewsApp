@@ -56,7 +56,7 @@
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 
-    <fragment
+    <dialog
         android:id="@+id/bookMarkBottomSheetFragment"
         android:name="com.newsapp.ui.homeNav.Bookmark.BookMarkBottomSheetFragment"
         android:label="fragment_book_mark_bottom_sheet"
@@ -81,5 +81,10 @@
         android:name="com.newsapp.ui.bookMarkNav.CollectionBottomFragment"
         android:label="fragment_collection_bottom"
         tools:layout="@layout/fragment_collection_bottom" />
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.newsapp.ui.homeNav.NewsDetails.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" />
 
 </navigation>

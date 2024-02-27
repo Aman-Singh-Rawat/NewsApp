@@ -253,8 +253,8 @@
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toBottomOf="@id/tvSubLine"
-                app:spanCount="3"
-                tools:listitem="@layout/tag_in_fullnews" />
+                app:spanCount="2"
+                tools:listitem="@layout/tag_item" />
 
             <View
                 android:id="@+id/vDivideup"
@@ -373,7 +373,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvViewAll"
+                    android:id="@+id/tvView"
                     style="@style/viewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

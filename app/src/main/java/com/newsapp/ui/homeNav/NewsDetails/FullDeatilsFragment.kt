@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,9 +37,14 @@ class FullDeatilsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvView.setOnClickListener {
+            findNavController().navigate(R.id.commentFragment)
+        }
+        binding.ivbackArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
-        val ivBookMark = view.findViewById<ImageView>(R.id.ivBookMark)
-        ivBookMark.setOnClickListener {
+        binding.ivBookMark.setOnClickListener {
             val bottomSheetView =
                 layoutInflater.inflate(R.layout.fragment_book_mark_bottom_sheet, null)
             val bottomSheetDialog = BottomSheetDialog(requireContext())

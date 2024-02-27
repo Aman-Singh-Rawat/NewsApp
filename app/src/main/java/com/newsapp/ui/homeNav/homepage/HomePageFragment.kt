@@ -130,9 +130,10 @@ class HomePageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fbAddStory.setOnClickListener{
             findNavController().navigate(R.id.navigation_CreateStory)
+            findNavController().navigate(R.id.fullDeatilsFragment)// just try
         }
         binding.rvTrending.setOnClickListener{
-//            findNavController().navigate(R.id.)
+//
         }
     }
 }

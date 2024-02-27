@@ -20,7 +20,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onBind(itemView: View, s: String) {
-            val tvSaveName = itemView.findViewById<TextView>(R.id.tvSaveName)
+            val tvSaveName = itemView.findViewById<TextView>(R.id.tvName)
             tvSaveName.text = s
         }
     }
