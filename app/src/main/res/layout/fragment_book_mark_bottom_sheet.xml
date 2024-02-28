@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSaveMark" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSeleced"
+        android:id="@+id/rvSelected"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -76,14 +76,15 @@
         android:background="@color/dark_white"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
-        app:layout_constraintTop_toBottomOf="@+id/rvSeleced" />
+        app:layout_constraintTop_toBottomOf="@+id/rvSelected" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
-        app:layout_constraintTop_toBottomOf="@id/viewDown">
+        app:layout_constraintTop_toBottomOf="@+id/viewDown">
 
         <include
             android:id="@+id/includeBookButton"

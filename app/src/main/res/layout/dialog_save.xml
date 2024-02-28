@@ -3,16 +3,18 @@
     android:id="@+id/cvToast"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    app:cardCornerRadius="11dp"
+    app:cardBackgroundColor="#caf0f8"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_saved_to_bookmark"
-        style="@style/greenColorText"
-        android:textSize="15sp"
+        style="@style/singleBoldText"
+        android:textColor="@color/blue"
+        android:letterSpacing="0.02"
         android:layout_gravity="center"
         android:drawablePadding="20dp"
         android:background="@drawable/bg_save_diloge"
