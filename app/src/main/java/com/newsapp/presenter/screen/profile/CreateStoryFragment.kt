@@ -103,7 +103,7 @@ class CreateStoryFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        /*(Rich Editor img picker)*/
 //        val editor = view?.findViewById<EditorView>(R.id.editor)
 //        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
 //            val imageUri = data?.data

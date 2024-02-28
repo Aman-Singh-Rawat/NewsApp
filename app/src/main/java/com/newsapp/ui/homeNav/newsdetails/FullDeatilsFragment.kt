@@ -1,5 +1,6 @@
 package com.newsapp.ui.homeNav.newsdetails
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.newsapp.R
 import com.newsapp.databinding.FragmentFullDetailsBinding
@@ -29,22 +31,24 @@ class FullDeatilsFragment : Fragment() {
             inflater, container, false
         )
 
-        binding.ivBookMark.setOnClickListener {
-            findNavController().navigate(R.id.bookMarkBottomSheetFragment)
-        }
+//        binding.ivBookMark.setOnClickListener {
+//            findNavController().navigate(R.id.bookMarkBottomSheetFragment)
+//        }
         rvCommentSetup()
         rvNewsTags()
         return binding.root
     }
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         binding.tvCommentViewAll.setOnClickListener {
             findNavController().navigate(R.id.commentFragment)
         }
         binding.ivbackArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
         binding.ivBookMark.setOnClickListener {
             val bottomSheetView =
                 layoutInflater.inflate(R.layout.fragment_book_mark_bottom_sheet, null)

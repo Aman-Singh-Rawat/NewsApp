@@ -59,8 +59,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSeleced"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"

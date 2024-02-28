@@ -1,5 +1,6 @@
 package com.newsapp.ui.homeNav.trending
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.newsapp.R
 import com.newsapp.databinding.FragmentTrendingBinding
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
@@ -71,11 +74,14 @@ class TrendingFragment : Fragment() {
         )
     }
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.imgTrendingBack.setOnClickListener {
             findNavController().navigateUp()
         }
+
+
     }
 
 

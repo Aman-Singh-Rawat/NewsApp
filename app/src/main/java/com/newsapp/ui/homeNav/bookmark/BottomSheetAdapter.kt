@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-
 class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
 
     private var bottomSheet = mutableListOf<String>()
@@ -18,16 +17,15 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>()
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(itemView: View, s: String) {
-            val tvSaveName = itemView.findViewById<TextView>(R.id.tvName)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvSaveName = itemView.findViewById<TextView>(R.id.tvSaveName)
+        fun onBind(s: String) {
             tvSaveName.text = s
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val list =
-            LayoutInflater.from(parent.context).inflate(R.layout.bottomsheet_recycle, parent, false)
+        val list = LayoutInflater.from(parent.context).inflate(R.layout.bottomsheet_recycle, parent, false)
         return ViewHolder(list)
     }
 
@@ -36,7 +34,8 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(holder.itemView, bottomSheet[position])
+        holder.onBind(bottomSheet[position])
     }
 }
+
 

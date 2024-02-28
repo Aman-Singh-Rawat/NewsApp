@@ -46,6 +46,9 @@
             android:id="@+id/rvTrendArticles"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/recent_recycle_item"
+            android:orientation="vertical"
             android:layout_marginTop="20dp"/>
     </LinearLayout>
 
