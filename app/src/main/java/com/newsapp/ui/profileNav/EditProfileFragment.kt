@@ -1,5 +1,7 @@
 package com.newsapp.ui.profileNav
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
@@ -7,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
 
+@Suppress("UNREACHABLE_CODE")
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
     override fun onCreateView(
@@ -24,6 +28,24 @@ class EditProfileFragment : Fragment() {
         //changeKeyboard()
         textSetup()
         return binding.root
+
+    }
+    fun uploadImage(imgEditProfile : ImageView) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        startActivityForResult(intent, 5)
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val imgEditProfile = view?.findViewById<ImageView>(R.id.imgEditProfile)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 5) {
+                val uri = data?.data
+                imgEditProfile?.setImageURI(uri)
+            }
+        }
     }
 
     private fun changeKeyboard() {
@@ -58,5 +80,13 @@ class EditProfileFragment : Fragment() {
 
         binding.includeEditFragment.etFillPassWord.inputType =
             InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       val imgEditProfile = view.findViewById<ImageView>(R.id.imgEditProfile)
+        binding.ivImageOpen.setOnClickListener {
+            uploadImage(imgEditProfile)
+        }
     }
 }

@@ -81,7 +81,6 @@ class CreateStoryFragment : Fragment() {
         }
         val cvImage = view.findViewById<CardView>(R.id.cvImage)
         val ivStory = view.findViewById<ImageView>(R.id.ivStory)
-
         cvImage.setOnClickListener {
             uploadImage(ivStory)
         }
@@ -93,14 +92,7 @@ class CreateStoryFragment : Fragment() {
         intent.type = "image/*"
         startActivityForResult(intent, 1)
     }
-
-    fun setImage(imageUri: Context?) {
-
-    }
-
 // Usage
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         /*(Rich Editor img picker)*/
