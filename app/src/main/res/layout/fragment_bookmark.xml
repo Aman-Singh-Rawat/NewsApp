@@ -51,10 +51,10 @@
         android:id="@+id/rvBookmarkTag"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toStartOf="@id/guideline14"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fabButton"
         app:layout_constraintTop_toTopOf="@id/fabButton"
         tools:listitem="@layout/recent_stories" />

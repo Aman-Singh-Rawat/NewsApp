@@ -2,6 +2,7 @@ package com.newsapp.ui.homeNav.newsdetails
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.icu.lang.UCharacter.VerticalOrientation
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,10 +31,6 @@ class FullDeatilsFragment : Fragment() {
         binding = FragmentFullDetailsBinding.inflate(
             inflater, container, false
         )
-
-//        binding.ivBookMark.setOnClickListener {
-//            findNavController().navigate(R.id.bookMarkBottomSheetFragment)
-//        }
         rvCommentSetup()
         rvNewsTags()
         return binding.root
@@ -53,12 +50,14 @@ class FullDeatilsFragment : Fragment() {
             findNavController().navigate(R.id.bookMarkBottomSheetFragment)
         }
     }
-        private fun rvNewsTags() {
-            binding.rvNewsTags.adapter = newsAdapter
-            newsAdapter.update(getdata())
-        }
+    private fun rvNewsTags() {
+        binding.rvNewsTags.adapter = newsAdapter
+        binding.rvNewsTags.layoutManager =
+            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        newsAdapter.update(getdata())
+    }
 
-        private fun rvCommentSetup() {
+    private fun rvCommentSetup() {
             binding.rvComment.layoutManager =
                 LinearLayoutManager(
                     requireContext(), LinearLayoutManager.VERTICAL,
@@ -100,30 +99,4 @@ class FullDeatilsFragment : Fragment() {
 
             )
         }
-
-        /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val ivBookMark = view.findViewById<ImageView>(R.id.ivBookMark)
-        ivBookMark.setOnClickListener {
-            val bottomSheetView =
-                layoutInflater.inflate(R.layout.fragment_book_mark_bottom_sheet, null)
-            val bottomSheetDialog = BottomSheetDialog(requireContext())
-            bottomSheetDialog.setContentView(bottomSheetView)
-            bottomSheetDialog.show()
-        }
-        binding.rvNewsTags.adapter = newsAdapter
-        rvTag.layoutManager =
-            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-        newsAdapter.update(getdata())
-
-        binding.rvComment.adapter = commentAdapter
-        rvComment.layoutManager =
-            StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
-        commentAdapter.updateUi(getComment())
-
-
-    }*/
-
-
 }

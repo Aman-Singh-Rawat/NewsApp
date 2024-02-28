@@ -64,4 +64,8 @@
     <string name="add_a_comment">Add a comment</string>
     <string name="cancle">Cancle</string>
     <string name="done">Done</string>
+    <string name="add_new_collection">Add New Collection</string>
+    <string name="collection_title">Collection Title</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="your_story_has_been_npublished">Your story has been\npublished!</string>
 </resources>

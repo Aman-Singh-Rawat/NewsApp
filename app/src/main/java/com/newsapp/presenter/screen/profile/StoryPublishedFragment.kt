@@ -29,7 +29,7 @@ class StoryPublishedFragment : Fragment() {
     }
     val onBackPressed = {
         findNavController()
-            .navigateUp()
+            .navigate(R.id.navigation_profile)
         true
     }
     private fun btnTextChange() {

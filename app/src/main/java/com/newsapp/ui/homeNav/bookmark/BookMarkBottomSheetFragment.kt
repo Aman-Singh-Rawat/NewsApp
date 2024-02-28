@@ -1,5 +1,6 @@
 package com.newsapp.ui.homeNav.bookmark
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,8 +36,6 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         binding.includeBookButton.btnOnboardingSkip.setOnClickListener {
             findNavController().navigateUp()
         }
-        Log.d("kya chal ra hai", "Hm ye toa chal ra hai")
-        Toast.makeText(requireContext(), "chal ra hai", Toast.LENGTH_LONG).show()
 
         binding.includeBookButton.btnOnboardingContinue.setOnClickListener {
             val toast = Toast(requireContext())
@@ -48,16 +47,12 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
 
         return binding.root
     }
+    @SuppressLint("SetTextI18n")
     private fun textChangeButton() {
         binding.includeBookButton.btnOnboardingSkip.text = "Cancel"
         binding.includeBookButton.btnOnboardingContinue.text = "Done"
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//    }
     private fun getData(): List<String> {
         return listOf(
             "Reading List", "References", "Reading List", "References", "Reading List", "References"

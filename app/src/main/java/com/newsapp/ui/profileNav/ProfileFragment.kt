@@ -1,9 +1,11 @@
 package com.newsapp.ui.profileNav
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +24,7 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding
             .inflate(inflater, container, false
             )
-
+        fabColorChange()
         setUpStories()
 
         binding.editProfile.setOnClickListener {
@@ -87,4 +89,16 @@ class ProfileFragment : Fragment() {
             )
         )
     }
+    private fun fabColorChange() {
+        val color = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.fbAddStory.imageTintList = ColorStateList.valueOf(color)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.fbAddStory.setOnClickListener{
+            findNavController().navigate(R.id.navigation_CreateStory)
+        }
+    }
+
 }

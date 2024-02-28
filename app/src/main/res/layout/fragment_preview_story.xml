@@ -44,10 +44,10 @@
 
     <TextView
         android:id="@+id/tvContinue"
-        style="@style/writeStories"
+        style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:text="continue"
         android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"

@@ -10,10 +10,10 @@
         android:id="@+id/imgN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_n"
         android:layout_marginTop="20dp"
+        android:src="@drawable/img_n"
         app:layout_constraintStart_toStartOf="@id/guideline9"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/writeStories"
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_marginEnd="257dp"
-        android:text="Profile"
         android:includeFontPadding="false"
+        android:text="Profile"
         app:layout_constraintEnd_toStartOf="@+id/icLogout"
         app:layout_constraintStart_toEndOf="@+id/imgN"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,17 +45,17 @@
         android:src="@drawable/ic_logout"
         app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fitsSystemWindows="true"
         android:layout_marginTop="18dp"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icLogout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/icLogout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clNonScroll"
@@ -119,7 +119,7 @@
                 android:letterSpacing="0.01"
                 android:paddingHorizontal="13dp"
                 android:paddingVertical="6dp"
-                android:text="Edit Profile"
+                android:text="@string/edit_profile"
                 app:layout_constraintBottom_toTopOf="@+id/tvPersonEmail"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
@@ -130,8 +130,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:letterSpacing="0.02"
                 android:includeFontPadding="false"
+                android:letterSpacing="0.02"
                 android:text="Tech enthusiast, likes to share stories about technology, and the digital world."
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
@@ -143,9 +143,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:includeFontPadding="false"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="5dp"
-                android:includeFontPadding="false"
                 android:text="www.andrewainsley.yourdomain"
                 android:textColor="@color/blue"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
@@ -187,10 +187,10 @@
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:background="@color/dark_white"
-                app:layout_constraintTop_toTopOf="@+id/tvTotalStories"
                 app:layout_constraintBottom_toBottomOf="@+id/tvProfileStories"
+                app:layout_constraintEnd_toStartOf="@+id/tvTotalFollowing"
                 app:layout_constraintStart_toEndOf="@+id/tvFollowers"
-                app:layout_constraintEnd_toStartOf="@+id/tvTotalFollowing" />
+                app:layout_constraintTop_toTopOf="@+id/tvTotalStories" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTotalFollowing"
@@ -211,10 +211,10 @@
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:background="@color/dark_white"
-                app:layout_constraintTop_toTopOf="@+id/tvTotalStories"
                 app:layout_constraintBottom_toBottomOf="@+id/tvProfileStories"
+                app:layout_constraintEnd_toStartOf="@+id/tvFollowers"
                 app:layout_constraintStart_toEndOf="@+id/tvTotalStories"
-                app:layout_constraintEnd_toStartOf="@+id/tvFollowers" />
+                app:layout_constraintTop_toTopOf="@+id/tvTotalStories" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvProfileStories"
@@ -266,13 +266,13 @@
                 android:id="@+id/viewHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/dark_white"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvProfileFollowing"
+                android:background="@color/dark_white"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileFollowing" />
 
-<!-- ====================== Adding Recycler View  ====================== -->
+            <!-- ====================== Adding Recycler View  ====================== -->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProfileNews"
@@ -280,24 +280,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="40dp"
-                tools:listitem="@layout/recent_recycle_item"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
-                app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"/>
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
+                tools:listitem="@layout/recent_recycle_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/blue"
+        android:elevation="6dp"
         android:src="@drawable/ic_edit"
-        app:layout_constraintDimensionRatio="5:1"
-        app:layout_constraintEnd_toEndOf="@+id/guideline10"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="50dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"

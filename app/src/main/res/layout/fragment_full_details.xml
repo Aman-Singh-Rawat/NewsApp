@@ -81,7 +81,7 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_white"
                 app:cardCornerRadius="12dp"
-                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintDimensionRatio="16:10"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"

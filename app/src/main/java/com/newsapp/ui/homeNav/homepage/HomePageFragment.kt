@@ -25,7 +25,6 @@ class HomePageFragment : Fragment() {
         binding = FragmentHomePageBinding.inflate(
             inflater, container, false
         )
-        fabColorChange()
         setUpTrendRecycler()
         setUpStoriesTag()
         setUpStories()
@@ -33,10 +32,7 @@ class HomePageFragment : Fragment() {
         return binding.root
     }
 
-    private fun fabColorChange() {
-        val color = ContextCompat.getColor(requireContext(), R.color.white)
-        binding.fbAddStory.imageTintList = ColorStateList.valueOf(color)
-    }
+
     private fun setUpLinearLayout(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(),
@@ -126,13 +122,4 @@ class HomePageFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.fbAddStory.setOnClickListener{
-            findNavController().navigate(R.id.navigation_CreateStory)
-        }
-        binding.rvTrending.setOnClickListener{
-//
-        }
-    }
 }

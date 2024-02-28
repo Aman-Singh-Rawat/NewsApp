@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_back_arrow"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +37,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/write_stories"
         android:textSize="20sp"
+        android:layout_marginStart="18dp"
         app:layout_constraintEnd_toStartOf="@+id/tvPreview"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@id/imgBackArrow"
@@ -43,10 +45,10 @@
 
     <TextView
         android:id="@+id/tvPreview"
-        style="@style/writeStories"
+        style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:text="@string/preview"
         android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
@@ -81,6 +83,7 @@
 
                 <ImageView
                     android:id="@+id/ivStory"
+                    android:background="?android:attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="2dp"
@@ -186,13 +189,12 @@
                     android:layout_width="52dp"
                     android:layout_height="48dp"
                     android:background="@null"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_bullet" />
+                    android:contentDescription="@null" />
 
                 <ImageButton
                     android:id="@+id/action_insert_link"
                     android:layout_width="52dp"
-                    android:layout_height="48dp"
+                    android:layout_height="42dp"
                     android:background="@null"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_link" />
@@ -200,7 +202,7 @@
                 <ImageButton
                     android:id="@+id/action_insert_image"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="42dp"
                     android:background="@null"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_image_link" />
@@ -210,7 +212,6 @@
                 android:id="@+id/editor"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="2dp"
                 android:background="@drawable/bg_rectangle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
