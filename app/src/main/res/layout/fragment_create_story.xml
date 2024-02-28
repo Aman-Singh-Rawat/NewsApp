@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,6 +51,7 @@
         android:layout_marginTop="23dp"
         android:text="@string/preview"
         android:textColor="@color/blue"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,6 +99,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/txt_add_cover_image"
                     android:textSize="10sp"
+                    android:background="?android:attr/selectableItemBackground"
                     app:drawableTopCompat="@drawable/ic_image"
                     tools:ignore="OnClick,SmallSp" />
 

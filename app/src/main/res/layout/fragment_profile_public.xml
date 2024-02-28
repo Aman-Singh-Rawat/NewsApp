@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_edit"
                 android:layout_marginStart="40dp"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
                 app:layout_constraintEnd_toStartOf="@+id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@+id/glProfileStart" />

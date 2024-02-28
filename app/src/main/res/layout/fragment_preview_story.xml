@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/glPreViewStart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,6 +51,7 @@
         android:layout_marginTop="23dp"
         android:text="continue"
         android:textColor="@color/blue"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
         app:layout_constraintTop_toTopOf="parent" />
 

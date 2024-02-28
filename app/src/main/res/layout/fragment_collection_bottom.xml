@@ -63,7 +63,7 @@
 
         <include
             android:id="@+id/includeButtons"
-            layout="@layout/layout_two_button" />
+            layout="@layout/layout_two_button"/>
 
     </LinearLayout>
 

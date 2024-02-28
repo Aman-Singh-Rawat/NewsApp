@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/txt_signup"
-            android:textColor="@color/blue" />
+            android:textColor="@color/blue"
+            android:background="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

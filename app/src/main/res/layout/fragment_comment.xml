@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/glCommentStart"
         app:layout_constraintTop_toTopOf="parent" />
 

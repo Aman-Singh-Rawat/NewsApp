@@ -34,6 +34,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="26dp"
         android:src="@drawable/ic_share"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toStartOf="@+id/icLogout"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:src="@drawable/ic_logout"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,6 +150,7 @@
                 android:lineSpacingExtra="5dp"
                 android:text="www.andrewainsley.yourdomain"
                 android:textColor="@color/blue"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintTop_toBottomOf="@id/tvProfileDesc" />
@@ -300,6 +303,7 @@
         android:src="@drawable/ic_float_btn"
         app:borderWidth="0dp"
         app:fabSize="normal"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="50dp" />

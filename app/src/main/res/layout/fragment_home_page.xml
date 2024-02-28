@@ -101,6 +101,7 @@
                 android:textColor="@color/blue"
                 android:text="View All"
                 android:drawablePadding="10dp"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/clBottom" />
 
@@ -138,6 +139,7 @@
                 android:drawablePadding="10dp"
                 android:textColor="@color/blue"
                 android:text="View All"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"
                 app:layout_constraintTop_toBottomOf="@+id/rvTrending" />
 

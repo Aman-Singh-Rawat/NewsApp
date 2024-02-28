@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +87,7 @@
                     android:paddingTop="2.4dp"
                     android:paddingStart="8dp"
                     android:gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
                     app:layout_constraintTop_toBottomOf="@id/etFillPassWord" />
 
                 <TextView
@@ -94,6 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/blue"
+                    android:background="?android:attr/selectableItemBackground"
                     android:layout_marginTop="2.3dp"
                     android:layout_marginStart="6dp"
                     android:text="@string/txt_terms_and_policy" />

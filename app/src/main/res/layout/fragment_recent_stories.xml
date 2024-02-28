@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/guideline17"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="22dp"/>
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:src="@drawable/ic_search"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="@+id/tvRecentStories"
         app:layout_constraintEnd_toEndOf="@id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/tvRecentStories" />

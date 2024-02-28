@@ -44,6 +44,7 @@
         android:src="@drawable/ic_add_chat"
         android:backgroundTint="@color/blue"
         app:fabCustomSize="48dp"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/imgN" />
 

@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,6 +50,7 @@
                 android:layout_marginEnd="22dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/selecter_bookmark"
                 app:layout_constraintEnd_toStartOf="@id/ivShare"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_share"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="@+id/ivBookMark"
                 app:layout_constraintStart_toStartOf="@+id/ivBookMark"
                 app:layout_constraintTop_toTopOf="@+id/ivBookMark" />
@@ -69,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:src="@drawable/ic_three_dot_chat"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintBottom_toBottomOf="@+id/ivShare"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@+id/ivShare"
@@ -314,6 +318,7 @@
                     style="@style/personName"
                     android:drawablePadding="10dp"
                     android:textColor="@color/blue"
+                    android:background="?android:attr/selectableItemBackground"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
