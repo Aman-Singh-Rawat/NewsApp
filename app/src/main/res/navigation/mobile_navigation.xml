@@ -49,11 +49,7 @@
         android:name="com.newsapp.ui.bookMarkNav.BookmarkFragment"
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
-    <dialog
-        android:id="@+id/bookMarkBottomSheetFragment"
-        android:name="com.newsapp.ui.homeNav.bookmark.BookMarkBottomSheetFragment"
-        android:label="fragment_book_mark_bottom_sheet"
-        tools:layout="@layout/fragment_book_mark_bottom_sheet" />
+
     <fragment
         android:id="@+id/fullDeatilsFragment"
         android:name="com.newsapp.ui.homeNav.newsdetails.FullDeatilsFragment"
@@ -79,5 +75,10 @@
         android:name="com.newsapp.ui.homeNav.newsdetails.CommentFragment"
         android:label="fragment_comment"
         tools:layout="@layout/fragment_comment" />
+    <dialog
+        android:id="@+id/bookMarkBottomSheetFragment"
+        android:name="com.newsapp.ui.homeNav.bookmark.BookMarkBottomSheetFragment"
+        android:label="fragment_book_mark_bottom_sheet"
+        tools:layout="@layout/fragment_book_mark_bottom_sheet" />
 
 </navigation>

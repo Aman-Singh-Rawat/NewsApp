@@ -17,7 +17,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUserName"
-        style="@style/viewAll"
+        style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -49,10 +49,12 @@
         android:id="@+id/tvFullComment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        style="@style/poppins"
-        android:lineSpacingExtra="4dp"
-        android:letterSpacing="0.02"
+        android:layout_marginTop="8dp"
+        style="@style/comment"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="3dp"
+        android:letterSpacing="0.01"
         android:text="@string/this_investigative"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,84 +63,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--
- <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/cvProfile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/img_girl_profile"
-        app:layout_constraintBottom_toBottomOf="@id/tvCommentDays"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvUserName" />
-
-    <TextView
-        android:id="@+id/tvUserName"
-        style="@style/poppins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:textStyle="bold"
-        android:includeFontPadding="false"
-        android:layout_marginBottom="20dp"
-        android:text="Sanjuanita Qrdonez"
-        app:layout_constraintStart_toEndOf="@+id/cvProfile"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCommentDays"
-        style="@style/poppins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="3 day ago"
-        android:includeFontPadding="false"
-        android:textColor="@color/grey"
-        app:layout_constraintStart_toEndOf="@+id/cvProfile"
-        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
-
-    <TextView
-        android:id="@+id/tvFullComment"
-        style="@style/poppins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/this_investigative"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCommentDays" />
-
-    <ImageView
-        android:id="@+id/ivheart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_without_color"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFullComment" />
-
-    <TextView
-        android:id="@+id/tvLikeNumber"
-        style="@style/poppins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="256"
-        app:layout_constraintBottom_toBottomOf="@+id/ivheart"
-        app:layout_constraintStart_toEndOf="@+id/ivheart"
-        app:layout_constraintTop_toTopOf="@+id/ivheart" />
-
-    <TextView
-        android:id="@+id/tvReplyTxt"
-        style="@style/poppins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="Reply"
-        app:layout_constraintBottom_toBottomOf="@+id/tvLikeNumber"
-        app:layout_constraintStart_toEndOf="@+id/tvLikeNumber"
-        app:layout_constraintTop_toTopOf="@+id/tvLikeNumber" />
--->

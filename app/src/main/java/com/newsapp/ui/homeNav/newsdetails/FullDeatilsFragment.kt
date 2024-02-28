@@ -50,17 +50,11 @@ class FullDeatilsFragment : Fragment() {
             findNavController().navigateUp()
         }
         binding.ivBookMark.setOnClickListener {
-            val bottomSheetView =
-                layoutInflater.inflate(R.layout.fragment_book_mark_bottom_sheet, null)
-            val bottomSheetDialog = BottomSheetDialog(requireContext())
-            bottomSheetDialog.setContentView(bottomSheetView)
-            bottomSheetDialog.show()
+            findNavController().navigate(R.id.bookMarkBottomSheetFragment)
         }
     }
         private fun rvNewsTags() {
             binding.rvNewsTags.adapter = newsAdapter
-            binding.rvNewsTags.layoutManager =
-                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             newsAdapter.update(getdata())
         }
 

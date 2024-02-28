@@ -25,7 +25,7 @@ class EditProfileFragment : Fragment() {
             .inflate(inflater, container, false
             )
 
-        //changeKeyboard()
+        changeButtonText()
         textSetup()
         return binding.root
 
@@ -47,10 +47,8 @@ class EditProfileFragment : Fragment() {
             }
         }
     }
-
-    private fun changeKeyboard() {
-        binding.etBio.inputType = InputType.TYPE_TEXT_FLAG_MULTI_LINE
-        binding.etBio.imeOptions = EditorInfo.IME_ACTION_DONE
+    private fun changeButtonText() {
+        binding.includeBtn.btnAllInOne.text = "Save"
 
     }
 

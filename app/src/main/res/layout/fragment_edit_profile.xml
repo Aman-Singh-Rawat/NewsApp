@@ -150,6 +150,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <include
+            android:id="@+id/includeBtn"
             layout="@layout/layout_one_button"/>
 
     </LinearLayout>
