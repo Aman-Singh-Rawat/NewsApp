@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
 
-@Suppress("UNREACHABLE_CODE")
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
     override fun onCreateView(
@@ -25,12 +24,15 @@ class EditProfileFragment : Fragment() {
             .inflate(inflater, container, false
             )
 
+        binding.imgBackArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
         changeButtonText()
         textSetup()
         return binding.root
 
     }
-    fun uploadImage(imgEditProfile : ImageView) {
+    private fun uploadImage(imgEditProfile : ImageView) {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
         intent.type = "image/*"
@@ -82,9 +84,8 @@ class EditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       val imgEditProfile = view.findViewById<ImageView>(R.id.imgEditProfile)
         binding.ivImageOpen.setOnClickListener {
-            uploadImage(imgEditProfile)
+            uploadImage(binding.imgEditProfile)
         }
     }
 }
