@@ -51,9 +51,10 @@ class FullDeatilsFragment : Fragment() {
         }
     }
     private fun rvNewsTags() {
+        binding.rvNewsTags.setHasFixedSize(true)
         binding.rvNewsTags.adapter = newsAdapter
         binding.rvNewsTags.layoutManager =
-            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL)
         newsAdapter.update(getdata())
     }
 

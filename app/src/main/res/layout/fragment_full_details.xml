@@ -203,7 +203,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                tools:listitem="@layout/recent_stories"
+                tools:listitem="@layout/tag_item"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
