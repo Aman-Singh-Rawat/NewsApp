@@ -31,12 +31,9 @@ class ProfileFragment : Fragment() {
             navigateAnotherActivity()
         }
         binding.icLogout.setOnClickListener {
-            openSignInFragment()
+            findNavController().navigate(R.id.logoutFragment)
         }
         return binding.root
-    }
-    private fun openSignInFragment() {
-        findNavController().navigate(R.id.signInFragment2)
     }
     private fun navigateAnotherActivity() {
         findNavController().navigate(R.id.editProfileFragment)
