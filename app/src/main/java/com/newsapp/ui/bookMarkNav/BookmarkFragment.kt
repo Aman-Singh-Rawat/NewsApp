@@ -21,27 +21,16 @@ class BookmarkFragment : Fragment() {
         binding = FragmentBookmarkBinding.inflate(
             inflater, container, false
         )
-        binding.fabButton.setOnClickListener {
-            openBottomSheet()
-        }
-        fabColorChange()
         setUpStoriesTag()
         return binding.root
     }
-    private fun openBottomSheet() {
-        findNavController().navigate(R.id.collectionBottomFragment)
-    }
     private fun setUpStoriesTag() {
-
-        binding.rvBookmarkTag.adapter = TagsRecyclerView(featureList())
+        val tagsRecyclerView = TagsRecyclerView(featureList(), true, requireContext(), findNavController())
+        binding.rvBookmarkTag.adapter = tagsRecyclerView
     }
     private fun featureList(): List<String> {
         return listOf(
             "All","Politics","Technology","Business"
         )
-    }
-    private fun fabColorChange() {
-        val color = ContextCompat.getColor(requireContext(), R.color.white)
-        binding.fabButton.imageTintList = ColorStateList.valueOf(color)
     }
 }

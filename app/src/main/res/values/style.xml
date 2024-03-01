@@ -61,12 +61,6 @@
     </style>
 
     <!--        style for layout_home_page_recycler-->
-    <style name="mediumText" parent="CardView">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/blue</item>
-        <item name="fontFamily">@font/poppins_semibold</item>
-
-    </style>
 
     <style name="verySmallText" parent="CardView">
         <item name="fontFamily">@font/poppins_light</item>
@@ -97,6 +91,7 @@
 
     </style>
 
+<!--    medium text-->
     <style name="headingText" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
