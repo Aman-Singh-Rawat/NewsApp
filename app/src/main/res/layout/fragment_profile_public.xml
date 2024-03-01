@@ -11,8 +11,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
         android:layout_weight="1"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,8 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_back_arrow"
                 android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_back_arrow"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,7 +74,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/img_girl_profile"
-                app:layout_constraintDimensionRatio="5:1"
+                app:layout_constraintDimensionRatio="4:1"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
@@ -82,12 +82,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="70dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_edit"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
                 app:layout_constraintEnd_toStartOf="@+id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@+id/glProfileStart" />
+                app:layout_constraintStart_toStartOf="@+id/glProfileStart"
+                app:layout_constraintTop_toTopOf="@id/ivProfile" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clProfile"
@@ -103,38 +105,21 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvBio"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/bio"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/clProfile" />
-
-            <EditText
-                android:id="@+id/etBio"
-                style="@style/singleBoldText"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_rectangle"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="top"
-                android:hint="@string/bio"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintEnd_toEndOf="@+id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvBio" />
+                app:layout_constraintTop_toBottomOf="@id/clProfile">
 
+                <include
+                    android:id="@+id/includeBio"
+                    layout="@layout/bio_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
+
     <LinearLayout
         android:id="@+id/linearLayoutProfile"
         android:layout_width="match_parent"

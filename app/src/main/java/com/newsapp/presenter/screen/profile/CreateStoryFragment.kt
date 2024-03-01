@@ -64,7 +64,7 @@ class CreateStoryFragment : Fragment() {
                 startActivityForResult(intent, 2)
             }
 
-
+// Rich Text Add Link
 //        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
 //            mEditor!!.insertLink(
 //                "https://github.com/wasabeef",
