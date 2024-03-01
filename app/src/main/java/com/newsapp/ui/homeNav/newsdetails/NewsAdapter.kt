@@ -1,22 +1,33 @@
 package com.newsapp.ui.homeNav.newsdetails
 
 import android.annotation.SuppressLint
+import android.graphics.Insets.add
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     private var newsList = mutableListOf<String>()
+    private var selector = 0
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(itemView: View, s: String) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("NotifyDataSetChanged")
+        fun onBind(itemView: View, s: String, position: Int) {
+
+//            itemView.isSelected = selector == position
             val tvRecyclerTags = itemView.findViewById<TextView>(R.id.tvRecyclerTags)
             tvRecyclerTags.text = s
+//            itemView.setOnClickListener {
+//                if (selector != position) {
+//                    selector = position
+//                    notifyDataSetChanged()
+//                }
+//            }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +40,7 @@ class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(holder.itemView, newsList[position])
+        holder.onBind(holder.itemView, newsList[position], position)
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -197,18 +197,17 @@
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintTop_toBottomOf="@+id/tvMinuteRead"/>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNewsTags"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                tools:listitem="@layout/tag_item"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc"
+                tools:listitem="@layout/tag_item" />
 
             <View
                 android:id="@+id/viewFullDetails"
