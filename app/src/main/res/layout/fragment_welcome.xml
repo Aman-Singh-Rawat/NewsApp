@@ -52,14 +52,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:textStyle="bold"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_google"
             android:gravity="center"
-            android:padding="15dp"
             android:letterSpacing="0.03"
+            android:padding="15dp"
             android:text="@string/continue_with_google"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 

@@ -88,7 +88,7 @@
                     android:layout_height="match_parent"
                     android:background="?android:attr/selectableItemBackground"
                     android:elevation="2dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/tvGetImage"

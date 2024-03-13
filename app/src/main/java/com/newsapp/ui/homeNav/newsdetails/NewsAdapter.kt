@@ -12,21 +12,13 @@ import com.newsapp.R
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     private var newsList = mutableListOf<String>()
-    private var selector = 0
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @SuppressLint("NotifyDataSetChanged")
         fun onBind(itemView: View, s: String, position: Int) {
 
-//            itemView.isSelected = selector == position
             val tvRecyclerTags = itemView.findViewById<TextView>(R.id.tvRecyclerTags)
             tvRecyclerTags.text = s
-//            itemView.setOnClickListener {
-//                if (selector != position) {
-//                    selector = position
-//                    notifyDataSetChanged()
-//                }
-//            }
         }
     }
 

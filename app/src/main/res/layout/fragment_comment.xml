@@ -27,8 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_back_arrow"
         android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_back_arrow"
         app:layout_constraintStart_toStartOf="@id/glCommentStart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,12 +44,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCommentScreen"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/rvCommentScreen"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="@id/glCommentEnd"
         app:layout_constraintBottom_toTopOf="@+id/clBottomComment"
+        app:layout_constraintEnd_toEndOf="@id/glCommentEnd"
         app:layout_constraintStart_toStartOf="@id/glCommentStart"
         app:layout_constraintTop_toBottomOf="@id/tvComment"
         tools:listitem="@layout/comment_recycle_item" />
@@ -83,8 +83,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/bg_rectangle"
-            android:padding="18dp"
             android:hint="@string/add_a_comment"
+            android:padding="18dp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivSendBtn"
