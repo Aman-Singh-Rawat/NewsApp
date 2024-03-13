@@ -35,34 +35,34 @@
         style="@style/writeStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Preview"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ivArrowStory"
         app:layout_constraintEnd_toStartOf="@id/tvContinue"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@id/ivArrowStory"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/ivArrowStory" />
 
     <TextView
         android:id="@+id/tvContinue"
         style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:background="?android:attr/selectableItemBackground"
         android:text="continue"
         android:textColor="@color/blue"
-        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPreview"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tvPreview" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintStart_toStartOf="@id/glPreViewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
-        app:layout_constraintTop_toBottomOf="@+id/tvContinue"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="@id/glPreViewStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvContinue">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -75,11 +75,11 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_white"
                 app:cardCornerRadius="12dp"
-                app:layout_constraintDimensionRatio="16:10"
                 app:cardUseCompatPadding="false"
+                app:layout_constraintDimensionRatio="16:10"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/imgPreview"
@@ -94,13 +94,13 @@
 
             <TextView
                 android:id="@+id/tvTitle"
+                style="@style/articleHeading"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:includeFontPadding="false"
-                style="@style/articleHeading"
-                android:lineSpacingExtra="4dp"
                 android:letterSpacing="0.03"
+                android:lineSpacingExtra="4dp"
                 android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -123,8 +123,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Andrew Ainsley  "
-                app:layout_constraintStart_toEndOf="@id/ivProfile"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintStart_toEndOf="@id/ivProfile"
                 app:layout_constraintTop_toTopOf="@+id/ivProfile" />
 
             <TextView
@@ -135,57 +135,57 @@
                 android:layout_marginStart="18dp"
                 android:text="You"
                 android:textColor="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/tvProfileName"
                 app:layout_constraintStart_toEndOf="@id/tvProfileName"
-                app:layout_constraintTop_toTopOf="@id/tvProfileName"
-                app:layout_constraintBottom_toBottomOf="@+id/tvProfileName"/>
+                app:layout_constraintTop_toTopOf="@id/tvProfileName" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAgo"
+                style="@style/fiveMinutesRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
                 android:text="5 mins read"
-                style="@style/fiveMinutesRead"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvYou"
-                android:layout_marginTop="18dp"/>
+                app:layout_constraintTop_toBottomOf="@id/tvYou" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNow"
+                style="@style/fiveMinutesRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:text="Now"
-                style="@style/fiveMinutesRead"
-                app:layout_constraintStart_toEndOf="@id/tvAgo"
-                app:layout_constraintTop_toTopOf="@+id/tvAgo"
                 app:layout_constraintBottom_toBottomOf="@id/tvAgo"
-                android:layout_marginStart="20dp"/>
+                app:layout_constraintStart_toEndOf="@id/tvAgo"
+                app:layout_constraintTop_toTopOf="@+id/tvAgo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvViews"
+                style="@style/fiveMinutesRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="0"
-                style="@style/fiveMinutesRead"
-                android:gravity="center"
-                android:drawablePadding="7dp"
                 android:drawableStart="@drawable/ic_eye"
+                android:drawablePadding="7dp"
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/tvAgo"
                 app:layout_constraintStart_toEndOf="@id/tvNow"
-                app:layout_constraintTop_toTopOf="@+id/tvAgo"
-                app:layout_constraintBottom_toBottomOf="@id/tvAgo"/>
+                app:layout_constraintTop_toTopOf="@+id/tvAgo" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                style="@style/fiveMinutesRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="0"
-                style="@style/fiveMinutesRead"
-                android:gravity="center"
-                android:drawablePadding="7dp"
                 android:drawableStart="@drawable/img_msg_two"
+                android:drawablePadding="7dp"
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@id/tvAgo"
                 app:layout_constraintStart_toEndOf="@id/tvViews"
-                app:layout_constraintTop_toTopOf="@+id/tvAgo"
-                app:layout_constraintBottom_toBottomOf="@id/tvAgo"/>
+                app:layout_constraintTop_toTopOf="@+id/tvAgo" />
 
             <TextView
                 android:id="@+id/tvStory"
@@ -194,8 +194,8 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="15dp"
                 android:gravity="top"
-                android:textColor="@color/black"
                 android:text="Your Story"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

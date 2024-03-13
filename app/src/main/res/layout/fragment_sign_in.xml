@@ -87,6 +87,7 @@
                     android:paddingTop="4.1dp"
                     android:paddingStart="8dp"
                     android:gravity="center"
+                    android:buttonTint="@color/blue"
                     android:background="?android:attr/selectableItemBackground"
                     app:layout_constraintTop_toBottomOf="@id/etFillPassWord" />
 

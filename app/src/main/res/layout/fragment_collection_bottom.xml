@@ -47,6 +47,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_rectangle"
         android:maxLines="1"
+        android:singleLine="true"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="@id/guideline16"
         app:layout_constraintStart_toStartOf="@id/guideline15"
