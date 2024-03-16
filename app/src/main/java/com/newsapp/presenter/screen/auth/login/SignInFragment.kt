@@ -40,6 +40,7 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             })
         }
+        //dummy
 
         binding.ivBackArrowSignIn.setOnClickListener {
             onBackPressed()
