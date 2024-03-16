@@ -67,7 +67,7 @@
         tools:layout="@layout/fragment_collection_bottom" />
     <fragment
         android:id="@+id/signInFragment2"
-        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
+        android:name="com.newsapp.presenter.screen.auth.login.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" />
     <fragment

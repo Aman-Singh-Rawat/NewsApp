@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.newsapp.presenter.screen.auth.WelcomeFragment"
+        android:name="com.newsapp.presenter.screen.auth.login.WelcomeFragment"
         android:label="login_fragment"
         tools:layout="@layout/fragment_welcome"/>
 
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.newsapp.presenter.screen.auth.CreateAccountFragment"
+        android:name="com.newsapp.presenter.screen.auth.register.CreateAccountFragment"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" />
 
@@ -32,19 +32,19 @@
 
     <fragment
         android:id="@+id/all_Set_Fragment"
-        android:name="com.newsapp.presenter.screen.auth.AllSetFragment"
+        android:name="com.newsapp.presenter.screen.auth.register.AllSetFragment"
         android:label="fragment_all__set_"
         tools:layout="@layout/fragment_all__set_" />
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.newsapp.presenter.screen.auth.SignInFragment"
+        android:name="com.newsapp.presenter.screen.auth.login.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in"/>
 
     <dialog
         android:id="@+id/signInDialogFragment"
-        android:name="com.newsapp.presenter.screen.auth.SignInDialogFragment"
+        android:name="com.newsapp.presenter.screen.auth.register.SignInDialogFragment"
         android:label="SignInDialog"
         tools:layout="@layout/fragment_sign_in_dialog" />
 

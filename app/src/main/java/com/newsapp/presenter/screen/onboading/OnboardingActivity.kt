@@ -4,14 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import androidx.core.view.marginTop
 import androidx.viewpager2.widget.ViewPager2
 import com.newsapp.R
 import com.newsapp.databinding.ActivityOnboardingBinding
-import com.newsapp.databinding.LayoutTwoButtonBinding
-import com.newsapp.presenter.screen.auth.SignUp
+import com.newsapp.presenter.screen.auth.register.SignUp
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding

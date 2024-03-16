@@ -1,17 +1,13 @@
 package com.newsapp.presenter.screen.profile
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPreviewStoryBinding
-import com.newsapp.presenter.screen.auth.SignInFragment
 
 class PreviewStoryFragment : Fragment() {
     private lateinit var binding: FragmentPreviewStoryBinding

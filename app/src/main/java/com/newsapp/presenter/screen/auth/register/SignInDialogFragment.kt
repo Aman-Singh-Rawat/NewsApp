@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth
+package com.newsapp.presenter.screen.auth.register
 
 import android.app.Dialog
 import android.content.Intent

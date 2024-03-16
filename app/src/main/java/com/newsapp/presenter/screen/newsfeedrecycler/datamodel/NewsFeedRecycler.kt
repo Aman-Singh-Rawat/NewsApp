@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth.newsfeedrecycler.datamodel
+package com.newsapp.presenter.screen.newsfeedrecycler.datamodel
 
 import android.annotation.SuppressLint
 import android.content.Context

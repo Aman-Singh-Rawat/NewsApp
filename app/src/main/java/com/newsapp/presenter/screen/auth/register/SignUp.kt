@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth
+package com.newsapp.presenter.screen.auth.register
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +11,6 @@ class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-//        val ivBackArrowCreate = findViewById<ImageView>(ivBackArrowCreate)
-//        ivBackArrowCreate.setOnClickListener {
-//            val intent = Intent(this, WelcomeFragment::class.java)
-//            startActivity(intent)
-//        }
+
     }
 }
