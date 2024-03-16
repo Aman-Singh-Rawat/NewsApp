@@ -8,8 +8,8 @@
             android:id="@+id/imgChannelLogo"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginTop="6dp"
             android:src="@drawable/ic_cnn_news"
-            android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -19,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="5dp"
             android:text="CNN News"
             app:layout_constraintBottom_toBottomOf="@+id/imgChannelLogo"
             app:layout_constraintStart_toEndOf="@+id/imgChannelLogo"
@@ -30,7 +29,7 @@
             style="@style/verySmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="7dp"
             android:text="3 days ago"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgChannelLogo" />
@@ -41,13 +40,13 @@
             android:layout_height="wrap_content"
             android:text="245.8k"
             style="@style/verySmallText"
-            android:drawableStart="@drawable/ic_open_eye"
+            android:drawableStart="@drawable/ic_eye"
             app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
             app:layout_constraintTop_toTopOf="@+id/tvDaysAgo"
             app:layout_constraintBottom_toBottomOf="@id/tvDaysAgo"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="20dp"
             android:gravity="center"
-            android:drawablePadding="10dp"/>
+            android:drawablePadding="8dp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTotalComments"
@@ -55,11 +54,11 @@
             android:layout_height="wrap_content"
             android:text="3.2k"
             style="@style/verySmallText"
-            android:drawableStart="@drawable/img_msg"
+            android:drawableStart="@drawable/ic_msg"
             app:layout_constraintStart_toEndOf="@+id/tvTotalViews"
             app:layout_constraintTop_toTopOf="@+id/tvTotalViews"
             app:layout_constraintBottom_toBottomOf="@id/tvTotalViews"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:drawablePadding="10dp"/>
 
@@ -67,7 +66,7 @@
             android:id="@+id/icShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="21dp"
             app:layout_constraintEnd_toStartOf="@id/icDots"
             app:layout_constraintTop_toTopOf="@+id/tvTotalComments"
             app:layout_constraintBottom_toBottomOf="@id/tvTotalComments"

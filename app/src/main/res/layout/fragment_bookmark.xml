@@ -4,19 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.bookMarkNav.BookMarkFragment">
-    <androidx.constraintlayout.widget.Guideline
+    tools:context=".ui.bookMarkNav.BookmarkFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.05"
-        android:orientation="vertical"
-        android:id="@+id/glStart"/>
-    <androidx.constraintlayout.widget.Guideline
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_n"
+        app:layout_constraintStart_toStartOf="@id/guideline13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView2"
+        style="@style/writeStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.95"
+        android:layout_marginTop="20dp"
+        android:includeFontPadding="false"
+        android:text="Bookmark"
+        app:layout_constraintEnd_toEndOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="@id/guideline14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBookmarkTag"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icLogout"
+        tools:listitem="@layout/recent_stories" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSavedArticles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/rvBookmarkTag"
+        app:layout_constraintStart_toStartOf="@id/guideline13"
+        app:layout_constraintEnd_toEndOf="@id/guideline14"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgClipBoard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_two_clipboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="6:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmpty"
+        style="@style/empty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Empty"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline14"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/imgClipBoard" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmptyDesc"
+        style="@style/stories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:includeFontPadding="false"
+        android:text="You have not saved ant stories to this\ncollection"
+        app:layout_constraintEnd_toEndOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/glEnd"/>
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presenter.screen.auth.PublicProfileFragment">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_back_arrow"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,26 +68,28 @@
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreateProfile" />
 
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewProfile"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="60dp"
-                app:cardElevation="20dp"
+                android:src="@drawable/img_girl_profile"
+                app:layout_constraintDimensionRatio="4:1"
                 app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience">
-                <com.google.android.material.imageview.ShapeableImageView
-                    app:strokeColor="@android:color/darker_gray"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/ivProfile"
-                    style="@style/roundedImageViewRounded"
-                    android:layout_gravity="center"
-                    android:src="@drawable/imp_person_one"/>
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toBottomOf="@id/tvNewsExperience" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icEdit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="60dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintDimensionRatio="9:1"
+                app:layout_constraintEnd_toStartOf="@+id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@+id/glProfileStart"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clProfile"
@@ -90,7 +97,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@+id/glProfileEnd"
                 app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/cardViewProfile">
+                app:layout_constraintTop_toBottomOf="@id/icEdit">
 
                 <include
                     android:id="@+id/includeProfile"
@@ -98,55 +105,34 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvBio"
-                style="@style/singleBoldText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/bio"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/clProfile" />
-
-
-            <EditText
-                android:id="@+id/etBio"
-                style="@style/singleBoldText"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints="Password"
-                android:background="@drawable/bg_rectangle"
-                android:drawablePadding="15dp"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="top"
-                android:hint="@string/bio"
-                android:maxLength="10"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                app:layout_constraintBottom_toBottomOf="@id/linearLayoutProfile"
-                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart"
-                app:layout_constraintTop_toBottomOf="@id/tvBio" />
-
-
-            <LinearLayout
-                android:id="@+id/linearLayoutProfile"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
-                app:layout_constraintStart_toStartOf="@id/glProfileStart">
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@id/clProfile">
 
                 <include
-                    android:id="@+id/includeProfileFragment"
-                    layout="@layout/layout_one_button" />
+                    android:id="@+id/includeBio"
+                    layout="@layout/bio_text" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/includeProfileFragment"
+            layout="@layout/layout_one_button" />
+
+    </LinearLayout>
+
+</LinearLayout>

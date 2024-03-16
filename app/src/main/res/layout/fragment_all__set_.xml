@@ -38,25 +38,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_back_arrow"
+                android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/glAllStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgAllSet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:adjustViewBounds="true"
+                app:layout_constraintDimensionRatio="4.5"
                 android:src="@drawable/img_circular_true"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvAllSet"
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
-                app:layout_constraintStart_toStartOf="@id/glAllStart" />
+                app:layout_constraintStart_toStartOf="@id/glAllStart"  />
 
             <TextView
                 android:id="@+id/tvAllSet"
-                style="@style/headText"
-                android:layout_width="wrap_content"
+                style="@style/youAreAllSet"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="5dp"
                 android:text="You're All Set!"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
@@ -64,11 +69,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/smallText"
-                android:layout_width="300dp"
+                style="@style/poppins"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="6dp"
                 android:text="Start exploring, discovering, and engaging with the news."
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
                 app:layout_constraintStart_toStartOf="@id/glAllStart"

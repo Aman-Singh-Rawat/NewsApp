@@ -64,7 +64,7 @@ class CreateStoryFragment : Fragment() {
                 startActivityForResult(intent, 2)
             }
 
-
+// Rich Text Add Link
 //        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
 //            mEditor!!.insertLink(
 //                "https://github.com/wasabeef",
@@ -81,7 +81,6 @@ class CreateStoryFragment : Fragment() {
         }
         val cvImage = view.findViewById<CardView>(R.id.cvImage)
         val ivStory = view.findViewById<ImageView>(R.id.ivStory)
-
         cvImage.setOnClickListener {
             uploadImage(ivStory)
         }
@@ -93,17 +92,10 @@ class CreateStoryFragment : Fragment() {
         intent.type = "image/*"
         startActivityForResult(intent, 1)
     }
-
-    fun setImage(imageUri: Context?) {
-
-    }
-
 // Usage
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        /*(Rich Editor img picker)*/
 //        val editor = view?.findViewById<EditorView>(R.id.editor)
 //        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
 //            val imageUri = data?.data

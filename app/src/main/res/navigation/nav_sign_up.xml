@@ -9,49 +9,27 @@
         android:id="@+id/loginFragment"
         android:name="com.newsapp.presenter.screen.auth.WelcomeFragment"
         android:label="login_fragment"
-        tools:layout="@layout/fragment_welcome">
-
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUp" />
-
-        <action
-            android:id="@+id/action_welcomeFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-
-    </fragment>
+        tools:layout="@layout/fragment_welcome"/>
 
     <fragment
-        android:id="@+id/signUp"
+        android:id="@+id/createAccountFragment"
         android:name="com.newsapp.presenter.screen.auth.CreateAccountFragment"
-        android:label="fragment_create__account_"
-        tools:layout="@layout/fragment_create__account_">
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
 
-        <action
-            android:id="@+id/action_signUpFragment_to_NewsFeedFragment"
-            app:destination="@+id/newsFeedFragment" />
-
-    </fragment>
 
     <fragment
         android:id="@+id/newsFeedFragment"
         android:name="com.newsapp.presenter.screen.auth.NewsFeedFragment"
         android:label="News_Feed_Fragment"
-        tools:layout="@layout/fragment_news_feed">
-        <action
-            android:id="@+id/action_newsFeedFragment_to_public_Profile_Fragment"
-            app:destination="@id/public_Profile_Fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_news_feed"/>
 
     <fragment
         android:id="@+id/public_Profile_Fragment"
         android:name="com.newsapp.presenter.screen.auth.PublicProfileFragment"
         android:label="Public_Profile_Fragment"
-        tools:layout="@layout/fragment_profile_public">
-        <action
-            android:id="@+id/action_public_Profile_Fragment_to_all_Set_Fragment"
-            app:destination="@id/all_Set_Fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile_public"/>
+
     <fragment
         android:id="@+id/all_Set_Fragment"
         android:name="com.newsapp.presenter.screen.auth.AllSetFragment"
@@ -62,11 +40,7 @@
         android:id="@+id/signInFragment"
         android:name="com.newsapp.presenter.screen.auth.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in">
-        <action
-            android:id="@+id/action_signInFragment_to_signInDialogFragment"
-            app:destination="@id/signInDialogFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_sign_in"/>
 
     <dialog
         android:id="@+id/signInDialogFragment"

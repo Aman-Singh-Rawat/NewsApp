@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/selecter_tag"
-    android:id="@+id/tvRecyclerAddTags"
-    style="@style/mediumTextBlack"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="5dp"
-    android:drawablePadding="10dp"
-    android:gravity="center"
-    android:layout_marginStart="5dp"
-    android:paddingStart="20dp"
-    android:paddingTop="5dp"
-    android:paddingEnd="20dp"
-    android:paddingBottom="5dp"
-    android:text="All" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_add_chat"
+        android:backgroundTint="@color/blue"
+        app:fabCustomSize="46dp"
+        android:visibility="gone"
+        android:background="?android:attr/selectableItemBackground"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selecter_tag"
+        android:id="@+id/tvRecyclerAddTags"
+        style="@style/mediumTextBlack"
+        android:layout_marginBottom="5dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:paddingStart="20dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:text="All" />
+</LinearLayout>
+
 
 

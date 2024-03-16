@@ -13,17 +13,19 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_arrow"
         android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/guideline7"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPublish"
-        style="@style/writeStories"
+        style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Publish"
         android:textColor="@color/blue"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/guideline8"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,8 +42,9 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewPublish"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="16:10"
                 android:layout_marginTop="20dp"
                 android:elevation="5dp"
                 app:cardCornerRadius="12dp"
@@ -51,9 +54,10 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgGirlWithRobot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
                     android:elevation="2dp"
                     android:src="@drawable/img_cute_girl_with_robot" />
 
@@ -67,7 +71,7 @@
                 style="@style/articleHeading"
                 android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
                 android:textColor="@color/black"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="3dp"
                 android:letterSpacing="0.01"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +92,7 @@
                 android:id="@+id/spinnerPublish"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_rectangle"
                 android:paddingVertical="20dp"
                 style="@style/poppins"
@@ -112,11 +116,12 @@
                 android:id="@+id/etAddTags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_rectangle"
                 android:hint="Type tag and enter ..."
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
+                android:gravity="start"
                 style="@style/poppins"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
@@ -130,7 +135,7 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroup"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clipToPadding="true"
@@ -155,6 +160,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.96" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

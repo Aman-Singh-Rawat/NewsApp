@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/glCreateStart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +37,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/write_stories"
         android:textSize="20sp"
+        android:layout_marginStart="18dp"
         app:layout_constraintEnd_toStartOf="@+id/tvPreview"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@id/imgBackArrow"
@@ -43,12 +45,13 @@
 
     <TextView
         android:id="@+id/tvPreview"
-        style="@style/writeStories"
+        style="@style/singleBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:text="@string/preview"
         android:textColor="@color/blue"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/glCreateEnd"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,7 +76,7 @@
                 android:backgroundTint="@color/dark_white"
                 android:scaleType="fitXY"
                 app:cardCornerRadius="12dp"
-                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintDimensionRatio="16:10"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,8 +86,9 @@
                     android:id="@+id/ivStory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
                     android:elevation="2dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/tvGetImage"
@@ -92,9 +96,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:drawablePadding="10dp"
-                    android:fontFamily="@font/poppins_medium"
+                    style="@style/poppins"
                     android:text="@string/txt_add_cover_image"
-                    android:textSize="10sp"
+                    android:background="?android:attr/selectableItemBackground"
                     app:drawableTopCompat="@drawable/ic_image"
                     tools:ignore="OnClick,SmallSp" />
 
@@ -150,11 +154,11 @@
 
                 <ImageButton
                     android:id="@+id/action_bold"
-                    android:layout_width="55dp"
+                    android:layout_width="52dp"
                     android:layout_height="48dp"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_bold" />
+                    android:src="@drawable/ic_bold_text" />
 
                 <ImageButton
                     android:id="@+id/action_italic"
@@ -162,11 +166,11 @@
                     android:layout_height="48dp"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_italic" />
+                    android:src="@drawable/ic_italic_text" />
 
                 <ImageButton
                     android:id="@+id/action_underline"
-                    android:layout_width="48dp"
+                    android:layout_width="52dp"
                     android:layout_height="48dp"
                     android:background="@null"
                     android:contentDescription="@null"
@@ -179,15 +183,15 @@
                     android:layout_gravity="center"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_bullet" />
+                    android:src="@drawable/ic_bullet_text" />
 
                 <ImageButton
                     android:id="@+id/action_insert_numbers"
                     android:layout_width="52dp"
                     android:layout_height="48dp"
                     android:background="@null"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_bullet" />
+                    android:src="@drawable/ic_number"
+                    android:contentDescription="@null" />
 
                 <ImageButton
                     android:id="@+id/action_insert_link"
@@ -195,22 +199,21 @@
                     android:layout_height="48dp"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_link" />
+                    android:src="@drawable/ic_link_text" />
 
                 <ImageButton
                     android:id="@+id/action_insert_image"
-                    android:layout_width="match_parent"
+                    android:layout_width="52dp"
                     android:layout_height="48dp"
                     android:background="@null"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_image_link" />
+                    android:src="@drawable/ic_image_text" />
             </LinearLayout>
 
             <jp.wasabeef.richeditor.RichEditor
                 android:id="@+id/editor"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="2dp"
                 android:background="@drawable/bg_rectangle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

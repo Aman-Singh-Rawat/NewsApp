@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -27,6 +28,9 @@ class PublicProfileFragment : Fragment() {
     private var etName: EditText? = null
     private var etUserName: EditText? = null
     private var btnFinish: Button? = null
+    private var tvBio: TextView? = null
+    private var etBio: EditText? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,18 +56,26 @@ class PublicProfileFragment : Fragment() {
     }
 
     private fun initializingInclude() {
+        tvBio = binding.includeBio.root.findViewById(R.id.tvBio)
+        etBio = binding.includeBio.root.findViewById(R.id.etBio)
         tvName = binding.includeProfile.root.findViewById(R.id.tvEmail)
         tvUserName = binding.includeProfile.root.findViewById(R.id.tvPassword)
         etName = binding.includeProfile.root.findViewById(R.id.etFillEmail)
         etUserName = binding.includeProfile.root.findViewById(R.id.etFillPassWord)
+
         changingValue()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun changingValue() {
         tvName?.text = "Full Name"
         tvUserName?.text = "UserName"
         etName?.hint = "e.g. John"
         etUserName?.hint = "john@gmail.com"
+        tvBio?.text = "Bio"
+        etBio?.hint = "Tech enthusiast, likes to share stories a..."
+        etBio?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
+        etBio?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
         etName?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
         etUserName?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
         etName?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
@@ -77,20 +89,17 @@ class PublicProfileFragment : Fragment() {
     }
     val openAllSetFragment = {
         findNavController().navigate(
-            R.id.action_public_Profile_Fragment_to_all_Set_Fragment
+            R.id.all_Set_Fragment
         )
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cardViewProfile = view.findViewById<CardView>(R.id.cardViewProfile)
-        val ivProfile = view.findViewById<ImageView>(R.id.ivProfile)
-        cardViewProfile.setOnClickListener {
-            uploadImage(ivProfile)
+
+        binding.ivProfile.setOnClickListener {
+            uploadImage(binding.ivProfile)
         }
-
-
     }
 
     private fun uploadImage(ivProfile: ImageView?) {
@@ -108,8 +117,6 @@ class PublicProfileFragment : Fragment() {
                 val uri = data?.data
                 ivProfile?.setImageURI(uri)
             }
-
-
         }
     }
 

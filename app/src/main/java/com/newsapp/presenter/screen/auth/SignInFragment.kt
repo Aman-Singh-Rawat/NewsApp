@@ -12,26 +12,30 @@ import com.newsapp.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
-    private var btnSignUP: Button? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-        btnSignUP = binding.btnSignUP.root.findViewById(R.id.btnAllInOne)
 
-        btnSignUP?.setOnClickListener {
+        binding.btnSignUP.btnAllInOne.setOnClickListener {
             signInDialogFragment()
         }
 
         binding.ivBackArrowSignIn.setOnClickListener {
             onBackPressed()
         }
+
+        binding.includeSignUp.tvSgnIn.setOnClickListener {
+            findNavController().navigate(R.id.createAccountFragment)
+        }
+
+        binding.btnSignUP.btnAllInOne.text = "Sign in"
         return binding.root
     }
 
     val signInDialogFragment = {
-        findNavController().navigate(R.id.action_signInFragment_to_signInDialogFragment)
+        findNavController().navigate(R.id.signInDialogFragment)
     }
     private fun onBackPressed(): Boolean {
         findNavController().navigateUp()

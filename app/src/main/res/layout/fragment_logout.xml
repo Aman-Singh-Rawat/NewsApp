@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profileNav.LogoutFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLogout"
+        style="@style/writeStories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Logout"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintEnd_toEndOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@id/guideline19"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_white"
+        app:layout_constraintEnd_toEndOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/tvLogout" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWarning"
+        style="@style/viewAll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Are you sure you want to log out?"
+        app:layout_constraintEnd_toEndOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/tvWarning">
+
+        <include
+            android:id="@+id/includeTwoButton"
+            layout="@layout/layout_two_button" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+</androidx.constraintlayout.widget.ConstraintLayout>

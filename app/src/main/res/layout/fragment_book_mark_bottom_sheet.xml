@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.homeNav.Bookmark.BookMarkBottomSheetFragment">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    tools:context=".ui.homeNav.bookmark.BookMarkBottomSheetFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glBottomSheetStart"
@@ -22,7 +23,7 @@
 
     <TextView
         android:id="@+id/tvSaveMark"
-        style="@style/headText"
+        style="@style/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -30,16 +31,20 @@
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/ivAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/ic_add_chat"
+        android:drawableStart="@drawable/ic_add_chat"
+        android:text="New"
+        style="@style/empty"
+        android:textColor="@color/blue"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSaveMark"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@+id/tvSaveMark"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tvSaveMark" />
 
     <View
         android:id="@+id/viewUp"
@@ -52,15 +57,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSaveMark" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSeleced"
+        android:id="@+id/rvSelected"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
         app:layout_constraintTop_toBottomOf="@id/viewUp"
-        tools:listitem="@layout/bottomsheet_recycle" />
+        tools:listitem="@layout/bottomsheet_recycle"/>
 
     <View
         android:id="@+id/viewDown"
@@ -70,47 +76,22 @@
         android:background="@color/dark_white"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
-        app:layout_constraintTop_toBottomOf="@+id/rvSeleced" />
+        app:layout_constraintTop_toBottomOf="@+id/rvSelected" />
 
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btnOnboardingSkip"
-        style="@style/greenColorText"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="18dp"
-        android:layout_weight="1"
-        android:background="@drawable/bg_button"
-        android:backgroundTint="#edf2fb"
-        android:gravity="center"
-        android:paddingVertical="15dp"
-        android:text="Cancle"
-        android:textAllCaps="false"
-        android:textColor="@color/blue"
-        app:layout_constraintEnd_toStartOf="@id/btnOnboardingContinue"
-        app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
-        app:layout_constraintTop_toBottomOf="@id/viewDown" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btnOnboardingContinue"
-        style="@style/singleBoldText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="18dp"
-        android:layout_weight="1"
-        android:background="@drawable/bg_button"
-        android:gravity="center"
-        android:paddingVertical="15dp"
-        android:text="Done"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/glBottomSheetEnd"
-        app:layout_constraintStart_toEndOf="@+id/btnOnboardingSkip"
-        app:layout_constraintTop_toBottomOf="@id/viewDown" />
+        app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
+        app:layout_constraintTop_toBottomOf="@+id/viewDown">
+
+        <include
+            android:id="@+id/includeBookButton"
+            layout="@layout/layout_two_button"/>
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

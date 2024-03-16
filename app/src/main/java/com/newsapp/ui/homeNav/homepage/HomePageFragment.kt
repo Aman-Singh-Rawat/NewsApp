@@ -1,18 +1,20 @@
 package com.newsapp.ui.homeNav.homepage
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentHomePageBinding
-import com.newsapp.ui.homeNav.RecentStories.NewsArticlesRecyclerView
-import com.newsapp.ui.homeNav.RecentStories.RecentDataClass
-import com.newsapp.ui.homeNav.RecentStories.TagsRecyclerView
+import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
+import com.newsapp.ui.homeNav.recentstories.RecentDataClass
+import com.newsapp.ui.homeNav.recentstories.TagsRecyclerView
 
 class HomePageFragment : Fragment() {
     private lateinit var binding: FragmentHomePageBinding
@@ -29,6 +31,7 @@ class HomePageFragment : Fragment() {
         navigation()
         return binding.root
     }
+
 
     private fun setUpLinearLayout(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(
@@ -119,10 +122,4 @@ class HomePageFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.fbAddStory.setOnClickListener{
-            findNavController().navigate(R.id.navigation_CreateStory)
-        }
-    }
 }

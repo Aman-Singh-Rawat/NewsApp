@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:src="@drawable/ic_back_arrow"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="@id/guideline5"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,15 +31,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvStoryPublished"
-        style="@style/headText"
+        style="@style/youAreAllSet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="5dp"
-        android:text="Your story has been\npublished!"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:text="@string/your_story_has_been_npublished"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline6"
         app:layout_constraintStart_toStartOf="@id/guideline5"

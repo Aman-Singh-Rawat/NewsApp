@@ -7,12 +7,17 @@
                 android:width="2.5dp"/>
             <corners
                 android:radius="8dp"/>
+
+            <solid
+                android:color="@color/lightWhite"/>
         </shape>
     </item>
 
     <item>
         <shape>
             <corners android:radius="8dp"/>
+            <solid
+                android:color="@color/lightWhite"/>
         </shape>
     </item>
 </selector>

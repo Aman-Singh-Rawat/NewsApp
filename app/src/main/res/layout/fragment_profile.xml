@@ -6,5 +6,320 @@
     android:layout_height="match_parent"
     tools:context=".ui.profileNav.ProfileFragment">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_n"
+        app:layout_constraintStart_toStartOf="@id/guideline9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/writeStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="257dp"
+        android:includeFontPadding="false"
+        android:text="Profile"
+        app:layout_constraintEnd_toStartOf="@+id/icLogout"
+        app:layout_constraintStart_toEndOf="@+id/imgN"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="26dp"
+        android:src="@drawable/ic_share"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toStartOf="@+id/icLogout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/ic_logout"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="@id/guideline10"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icLogout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clNonScroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cvPageProfile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/img_girl_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPersonEmail"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toTopOf="@id/tvProfileName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileName"
+                style="@style/personName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Andrew Ainsley"
+                app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPersonEmail"
+                style="@style/smallTextTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="andrew_ainsley"
+                android:textColor="@color/grey"
+                app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/editProfile"
+                style="@style/editProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selecter_tag"
+                android:letterSpacing="0.01"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="6dp"
+                android:text="@string/edit_profile"
+                app:layout_constraintBottom_toTopOf="@+id/tvPersonEmail"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileDesc"
+                style="@style/profileDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.02"
+                android:text="Tech enthusiast, likes to share stories about technology, and the digital world."
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@id/tvPersonEmail" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWebsite"
+                style="@style/profileDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="5dp"
+                android:text="www.andrewainsley.yourdomain"
+                android:textColor="@color/blue"
+                android:background="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileDesc" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTotalStories"
+                style="@style/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="126"
+                app:layout_constraintEnd_toEndOf="@+id/tvProfileStories"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileStories"
+                app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFollowers"
+                style="@style/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="4.259"
+                app:layout_constraintEnd_toEndOf="@+id/appCompatTextView3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
+                app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/dark_white"
+                app:layout_constraintBottom_toBottomOf="@+id/tvProfileStories"
+                app:layout_constraintEnd_toStartOf="@+id/tvTotalFollowing"
+                app:layout_constraintStart_toEndOf="@+id/tvFollowers"
+                app:layout_constraintTop_toTopOf="@+id/tvTotalStories" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTotalFollowing"
+                style="@style/followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="145"
+                app:layout_constraintEnd_toEndOf="@+id/tvProfileFollowing"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileFollowing"
+                app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/dark_white"
+                app:layout_constraintBottom_toBottomOf="@+id/tvProfileStories"
+                app:layout_constraintEnd_toStartOf="@+id/tvFollowers"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalStories"
+                app:layout_constraintTop_toTopOf="@+id/tvTotalStories" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileStories"
+                style="@style/stories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="Stories"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowing" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
+                style="@style/stories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="Followers"
+                app:layout_constraintEnd_toEndOf="@+id/guideline12"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowing" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileFollowing"
+                style="@style/stories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:text="Following"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowing" />
+
+            <View
+                android:id="@+id/viewHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/dark_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileFollowing" />
+
+            <!-- ====================== Adding Recycler View  ====================== -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProfileNews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline12"
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
+                tools:listitem="@layout/recent_recycle_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/blue"
+        android:elevation="6dp"
+        android:src="@drawable/ic_float_btn"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="50dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

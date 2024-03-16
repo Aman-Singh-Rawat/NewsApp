@@ -22,7 +22,7 @@
     <string name="continue_with_meta">"Continue with Meta"</string>
     <string name="continue_with_x">"Continue with X"</string>
     <string name="sign_in_with_password">"Sign in with password"</string>
-    <string name="don_t_have_an_account_sign_up">"Don't have an account?  Sign up"</string>
+    <string name="don_t_have_an_account">"Don't have an account?"</string>
 
     <!-- String array for Spinner -->
     <string-array name="stringSelectTopic">
@@ -56,4 +56,17 @@
     <string name="title">Title</string>
     <string name="preview">Preview</string>
     <string name="write_stories">Write Stories</string>
+    <string name="the_cable_news">The Cable News Network is a multinational news channel and website headquartered in Atlanta. Georgia, U.S</string>
+    <string name="this_investigative">This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.</string>
+    <string name="following">Following</string>
+    <string name="reading_list">Reading List</string>
+    <string name="comment_3_2_k">Comment(3.2)K</string>
+    <string name="add_a_comment">Add a comment</string>
+    <string name="cancle">Cancle</string>
+    <string name="done">Done</string>
+    <string name="add_new_collection">Add New Collection</string>
+    <string name="collection_title">Collection Title</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="your_story_has_been_npublished">Your story has been\npublished!</string>
+    <string name="website">Website</string>
 </resources>
