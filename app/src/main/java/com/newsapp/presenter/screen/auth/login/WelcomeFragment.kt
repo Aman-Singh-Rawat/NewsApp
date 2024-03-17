@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.login
 
+import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -77,10 +78,24 @@ class WelcomeFragment : Fragment() {
     /* Google Authentication */
     private val launcher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ){
-        if (it.resultCode == AppCompatActivity.RESULT_OK) {
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-            manageResult(task)
+            if (task.isSuccessful) {
+                val account: GoogleSignInAccount? = task.result
+                val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+                auth.signInWithCredential(credential)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.signInDialogFragment)
+                        } else {
+                            Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+        } else {
+            Toast.makeText(requireContext(), "ResultCode", Toast.LENGTH_SHORT).show()
         }
     }
     private fun manageResult(task: Task<GoogleSignInAccount>) {
