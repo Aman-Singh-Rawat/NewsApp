@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ import com.newsapp.databinding.FragmentWelcomeBinding
 class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
-    private val viewModel:LoginViewModel by viewModels()
+    private val viewModel:GoogleViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -34,6 +35,7 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun changeText() {
         binding.btnWelSignInWith.btnAllInOne.text = "Sign in with password"
 

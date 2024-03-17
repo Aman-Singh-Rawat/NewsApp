@@ -24,6 +24,4 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
             onError("Please enter valid email & password.")
         }
     }
-
-
 }

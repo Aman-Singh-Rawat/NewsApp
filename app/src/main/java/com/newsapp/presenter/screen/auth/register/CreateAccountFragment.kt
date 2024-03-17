@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.register
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +38,7 @@ class CreateAccountFragment : Fragment() {
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
             viewModel.register(email,password, onSuccess = {
-                findNavController().navigate(R.id.signInFragment)
+                findNavController().navigate(R.id.newsFeedFragment)
             }, onError = {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             })
@@ -49,13 +50,14 @@ class CreateAccountFragment : Fragment() {
             navigateSignIn()
         }
         tvChange() // This function change the text of SignIn button
-        propertyOfInclude()
+
     }
 
     private fun navigateSignIn() {
         findNavController().navigate(R.id.signInFragment)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun tvChange() {
         binding.includeCreateSignIn.tvAlreadyAccount
             .text = "Already have an account?"
@@ -64,13 +66,8 @@ class CreateAccountFragment : Fragment() {
             .text = "Sign in"
     }
 
-    private fun propertyOfInclude() {
 
-    }
 
-    private fun openNewsFeed() {
-        findNavController().navigate(R.id.newsFeedFragment)
-    }
 
     private fun onBackPressed() { // previous activity navigate
         findNavController().navigateUp()

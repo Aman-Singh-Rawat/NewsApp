@@ -1,5 +1,6 @@
 package com.newsapp.ui.profileNav
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ import com.newsapp.databinding.FragmentLogoutBinding
         buttonTextChange()
         return binding.root
     }
+    @SuppressLint("SetTextI18n")
     private fun buttonTextChange() {
         binding.includeTwoButton.btnOnboardingSkip.text = "Cancel"
         binding.includeTwoButton.btnOnboardingContinue.text = "Yes, Logout"
