@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.login
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -31,7 +32,7 @@ class WelcomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var binding: FragmentWelcomeBinding
-    private val viewModel:LoginViewModel by viewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -62,6 +63,7 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun changeText() {
         binding.btnWelSignInWith.btnAllInOne.text = "Sign in with password"
 
@@ -87,7 +89,8 @@ class WelcomeFragment : Fragment() {
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT)
+                                .show()
                             findNavController().navigate(R.id.signInDialogFragment)
                         } else {
                             Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
@@ -98,6 +101,7 @@ class WelcomeFragment : Fragment() {
             Toast.makeText(requireContext(), "ResultCode", Toast.LENGTH_SHORT).show()
         }
     }
+
     private fun manageResult(task: Task<GoogleSignInAccount>) {
         Log.d("debugging", "manageResult")
         if (task.isSuccessful) {
@@ -112,23 +116,27 @@ class WelcomeFragment : Fragment() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                Toast.makeText(requireContext(), "Sign In Completed",
-                    Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(), "Sign In Completed",
+                    Toast.LENGTH_LONG
+                ).show()
                 verifyUser()
             }
         }
         Log.d("debugging", "updateUi")
     }
+
     private fun verifyUser() {
         Log.d("debugging", "verifyUser")
         val user = Firebase.auth.currentUser
         user?.let {
-
             if (it.isEmailVerified) {
                 findNavController().navigate(R.id.signInDialogFragment)
             } else {
-                Toast.makeText(requireContext(), "Something wrong",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(), "Something wrong",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -31,17 +31,26 @@ class CreateAccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
+
     }
 
     private fun setupUI() {
         binding.btnNewFeed.btnAllInOne.setOnClickListener {
+
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
-            viewModel.register(email,password, onSuccess = {
-                findNavController().navigate(R.id.newsFeedFragment)
-            }, onError = {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-            })
+
+
+            //Accept CheckBox
+            if (binding.cbIAgree.isChecked) {
+                viewModel.register(email, password, onSuccess = {
+                    findNavController().navigate(R.id.newsFeedFragment)
+                }, onError = {
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                })
+            } else {
+                Toast.makeText(requireContext(), "Please accept the T&C", Toast.LENGTH_SHORT).show()
+            }
         }
         binding.ivBackArrowCreate.setOnClickListener { // this function work on back button
             onBackPressed()
@@ -65,8 +74,6 @@ class CreateAccountFragment : Fragment() {
         binding.includeCreateSignIn.tvSgnIn
             .text = "Sign in"
     }
-
-
 
 
     private fun onBackPressed() { // previous activity navigate

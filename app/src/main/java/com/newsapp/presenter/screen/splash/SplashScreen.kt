@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.core.splashscreen.SplashScreen
 import com.newsapp.databinding.ActivitySplashScreenBinding
 import com.newsapp.presenter.screen.onboading.OnboardingActivity
 
