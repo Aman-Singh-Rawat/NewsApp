@@ -2,53 +2,39 @@ package com.newsapp.presenter.screen.auth.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Task
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.auth
 import com.newsapp.R
 import com.newsapp.databinding.FragmentWelcomeBinding
-import java.util.concurrent.Executors
 
 class WelcomeFragment : Fragment() {
-    private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var binding: FragmentWelcomeBinding
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        auth = Firebase.auth
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.cloud_client_id))
-            .requestEmail()
-            .build()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupUI()
+    }
 
-        googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-
-        binding = FragmentWelcomeBinding.inflate(
-            inflater, container, false
-        )
+    private fun setupUI() {
         binding.btnWelSignInWith.btnAllInOne.setOnClickListener {
             openSignInFragment()
         }
@@ -56,11 +42,9 @@ class WelcomeFragment : Fragment() {
             openCreateAccountFragment()
         }
         binding.tvContinueWithGoogle.setOnClickListener {
-            val signIntent = googleSignInClient.signInIntent
-            launcher.launch(signIntent)
+            viewModel.requestGoogleLogin()?.let { launcher.launch(it) }
         }
         changeText()
-        return binding.root
     }
 
     @SuppressLint("SetTextI18n")
@@ -86,67 +70,14 @@ class WelcomeFragment : Fragment() {
             if (task.isSuccessful) {
                 val account: GoogleSignInAccount? = task.result
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-                auth.signInWithCredential(credential)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_SHORT)
-                                .show()
-                            findNavController().navigate(R.id.signInDialogFragment)
-                        } else {
-                            Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                viewModel.authenticateGoogleLogin(credential, onSuccess = {
+                    findNavController().navigate(R.id.signInDialogFragment)
+                }, onError = {
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                })
             }
         } else {
-            Toast.makeText(requireContext(), "ResultCode", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Failed to signIn from google.", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun manageResult(task: Task<GoogleSignInAccount>) {
-        Log.d("debugging", "manageResult")
-        if (task.isSuccessful) {
-            val account: GoogleSignInAccount? = task.result
-            if (account != null) {
-                updateUi(account)
-            }
-        }
-    }
-
-    private fun updateUi(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful) {
-                Toast.makeText(
-                    requireContext(), "Sign In Completed",
-                    Toast.LENGTH_LONG
-                ).show()
-                verifyUser()
-            }
-        }
-        Log.d("debugging", "updateUi")
-    }
-
-    private fun verifyUser() {
-        Log.d("debugging", "verifyUser")
-        val user = Firebase.auth.currentUser
-        user?.let {
-            if (it.isEmailVerified) {
-                findNavController().navigate(R.id.signInDialogFragment)
-            } else {
-                Toast.makeText(
-                    requireContext(), "Something wrong",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            verifyUser()
-        }
-    }
-
 }
