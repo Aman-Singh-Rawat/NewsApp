@@ -26,7 +26,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                 if (it.isSuccessful) {
                     prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                     it.result.user?.let { user ->
-                        prefs.saveUser(User(uid = user.uid, email = user.email))
+                        prefs.saveUser(User(uid = user.uid, email = user.email,))
                     }
                     onSuccess.invoke()
                 } else {

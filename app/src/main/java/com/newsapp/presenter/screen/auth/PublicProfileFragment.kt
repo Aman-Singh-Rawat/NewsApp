@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +12,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
-import com.newsapp.databinding.FragmentProfileBinding
 import com.newsapp.databinding.FragmentProfilePublicBinding
+import com.newsapp.util.PrefKeys.USER
+import com.newsapp.util.SharedPrefsManager
 
 class PublicProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfilePublicBinding
@@ -30,7 +28,7 @@ class PublicProfileFragment : Fragment() {
     private var btnFinish: Button? = null
     private var tvBio: TextView? = null
     private var etBio: EditText? = null
-
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +37,7 @@ class PublicProfileFragment : Fragment() {
         binding = FragmentProfilePublicBinding.inflate(
             inflater, container, false
         )
+
         btnFinish = binding.includeProfileFragment.root.findViewById(R.id.btnAllInOne)
         btnFinish?.text = "Finish"
 
@@ -83,6 +82,7 @@ class PublicProfileFragment : Fragment() {
 
     }
 
+
     val onBackPressed = {
         findNavController().navigateUp()
         true
@@ -119,6 +119,10 @@ class PublicProfileFragment : Fragment() {
             }
         }
     }
+    private fun setData() {
+        val saveData = prefs.getString()
+    }
+
 
 }
 
