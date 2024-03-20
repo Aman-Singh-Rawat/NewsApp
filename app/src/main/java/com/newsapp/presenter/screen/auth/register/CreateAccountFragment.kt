@@ -39,8 +39,6 @@ class CreateAccountFragment : Fragment() {
 
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
-
-
             //Accept CheckBox
             if (binding.cbIAgree.isChecked) {
                 viewModel.register(email, password, onSuccess = {
