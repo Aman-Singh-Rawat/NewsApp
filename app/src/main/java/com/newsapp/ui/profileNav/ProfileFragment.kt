@@ -1,5 +1,6 @@
 package com.newsapp.ui.profileNav
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +10,18 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
+import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
 import com.newsapp.ui.homeNav.recentstories.RecentDataClass
+import com.newsapp.util.PrefKeys
+import com.newsapp.util.SharedPrefsManager
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -97,5 +103,14 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.navigation_CreateStory)
         }
     }
+//    private fun checkUserSession() {
+//        val isLoggedIn = prefs.getBoolean(PrefKeys.IS_LOG_OUT, true)
+//        val intent: Intent = if (isLoggedIn) {
+//            Intent(this, SignUp::class.java)
+//        } else {
+//            Intent(this, MainActivity::class.java)
+//        }
+//        startActivity(intent)
+//    }
 
 }

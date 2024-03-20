@@ -10,7 +10,6 @@ import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.util.PrefKeys
 import com.newsapp.util.SharedPrefsManager
 
-
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
     private val prefs by lazy { SharedPrefsManager.getInstance(this) }
@@ -24,13 +23,12 @@ class SplashScreen : AppCompatActivity() {
             finish()
         }, 3000)
     }
-
     private fun checkUserSession() {
         val isLoggedIn = prefs.getBoolean(PrefKeys.IS_LOGGED_IN, false)
         val intent: Intent = if (isLoggedIn) {
-            Intent(this, SignUp::class.java)
-        } else {
             Intent(this, MainActivity::class.java)
+        } else {
+            Intent(this,SignUp ::class.java)
         }
         startActivity(intent)
     }
