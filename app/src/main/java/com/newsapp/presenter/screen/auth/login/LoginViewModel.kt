@@ -66,5 +66,21 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
         }
     }
 
+    fun logout() {
+        // Sign out from Firebase Authentication
+        auth.signOut()
 
+        // Sign out from Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(application.getString(R.string.cloud_client_id))
+            .requestEmail()
+            .build()
+        val googleSignInClient = GoogleSignIn.getClient(application.applicationContext, gso)
+        googleSignInClient.signOut()
+            .addOnCompleteListener {
+                // User is now logged out from Google Sign-In
+                prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
+                // Perform any additional cleanup or navigation operations
+            }
+    }
 }

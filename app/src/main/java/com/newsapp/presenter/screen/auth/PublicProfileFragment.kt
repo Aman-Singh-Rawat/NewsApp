@@ -68,6 +68,12 @@ class PublicProfileFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun changingValue() {
+        binding.includeProfile.tvEmail.text = "Full Name"
+        binding.includeProfile.tvPassword.text = "UserName"
+        binding.includeProfile.etFillEmail.hint = "e.g. John"
+        binding.includeProfile.etFillPassWord.hint = "john@gmail.com"
+        binding.includeBio.etBio.hint = "Tech enthusiast, likes to share stories a..."
+
         tvName?.text = "Full Name"
         tvUserName?.text = "UserName"
         etName?.hint = "e.g. John"
@@ -100,6 +106,14 @@ class PublicProfileFragment : Fragment() {
         binding.ivProfile.setOnClickListener {
             uploadImage(binding.ivProfile)
         }
+
+        userData()
+    }
+
+    private fun userData() {
+        val userName = binding.includeProfile.etFillEmail.text.toString()
+        val name = binding.includeProfile.etFillPassWord.text.toString()
+        val bio = binding.includeBio.etBio.text.toString()
     }
 
     private fun uploadImage(ivProfile: ImageView?) {
