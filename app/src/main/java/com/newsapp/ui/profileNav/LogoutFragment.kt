@@ -10,9 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.newsapp.R
 import com.newsapp.databinding.FragmentLogoutBinding
+import com.newsapp.util.PrefKeys
+import com.newsapp.util.SharedPrefsManager
 
-    class LogoutFragment : BottomSheetDialogFragment() {
+class LogoutFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentLogoutBinding
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +40,20 @@ import com.newsapp.databinding.FragmentLogoutBinding
 
     }
     private fun openSignInFragment() {
-        findNavController().navigate(R.id.signInFragment2)
+        prefs.logout()
+        prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
+
+        val navController = findNavController()
+
+        // Get the ID of the start destination
+        val startDestinationId = navController.graph.startDestinationId
+
+        // Clear the entire back stack up to the start destination
+        navController.popBackStack(startDestinationId, false)
+
+        // Navigate to the sign-in Fragment
+        navController.navigate(R.id.signInFragment2)
+
     }
 
 }

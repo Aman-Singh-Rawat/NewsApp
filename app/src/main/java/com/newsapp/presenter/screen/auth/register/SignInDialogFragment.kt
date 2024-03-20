@@ -34,6 +34,7 @@ class SignInDialogFragment : DialogFragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
+            requireActivity().finish()
         },2000)
 
         dialog?.setCancelable(false)

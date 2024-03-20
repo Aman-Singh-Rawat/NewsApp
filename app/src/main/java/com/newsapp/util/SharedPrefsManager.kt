@@ -69,6 +69,11 @@ class SharedPrefsManager private constructor(private val context: Context) {
     fun saveUser(user: User) {
         putString(PrefKeys.USER,gson.toJson(user))
     }
+    fun logout() {
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
 }
 
 object PrefKeys{
