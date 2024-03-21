@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupBottomNavigation()
     }
-
+//TODO
 
     private fun setupBottomNavigation() {
         val navHostFragment =
