@@ -81,10 +81,6 @@ class SharedPrefsManager private constructor(private val context: Context) {
 object PrefKeys{
     const val IS_LOGGED_IN = "is_logged_in"
     const val USER = "logged_in_user"
-    const val FULL_NAME = "full_name"
-    const val USER_NAME = "user_name"
-    const val BIO = "bio"
-    const val WEBSITE = "website"
 }
 
 

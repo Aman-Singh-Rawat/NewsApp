@@ -8,13 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
-import com.newsapp.models.User
 import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
@@ -106,7 +104,7 @@ class EditProfileFragment : Fragment() {
 
     private fun dataOnEditText() {
         val user = prefs.getUser()
-        binding.includeEditFragment.etFillEmail.setText(user?.name)
+        binding.includeEditFragment.etFillEmail.setText(user?.userName)
         binding.includeEditFragment.etFillPassWord.setText(user?.email)
         binding.includeBio.etBio.setText(user?.bio)
         binding.etWebsite.setText(user?.website)
@@ -119,8 +117,7 @@ class EditProfileFragment : Fragment() {
         val website = binding.etWebsite.text.toString()
 
         if (fullName.isNotEmpty() && name.isNotEmpty()) {
-            viewModelProfile.setData(fullName, name, bio, website)
-            prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website))
+            viewModelProfile.updateUserProfile(fullName, name, bio, website)
             findNavController().navigateUp()
         } else {
             Toast.makeText(requireContext(), "name and username must be fill",

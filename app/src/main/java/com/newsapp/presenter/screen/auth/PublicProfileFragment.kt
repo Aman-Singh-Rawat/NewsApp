@@ -9,20 +9,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
-import com.newsapp.databinding.FragmentProfileBinding
 import com.newsapp.databinding.FragmentProfilePublicBinding
-import com.newsapp.models.User
-import com.newsapp.presenter.screen.auth.login.LoginViewModel
 import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
@@ -63,17 +55,6 @@ class PublicProfileFragment : Fragment() {
 
     }
 
-    val onBackPressed = {
-        findNavController().navigateUp()
-        true
-    }
-    val openAllSetFragment = {
-        findNavController().navigate(
-            R.id.all_Set_Fragment
-        )
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -83,7 +64,7 @@ class PublicProfileFragment : Fragment() {
             dataSave()
         }
         binding.ivBackArrowProfile.setOnClickListener {
-            onBackPressed()
+            findNavController().navigateUp()
         }
         binding.ivProfile.setOnClickListener {
             uploadImage(binding.ivProfile)
@@ -100,11 +81,8 @@ class PublicProfileFragment : Fragment() {
         val website = binding.etWebsite.text.toString()
 
         if(fullName.isNotEmpty() && name.isNotEmpty()) {
-            viewModel.setData(fullName, name, bio, website)
-
-            prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website  ))
-            openAllSetFragment()
-
+            viewModel.updateUserProfile(fullName, name, bio, website)
+            findNavController().navigate(R.id.all_Set_Fragment)
         } else {
             Toast.makeText(requireContext(), "Please fill the userName or name", Toast.LENGTH_SHORT).show()
         }

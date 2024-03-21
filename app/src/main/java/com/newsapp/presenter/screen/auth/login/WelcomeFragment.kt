@@ -2,7 +2,6 @@ package com.newsapp.presenter.screen.auth.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +41,7 @@ class WelcomeFragment : Fragment() {
             openCreateAccountFragment()
         }
         binding.tvContinueWithGoogle.setOnClickListener {
-            viewModel.requestGoogleLogin()?.let { launcher.launch(it) }
+            viewModel.getGoogleSignInClient()?.signInIntent?.let { launcher.launch(it) }
         }
         changeText()
     }
