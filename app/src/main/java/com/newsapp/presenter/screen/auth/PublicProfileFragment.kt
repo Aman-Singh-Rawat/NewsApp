@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,23 +13,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.auth.User
+import com.google.android.gms.cast.framework.media.ImagePicker
 import com.newsapp.R
+import com.newsapp.databinding.FragmentProfileBinding
 import com.newsapp.databinding.FragmentProfilePublicBinding
-import com.newsapp.util.PrefKeys.USER
+import com.newsapp.models.User
+import com.newsapp.presenter.screen.auth.login.LoginViewModel
+import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
 class PublicProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfilePublicBinding
-    private var tvName: TextView? = null
-    private var tvUserName: TextView? = null
-    private var etName: EditText? = null
-    private var etUserName: EditText? = null
-    private var btnFinish: Button? = null
-    private var tvBio: TextView? = null
-    private var etBio: EditText? = null
+    private val viewModel : ViewModelProfile by viewModels()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
 
     override fun onCreateView(
@@ -38,32 +38,8 @@ class PublicProfileFragment : Fragment() {
         binding = FragmentProfilePublicBinding.inflate(
             inflater, container, false
         )
-
-        btnFinish = binding.includeProfileFragment.root.findViewById(R.id.btnAllInOne)
-        btnFinish?.text = "Finish"
-
-        btnFinish?.setOnClickListener {
-            openAllSetFragment()
-        }
-        binding.ivBackArrowProfile.setOnClickListener {
-            onBackPressed()
-        }
-        initializingInclude()
-
-
         return binding.root
 
-    }
-
-    private fun initializingInclude() {
-        tvBio = binding.includeBio.root.findViewById(R.id.tvBio)
-        etBio = binding.includeBio.root.findViewById(R.id.etBio)
-        tvName = binding.includeProfile.root.findViewById(R.id.tvEmail)
-        tvUserName = binding.includeProfile.root.findViewById(R.id.tvPassword)
-        etName = binding.includeProfile.root.findViewById(R.id.etFillEmail)
-        etUserName = binding.includeProfile.root.findViewById(R.id.etFillPassWord)
-
-        changingValue()
     }
 
     @SuppressLint("SetTextI18n")
@@ -73,22 +49,19 @@ class PublicProfileFragment : Fragment() {
         binding.includeProfile.etFillEmail.hint = "e.g. John"
         binding.includeProfile.etFillPassWord.hint = "john@gmail.com"
         binding.includeBio.etBio.hint = "Tech enthusiast, likes to share stories a..."
+        binding.includeBio.tvBio.text = "Bio"
 
-        tvName?.text = "Full Name"
-        tvUserName?.text = "UserName"
-        etName?.hint = "e.g. John"
-        etUserName?.hint = "john@gmail.com"
-        tvBio?.text = "Bio"
-        etBio?.hint = "Tech enthusiast, likes to share stories a..."
-        etBio?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
-        etBio?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-        etName?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-        etUserName?.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-        etName?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
-        etUserName?.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
+        binding.includeBio.etBio.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null, null, null)
+        binding.includeBio.etBio.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+        binding.includeProfile.tvEmail.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+        binding.includeProfile.tvPassword.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+        binding.includeProfile.etFillEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null, null, null)
+        binding.includeProfile.etFillPassWord.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null, null, null)
 
     }
-
 
     val onBackPressed = {
         findNavController().navigateUp()
@@ -104,17 +77,38 @@ class PublicProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.includeProfileFragment.btnAllInOne.text = "Finish"
+
+        binding.includeProfileFragment.btnAllInOne.setOnClickListener {
+            dataSave()
+        }
+        binding.ivBackArrowProfile.setOnClickListener {
+            onBackPressed()
+        }
         binding.ivProfile.setOnClickListener {
             uploadImage(binding.ivProfile)
         }
 
-        userData()
-    }
+        changingValue()
 
-    private fun userData() {
-        val userName = binding.includeProfile.etFillEmail.text.toString()
+
+    }
+    private fun dataSave() {
+        val fullName = binding.includeProfile.etFillEmail.text.toString()
         val name = binding.includeProfile.etFillPassWord.text.toString()
         val bio = binding.includeBio.etBio.text.toString()
+        val website = binding.etWebsite.text.toString()
+
+        if(userInputOrNot(fullName, name)) {
+            viewModel.setData(fullName, name, bio, website)
+
+            prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website  ))
+            openAllSetFragment()
+
+        } else {
+            Toast.makeText(requireContext(), "Please fill the userName or name", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun uploadImage(ivProfile: ImageView?) {
@@ -134,6 +128,10 @@ class PublicProfileFragment : Fragment() {
             }
         }
     }
+    private fun userInputOrNot(fullName: String, UserName: String): Boolean {
+        return fullName.isNotEmpty() && UserName.isNotEmpty()
+    }
+
 }
 
 

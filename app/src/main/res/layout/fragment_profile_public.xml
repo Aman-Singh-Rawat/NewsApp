@@ -106,6 +106,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -118,6 +119,33 @@
                     layout="@layout/bio_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWebsite"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/website"
+                app:layout_constraintBottom_toTopOf="@+id/etWebsite"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart"
+                app:layout_constraintTop_toBottomOf="@+id/clBio" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_rectangle"
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textUri"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="20dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/glProfileEnd"
+                app:layout_constraintStart_toStartOf="@id/glProfileStart" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
