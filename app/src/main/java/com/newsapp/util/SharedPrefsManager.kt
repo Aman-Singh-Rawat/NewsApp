@@ -26,6 +26,7 @@ class SharedPrefsManager private constructor(private val context: Context) {
             return instance!!
         }
     }
+    //dummy
 
     fun putString(key: String, value: String) {
         val editor = sharedPreferences.edit()
