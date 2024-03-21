@@ -20,7 +20,10 @@ class NewsFeedViewModel(private val application: Application) : AndroidViewModel
         val interest = selectedInterest.map { it.interestName }
         prefs.saveUserInterest(interest.toSet())
 //        val json = gson.toJson(interest)
-        firestore.collection(DatabaseCollection.userInterest).add(mapOf("interest" to interest))
+        prefs.getUser()?.let {
+            firestore.collection(DatabaseCollection.userInterest).document(it.uid)
+                .set(mapOf("interest" to interest))
+        }
     }
 
     fun getInterests(): List<NewsInterest> {

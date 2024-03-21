@@ -11,8 +11,10 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
+import com.google.gson.Gson
 import com.newsapp.R
 import com.newsapp.models.User
+import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.PrefKeys
 import com.newsapp.util.SharedPrefsManager
 
@@ -21,6 +23,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
     private val auth: FirebaseAuth by lazy { Firebase.auth }
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
+    private val gson by lazy { Gson() }
 
     fun login(email: String, password: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
@@ -28,9 +31,16 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                 if (it.isSuccessful) {
                     prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                     it.result.user?.let { user ->
-                        prefs.saveUser(User(uid = user.uid, email = user.email))
+                        firestore.collection(DatabaseCollection.users).document(user.uid).get()
+                            .addOnCompleteListener {
+                                if (it.result.data != null) {
+                                    prefs.saveUser(gson.fromJson(gson.toJson(it.result.data), User::class.java))
+                                } else {
+                                    prefs.saveUser(User(uid = user.uid, email = user.email))
+                                }
+                                onSuccess.invoke()
+                            }
                     }
-                    onSuccess.invoke()
                 } else {
                     onError(it.exception?.message ?: "Something went wrong..")
                 }

@@ -16,7 +16,7 @@ class ViewModelProfile(private val application: Application): AndroidViewModel(a
         if (currentUser != null) {
             val user = currentUser.copy(fullName = fullName, userName = userName, bio = bio, website = website)
             prefs.saveUser(user)
-
+            firestore.collection(DatabaseCollection.users).document(user.uid).set(user)
         }
     }
 
