@@ -42,6 +42,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
 
     }
     private fun openSignInFragment() {
+
         prefs.logout()
 
         val navController = findNavController()
@@ -50,7 +51,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
         val startDestinationId = navController.graph.startDestinationId
 
         // Clear the entire back stack up to the start destination
-        navController.popBackStack(startDestinationId, false)
+        navController.popBackStack(startDestinationId, true)
 
         /* Google logout part */
         val loginViewModel = LoginViewModel(requireActivity().application)
@@ -58,6 +59,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
 
         // Navigate to the sign-in Fragment
         navController.navigate(R.id.signInFragment2)
-    }
 
+
+    }
 }

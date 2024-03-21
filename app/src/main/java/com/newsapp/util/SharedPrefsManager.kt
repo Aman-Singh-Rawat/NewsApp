@@ -73,6 +73,7 @@ class SharedPrefsManager private constructor(private val context: Context) {
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply()
+
     }
 }
 

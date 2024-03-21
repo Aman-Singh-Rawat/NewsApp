@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.databinding.FragmentSignInBinding
+import com.newsapp.presenter.screen.auth.register.SignUp
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
@@ -53,7 +56,8 @@ class SignInFragment : Fragment() {
     }
 
     private fun onBackPressed(): Boolean {
-        findNavController().navigateUp()
+        val intent = Intent(requireContext(),SignUp::class.java)
+        startActivity(intent)
         return true
     }
 
