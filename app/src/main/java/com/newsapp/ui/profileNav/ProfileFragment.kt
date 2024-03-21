@@ -17,6 +17,10 @@ import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
 import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 import com.newsapp.util.PrefKeys
+import com.newsapp.util.PrefKeys.BIO
+import com.newsapp.util.PrefKeys.FULL_NAME
+import com.newsapp.util.PrefKeys.USER_NAME
+import com.newsapp.util.PrefKeys.WEBSITE
 import com.newsapp.util.SharedPrefsManager
 
 class ProfileFragment : Fragment() {
@@ -102,15 +106,15 @@ class ProfileFragment : Fragment() {
         binding.fbAddStory.setOnClickListener{
             findNavController().navigate(R.id.navigation_CreateStory)
         }
+        setUpUi()
     }
-//    private fun checkUserSession() {
-//        val isLoggedIn = prefs.getBoolean(PrefKeys.IS_LOG_OUT, true)
-//        val intent: Intent = if (isLoggedIn) {
-//            Intent(this, SignUp::class.java)
-//        } else {
-//            Intent(this, MainActivity::class.java)
-//        }
-//        startActivity(intent)
-//    }
 
+    private fun setUpUi() {
+        val user = prefs.getUser()
+
+        binding.tvProfileName.text = user?.name
+        binding.tvPersonEmail.text = user?.email
+        binding.tvProfileDesc.text = user?.bio
+        binding.tvWebsite.text = user?.website
+    }
 }

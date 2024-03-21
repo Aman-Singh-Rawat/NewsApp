@@ -13,9 +13,16 @@ import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
+import com.newsapp.models.User
+import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
+import com.newsapp.util.SharedPrefsManager
 
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
+    private val viewModelProfile: ViewModelProfile by lazy {
+        ViewModelProfile(requireActivity().application)
+    }
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,5 +94,21 @@ class EditProfileFragment : Fragment() {
         binding.ivImageOpen.setOnClickListener {
             uploadImage(binding.imgEditProfile)
         }
+
+        binding.includeBtn.btnAllInOne.setOnClickListener {
+            dataSave()
+        }
+
+    }
+
+    private fun dataSave() {
+        val fullName = binding.includeEditFragment.etFillEmail.text.toString()
+        val name = binding.includeEditFragment.etFillPassWord.text.toString()
+        val bio = binding.includeBio.etBio.text.toString()
+        val website = binding.etWebsite.text.toString()
+
+        viewModelProfile.setData(fullName, name, bio, website)
+
+        prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website  ))
     }
 }
