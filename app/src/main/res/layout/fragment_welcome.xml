@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/llSignUp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="200dp"
+            app:layout_constraintVertical_bias="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvContinueWithGoogle">
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent">
 
             <include

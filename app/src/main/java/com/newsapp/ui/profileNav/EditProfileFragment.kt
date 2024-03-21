@@ -97,6 +97,7 @@ class EditProfileFragment : Fragment() {
 
         binding.includeBtn.btnAllInOne.setOnClickListener {
             dataSave()
+            findNavController().navigateUp()
         }
 
     }
