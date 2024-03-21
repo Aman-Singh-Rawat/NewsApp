@@ -78,7 +78,7 @@ class EditProfileFragment : Fragment() {
             )
 
         /* Changing hint Type */
-        binding.includeEditFragment.etFillEmail.hint = "e.g. John"
+        binding.includeEditFragment.etFillEmail.hint = "e.g.John"
         binding.includeEditFragment.etFillPassWord.hint = "@andrew_ainsley"
 
         /* Changing input type */
