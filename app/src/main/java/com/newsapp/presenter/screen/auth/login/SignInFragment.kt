@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.databinding.FragmentSignInBinding
+import com.newsapp.presenter.screen.auth.register.CreateAccountFragment
 import com.newsapp.presenter.screen.auth.register.SignUp
 
 class SignInFragment : Fragment() {
