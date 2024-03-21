@@ -10,6 +10,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
 import com.newsapp.R
 import com.newsapp.models.User
 import com.newsapp.util.PrefKeys
@@ -19,6 +20,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
 
     private val auth: FirebaseAuth by lazy { Firebase.auth }
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
+    private val firestore by lazy { Firebase.firestore }
 
     fun login(email: String, password: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
         if (email.isNotEmpty() && password.isNotEmpty()) {

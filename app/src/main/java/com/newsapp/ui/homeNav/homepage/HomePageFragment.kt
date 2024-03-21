@@ -1,12 +1,11 @@
 package com.newsapp.ui.homeNav.homepage
 
-import android.content.res.ColorStateList
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +14,11 @@ import com.newsapp.databinding.FragmentHomePageBinding
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
 import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 import com.newsapp.ui.homeNav.recentstories.TagsRecyclerView
-import com.newsapp.util.PrefKeys.FULL_NAME
 import com.newsapp.util.SharedPrefsManager
 
 class HomePageFragment : Fragment() {
     private lateinit var binding: FragmentHomePageBinding
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
+    private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +26,7 @@ class HomePageFragment : Fragment() {
         binding = FragmentHomePageBinding.inflate(
             inflater, container, false
         )
-        binding.tvPersonName.text = prefs.getString(FULL_NAME, "")
+        binding.tvPersonName.text = user?.fullName?:""
         setUpTrendRecycler()
         setUpStoriesTag()
         setUpStories()
