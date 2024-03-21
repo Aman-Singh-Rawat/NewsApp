@@ -51,7 +51,6 @@
             style="@style/singleBoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
             android:background="@drawable/bg_textview_welcome"
             android:drawableStart="@drawable/ic_google"
             android:gravity="center"
@@ -59,9 +58,11 @@
             android:padding="20dp"
             android:text="@string/continue_with_google"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.4"
             app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
 
@@ -71,15 +72,13 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/llSignUp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvContinueWithGoogle">
+            app:layout_constraintStart_toStartOf="parent">
 
             <include
                 android:id="@+id/btnWelSignInWith"
                 layout="@layout/layout_one_button"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -87,9 +86,9 @@
             android:id="@+id/llSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent">
 
             <include

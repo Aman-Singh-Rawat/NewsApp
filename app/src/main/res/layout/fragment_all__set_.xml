@@ -71,6 +71,7 @@
             <TextView
                 style="@style/poppins"
                 android:layout_width="0dp"
+                android:id="@+id/tvSmallText"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
@@ -80,6 +81,33 @@
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
                 app:layout_constraintStart_toStartOf="@id/glAllStart"
                 app:layout_constraintTop_toBottomOf="@id/tvAllSet" />
+            <CheckBox
+                android:id="@+id/cbAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/singleBoldText"
+                app:layout_constraintStart_toStartOf="@id/glAllStart"
+                android:text="@string/txt_i_agree_to_newsline"
+                android:paddingTop="2.4dp"
+                android:paddingStart="8dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:buttonTint="@color/blue"
+                android:background="?android:attr/selectableItemBackground"
+                app:layout_constraintTop_toBottomOf="@id/tvSmallText" />
+
+            <TextView
+                android:id="@+id/tvTerms"
+                style="@style/singleBoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toEndOf="@id/cbAgree"
+                app:layout_constraintTop_toBottomOf="@id/tvSmallText"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginTop="22dp"
+                android:layout_marginStart="6dp"
+                android:text="@string/txt_terms_and_policy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

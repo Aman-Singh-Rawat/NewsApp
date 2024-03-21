@@ -98,7 +98,7 @@
                 style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/website"
                 app:layout_constraintBottom_toTopOf="@+id/etWebsite"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
@@ -108,8 +108,6 @@
                 android:id="@+id/etWebsite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_rectangle"
                 android:fontFamily="@font/poppins_medium"
                 android:inputType="textUri"
@@ -118,7 +116,8 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
-                app:layout_constraintStart_toStartOf="@id/guideline11" />
+                app:layout_constraintStart_toStartOf="@id/guideline11"
+                app:layout_constraintTop_toBottomOf="@id/tvWebsite" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline11"

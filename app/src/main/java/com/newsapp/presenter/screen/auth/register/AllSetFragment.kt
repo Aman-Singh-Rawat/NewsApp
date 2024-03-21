@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.newsapp.MainActivity
 import com.newsapp.R
@@ -33,12 +34,17 @@ class AllSetFragment : Fragment() {
         return binding.root
     }
     private fun openActivityMain() {
+        if (binding.cbAgree.isChecked) {
         val intent = Intent(
             requireContext(),
             MainActivity::class.java
         )
         startActivity(intent)
-        requireActivity().finish()
+            requireActivity().finish()
+        }else{
+            Toast.makeText(requireContext(), "Please accept the T&C", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
     private val onBackPressed = {
