@@ -65,6 +65,4 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
             }
         }
     }
-
-
 }

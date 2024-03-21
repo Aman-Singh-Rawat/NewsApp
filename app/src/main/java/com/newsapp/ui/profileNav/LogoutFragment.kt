@@ -40,7 +40,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
 
     }
     private fun openSignInFragment() {
-        prefs.logout()
+
         prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
 
         val navController = findNavController()
@@ -49,11 +49,11 @@ class LogoutFragment : BottomSheetDialogFragment() {
         val startDestinationId = navController.graph.startDestinationId
 
         // Clear the entire back stack up to the start destination
-        navController.popBackStack(startDestinationId, false)
+        navController.popBackStack(startDestinationId, true)
 
         // Navigate to the sign-in Fragment
         navController.navigate(R.id.signInFragment2)
-
+        prefs.logout()
     }
 
 }

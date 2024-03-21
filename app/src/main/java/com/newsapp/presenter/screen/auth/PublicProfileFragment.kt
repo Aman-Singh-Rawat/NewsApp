@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.auth.User
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfilePublicBinding
 import com.newsapp.util.PrefKeys.USER
@@ -119,11 +120,6 @@ class PublicProfileFragment : Fragment() {
             }
         }
     }
-    private fun setData() {
-        val saveData = prefs.getString()
-    }
-
-
 }
 
 
