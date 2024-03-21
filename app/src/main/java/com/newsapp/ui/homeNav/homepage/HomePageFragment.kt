@@ -15,9 +15,12 @@ import com.newsapp.databinding.FragmentHomePageBinding
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
 import com.newsapp.ui.homeNav.recentstories.RecentDataClass
 import com.newsapp.ui.homeNav.recentstories.TagsRecyclerView
+import com.newsapp.util.PrefKeys.FULL_NAME
+import com.newsapp.util.SharedPrefsManager
 
 class HomePageFragment : Fragment() {
     private lateinit var binding: FragmentHomePageBinding
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +28,7 @@ class HomePageFragment : Fragment() {
         binding = FragmentHomePageBinding.inflate(
             inflater, container, false
         )
+        binding.tvPersonName.text = prefs.getString(FULL_NAME, "")
         setUpTrendRecycler()
         setUpStoriesTag()
         setUpStories()

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
@@ -97,9 +98,18 @@ class EditProfileFragment : Fragment() {
 
         binding.includeBtn.btnAllInOne.setOnClickListener {
             dataSave()
-            findNavController().navigateUp()
         }
 
+        dataOnEditText()
+
+    }
+
+    private fun dataOnEditText() {
+        val user = prefs.getUser()
+        binding.includeEditFragment.etFillEmail.setText(user?.name)
+        binding.includeEditFragment.etFillPassWord.setText(user?.email)
+        binding.includeBio.etBio.setText(user?.bio)
+        binding.etWebsite.setText(user?.website)
     }
 
     private fun dataSave() {
@@ -108,8 +118,13 @@ class EditProfileFragment : Fragment() {
         val bio = binding.includeBio.etBio.text.toString()
         val website = binding.etWebsite.text.toString()
 
-        viewModelProfile.setData(fullName, name, bio, website)
-
-        prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website  ))
+        if (fullName.isNotEmpty() && name.isNotEmpty()) {
+            viewModelProfile.setData(fullName, name, bio, website)
+            prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website))
+            findNavController().navigateUp()
+        } else {
+            Toast.makeText(requireContext(), "name and username must be fill",
+                Toast.LENGTH_SHORT).show()
+        }
     }
 }

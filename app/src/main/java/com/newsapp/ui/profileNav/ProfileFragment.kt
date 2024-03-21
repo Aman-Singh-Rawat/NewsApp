@@ -34,15 +34,7 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding
             .inflate(inflater, container, false
             )
-        fabColorChange()
-        setUpStories()
 
-        binding.editProfile.setOnClickListener {
-            navigateAnotherActivity()
-        }
-        binding.icLogout.setOnClickListener {
-            findNavController().navigate(R.id.logoutFragment)
-        }
         return binding.root
     }
     private fun navigateAnotherActivity() {
@@ -105,6 +97,15 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fbAddStory.setOnClickListener{
             findNavController().navigate(R.id.navigation_CreateStory)
+        }
+        fabColorChange()
+        setUpStories()
+
+        binding.editProfile.setOnClickListener {
+            navigateAnotherActivity()
+        }
+        binding.icLogout.setOnClickListener {
+            findNavController().navigate(R.id.logoutFragment)
         }
         setUpUi()
     }
