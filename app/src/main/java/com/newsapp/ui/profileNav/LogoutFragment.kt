@@ -2,6 +2,7 @@ package com.newsapp.ui.profileNav
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.newsapp.R
 import com.newsapp.databinding.FragmentLogoutBinding
 import com.newsapp.presenter.screen.auth.login.LoginViewModel
+import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.util.PrefKeys
 import com.newsapp.util.SharedPrefsManager
 
@@ -44,22 +46,9 @@ class LogoutFragment : BottomSheetDialogFragment() {
     private fun openSignInFragment() {
 
         prefs.logout()
-
-        val navController = findNavController()
-
-        // Get the ID of the start destination
-        val startDestinationId = navController.graph.startDestinationId
-
-        // Clear the entire back stack up to the start destination
-        navController.popBackStack(startDestinationId, true)
-
-        /* Google logout part */
+        startActivity(Intent(requireContext(),SignUp::class.java))
         val loginViewModel = LoginViewModel(requireActivity().application)
         loginViewModel.logout()
-
-        // Navigate to the sign-in Fragment
-        navController.navigate(R.id.signInFragment2)
-
-
+        requireActivity().finish()
     }
 }

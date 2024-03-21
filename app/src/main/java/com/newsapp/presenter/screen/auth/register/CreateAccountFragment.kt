@@ -1,6 +1,7 @@
 package com.newsapp.presenter.screen.auth.register
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentCreateAccountBinding
+import com.newsapp.presenter.screen.auth.login.SignInFragment
 
 class CreateAccountFragment : Fragment() {
 
