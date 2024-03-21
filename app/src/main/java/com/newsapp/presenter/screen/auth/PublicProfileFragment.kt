@@ -99,7 +99,7 @@ class PublicProfileFragment : Fragment() {
         val bio = binding.includeBio.etBio.text.toString()
         val website = binding.etWebsite.text.toString()
 
-        if(userInputOrNot(fullName, name)) {
+        if(fullName.isNotEmpty() && name.isNotEmpty()) {
             viewModel.setData(fullName, name, bio, website)
 
             prefs.saveUser(User(name = fullName, email = name, bio = bio, website = website  ))
@@ -128,10 +128,6 @@ class PublicProfileFragment : Fragment() {
             }
         }
     }
-    private fun userInputOrNot(fullName: String, UserName: String): Boolean {
-        return fullName.isNotEmpty() && UserName.isNotEmpty()
-    }
-
 }
 
 
