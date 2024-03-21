@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.newsapp.util.PrefKeys.BIO
 import com.newsapp.util.PrefKeys.FULL_NAME
+import com.newsapp.util.PrefKeys.IS_LOGGED_IN
 import com.newsapp.util.PrefKeys.USER_NAME
 import com.newsapp.util.PrefKeys.WEBSITE
 import com.newsapp.util.SharedPrefsManager
@@ -15,5 +16,7 @@ class ViewModelProfile(private val application: Application): AndroidViewModel(a
         prefs.putString(USER_NAME, userName)
         prefs.putString(BIO, bio)
         prefs.putString(WEBSITE, website)
+        prefs.putBoolean(IS_LOGGED_IN, true)
     }
+
 }

@@ -15,6 +15,7 @@ import com.newsapp.databinding.FragmentLogoutBinding
 import com.newsapp.presenter.screen.auth.login.LoginViewModel
 import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.util.PrefKeys
+import com.newsapp.util.PrefKeys.IS_LOGGED_IN
 import com.newsapp.util.SharedPrefsManager
 
 class LogoutFragment : BottomSheetDialogFragment() {
@@ -45,7 +46,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
     }
     private fun openSignInFragment() {
 
-        prefs.logout()
+        prefs.putBoolean(IS_LOGGED_IN, false)
         startActivity(Intent(requireContext(),SignUp::class.java))
         val loginViewModel = LoginViewModel(requireActivity().application)
         loginViewModel.logout()
