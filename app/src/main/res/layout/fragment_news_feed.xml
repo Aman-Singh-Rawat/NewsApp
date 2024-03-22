@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:fillViewport="true"
-    tools:context=".presenter.screen.auth.NewsFeedFragment">
+    tools:context=".presenter.screen.auth.newsfeed.NewsFeedFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

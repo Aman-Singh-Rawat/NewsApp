@@ -2,16 +2,19 @@ package com.newsapp.presenter.screen.auth.login
 
 
 import android.app.Application
-import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+import com.google.gson.Gson
 import com.newsapp.R
 import com.newsapp.models.User
+import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.PrefKeys
 import com.newsapp.util.SharedPrefsManager
 
@@ -19,6 +22,8 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
 
     private val auth: FirebaseAuth by lazy { Firebase.auth }
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
+    private val firestore by lazy { Firebase.firestore }
+    private val gson by lazy { Gson() }
 
     fun login(email: String, password: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
@@ -26,9 +31,16 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                 if (it.isSuccessful) {
                     prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                     it.result.user?.let { user ->
-                        prefs.saveUser(User(uid = user.uid, email = user.email))
+                        firestore.collection(DatabaseCollection.users).document(user.uid).get()
+                            .addOnCompleteListener {
+                                if (it.result.data != null) {
+                                    prefs.saveUser(gson.fromJson(gson.toJson(it.result.data), User::class.java))
+                                } else {
+                                    prefs.saveUser(User(uid = user.uid, email = user.email))
+                                }
+                                onSuccess.invoke()
+                            }
                     }
-                    onSuccess.invoke()
                 } else {
                     onError(it.exception?.message ?: "Something went wrong..")
                 }
@@ -38,12 +50,12 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
         }
     }
 
-    fun requestGoogleLogin(): Intent? {
+    fun getGoogleSignInClient(): GoogleSignInClient? {
         return try {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(application.getString(R.string.cloud_client_id)).requestEmail()
                 .build()
-            GoogleSignIn.getClient(application.applicationContext, gso).signInIntent
+            GoogleSignIn.getClient(application.applicationContext, gso)
         } catch (e: Exception) {
             null
         }
@@ -67,20 +79,8 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
     }
 
     fun logout() {
-        // Sign out from Firebase Authentication
+        prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
         auth.signOut()
-
-        // Sign out from Google Sign-In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(application.getString(R.string.cloud_client_id))
-            .requestEmail()
-            .build()
-        val googleSignInClient = GoogleSignIn.getClient(application.applicationContext, gso)
-        googleSignInClient.signOut()
-            .addOnCompleteListener {
-                // User is now logged out from Google Sign-In
-                prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
-                // Perform any additional cleanup or navigation operations
-            }
+        getGoogleSignInClient()?.signOut()
     }
 }

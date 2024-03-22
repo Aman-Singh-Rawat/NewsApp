@@ -2,21 +2,22 @@ package com.newsapp.ui.profileNav.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.newsapp.util.PrefKeys.BIO
-import com.newsapp.util.PrefKeys.FULL_NAME
-import com.newsapp.util.PrefKeys.IS_LOGGED_IN
-import com.newsapp.util.PrefKeys.USER_NAME
-import com.newsapp.util.PrefKeys.WEBSITE
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
+import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 
 class ViewModelProfile(private val application: Application): AndroidViewModel(application) {
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
-    fun setData(fullName: String, userName: String, bio: String, website: String) {
-        prefs.putString(FULL_NAME, fullName)
-        prefs.putString(USER_NAME, userName)
-        prefs.putString(BIO, bio)
-        prefs.putString(WEBSITE, website)
-        prefs.putBoolean(IS_LOGGED_IN, true)
+    private val firestore by lazy { Firebase.firestore }
+
+    fun updateUserProfile(fullName: String, userName: String, bio: String, website: String) {
+        val currentUser = prefs.getUser()
+        if (currentUser != null) {
+            val user = currentUser.copy(fullName = fullName, userName = userName, bio = bio, website = website)
+            prefs.saveUser(user)
+            firestore.collection(DatabaseCollection.users).document(user.uid).set(user)
+        }
     }
 
 }

@@ -1,6 +1,5 @@
 package com.newsapp.ui.profileNav
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,17 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.newsapp.MainActivity
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfileBinding
-import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.ui.homeNav.recentstories.NewsArticlesRecyclerView
 import com.newsapp.ui.homeNav.recentstories.RecentDataClass
-import com.newsapp.util.PrefKeys
-import com.newsapp.util.PrefKeys.BIO
-import com.newsapp.util.PrefKeys.FULL_NAME
-import com.newsapp.util.PrefKeys.USER_NAME
-import com.newsapp.util.PrefKeys.WEBSITE
 import com.newsapp.util.SharedPrefsManager
 
 class ProfileFragment : Fragment() {
@@ -112,7 +104,7 @@ class ProfileFragment : Fragment() {
 
     private fun setUpUi() {
         val user = prefs.getUser()
-        binding.tvProfileName.text = user?.name
+        binding.tvProfileName.text = user?.userName
         binding.tvPersonEmail.text = user?.email
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
