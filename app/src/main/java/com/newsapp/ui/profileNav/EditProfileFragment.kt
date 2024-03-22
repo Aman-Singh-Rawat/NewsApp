@@ -10,17 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentEditProfileBinding
+import com.newsapp.presenter.screen.auth.login.LoginViewModel
 import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
-    private val viewModelProfile: ViewModelProfile by lazy {
-        ViewModelProfile(requireActivity().application)
-    }
+    private val viewModelProfile : ViewModelProfile by viewModels()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
