@@ -100,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/website"
-                app:layout_constraintBottom_toTopOf="@+id/etWebsite"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintTop_toBottomOf="@+id/clBio" />
 
@@ -114,7 +113,6 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="20dp"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintTop_toBottomOf="@id/tvWebsite" />

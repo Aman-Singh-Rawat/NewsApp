@@ -38,7 +38,6 @@ class EditProfileFragment : Fragment() {
         changeButtonText()
         textSetup()
         return binding.root
-
     }
     private fun uploadImage(imgEditProfile : ImageView) {
         val intent = Intent()
