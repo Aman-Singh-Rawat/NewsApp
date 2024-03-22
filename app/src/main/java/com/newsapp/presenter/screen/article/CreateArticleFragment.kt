@@ -63,27 +63,14 @@ class CreateArticleFragment : Fragment() {
             cvImage.setOnClickListener { uploadImage(ivStory) }
         }
     }
-
     fun uploadImage(ivStory: ImageView) {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
         intent.type = "image/*"
         startActivityForResult(intent, 1)
     }
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        /*(Rich Editor img picker)*/
-//        val editor = view?.findViewById<EditorView>(R.id.editor)
-//        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
-//            val imageUri = data?.data
-//            editor.setImageURI(imageUri)
-//        }
-//            if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
-//                val imageUri = data?.data
-//                editor?.setImageURI(imageUri)
-//            }
         val ivStory = view?.findViewById<ImageView>(R.id.ivStory)
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {

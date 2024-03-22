@@ -101,6 +101,8 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="4dp"
+                android:ellipsize="start"
+                android:maxLines="2"
                 android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -158,33 +160,6 @@
                 android:text="Now"
                 app:layout_constraintBottom_toBottomOf="@id/tvAgo"
                 app:layout_constraintStart_toEndOf="@id/tvAgo"
-                app:layout_constraintTop_toTopOf="@+id/tvAgo" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvViews"
-                style="@style/fiveMinutesRead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:drawableStart="@drawable/ic_eye"
-                android:drawablePadding="7dp"
-                android:gravity="center"
-                android:text="0"
-                app:layout_constraintBottom_toBottomOf="@id/tvAgo"
-                app:layout_constraintStart_toEndOf="@id/tvNow"
-                app:layout_constraintTop_toTopOf="@+id/tvAgo" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/fiveMinutesRead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:drawableStart="@drawable/img_msg_two"
-                android:drawablePadding="7dp"
-                android:gravity="center"
-                android:text="0"
-                app:layout_constraintBottom_toBottomOf="@id/tvAgo"
-                app:layout_constraintStart_toEndOf="@id/tvViews"
                 app:layout_constraintTop_toTopOf="@+id/tvAgo" />
 
             <TextView
