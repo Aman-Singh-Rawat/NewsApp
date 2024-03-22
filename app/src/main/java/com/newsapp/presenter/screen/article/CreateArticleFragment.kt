@@ -6,81 +6,61 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
-import jp.wasabeef.richeditor.RichEditor
+import com.newsapp.databinding.FragmentCreateArticleBinding
 
 
 class CreateArticleFragment : Fragment() {
 
-    private var mEditor: RichEditor? = null
+    private lateinit var binding: FragmentCreateArticleBinding
+    private val viewModel by viewModels<CreateArticleViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(com.newsapp.R.layout.fragment_create_story, container, false)
+        binding = FragmentCreateArticleBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mEditor = view.findViewById<View>(R.id.editor) as RichEditor
-        mEditor!!.setEditorFontColor(Color.BLACK)
-        //mEditor.setEditorBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundResource(R.drawable.bg);
-        mEditor!!.setEditorHeight(200)
-        mEditor!!.setEditorFontSize(18)
-        mEditor!!.setPadding(10, 10, 10, 10)
-        mEditor!!.setPlaceholder("Write your story here")
+        setUpUi()
+        setData()
+    }
 
-        view.findViewById<View>(R.id.action_bold)
-            .setOnClickListener(View.OnClickListener { mEditor!!.setBold() })
+    private fun setData() {
+        val article = viewModel.getArticle()
+        binding.etFillTitle.setText(article.title)
+        binding.editor.html = article.story
+    }
 
-        view.findViewById<View>(R.id.action_italic)
-            .setOnClickListener(View.OnClickListener { mEditor!!.setItalic() })
-
-        view.findViewById<View>(R.id.action_underline)
-            .setOnClickListener(View.OnClickListener { mEditor!!.setUnderline() })
-
-        view.findViewById<View>(R.id.action_insert_bullets)
-            .setOnClickListener(View.OnClickListener { mEditor!!.setBullets() })
-
-        view.findViewById<View>(R.id.action_insert_numbers)
-            .setOnClickListener(View.OnClickListener { mEditor!!.setNumbers() })
-        view.findViewById<View>(R.id.action_insert_image)
-            .setOnClickListener {
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, 2)
+    private fun setUpUi() {
+        binding.run {
+            editor.apply {
+                setEditorFontColor(Color.BLACK)
+                setEditorHeight(200)
+                setEditorFontSize(18)
+                setPadding(10, 10, 10, 10)
+                setPlaceholder("Write your story here")
             }
-
-// Rich Text Add Link
-//        view.findViewById<View>(R.id.action_insert_link).setOnClickListener(View.OnClickListener {
-//            mEditor!!.insertLink(
-//                "https://github.com/wasabeef",
-//                "wasabeef"
-//            )
-//        })
-        val tvPreview = view.findViewById<TextView>(R.id.tvPreview)
-        tvPreview.setOnClickListener {
-            findNavController().navigate(R.id.previewStoryFragment)
-        }
-        val imgBackArrow = view.findViewById<ImageView>(R.id.imgBackArrow)
-        imgBackArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
-        val cvImage = view.findViewById<CardView>(R.id.cvImage)
-        val ivStory = view.findViewById<ImageView>(R.id.ivStory)
-        cvImage.setOnClickListener {
-            uploadImage(ivStory)
+            actionBold.setOnClickListener { editor.setBold() }
+            actionItalic.setOnClickListener { editor.setItalic() }
+            actionUnderline.setOnClickListener { editor.setUnderline() }
+            actionInsertBullets.setOnClickListener { editor.setBullets() }
+            actionInsertNumbers.setOnClickListener { editor.setNumbers() }
+            tvPreview.setOnClickListener {
+                viewModel.addArticle("", title = etFillTitle.toString(), story = editor.html)
+                findNavController().navigate(R.id.previewStoryFragment)
+            }
+            imgBackArrow.setOnClickListener { findNavController().navigateUp() }
+            cvImage.setOnClickListener { uploadImage(ivStory) }
         }
     }
 
@@ -90,7 +70,8 @@ class CreateArticleFragment : Fragment() {
         intent.type = "image/*"
         startActivityForResult(intent, 1)
     }
-// Usage
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         /*(Rich Editor img picker)*/
