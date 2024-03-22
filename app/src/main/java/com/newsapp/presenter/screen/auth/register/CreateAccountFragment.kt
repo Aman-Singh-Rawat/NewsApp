@@ -42,15 +42,14 @@ class CreateAccountFragment : Fragment() {
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
             //Accept CheckBox
-            if (binding.cbIAgree.isChecked) {
+
                 viewModel.register(email, password, onSuccess = {
                     findNavController().navigate(R.id.newsFeedFragment)
                 }, onError = {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 })
-            } else {
-                Toast.makeText(requireContext(), "Please accept the T&C", Toast.LENGTH_SHORT).show()
-            }
+
+
         }
         binding.ivBackArrowCreate.setOnClickListener { // this function work on back button
             onBackPressed()

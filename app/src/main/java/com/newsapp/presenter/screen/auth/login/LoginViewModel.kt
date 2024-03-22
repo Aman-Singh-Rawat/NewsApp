@@ -33,9 +33,9 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                     it.result.user?.let { user ->
                         firestore.collection(DatabaseCollection.users).document(user.uid).get()
                             .addOnCompleteListener {
-                                if (it.result.data != null) {
+                                if(it.result.data != null) {
                                     prefs.saveUser(gson.fromJson(gson.toJson(it.result.data), User::class.java))
-                                } else {
+                                }else {
                                     prefs.saveUser(User(uid = user.uid, email = user.email))
                                 }
                                 onSuccess.invoke()
@@ -51,7 +51,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
     }
 
     fun getGoogleSignInClient(): GoogleSignInClient? {
-        return try {
+        return try{
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(application.getString(R.string.cloud_client_id)).requestEmail()
                 .build()
@@ -77,7 +77,6 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
             }
         }
     }
-
     fun logout() {
         prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
         auth.signOut()

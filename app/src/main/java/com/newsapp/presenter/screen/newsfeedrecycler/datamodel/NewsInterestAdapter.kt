@@ -33,7 +33,6 @@ class NewsInterestAdapter(private val context: Context, private val itemList: Li
             } else {
                 tvNewsFeed.setTextColor(ContextCompat.getColor(context, R.color.black))
             }
-
             itemView.setOnClickListener {
                 if (selectedItems.contains(newsInterest)) {
                     selectedItems.remove(newsInterest)
@@ -43,7 +42,6 @@ class NewsInterestAdapter(private val context: Context, private val itemList: Li
                 notifyDataSetChanged()
             }
         }
-
     }
 
     fun getSelectedInterest(): MutableList<NewsInterest> {
