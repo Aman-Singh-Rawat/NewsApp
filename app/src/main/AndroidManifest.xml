@@ -25,7 +25,7 @@
             android:exported="false" />
       
         <activity
-            android:name=".presenter.screen.auth.register.SignUp"
+            android:name=".presenter.screen.auth.register.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".presenter.screen.splash.SplashScreen"

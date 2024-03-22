@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.profile.publish
+package com.newsapp.presenter.screen.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.newsapp.R
 import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.util.hideKeyboard
 
-class PublishFragment : Fragment() {
+class PublishArticleFragment : Fragment() {
     private lateinit var binding: FragmentPublishBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

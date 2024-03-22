@@ -20,13 +20,13 @@
 
     <fragment
         android:id="@+id/newsFeedFragment"
-        android:name="com.newsapp.presenter.screen.auth.newsfeed.NewsFeedFragment"
+        android:name="com.newsapp.presenter.screen.auth.interest.NewsInterestFragment"
         android:label="News_Feed_Fragment"
         tools:layout="@layout/fragment_news_feed"/>
 
     <fragment
         android:id="@+id/public_Profile_Fragment"
-        android:name="com.newsapp.presenter.screen.auth.PublicProfileFragment"
+        android:name="com.newsapp.presenter.screen.auth.register.PublicProfileFragment"
         android:label="Public_Profile_Fragment"
         tools:layout="@layout/fragment_profile_public"/>
 

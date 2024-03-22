@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentSignInBinding
-import com.newsapp.presenter.screen.auth.register.SignUp
+import com.newsapp.presenter.screen.auth.register.SignUpActivity
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
@@ -45,7 +45,7 @@ class SignInFragment : Fragment() {
         }
 
         binding.ivBackArrowSignIn.setOnClickListener {
-            startActivity(Intent(requireContext(),SignUp::class.java))
+            startActivity(Intent(requireContext(),SignUpActivity::class.java))
         }
 
         binding.includeSignUp.tvSgnIn.setOnClickListener {

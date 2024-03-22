@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth.newsfeed
+package com.newsapp.presenter.screen.auth.interest
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -10,7 +10,7 @@ import com.newsapp.models.NewsInterest
 import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 
-class NewsFeedViewModel(private val application: Application) : AndroidViewModel(application) {
+class NewsInterestViewModel(private val application: Application) : AndroidViewModel(application) {
 
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }

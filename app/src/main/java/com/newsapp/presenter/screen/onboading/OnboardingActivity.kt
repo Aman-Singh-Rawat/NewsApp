@@ -7,7 +7,7 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.newsapp.R
 import com.newsapp.databinding.ActivityOnboardingBinding
-import com.newsapp.presenter.screen.auth.register.SignUp
+import com.newsapp.presenter.screen.auth.register.SignUpActivity
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
@@ -29,8 +29,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun viewPagerFunctionality() {
-        val VPAdapter = VPAdapter(addValuesOnArrayList())
-        binding.viewPager2.adapter = VPAdapter
+        binding.viewPager2.adapter = OnboardingAdapter(addValuesOnArrayList())
         binding.viewPager2.clipToPadding = false
         binding.viewPager2.clipChildren = false
         binding.viewPager2.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
@@ -84,31 +83,32 @@ class OnboardingActivity : AppCompatActivity() {
         binding.twoButton.btnOnboardingSkip.visibility = View.VISIBLE
         binding.btnGetStarted.root.visibility = View.GONE
     }
+
     private fun openNewActivity() {
         startActivity(Intent(
             this@OnboardingActivity,
-            SignUp::class.java
+            SignUpActivity::class.java
         ))
     }
-    private fun addValuesOnArrayList(): ArrayList<ViewPagerItem> {
-        val arrayList = ArrayList<ViewPagerItem>()
-        arrayList.add(ViewPagerItem(R.drawable.img_trending_demo,
+
+    private fun addValuesOnArrayList() = listOf(
+        OnboardingItem(
+            R.drawable.img_trending_demo,
             "Stay Informed, Anytime, Anywhere",
             "Welcome to our news app, your go-to source" +
                     " for breaking news, exclusive"
-        ))
-
-        arrayList.add(ViewPagerItem(R.drawable.img_profile_demo,
+        ),
+        OnboardingItem(
+            R.drawable.img_profile_demo,
             "Be a knowledgeable Global Citizen",
             "Unlock a personalized news experience that matches " +
                     "your interest and preferences. Your news, your way!"
-        ))
-
-        arrayList.add(ViewPagerItem(R.drawable.img_elevate_demo,
+        ),
+        OnboardingItem(
+            R.drawable.img_elevate_demo,
             "Elevate Your News Experience Now!",
             "Join our vibrant community of news enthusiasts. " +
                     "Share your thoughts, and engage in meaningful discussions."
-        ))
-        return arrayList
-    }
+        )
+    )
 }

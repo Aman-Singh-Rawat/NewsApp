@@ -1,8 +1,6 @@
-package com.newsapp.presenter.screen.profile
+package com.newsapp.presenter.screen.article
 
-import android.app.Activity
 import android.app.Activity.RESULT_OK
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -19,7 +17,7 @@ import com.newsapp.R
 import jp.wasabeef.richeditor.RichEditor
 
 
-class CreateStoryFragment : Fragment() {
+class CreateArticleFragment : Fragment() {
 
     private var mEditor: RichEditor? = null
 

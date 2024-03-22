@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".presenter.screen.profile.publish.PublishFragment">
+    tools:context=".presenter.screen.article.PublishArticleFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgPublishBack"

@@ -6,7 +6,6 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.newsapp.MainActivity
 import com.newsapp.databinding.ActivitySplashScreenBinding
-import com.newsapp.presenter.screen.auth.register.SignUp
 import com.newsapp.presenter.screen.onboading.OnboardingActivity
 import com.newsapp.util.PrefKeys
 import com.newsapp.util.SharedPrefsManager

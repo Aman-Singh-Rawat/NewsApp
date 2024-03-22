@@ -1,6 +1,6 @@
 package com.newsapp.presenter.screen.onboading
 
-data class ViewPagerItem(
+data class OnboardingItem(
     val img: Int,
     val featureTitle: String,
     val featureDescription: String

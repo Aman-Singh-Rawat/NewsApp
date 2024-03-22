@@ -69,7 +69,9 @@ class WelcomeFragment : Fragment() {
             if (task.isSuccessful) {
                 val account: GoogleSignInAccount? = task.result
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
-                viewModel.authenticateGoogleLogin(credential, onSuccess = {
+                viewModel.authenticateGoogleLogin(credential, onSuccessSignIn = {
+                    findNavController().navigate(R.id.signInDialogFragment)
+                }, onSuccessSignup = {
                     findNavController().navigate(R.id.newsFeedFragment)
                 }, onError = {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()

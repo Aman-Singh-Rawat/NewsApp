@@ -33,9 +33,10 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                     it.result.user?.let { user ->
                         firestore.collection(DatabaseCollection.users).document(user.uid).get()
                             .addOnCompleteListener {
-                                if(it.result.data != null) {
-                                    prefs.saveUser(gson.fromJson(gson.toJson(it.result.data), User::class.java))
-                                }else {
+                                if (it.result.data != null) {
+                                    val json = gson.toJson(it.result.data)
+                                    prefs.saveUser(gson.fromJson(json, User::class.java))
+                                } else {
                                     prefs.saveUser(User(uid = user.uid, email = user.email))
                                 }
                                 onSuccess.invoke()
@@ -51,7 +52,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
     }
 
     fun getGoogleSignInClient(): GoogleSignInClient? {
-        return try{
+        return try {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(application.getString(R.string.cloud_client_id)).requestEmail()
                 .build()
@@ -62,21 +63,36 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
     }
 
     fun authenticateGoogleLogin(
-        credential: AuthCredential, onSuccess: () -> Unit, onError: (String) -> Unit
+        credential: AuthCredential,
+        onSuccessSignIn: () -> Unit,
+        onSuccessSignup: () -> Unit,
+        onError: (String) -> Unit
     ) {
         auth.signOut()
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                 it.result.user?.let { user ->
-                    prefs.saveUser(User(uid = user.uid, email = user.email))
+                    firestore.collection(DatabaseCollection.users).document(user.uid).get()
+                        .addOnCompleteListener {
+                            if (it.result.data != null) {
+                                val json = gson.toJson(it.result.data)
+                                prefs.saveUser(gson.fromJson(json, User::class.java))
+                                onSuccessSignIn.invoke()
+                            } else {
+                                prefs.saveUser(User(uid = user.uid, email = user.email))
+                                firestore.collection(DatabaseCollection.users).document(user.uid).set(User(uid = user.uid, email = user.email))
+                                onSuccessSignup.invoke()
+                            }
+                        }
                 }
-                onSuccess.invoke()
+
             } else {
                 onError(it.exception?.message ?: "Something went wrong..")
             }
         }
     }
+
     fun logout() {
         prefs.putBoolean(PrefKeys.IS_LOGGED_IN, false)
         auth.signOut()

@@ -1,19 +1,16 @@
 package com.newsapp.presenter.screen.auth.register
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentCreateAccountBinding
-import com.newsapp.presenter.screen.auth.login.SignInFragment
 
 class CreateAccountFragment : Fragment() {
 
@@ -36,20 +33,16 @@ class CreateAccountFragment : Fragment() {
 
     }
 
+
     private fun setupUI() {
         binding.btnNewFeed.btnAllInOne.setOnClickListener {
-
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
-            //Accept CheckBox
-
-                viewModel.register(email, password, onSuccess = {
-                    findNavController().navigate(R.id.newsFeedFragment)
-                }, onError = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                })
-
-
+            viewModel.register(email, password, onSuccess = {
+                findNavController().navigate(R.id.newsFeedFragment)
+            }, onError = {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            })
         }
         binding.ivBackArrowCreate.setOnClickListener { // this function work on back button
             onBackPressed()

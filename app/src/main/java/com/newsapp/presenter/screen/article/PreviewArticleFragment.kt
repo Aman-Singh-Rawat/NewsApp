@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.profile
+package com.newsapp.presenter.screen.article
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPreviewStoryBinding
 
-class PreviewStoryFragment : Fragment() {
+class PreviewArticleFragment : Fragment() {
     private lateinit var binding: FragmentPreviewStoryBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

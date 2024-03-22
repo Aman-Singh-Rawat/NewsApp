@@ -1,4 +1,4 @@
-package com.newsapp.presenter.screen.auth
+package com.newsapp.presenter.screen.auth.register
 
 import android.annotation.SuppressLint
 import android.app.Activity

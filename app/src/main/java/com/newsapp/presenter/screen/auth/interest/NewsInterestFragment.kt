@@ -1,23 +1,23 @@
-package com.newsapp.presenter.screen.auth.newsfeed
+package com.newsapp.presenter.screen.auth.interest
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsFeedBinding
-import com.newsapp.presenter.screen.newsfeedrecycler.datamodel.NewsInterestAdapter
 
 
-class NewsFeedFragment : Fragment() {
+class NewsInterestFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsFeedBinding
-    private val viewModel: NewsFeedViewModel by viewModels()
-    private lateinit var interestAdapter:NewsInterestAdapter
+    private val viewModel: NewsInterestViewModel by viewModels()
+    private lateinit var interestAdapter: NewsInterestAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -41,6 +41,8 @@ class NewsFeedFragment : Fragment() {
             if (interest.isNotEmpty()) {
                 viewModel.saveUserInterests(interest)
                 findNavController().navigate(R.id.public_Profile_Fragment)
+            }else{
+                Toast.makeText(requireContext(), "Please select atleast one interest.", Toast.LENGTH_SHORT).show()
             }
         }
         binding.ivArrowFeed.setOnClickListener { // navigate previous fragment
