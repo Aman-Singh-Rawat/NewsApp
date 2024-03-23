@@ -12,9 +12,7 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         return currentArticle
     }
 
-    fun addArticle(imagePath: String, title: String, story: String) {
+    fun addArticle(imagePath: String, title: String, story: String){
         currentArticle = currentArticle.copy(image = imagePath, title = title, story = story)
     }
-
-
 }

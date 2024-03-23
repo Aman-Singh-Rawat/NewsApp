@@ -12,7 +12,7 @@ import com.newsapp.databinding.FragmentPreviewStoryBinding
 
 class PreviewArticleFragment : Fragment() {
     private lateinit var binding: FragmentPreviewStoryBinding
-    private val viewModel :  CreateArticleViewModel by viewModels()
+    private val viewModel by viewModels<CreateArticleViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,9 +43,12 @@ class PreviewArticleFragment : Fragment() {
         }
     }
     private fun setData() {
-        val article = viewModel.getArticle()
-        binding.tvTitle.setText(article.title)
-        binding.tvStory.setText( article.story)
+        binding.run {
+            val article = viewModel.getArticle()
+            tvTitle.text = article.title
+            tvStory.text = article.story
+        }
+
     }
 
 
