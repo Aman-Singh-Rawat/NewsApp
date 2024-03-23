@@ -1,5 +1,6 @@
 package com.newsapp.ui.profileNav
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -33,7 +34,7 @@ class EditProfileFragment : Fragment() {
         binding.imgBackArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-        changeButtonText()
+
         textSetup()
         return binding.root
     }
@@ -54,15 +55,12 @@ class EditProfileFragment : Fragment() {
             }
         }
     }
-    private fun changeButtonText() {
-        binding.includeBtn.btnAllInOne.text = "Save"
 
-    }
-
+    @SuppressLint("SetTextI18n")
     private fun textSetup() {
         /* Change TextView text */
-        binding.includeEditFragment.tvEmail.text = "Full Name"
-        binding.includeEditFragment.tvPassword.text = "Username"
+        binding.includeEditFragment.tvEmail.text = "Username"
+        binding.includeEditFragment.tvPassword.text = "Email"
 
         /* Remove Drawable Icon from Edittext */
         binding.includeEditFragment.etFillEmail
@@ -89,6 +87,7 @@ class EditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.includeBtn.btnAllInOne.text = "Save"
         binding.ivImageOpen.setOnClickListener {
             uploadImage(binding.imgEditProfile)
         }
