@@ -3,11 +3,15 @@ package com.newsapp.presenter.screen.article
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -19,6 +23,7 @@ class CreateArticleFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateArticleBinding
     private val viewModel by viewModels<CreateArticleViewModel>()
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +36,7 @@ class CreateArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setUpUi()
         setData()
     }
@@ -55,14 +61,40 @@ class CreateArticleFragment : Fragment() {
             actionUnderline.setOnClickListener { editor.setUnderline() }
             actionInsertBullets.setOnClickListener { editor.setBullets() }
             actionInsertNumbers.setOnClickListener { editor.setNumbers() }
+
             tvPreview.setOnClickListener {
-                viewModel.addArticle("", title = etFillTitle.toString(), story = editor.html)
-                findNavController().navigate(R.id.previewStoryFragment)
+                if (validationOfViews()) {
+                    viewModel.addArticle(imageUri.toString(), title = etFillTitle.toString(), story = editor.html)
+                    findNavController().navigate(R.id.previewStoryFragment)
+                } else {
+                    Toast.makeText(requireContext(), "Please do not be lazy input all Values", Toast.LENGTH_LONG).show()
+                }
             }
+
             imgBackArrow.setOnClickListener { findNavController().navigateUp() }
-            cvImage.setOnClickListener { uploadImage(ivStory) }
+            cvImage.setOnClickListener { resultLauncher.launch("image/*") }
         }
     }
+    private fun validationOfViews(): Boolean {
+        val editorText = binding.editor.html
+
+        return if (binding.etFillTitle.text.toString().isNotEmpty() &&
+            editorText.isNotEmpty() && binding.ivStory.drawable != null) {
+            true
+        }
+        else {
+            false
+        }
+    }
+    private val resultLauncher = registerForActivityResult(
+
+        ActivityResultContracts.GetContent()) {
+        imageUri = it
+        binding.ivStory.setImageURI(it)
+    }
+}
+
+/*
     fun uploadImage(ivStory: ImageView) {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
@@ -79,6 +111,4 @@ class CreateArticleFragment : Fragment() {
             }
         }
     }
-}
-
-
+ */

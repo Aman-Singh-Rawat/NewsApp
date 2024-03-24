@@ -31,11 +31,6 @@ class EditProfileFragment : Fragment() {
             .inflate(inflater, container, false
             )
 
-        binding.imgBackArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        textSetup()
         return binding.root
     }
     private fun uploadImage(imgEditProfile : ImageView) {
@@ -59,8 +54,8 @@ class EditProfileFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun textSetup() {
         /* Change TextView text */
-        binding.includeEditFragment.tvEmail.text = "Username"
-        binding.includeEditFragment.tvPassword.text = "Email"
+        binding.includeEditFragment.tvEmail.text = "Full Name"
+        binding.includeEditFragment.tvPassword.text = "Username"
 
         /* Remove Drawable Icon from Edittext */
         binding.includeEditFragment.etFillEmail
@@ -74,8 +69,8 @@ class EditProfileFragment : Fragment() {
             )
 
         /* Changing hint Type */
-        binding.includeEditFragment.etFillEmail.hint = "e.g.John"
-        binding.includeEditFragment.etFillPassWord.hint = "@andrew_ainsley"
+        binding.includeEditFragment.etFillEmail.hint = "Aman Singh"
+        binding.includeEditFragment.etFillPassWord.hint = "@aman_singh"
 
         /* Changing input type */
         binding.includeEditFragment.etFillEmail.inputType =
@@ -95,7 +90,11 @@ class EditProfileFragment : Fragment() {
         binding.includeBtn.btnAllInOne.setOnClickListener {
             dataSave()
         }
+        binding.imgBackArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
+        textSetup()
         dataOnEditText()
 
     }

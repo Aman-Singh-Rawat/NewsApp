@@ -22,6 +22,13 @@ class PublishArticleFragment : Fragment() {
         binding = FragmentPublishBinding.inflate(
             inflater, container, false
         )
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.etAddTags.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (!binding.etAddTags.text.isNullOrEmpty() && !binding.etAddTags.text.isNullOrBlank()) {
@@ -43,8 +50,6 @@ class PublishArticleFragment : Fragment() {
         binding.imgPublishBack.setOnClickListener {
             onBackPressed()
         }
-
-        return binding.root
     }
 
     private fun list(): List<String> {

@@ -36,10 +36,10 @@ class PublicProfileFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun changingValue() {
-        binding.includeProfile.tvEmail.text = "UserName"
-        binding.includeProfile.tvPassword.text = "Email"
-        binding.includeProfile.etFillEmail.hint = "e.g. John"
-        binding.includeProfile.etFillPassWord.hint = "john@gmail.com"
+        binding.includeProfile.tvEmail.text = "Full Name"
+        binding.includeProfile.tvPassword.text = "Username"
+        binding.includeProfile.etFillEmail.hint = "Aman Singh"
+        binding.includeProfile.etFillPassWord.hint = "@aman_singh"
         binding.includeBio.etBio.hint = "Tech enthusiast, likes to share stories a..."
         binding.includeBio.tvBio.text = "Bio"
 
