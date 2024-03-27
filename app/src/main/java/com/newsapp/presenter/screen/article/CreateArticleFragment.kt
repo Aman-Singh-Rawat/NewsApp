@@ -59,9 +59,10 @@ class CreateArticleFragment : BaseFragment() {
             actionInsertNumbers.setOnClickListener { editor.setNumbers() }
 
             tvPreview.setOnClickListener {
-                if (validationOfViews()) {
+                if (validationOfViews() && imageUri != null) {
+                    val imageUrl = viewModel.uploadImageToFirebase(imageUri!!)
                     viewModel.addArticle(
-                        imageUri.toString(),
+                        imageUrl,
                         title = etFillTitle.text.toString(),
                         story = editor.html
                     )
