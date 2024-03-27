@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_collection_fragment"
-    tools:context=".ui.bookMarkNav.CollectionBottomFragment">
+    tools:context=".presenter.screen.bookmark.CollectionBottomFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNewCollection"

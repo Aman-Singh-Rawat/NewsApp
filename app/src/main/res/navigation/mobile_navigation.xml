@@ -6,17 +6,18 @@
     app:startDestination="@id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.newsapp.ui.homeNav.homepage.HomePageFragment"
+        android:name="com.newsapp.presenter.screen.homepage.HomePageFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_page" />
     <fragment
         android:id="@+id/navigation_CreateStory"
         android:name="com.newsapp.presenter.screen.article.CreateArticleFragment"
         android:label="navigation_CreateStory"
-        tools:layout="@layout/fragment_create_article" />
+        tools:layout="@layout/fragment_create_article" >
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.newsapp.ui.profileNav.ProfileFragment"
+        android:name="com.newsapp.presenter.screen.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
@@ -36,33 +37,33 @@
         android:label="story_publish_fragment"/>
     <fragment
         android:id="@+id/trendingFragment"
-        android:name="com.newsapp.ui.homeNav.trending.TrendingFragment"
+        android:name="com.newsapp.presenter.screen.trending.TrendingFragment"
         android:label="fragment_trending"
         tools:layout="@layout/fragment_trending" />
     <fragment
         android:id="@+id/recentStoriesFragment"
-        android:name="com.newsapp.ui.homeNav.recentstories.RecentStoriesFragment"
+        android:name="com.newsapp.presenter.screen.recentstories.RecentStoriesFragment"
         android:label="fragment_recent_stories"
         tools:layout="@layout/fragment_recent_stories" />
     <fragment
         android:id="@+id/navigation_bookmark"
-        android:name="com.newsapp.ui.bookMarkNav.BookmarkFragment"
+        android:name="com.newsapp.presenter.screen.bookmark.BookmarkFragment"
         android:label="fragment_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/fullDeatilsFragment"
-        android:name="com.newsapp.ui.homeNav.newsdetails.FullDeatilsFragment"
+        android:name="com.newsapp.presenter.screen.newsdetails.FullDeatilsFragment"
         android:label="fragment_full_details"
         tools:layout="@layout/fragment_full_details" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.newsapp.ui.profileNav.EditProfileFragment"
+        android:name="com.newsapp.presenter.screen.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
     <dialog
         android:id="@+id/collectionBottomFragment"
-        android:name="com.newsapp.ui.bookMarkNav.CollectionBottomFragment"
+        android:name="com.newsapp.presenter.screen.bookmark.CollectionBottomFragment"
         android:label="fragment_collection_bottom"
         tools:layout="@layout/fragment_collection_bottom" />
     <fragment
@@ -72,17 +73,17 @@
         tools:layout="@layout/fragment_sign_in" />
     <fragment
         android:id="@+id/commentFragment"
-        android:name="com.newsapp.ui.homeNav.newsdetails.CommentFragment"
+        android:name="com.newsapp.presenter.screen.newsdetails.CommentFragment"
         android:label="fragment_comment"
         tools:layout="@layout/fragment_comment" />
     <dialog
         android:id="@+id/bookMarkBottomSheetFragment"
-        android:name="com.newsapp.ui.homeNav.bookmark.BookMarkBottomSheetFragment"
+        android:name="com.newsapp.presenter.screen.bookmark.BookMarkBottomSheetFragment"
         android:label="fragment_book_mark_bottom_sheet"
         tools:layout="@layout/fragment_book_mark_bottom_sheet" />
     <dialog
         android:id="@+id/logoutFragment"
-        android:name="com.newsapp.ui.profileNav.LogoutFragment"
+        android:name="com.newsapp.presenter.screen.profile.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
 

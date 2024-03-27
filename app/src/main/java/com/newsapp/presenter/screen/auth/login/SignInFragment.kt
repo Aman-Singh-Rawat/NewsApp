@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentSignInBinding
 import com.newsapp.presenter.screen.auth.register.SignUpActivity
+import com.newsapp.presenter.viewmodel.LoginViewModel
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding

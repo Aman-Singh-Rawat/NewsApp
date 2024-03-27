@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentCreateAccountBinding
+import com.newsapp.presenter.viewmodel.RegisterViewModel
 
 class CreateAccountFragment : Fragment() {
 

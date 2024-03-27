@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPreviewStoryBinding
+import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 
 class PreviewArticleFragment : Fragment() {
     private lateinit var binding: FragmentPreviewStoryBinding
-    private val viewModel by viewModels<CreateArticleViewModel>()
+    private val viewModel by activityViewModels<CreateArticleViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,32 +22,30 @@ class PreviewArticleFragment : Fragment() {
         binding = FragmentPreviewStoryBinding.inflate(
             inflater, container, false
         )
-
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUi()
         setData()
     }
+
     private fun setUi() {
         binding.ivArrowStory.setOnClickListener {
             findNavController().navigateUp()
         }
         binding.tvContinue.setOnClickListener {
-            viewModel.addArticle(
-                "",
-                title = binding.tvTitle.toString(),
-                story = binding.tvStory.toString()
-            )
             findNavController().navigate(R.id.fragmentPublish)
         }
     }
+
     private fun setData() {
         binding.run {
-            val article = viewModel.getArticle()
-            tvTitle.text = article.title
-            tvStory.text = article.story
+            viewModel.getArticle()?.let { article ->
+                tvTitle.text = article.title
+                tvStory.text = article.story
+            }
         }
 
     }

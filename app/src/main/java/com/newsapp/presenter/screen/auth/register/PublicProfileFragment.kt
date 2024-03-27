@@ -15,7 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.databinding.FragmentProfilePublicBinding
-import com.newsapp.ui.profileNav.viewmodel.ViewModelProfile
+import com.newsapp.presenter.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
 class PublicProfileFragment : Fragment() {

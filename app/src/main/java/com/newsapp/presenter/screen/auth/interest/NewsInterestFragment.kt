@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsFeedBinding
+import com.newsapp.presenter.viewmodel.NewsInterestViewModel
 
 
 class NewsInterestFragment : Fragment() {

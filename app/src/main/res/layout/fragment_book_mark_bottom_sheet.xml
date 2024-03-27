@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_bottom_sheet"
-    tools:context=".ui.homeNav.bookmark.BookMarkBottomSheetFragment">
+    tools:context=".presenter.screen.bookmark.BookMarkBottomSheetFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glBottomSheetStart"

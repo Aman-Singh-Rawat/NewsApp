@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.GoogleAuthProvider
 import com.newsapp.R
 import com.newsapp.databinding.FragmentWelcomeBinding
+import com.newsapp.presenter.viewmodel.LoginViewModel
 
 class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding

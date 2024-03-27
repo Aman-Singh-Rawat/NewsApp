@@ -55,6 +55,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-cast-framework:21.4.0")
     implementation("com.google.ar.sceneform:filament-android:1.17.1")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -70,6 +71,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //gson
     implementation("com.google.code.gson:gson:2.10.1")
 
 

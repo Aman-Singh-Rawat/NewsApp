@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-import com.newsapp.models.NewsInterest
+import com.newsapp.data.models.NewsInterest
 
 class NewsInterestAdapter(private val context: Context, private val itemList: List<NewsInterest>) :
     RecyclerView.Adapter<NewsInterestAdapter.NewsInterestViewHolder>() {

@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.newsapp.models.NewsInterest
-import com.newsapp.models.User
+import com.newsapp.data.models.NewsInterest
+import com.newsapp.data.models.User
 
 
 class SharedPrefsManager private constructor(private val context: Context) {

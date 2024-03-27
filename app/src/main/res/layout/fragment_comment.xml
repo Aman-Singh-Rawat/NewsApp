@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:paddingVertical="20dp"
-    tools:context=".ui.homeNav.newsdetails.CommentFragment">
+    tools:context=".presenter.screen.newsdetails.CommentFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glCommentStart"
