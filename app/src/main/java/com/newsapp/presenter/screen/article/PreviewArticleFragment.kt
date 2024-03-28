@@ -56,7 +56,7 @@ class PreviewArticleFragment : Fragment() {
 
     private fun glideImage(article: Article) {
         Glide.with(requireContext())
-            .load(article.image)
+            .load(article.image.toUri())
             .into(binding.imgPreview)
     }
 

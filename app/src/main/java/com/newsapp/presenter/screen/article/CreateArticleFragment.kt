@@ -60,13 +60,23 @@ class CreateArticleFragment : BaseFragment() {
 
             tvPreview.setOnClickListener {
                 if (validationOfViews() && imageUri != null) {
-                    val imageUrl = viewModel.uploadImageToFirebase(imageUri!!)
-                    viewModel.addArticle(
-                        imageUrl,
-                        title = etFillTitle.text.toString(),
-                        story = editor.html
-                    )
-                    findNavController().navigate(R.id.previewStoryFragment)
+                    viewModel.uploadImageToFirebase(imageUri!!) {
+                        imageUri ->
+                        if (imageUri != null) {
+                            viewModel.addArticle(
+                                imageUri,
+                                title = etFillTitle.text.toString(),
+                                story = editor.html
+                            )
+                            findNavController().navigate(R.id.previewStoryFragment)
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Failed to upload image",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 } else {
                     Toast.makeText(
                         requireContext(),

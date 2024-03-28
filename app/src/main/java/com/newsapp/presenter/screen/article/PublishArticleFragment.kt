@@ -1,6 +1,7 @@
 package com.newsapp.presenter.screen.article
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,15 @@ import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.newsapp.R
+import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.hideKeyboard
@@ -57,9 +62,12 @@ class PublishArticleFragment : Fragment(), OnItemSelectedListener {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
-            if (!tags.isNullOrEmpty() && !mTopic.isNullOrEmpty()) {
+            if (tags.isNotEmpty() && !mTopic.isNullOrEmpty() && mTopic != "Select") {
                 viewModel.publishArticle(mTopic!!, tags)
                 findNavController().navigate(R.id.fragmentStoryPublished)
+            } else {
+                Toast.makeText(requireContext(), "please enter the all values", Toast.LENGTH_SHORT).show()
+                Log.d("mTopic", mTopic.toString())
             }
         }
         binding.imgPublishBack.setOnClickListener {
@@ -104,10 +112,15 @@ class PublishArticleFragment : Fragment(), OnItemSelectedListener {
 
         viewModel.getArticle()?.let { article ->
             binding.tvTheRise.text = article.title
+            glideImage(article)
         }
 
     }
-
+    private fun glideImage(article: Article) {
+        Glide.with(requireContext())
+            .load(article.image.toUri())
+            .into(binding.imgGirlWithRobot)
+    }
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         mTopic = parent?.getItemAtPosition(position).toString()
     }
