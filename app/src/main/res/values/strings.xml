@@ -26,7 +26,7 @@
 
     <!-- String array for Spinner -->
     <string-array name="stringSelectTopic">
-
+        <item>Select</item>
         <item>Technology</item>
         <item>Science</item>
         <item>Health</item>

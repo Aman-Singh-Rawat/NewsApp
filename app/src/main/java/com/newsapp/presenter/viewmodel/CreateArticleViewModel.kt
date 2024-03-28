@@ -3,12 +3,15 @@ package com.newsapp.presenter.viewmodel
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
+import com.google.firebase.Firebase
+import com.google.firebase.storage.storage
 import com.newsapp.data.models.Article
 
 class CreateArticleViewModel(private val application: Application) : AndroidViewModel(application) {
 
     private var currentArticle: Article? = null
-
+    private var storageRef = Firebase.storage
+    private var imageUri: Uri? = null
     fun getArticle(): Article? {
         return currentArticle
     }
@@ -24,8 +27,15 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
     }
 
     fun uploadImageToFirebase(uri: Uri):String{
-        //TODO upload uri to firebase and return url of the uploaded image
-        return ""
+        storageRef.getReference("images").child(System.currentTimeMillis().toString())
+            .putFile(uri)
+            .addOnSuccessListener { task ->
+                task.metadata!!.reference!!.downloadUrl
+                    .addOnSuccessListener {
+                        imageUri = it
+                    }
+            }
+        return imageUri.toString()
     }
 
     fun clearArticleData() {

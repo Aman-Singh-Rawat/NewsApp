@@ -92,6 +92,7 @@ class CreateArticleFragment : BaseFragment() {
     ) {
 
         imageUri = it
+        //viewModel.uploadImageToFirebase(it!!)
         binding.ivStory.setImageURI(it)
     }
 

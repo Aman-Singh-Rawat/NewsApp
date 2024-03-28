@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,9 +17,11 @@ import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.hideKeyboard
 
-class PublishArticleFragment : Fragment() {
+class PublishArticleFragment : Fragment(), OnItemSelectedListener {
     private lateinit var binding: FragmentPublishBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
+    private val tags = mutableListOf<String>()
+    private var mTopic: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,9 +57,10 @@ class PublishArticleFragment : Fragment() {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
-
-
-            findNavController().navigate(R.id.fragmentStoryPublished)
+            if (!tags.isNullOrEmpty() && !mTopic.isNullOrEmpty()) {
+                viewModel.publishArticle(mTopic!!, tags)
+                findNavController().navigate(R.id.fragmentStoryPublished)
+            }
         }
         binding.imgPublishBack.setOnClickListener {
             findNavController()
@@ -80,7 +84,8 @@ class PublishArticleFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerPublish.adapter = arrayAdapter
-        binding.spinnerPublish
+
+
     }
 
     private fun addChips(text: String) {
@@ -91,6 +96,7 @@ class PublishArticleFragment : Fragment() {
             binding.chipGroup.removeView(chip)
         }
         binding.chipGroup.addView(chip)
+        tags.add(chip.toString())
     }
 
 
@@ -98,9 +104,15 @@ class PublishArticleFragment : Fragment() {
 
         viewModel.getArticle()?.let { article ->
             binding.tvTheRise.text = article.title
-            binding.spinnerPublish.setSelection = article.topic
-           binding.chipGroup.
         }
 
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        mTopic = parent?.getItemAtPosition(position).toString()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }
