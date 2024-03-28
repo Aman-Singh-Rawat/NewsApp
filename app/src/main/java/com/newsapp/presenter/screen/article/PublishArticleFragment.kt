@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.newsapp.R
 import com.newsapp.databinding.FragmentPublishBinding
+import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.hideKeyboard
 
 class PublishArticleFragment : Fragment() {
     private lateinit var binding: FragmentPublishBinding
+    private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +31,12 @@ class PublishArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setData()
+        setUi()
 
+    }
+
+    private fun setUi() {
         binding.etAddTags.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (!binding.etAddTags.text.isNullOrEmpty() && !binding.etAddTags.text.isNullOrBlank()) {
@@ -45,10 +53,11 @@ class PublishArticleFragment : Fragment() {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
-            openStoryPublished()
+            findNavController().navigate(R.id.fragmentStoryPublished)
         }
         binding.imgPublishBack.setOnClickListener {
-            onBackPressed()
+            findNavController()
+                .navigateUp()
         }
     }
 
@@ -71,24 +80,21 @@ class PublishArticleFragment : Fragment() {
         binding.spinnerPublish
     }
 
-    val openStoryPublished = {
-        findNavController().navigate(R.id.fragmentStoryPublished)
-    }
-
-    val onBackPressed = {
-        findNavController()
-            .navigateUp()
-        true
-    }
-
     private fun addChips(text: String) {
         val chip = Chip(requireContext())
         chip.text = text
-
         chip.isCloseIconVisible = true
         chip.setOnCloseIconClickListener {
             binding.chipGroup.removeView(chip)
         }
         binding.chipGroup.addView(chip)
+    }
+    private fun setData() {
+        binding.run {
+            viewModel.getArticle()?.let { article ->
+                tvTheRise.text = article.title
+
+            }
+        }
     }
 }

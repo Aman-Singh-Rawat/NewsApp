@@ -39,7 +39,7 @@ class PreviewArticleFragment : Fragment() {
             findNavController().navigate(R.id.fragmentPublish)
         }
     }
-
+//Dummy
     private fun setData() {
         binding.run {
             viewModel.getArticle()?.let { article ->
