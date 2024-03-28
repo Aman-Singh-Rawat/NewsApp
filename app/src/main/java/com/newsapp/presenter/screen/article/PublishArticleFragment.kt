@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -53,6 +54,8 @@ class PublishArticleFragment : Fragment() {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
+
+
             findNavController().navigate(R.id.fragmentStoryPublished)
         }
         binding.imgPublishBack.setOnClickListener {
@@ -89,12 +92,15 @@ class PublishArticleFragment : Fragment() {
         }
         binding.chipGroup.addView(chip)
     }
-    private fun setData() {
-        binding.run {
-            viewModel.getArticle()?.let { article ->
-                tvTheRise.text = article.title
 
-            }
+
+    private fun setData() {
+
+        viewModel.getArticle()?.let { article ->
+            binding.tvTheRise.text = article.title
+            binding.spinnerPublish.setSelection = article.topic
+           binding.chipGroup.
         }
+
     }
 }
