@@ -22,7 +22,7 @@ import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.hideKeyboard
 
-class PublishArticleFragment : Fragment(), OnItemSelectedListener {
+class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: FragmentPublishBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     private val tags = mutableListOf<String>()
@@ -40,6 +40,9 @@ class PublishArticleFragment : Fragment(), OnItemSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.spinnerPublish.onItemSelectedListener = this
+
         setData()
         setUi()
 
@@ -104,7 +107,8 @@ class PublishArticleFragment : Fragment(), OnItemSelectedListener {
             binding.chipGroup.removeView(chip)
         }
         binding.chipGroup.addView(chip)
-        tags.add(chip.toString())
+        tags.add(chip.text.toString())
+        Log.d("tags", chip.text.toString())
     }
 
 
