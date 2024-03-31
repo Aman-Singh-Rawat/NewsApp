@@ -15,7 +15,7 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
 
     private var currentArticle: Article? = null
     private var storageRef = FirebaseStorage.getInstance().reference.child("Images")
-    private var imageUri: Uri? = null
+    var imageUri: Uri? = null
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
@@ -51,9 +51,9 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         }
     }
 
-    fun uploadImageToFirebase(uri: Uri, callback: (String?) -> Unit) {
+    fun uploadImageToFirebase(onSuccess: () -> Unit) {
         val storageRef = storageRef.child(System.currentTimeMillis().toString())
-        val uploadTask = storageRef.putFile(uri)
+        val uploadTask = storageRef.putFile(imageUri!!)
 
         uploadTask.continueWithTask { task ->
             if (!task.isSuccessful) {
@@ -65,9 +65,10 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUri = task.result.toString()
-                callback(downloadUri)
+                currentArticle = currentArticle?.copy(image = downloadUri)
+                onSuccess()
             } else {
-                callback(null)
+                //callback(null)
             }
         }
     }

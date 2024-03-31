@@ -46,7 +46,7 @@ class PreviewArticleFragment : Fragment() {
     private fun setData() {
         binding.run {
             viewModel.getArticle()?.let { article ->
-                glideImage(article)
+                binding.imgPreview.setImageURI(viewModel.imageUri)
                 tvTitle.text = article.title
                 tvStory.text = article.story
             }

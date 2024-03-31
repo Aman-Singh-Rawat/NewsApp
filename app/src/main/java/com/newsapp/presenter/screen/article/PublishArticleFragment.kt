@@ -66,8 +66,11 @@ class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         binding.tvPublish.setOnClickListener {
             if (tags.isNotEmpty() && !mTopic.isNullOrEmpty() && mTopic != "Select") {
-                viewModel.publishArticle(mTopic!!, tags)
-                findNavController().navigate(R.id.fragmentStoryPublished)
+                //viewModel.imageUri?.let { it1 -> viewModel.uploadImageToFirebase(it1)}
+                viewModel.uploadImageToFirebase(onSuccess = {
+                    viewModel.publishArticle(mTopic!!, tags)
+                    findNavController().navigate(R.id.fragmentStoryPublished)
+                })
             } else {
                 Toast.makeText(requireContext(), "please enter the all values", Toast.LENGTH_SHORT).show()
                 Log.d("mTopic", mTopic.toString())
@@ -77,13 +80,6 @@ class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
             findNavController()
                 .navigateUp()
         }
-    }
-
-    private fun list(): List<String> {
-        return listOf<String>(
-            "Technology", "ai", "computer", "artificialIntelligence",
-            "innovation", "machine", "digital", "robot"
-        )
     }
 
     private fun spinnerFunctionality() {
@@ -116,14 +112,14 @@ class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         viewModel.getArticle()?.let { article ->
             binding.tvTheRise.text = article.title
-            glideImage(article)
+            binding.imgPublish.setImageURI(viewModel.imageUri)
         }
 
     }
     private fun glideImage(article: Article) {
         Glide.with(requireContext())
             .load(article.image.toUri())
-            .into(binding.imgGirlWithRobot)
+            .into(binding.imgPublish)
     }
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         mTopic = parent?.getItemAtPosition(position).toString()

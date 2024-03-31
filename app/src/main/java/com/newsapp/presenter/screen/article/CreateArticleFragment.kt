@@ -60,23 +60,15 @@ class CreateArticleFragment : BaseFragment() {
 
             tvPreview.setOnClickListener {
                 if (validationOfViews() && imageUri != null) {
-                    viewModel.uploadImageToFirebase(imageUri!!) {
-                        imageUri ->
-                        if (imageUri != null) {
-                            viewModel.addArticle(
-                                imageUri,
-                                title = etFillTitle.text.toString(),
-                                story = editor.html
-                            )
-                            findNavController().navigate(R.id.previewStoryFragment)
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Failed to upload image",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+                    viewModel.imageUri = imageUri
+                    viewModel.addArticle(
+                        "",
+                        title = etFillTitle.text.toString(),
+                        story = editor.html
+                    )
+                    findNavController().navigate(R.id.previewStoryFragment)
+
+
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -110,5 +102,22 @@ class CreateArticleFragment : BaseFragment() {
         viewModel.clearArticleData()
         super.onBackPress()
     }
-
 }
+
+/*viewModel.uploadImageToFirebase(imageUri!!) {
+                        imageUri ->
+                        if (imageUri != null) {
+                            viewModel.addArticle(
+                                imageUri,
+                                title = etFillTitle.text.toString(),
+                                story = editor.html
+                            )
+                            findNavController().navigate(R.id.previewStoryFragment)
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Failed to upload image",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }*/
