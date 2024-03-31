@@ -104,8 +104,8 @@ class ProfileFragment : Fragment() {
 
     private fun setUpUi() {
         val user = prefs.getUser()
-        binding.tvProfileName.text = user?.userName
-        binding.tvPersonEmail.text = user?.email
+        binding.tvProfileName.text = user?.fullName
+        binding.tvPersonEmail.text = user?.userName
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
     }
