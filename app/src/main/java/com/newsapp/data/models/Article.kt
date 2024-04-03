@@ -6,4 +6,5 @@ data class Article(
     val story: String = "",
     val topic: String = "",
     val tags: List<String> = emptyList(),
+    val time: Long = 0L
 )

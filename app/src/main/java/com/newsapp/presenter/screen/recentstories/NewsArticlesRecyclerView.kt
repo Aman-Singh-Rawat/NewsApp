@@ -8,19 +8,13 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
+import com.newsapp.databinding.RecentRecycleItemBinding
 
 class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
     RecyclerView.Adapter<NewsArticlesRecyclerView.NewsArticlesAdapter>() {
         private var navController: NavController? = null
-    class NewsArticlesAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvHeadline: TextView = itemView.findViewById(R.id.tvHeadline)
-        val ivNewsImg: ImageView = itemView.findViewById(R.id.ivNewsImg)
-        val view: View = itemView.findViewById(R.id.includeRecentItem)
-        val imgChannelLogo: ImageView = view.findViewById(R.id.imgChannelLogo)
-        val tvChannelName: TextView = view.findViewById(R.id.tvChannelName)
-        val tvDaysAgo: TextView = view.findViewById(R.id.tvDaysAgo)
-        val tvTotalViews: TextView = view.findViewById(R.id.tvTotalViews)
-        val tvTotalComments: TextView = view.findViewById(R.id.tvTotalComments)
+    inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
+
     }
     constructor(navController: NavController, list: List<RecentDataClass>) : this(list) {
         this.navController = navController
@@ -28,10 +22,10 @@ class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsArticlesAdapter {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recent_recycle_item, parent, false)
+        val binding = RecentRecycleItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
 
-        return NewsArticlesAdapter(view)
+        return NewsArticlesAdapter(binding)
     }
 
     override fun getItemCount(): Int {
@@ -42,16 +36,17 @@ class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
         bindTheViews(holder,position)
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
-        holder.tvHeadline.text = list[position].tvHeadline
-        holder.ivNewsImg.setImageResource(list[position].ivNewsImg)
-        holder.imgChannelLogo.setImageResource(list[position].imgChannelLogo)
-        holder.tvChannelName.text = list[position].tvChannelName
-        holder.tvDaysAgo.text = list[position].tvDaysAgo
-        holder.tvTotalViews.text = list[position].tvTotalViews
-        holder.tvTotalComments.text = list[position].tvTotalComments
-
         holder.itemView.setOnClickListener {
             navController?.navigate(R.id.fullDeatilsFragment)
+        }
+        holder.binding.tvHeadline.text = list[position].tvHeadline
+        holder.binding.ivNewsImg.setImageResource(list[position].ivNewsImg)
+
+        holder.binding.includeRecentItem.apply {
+            imgChannelLogo.setImageResource(list[position].imgChannelLogo)
+            tvDaysAgo.text = list[position].tvDaysAgo
+            tvTotalViews.text = list[position].tvTotalViews
+            tvTotalComments.text = list[position].tvTotalComments
         }
     }
 }

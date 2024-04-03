@@ -6,12 +6,11 @@
     android:padding="16dp">
 
     <ProgressBar
-        android:indeterminate="true"
-        android:indeterminateTint="@color/blue"
-        android:indeterminateTintMode="src_atop"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical" />
-
+        android:layout_marginBottom="20dp"
+        android:indeterminateTint="@color/blue"
+        style="?android:attr/progressBarStyleLargeInverse"/>
 
 </LinearLayout>

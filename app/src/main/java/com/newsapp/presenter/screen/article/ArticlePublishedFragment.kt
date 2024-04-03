@@ -42,6 +42,9 @@ class ArticlePublishedFragment : BaseFragment() {
         binding.includePublished.btnOnboardingSkip.text = "Back to Home"
         binding.includePublished.btnOnboardingContinue.text = "View Story"
     }
+    override fun onBackPress() {
+        super.onBackPress()
 
-
+        findNavController().navigate(R.id.navigation_home)
+    }
 }

@@ -99,21 +99,3 @@ class CreateArticleFragment : BaseFragment() {
         super.onBackPress()
     }
 }
-
-/*viewModel.uploadImageToFirebase(imageUri!!) {
-                        imageUri ->
-                        if (imageUri != null) {
-                            viewModel.addArticle(
-                                imageUri,
-                                title = etFillTitle.text.toString(),
-                                story = editor.html
-                            )
-                            findNavController().navigate(R.id.previewStoryFragment)
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Failed to upload image",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }*/

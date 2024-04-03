@@ -17,12 +17,13 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.hideKeyboard
 
-class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
     private lateinit var binding: FragmentPublishBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     private val tags = mutableListOf<String>()
@@ -66,9 +67,11 @@ class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         binding.tvPublish.setOnClickListener {
             if (tags.isNotEmpty() && !mTopic.isNullOrEmpty() && mTopic != "Select") {
+                showProgress()
                 //viewModel.imageUri?.let { it1 -> viewModel.uploadImageToFirebase(it1)}
                 viewModel.uploadImageToFirebase(onSuccess = {
                     viewModel.publishArticle(mTopic!!, tags)
+                    hideProgress()
                     findNavController().navigate(R.id.fragmentStoryPublished)
                 })
             } else {
@@ -128,4 +131,5 @@ class PublishArticleFragment : Fragment(), AdapterView.OnItemSelectedListener {
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
+
 }
