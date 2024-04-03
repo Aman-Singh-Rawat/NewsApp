@@ -7,21 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
+import com.newsapp.data.models.Article
 import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentHomePageBinding
+import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
+import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.SharedPrefsManager
 
 class HomePageFragment : BaseFragment() {
+
     private lateinit var binding: FragmentHomePageBinding
+    private val viewModel by activityViewModels<CreateArticleViewModel>()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
@@ -31,7 +37,6 @@ class HomePageFragment : BaseFragment() {
         binding = FragmentHomePageBinding.inflate(
             inflater, container, false
         )
-
         return binding.root
     }
 
@@ -40,9 +45,22 @@ class HomePageFragment : BaseFragment() {
 
         setUpUi()
         setUpTrendRecycler()
-        setUpStoriesTag()
-        setUpStories()
         navigation()
+        setUp()
+        setUpStoriesTag()
+    }
+    private fun setUp() {
+        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+
+        val recentList: MutableList<Article> = mutableListOf()
+        viewModel.getArticleData { articleList ->
+            for (article in articleList) {
+                recentList.add(article)
+            }
+            binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext())
+        }
     }
 
     private fun setUpUi() {
@@ -62,22 +80,6 @@ class HomePageFragment : BaseFragment() {
         )
     }
 
-    // Recent Stories
-    private fun setUpStories() {
-        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
-        )
-        binding.rvNewsGroups.adapter = NewsArticlesRecyclerView(insertInTagsRV())
-
-    }
-
-    // Recent Stories Types
-    private fun setUpStoriesTag() {
-
-        setUpLinearLayout(binding.recyclerTag)
-        binding.recyclerTag.adapter = TagsRecyclerView(featureList())
-    }
-
 
 
     // Trending Recycler View
@@ -86,7 +88,6 @@ class HomePageFragment : BaseFragment() {
         binding.rvTrending.adapter = HpTrendRecycler(insertInTagsRV())
     }
 
-    /* Its return List of NewsArticlesRecycler */
     private fun insertInTagsRV(): List<RecentDataClass> {
         return listOf(
             RecentDataClass(
@@ -127,7 +128,11 @@ class HomePageFragment : BaseFragment() {
             )
         )
     }
-
+    //Tags
+    private fun setUpStoriesTag() {
+        setUpLinearLayout(binding.recyclerTag)
+        binding.recyclerTag.adapter = TagsRecyclerView(featureList())
+    }
     /* return feature list */
     private fun featureList(): List<String> {
         return listOf(
@@ -145,9 +150,7 @@ class HomePageFragment : BaseFragment() {
         }
     }
 
-    override fun onBackPress() {
-        super.onBackPress()
-
+    override fun onBackPress(){
         requireActivity().finish()
     }
     private fun glideImage(user: User) {
@@ -155,5 +158,35 @@ class HomePageFragment : BaseFragment() {
             .load(user.profile!!.toUri())
             .into(binding.cvPageProfile)
     }
+
+    /* Its return List of NewsArticlesRecycler */
+//    private fun resentStory(): List<RecentDataClass> {
+//
+//        val recentList: MutableList<RecentDataClass> = mutableListOf()
+//        viewModel.getArticleData { articleList ->
+//            for (index in articleList.indices) {
+//                val recentData = RecentDataClass(
+//                    tvHeadline = articleList[index].title, list[index].ivNewsImg,
+//                    list[index].tvChannelName, list[index].imgChannelLogo, list[index].tvDaysAgo,
+//                    list[index].tvTotalViews, list[index].tvTotalComments
+//                )
+//
+//                recentList.add(recentData)
+//            }
+//        }
+//        return recentList
+//    }
+
+    // Recent Stories
+//    private fun setUpStories() {
+//        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
+//            requireContext(), LinearLayoutManager.VERTICAL, false
+//        )
+//        binding.rvNewsGroups.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+//
+//    }
+//     //Recent Stories Types
+
+
 
 }

@@ -2,7 +2,6 @@ package com.newsapp.presenter.screen.profile
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentProfileBinding
-import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.SharedPrefsManager
@@ -32,13 +30,28 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding
-            .inflate(inflater, container, false
+            .inflate(
+                inflater, container, false
             )
 
         return binding.root
     }
-    private fun navigateAnotherActivity() {
-        findNavController().navigate(R.id.editProfileFragment)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.fbAddStory.setOnClickListener {
+            findNavController().navigate(R.id.navigation_CreateStory)
+        }
+        fabColorChange()
+        setUpStories()
+
+        binding.editProfile.setOnClickListener {
+            findNavController().navigate(R.id.editProfileFragment)
+        }
+        binding.icLogout.setOnClickListener {
+            findNavController().navigate(R.id.logoutFragment)
+        }
+        setUpUi()
     }
 
     private fun setUpStories() {
@@ -53,10 +66,9 @@ class ProfileFragment : Fragment() {
             }
             binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireContext())
         }
-
     }
     private fun insertInTagsRV(): List<RecentDataClass> {
-        val list =  listOf(
+        val list = listOf(
             RecentDataClass(
                 "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
                 R.drawable.img_non_blur,
@@ -97,9 +109,11 @@ class ProfileFragment : Fragment() {
         val recentList: MutableList<RecentDataClass> = mutableListOf()
         viewModel.getArticleData { articleList ->
             for (index in articleList.indices) {
-                val recentData = RecentDataClass(tvHeadline = articleList[index].title, list[index].ivNewsImg,
+                val recentData = RecentDataClass(
+                    tvHeadline = articleList[index].title, list[index].ivNewsImg,
                     list[index].tvChannelName, list[index].imgChannelLogo, list[index].tvDaysAgo,
-                    list[index].tvTotalViews, list[index].tvTotalComments)
+                    list[index].tvTotalViews, list[index].tvTotalComments
+                )
 
                 recentList.add(recentData)
             }
@@ -111,32 +125,13 @@ class ProfileFragment : Fragment() {
         binding.fbAddStory.imageTintList = ColorStateList.valueOf(color)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.fbAddStory.setOnClickListener{
-            findNavController().navigate(R.id.navigation_CreateStory)
-        }
-        fabColorChange()
-        setUpStories()
-
-        binding.editProfile.setOnClickListener {
-            navigateAnotherActivity()
-        }
-        binding.icLogout.setOnClickListener {
-            findNavController().navigate(R.id.logoutFragment)
-        }
-        setUpUi()
-    }
-
     private fun setUpUi() {
         val user = prefs.getUser()
         binding.tvProfileName.text = user?.fullName
         binding.tvPersonEmail.text = user?.userName
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
-        if (user?.profile != null && user.profile != "") {
-            glideImage(user)
-        }
+        if (user?.profile != null && user.profile != "") glideImage(user)
     }
 
     private fun glideImage(user: User) {

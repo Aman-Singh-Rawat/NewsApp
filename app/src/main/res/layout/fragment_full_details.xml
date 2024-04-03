@@ -31,7 +31,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.95" />
 
-
             <ImageView
                 android:id="@+id/ivbackArrow"
                 android:layout_width="wrap_content"
@@ -310,8 +309,8 @@
                     android:id="@+id/tvCommentViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:drawableRight="@drawable/img_right_arrow"
+                    android:text="@string/view_all"
+                    android:drawableEnd="@drawable/img_right_arrow"
                     style="@style/personName"
                     android:drawablePadding="10dp"
                     android:textColor="@color/blue"
