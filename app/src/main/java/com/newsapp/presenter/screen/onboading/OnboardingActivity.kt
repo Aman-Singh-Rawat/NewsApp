@@ -1,9 +1,10 @@
 package com.newsapp.presenter.screen.onboading
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.newsapp.R
 import com.newsapp.databinding.ActivityOnboardingBinding
@@ -11,6 +12,7 @@ import com.newsapp.presenter.screen.auth.register.SignUpActivity
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
+
 //    private var btnGetStarted: Button? = null
 //    private var btnOnboardingSkip: TextView? = null
 //    private var btnOnboardingContinue: TextView? = null
@@ -19,7 +21,7 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//
+
 //        btnOnboardingSkip = binding.twoButton.root.findViewById(R.id.btnOnboardingSkip)
 //        btnOnboardingContinue = binding.twoButton.root.findViewById(R.id.btnOnboardingContinue)
 //        btnGetStarted = binding.btnGetStarted.root.findViewById(R.id.btnAllInOne)
@@ -33,7 +35,6 @@ class OnboardingActivity : AppCompatActivity() {
         binding.viewPager2.clipToPadding = false
         binding.viewPager2.clipChildren = false
         binding.viewPager2.getChildAt(0).overScrollMode = View.OVER_SCROLL_NEVER
-
         binding.dotsIndicator.attachTo(binding.viewPager2)
 
         onPageChangeCallback()
@@ -43,13 +44,12 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
 
-
     private fun onPageChangeCallback() {
-        binding.viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-                when(position) {
+                when (position) {
                     0 -> {
                         binding.twoButton.btnOnboardingContinue.setOnClickListener {
                             binding.viewPager2.setCurrentItem(1, true)
@@ -72,12 +72,15 @@ class OnboardingActivity : AppCompatActivity() {
             }
         })
     }
+
+    @SuppressLint("SetTextI18n")
     private fun btnGetStartedVisible() {
         binding.btnGetStarted.root.visibility = View.VISIBLE
         binding.twoButton.btnOnboardingSkip.visibility = View.GONE
         binding.twoButton.btnOnboardingContinue.visibility = View.GONE
         binding.btnGetStarted.btnAllInOne.text = "Get Started"
     }
+
     private fun btnGetStartedInvisible() {
         binding.twoButton.btnOnboardingContinue.visibility = View.VISIBLE
         binding.twoButton.btnOnboardingSkip.visibility = View.VISIBLE
@@ -85,10 +88,12 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun openNewActivity() {
-        startActivity(Intent(
-            this@OnboardingActivity,
-            SignUpActivity::class.java
-        ))
+        startActivity(
+            Intent(
+                this@OnboardingActivity,
+                SignUpActivity::class.java
+            )
+        )
     }
 
     private fun addValuesOnArrayList() = listOf(

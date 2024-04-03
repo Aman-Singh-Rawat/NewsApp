@@ -18,6 +18,7 @@ import com.newsapp.databinding.FragmentEditProfileBinding
 import com.newsapp.presenter.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 
+@Suppress("DEPRECATION")
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
     private val viewModelProfile : ViewModelProfile by viewModels()
@@ -29,7 +30,6 @@ class EditProfileFragment : Fragment() {
         binding = FragmentEditProfileBinding
             .inflate(inflater, container, false
             )
-
         return binding.root
     }
     private fun uploadImage(imgEditProfile : ImageView) {
@@ -97,7 +97,6 @@ class EditProfileFragment : Fragment() {
         dataOnEditText()
 
     }
-
     private fun dataOnEditText() {
         val user = prefs.getUser()
         binding.includeEditFragment.etFillEmail.setText(user?.userName)

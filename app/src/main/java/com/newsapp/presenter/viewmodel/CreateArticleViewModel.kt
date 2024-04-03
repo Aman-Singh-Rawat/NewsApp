@@ -45,7 +45,6 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
                         val docId = documentReference.id
                     }
                     .addOnFailureListener { e ->
-
                     }
             }
         }

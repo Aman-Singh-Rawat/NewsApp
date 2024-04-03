@@ -42,7 +42,6 @@ class PreviewArticleFragment : Fragment() {
             findNavController().navigate(R.id.fragmentPublish)
         }
     }
-    //Dummy
     private fun setData() {
         binding.run {
             viewModel.getArticle()?.let { article ->
@@ -51,7 +50,6 @@ class PreviewArticleFragment : Fragment() {
                 tvStory.text = article.story
             }
         }
-
     }
 
     private fun glideImage(article: Article) {

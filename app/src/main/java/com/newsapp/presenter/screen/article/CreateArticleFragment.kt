@@ -67,8 +67,6 @@ class CreateArticleFragment : BaseFragment() {
                         story = editor.html
                     )
                     findNavController().navigate(R.id.previewStoryFragment)
-
-
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -77,7 +75,6 @@ class CreateArticleFragment : BaseFragment() {
                     ).show()
                 }
             }
-
             imgBackArrow.setOnClickListener { onBackPress() }
             cvImage.setOnClickListener { resultLauncher.launch("image/*") }
         }
@@ -97,7 +94,6 @@ class CreateArticleFragment : BaseFragment() {
         //viewModel.uploadImageToFirebase(it!!)
         binding.ivStory.setImageURI(it)
     }
-
     override fun onBackPress() {
         viewModel.clearArticleData()
         super.onBackPress()
