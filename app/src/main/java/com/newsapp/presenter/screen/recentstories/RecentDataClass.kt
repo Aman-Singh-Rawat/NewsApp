@@ -1,6 +1,6 @@
 package com.newsapp.presenter.screen.recentstories
 
-class RecentDataClass (
+data class RecentDataClass (
     val tvHeadline: String,
     val ivNewsImg: Int,
     val tvChannelName: String,

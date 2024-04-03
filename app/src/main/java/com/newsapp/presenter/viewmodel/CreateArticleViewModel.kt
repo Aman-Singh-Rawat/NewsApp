@@ -65,13 +65,32 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUri = task.result.toString()
-                currentArticle = currentArticle?.copy(image = downloadUri)
+                currentArticle = currentArticle?.copy(image = downloadUri, time = System.currentTimeMillis())
                 onSuccess()
             } else {
                 //callback(null)
             }
         }
     }
+    fun getArticleData(onSuccess: (ArrayList<Article>) -> Unit) {
+        val articleList = ArrayList<Article>()
+
+        firestore.collection(DatabaseCollection.articles).get()
+            .addOnSuccessListener {
+                if (!it.isEmpty) {
+                    for(data in it.documents) {
+                        val article: Article? = data.toObject(Article::class.java)
+                        if(article != null) {
+                            articleList.add(article)
+                        }
+                    }
+                    onSuccess(articleList)
+                }
+            }
+            .addOnFailureListener {
+            }
+    }
+
 
     fun clearArticleData() {
         currentArticle = null

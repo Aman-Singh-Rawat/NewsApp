@@ -2,22 +2,30 @@ package com.newsapp.presenter.screen.profile
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.newsapp.R
+import com.newsapp.data.models.Article
+import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentProfileBinding
 import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
+import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.SharedPrefsManager
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
+    private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,11 +45,18 @@ class ProfileFragment : Fragment() {
         binding.rvProfileNews.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        binding.rvProfileNews.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+
+        val recentList: MutableList<Article> = mutableListOf()
+        viewModel.getArticleData { articleList ->
+            for (article in articleList) {
+                recentList.add(article)
+            }
+            binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireContext())
+        }
 
     }
     private fun insertInTagsRV(): List<RecentDataClass> {
-        return listOf(
+        val list =  listOf(
             RecentDataClass(
                 "Unmasking the Truth: Investigative Report Exposes Widespread Political Corrup",
                 R.drawable.img_non_blur,
@@ -79,6 +94,17 @@ class ProfileFragment : Fragment() {
                 "2.4k"
             )
         )
+        val recentList: MutableList<RecentDataClass> = mutableListOf()
+        viewModel.getArticleData { articleList ->
+            for (index in articleList.indices) {
+                val recentData = RecentDataClass(tvHeadline = articleList[index].title, list[index].ivNewsImg,
+                    list[index].tvChannelName, list[index].imgChannelLogo, list[index].tvDaysAgo,
+                    list[index].tvTotalViews, list[index].tvTotalComments)
+
+                recentList.add(recentData)
+            }
+        }
+        return recentList
     }
     private fun fabColorChange() {
         val color = ContextCompat.getColor(requireContext(), R.color.white)
@@ -108,5 +134,14 @@ class ProfileFragment : Fragment() {
         binding.tvPersonEmail.text = user?.userName
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
+        if (user?.profile != null && user.profile != "") {
+            glideImage(user)
+        }
+    }
+
+    private fun glideImage(user: User) {
+        Glide.with(requireContext())
+            .load(user.profile!!.toUri())
+            .into(binding.cvPageProfile)
     }
 }

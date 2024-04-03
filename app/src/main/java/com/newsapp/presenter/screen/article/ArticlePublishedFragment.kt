@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentStoryPublishedBinding
 
-class ArticlePublishedFragment : Fragment() {
+class ArticlePublishedFragment : BaseFragment() {
     private lateinit var binding: FragmentStoryPublishedBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,9 @@ class ArticlePublishedFragment : Fragment() {
         binding.includePublished.btnOnboardingSkip.text = "Back to Home"
         binding.includePublished.btnOnboardingContinue.text = "View Story"
     }
+    override fun onBackPress() {
+        super.onBackPress()
 
-
+        findNavController().navigate(R.id.navigation_home)
+    }
 }

@@ -6,18 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
+import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentHomePageBinding
 import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.util.SharedPrefsManager
 
-class HomePageFragment : Fragment() {
+class HomePageFragment : BaseFragment() {
     private lateinit var binding: FragmentHomePageBinding
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +38,22 @@ class HomePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvPersonName.text = user?.fullName?:""
+        setUpUi()
         setUpTrendRecycler()
         setUpStoriesTag()
         setUpStories()
         navigation()
     }
 
+    private fun setUpUi() {
+        val currentUser = prefs.getUser()
+        if (currentUser != null) {
+            binding.tvPersonName.text = currentUser.userName
+            if (currentUser.profile != null && currentUser.profile != "") {
+                glideImage(currentUser)
+            }
+        }
+    }
 
     private fun setUpLinearLayout(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(
@@ -129,6 +143,17 @@ class HomePageFragment : Fragment() {
             findNavController()
                 .navigate(R.id.recentStoriesFragment)
         }
+    }
+
+    override fun onBackPress() {
+        super.onBackPress()
+
+        requireActivity().finish()
+    }
+    private fun glideImage(user: User) {
+        Glide.with(requireContext())
+            .load(user.profile!!.toUri())
+            .into(binding.cvPageProfile)
     }
 
 }
