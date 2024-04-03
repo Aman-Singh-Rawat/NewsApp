@@ -5,29 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
+import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentRecentStoriesBinding
+import com.newsapp.presenter.screen.profile.ProfileAdapter
+import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 
 class RecentStoriesFragment : Fragment() {
     private lateinit var binding: FragmentRecentStoriesBinding
+    private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentRecentStoriesBinding.inflate(
             inflater, container, false
         )
         setupTagRecycler()
-        setUpArticleRecycler()
+//        setUpArticleRecycler()
+        setUp()
         return binding.root
     }
-
-    private fun setUpArticleRecycler() {
+    private fun setUp() {
         binding.rvNewsArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        binding.rvNewsArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+        val recentList: MutableList<Article> = mutableListOf()
+        viewModel.getArticleData { articleList ->
+            for (article in articleList) {
+                recentList.add(article)
+            }
+            binding.rvNewsArticles.adapter = ProfileAdapter(recentList, requireContext())
+        }
     }
+
+//    private fun setUpArticleRecycler() {
+//        binding.rvNewsArticles.layoutManager = LinearLayoutManager(
+//            requireContext(), LinearLayoutManager.VERTICAL, false
+//        )
+//        binding.rvNewsArticles.adapter = NewsArticlesRecyclerView(insertInTagsRV())
+//    }
     private fun setupTagRecycler() {
         binding.rvRecentTag.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false

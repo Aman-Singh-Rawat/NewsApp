@@ -53,7 +53,6 @@ class HomePageFragment : BaseFragment() {
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-
         val recentList: MutableList<Article> = mutableListOf()
         viewModel.getArticleData { articleList ->
             for (article in articleList) {
