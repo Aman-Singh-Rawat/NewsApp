@@ -37,7 +37,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                                     val json = gson.toJson(it.result.data)
                                     prefs.saveUser(gson.fromJson(json, User::class.java))
                                 } else {
-                                    prefs.saveUser(User(uid = user.uid, email = user.email))
+                                    prefs.saveUser(User(uid = user.uid, email = user.email?:""))
                                 }
                                 onSuccess.invoke()
                             }
@@ -80,9 +80,9 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                                 prefs.saveUser(gson.fromJson(json, User::class.java))
                                 onSuccessSignIn.invoke()
                             } else {
-                                prefs.saveUser(User(uid = user.uid, email = user.email))
+                                prefs.saveUser(User(uid = user.uid, email = user.email?:""))
                                 firestore.collection(DatabaseCollection.users).document(user.uid).set(
-                                    User(uid = user.uid, email = user.email)
+                                    User(uid = user.uid, email = user.email?:"")
                                 )
                                 onSuccessSignup.invoke()
                             }
