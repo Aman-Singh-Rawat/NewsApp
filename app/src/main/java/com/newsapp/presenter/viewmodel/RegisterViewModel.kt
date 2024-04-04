@@ -23,8 +23,8 @@ class RegisterViewModel(private val application: Application) : AndroidViewModel
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     it.result.user?.let { user ->
-                        prefs.saveUser(User(uid = user.uid, email = user.email))
-                        firestore.collection(DatabaseCollection.users).document(user.uid).set(User(uid = user.uid, email = user.email))
+                        prefs.saveUser(User(uid = user.uid, email = user.email?:""))
+                        firestore.collection(DatabaseCollection.users).document(user.uid).set(User(uid = user.uid, email = user.email?:""))
                     }
                     onSuccess.invoke()
                 } else {

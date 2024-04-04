@@ -8,8 +8,10 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.newsapp.data.models.Article
+import com.newsapp.data.models.User
 import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
+import java.util.UUID
 
 class CreateArticleViewModel(private val application: Application) : AndroidViewModel(application) {
 
@@ -29,22 +31,14 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
     }
 
     fun publishArticle(topic: String, tags: List<String>) {
-        currentArticle = currentArticle?.copy(topic = topic, tags = tags)
-
-        //TODO upload all data to firebase store
-        //TODO use articles collection
-
         prefs.getUser()?.let { user ->
+            val articleId = UUID.randomUUID().toString()
+            currentArticle = currentArticle?.copy(articleId = articleId, topic = topic, tags = tags, authorId = user.uid, authorName = user.userName, authorProfile = user.profile)
             currentArticle?.let { article ->
-                val articleMap = gson.fromJson(gson.toJson(article), HashMap::class.java)
-
-                val articlesRef = firestore.collection(DatabaseCollection.articles)
-
-                articlesRef.add(articleMap)
+                firestore.collection(DatabaseCollection.articles).document(articleId).set(article)
                     .addOnSuccessListener { documentReference ->
-                        val docId = documentReference.id
-                    }
-                    .addOnFailureListener { e ->
+
+                    }.addOnFailureListener { e ->
 
                     }
             }
@@ -72,19 +66,15 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
             }
         }
     }
-    fun getArticleData(onSuccess: (ArrayList<Article>) -> Unit) {
-        val articleList = ArrayList<Article>()
-
+    fun getArticleData(onSuccess: (List<Article>) -> Unit) {
         firestore.collection(DatabaseCollection.articles).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
-                    for(data in it.documents) {
-                        val article: Article? = data.toObject(Article::class.java)
-                        if(article != null) {
-                            articleList.add(article)
-                        }
-                    }
-                    onSuccess(articleList)
+                    val articles = it.documents.map {
+                        val json = gson.toJson(it.data)
+                        gson.fromJson(json, Article::class.java)
+                    }.filter { it.authorId == prefs.getUser()?.uid }
+                    onSuccess(articles)
                 }
             }
             .addOnFailureListener {
