@@ -60,13 +60,14 @@ class HomePageFragment : BaseFragment() {
             }
             binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext())
         }
+
     }
 
     private fun setUpUi() {
         val currentUser = prefs.getUser()
         if (currentUser != null) {
             binding.tvPersonName.text = currentUser.userName
-            if (currentUser.profile != null && currentUser.profile != "") {
+            if (currentUser.profile != "") {
                 glideImage(currentUser)
             }
         }

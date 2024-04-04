@@ -80,8 +80,20 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
             .addOnFailureListener {
             }
     }
-
-
+    fun getSelectedData(onSuccess: (List<Article>) -> Unit) {
+        firestore.collection(DatabaseCollection.articles).get()
+            .addOnSuccessListener {
+                if (!it.isEmpty) {
+                    val articles = it.documents.map {
+                        val json = gson.toJson(it.data)
+                        gson.fromJson(json, Article::class.java)
+                    }.filter { it.topic == prefs.getUser()?.uid }
+                    onSuccess(articles)
+                }
+            }
+            .addOnFailureListener {
+            }
+    }
     fun clearArticleData() {
         currentArticle = null
     }
