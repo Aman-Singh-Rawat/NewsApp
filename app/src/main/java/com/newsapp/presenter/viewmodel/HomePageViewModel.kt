@@ -11,7 +11,6 @@ import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 
 class HomePageViewModel(private val application: Application) : AndroidViewModel(application)  {
-    private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
 
@@ -19,11 +18,18 @@ class HomePageViewModel(private val application: Application) : AndroidViewModel
         firestore.collection(DatabaseCollection.articles).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
-                    val articles = it.documents.map {
-                        val json = gson.toJson(it.data)
-                        gson.fromJson(json, Article::class.java)
-                    }.filter { it.topic == topic }
-                    onSuccess(articles)
+                    if (topic != "All") {
+                        val articles = it.documents.map {
+                            val json = gson.toJson(it.data)
+                            gson.fromJson(json, Article::class.java)
+                        }.filter { it.topic == topic }
+                        onSuccess(articles)
+                    } else {
+                        val article = it.documents.map {document ->
+                            document.toObject(Article::class.java) ?: Article()
+                        }
+                        onSuccess(article)
+                    }
                 }
             }
             .addOnFailureListener {

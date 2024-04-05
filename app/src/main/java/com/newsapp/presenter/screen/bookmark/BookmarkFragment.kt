@@ -33,6 +33,6 @@ class BookmarkFragment : Fragment(), OnTextSelectedListener {
     }
 
     override fun onTextSelected(topic: String) {
-        TODO("Not yet implemented")
+        val x = topic
     }
 }
