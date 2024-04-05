@@ -14,9 +14,9 @@ import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentRecentStoriesBinding
 import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
-import com.newsapp.util.OnItemClickListener
 
-class RecentStoriesFragment : BaseFragment(), OnItemClickListener {
+
+class RecentStoriesFragment : BaseFragment() {
     private lateinit var binding: FragmentRecentStoriesBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +58,6 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener {
             findNavController().navigateUp()
         }
     }
-    override fun onItemClick(articleId: String, position: Int) {
-        TODO("Not yet implemented")
-    }
+   
 
 }

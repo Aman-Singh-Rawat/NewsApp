@@ -48,7 +48,7 @@ class HomePageFragment : BaseFragment(){
         setUpTrendRecycler()
         navigation()
         setUp()
-        setUpHome()
+//        setUpHome()
 
     }
     private fun setUp() {
@@ -63,18 +63,18 @@ class HomePageFragment : BaseFragment(){
             binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
     }
-    private fun setUpHome(){
-        binding.recyclerTag.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
-        )
-        val tagList: MutableList<Article> = mutableListOf()
-        viewModelHome.getSelectedData{ articleList ->
-            for (article in articleList) {
-                tagList.add(article)
-            }
-            binding.recyclerTag.adapter = TagsRecyclerView(tagList, requireContext(), this)
-        }
-    }
+//    private fun setUpHome(){
+//        binding.recyclerTag.layoutManager = LinearLayoutManager(
+//            requireContext(), LinearLayoutManager.VERTICAL, false
+//        )
+//        val tagList: MutableList<Article> = mutableListOf()
+//        viewModelHome.getSelectedData{ articleList ->
+//            for (article in articleList) {
+//                tagList.add(article)
+//            }
+//            binding.recyclerTag.adapter = TagsRecyclerView(tagList, requireContext(), this)
+//        }
+//    }
 
     private fun setUpUi() {
         val currentUser = prefs.getUser()
