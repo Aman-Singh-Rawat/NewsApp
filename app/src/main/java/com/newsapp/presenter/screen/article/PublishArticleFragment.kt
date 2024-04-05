@@ -119,11 +119,6 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
         }
 
     }
-    private fun glideImage(article: Article) {
-        Glide.with(requireContext())
-            .load(article.image.toUri())
-            .into(binding.imgPublish)
-    }
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         mTopic = parent?.getItemAtPosition(position).toString()
     }

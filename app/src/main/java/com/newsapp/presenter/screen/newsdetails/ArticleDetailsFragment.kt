@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.newsapp.core.base.BaseFragment
-import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentArticleDetailsBinding
 import com.newsapp.presenter.viewmodel.ArticleDetailViewModel
+import com.newsapp.util.glideImage
 
 class ArticleDetailsFragment: BaseFragment() {
     private lateinit var binding: FragmentArticleDetailsBinding
@@ -30,21 +28,20 @@ class ArticleDetailsFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         firebaseSetup()
+        binding.rvNewsTags.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
     }
 
     private fun firebaseSetup() {
-        viewModel.getArticleData(articleId) {
-            glideImage(it[position].image, binding.fullImg)
-            glideImage(it[position].image, binding.imgChannelLogo)
-            binding.tvFullHead.text = it[position].title
-            binding.tvNewsDesc.text = it[position].story
-            binding.tvMinuteRead.text = calculateElapsedTime(it[position].time)
+        viewModel.getArticleData(articleId) {article ->
+            glideImage(binding.fullImg, article.image)
+            glideImage(binding.imgChannelLogo, article.image)
+            binding.tvFullHead.text = article.title
+            binding.tvNewsDesc.text = article.story
+            binding.tvMinuteRead.text = calculateElapsedTime(article.time)
+
+            binding.rvNewsTags.adapter = TagsAdapter(article.tags)
+
         }
-    }
-    private fun glideImage(imageUrl: String, imageView: ImageView) {
-        Glide.with(requireContext())
-            .load(imageUrl)
-            .into(imageView)
     }
     private fun calculateElapsedTime(timestamp: Long): String {
         val currentTime = System.currentTimeMillis()

@@ -14,8 +14,21 @@ class ArticleDetailViewModel(application: Application): AndroidViewModel(applica
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
-    fun getArticleData(articleId: String, onSuccess: (List<Article>) -> Unit) {
-        firestore.collection(DatabaseCollection.articles).get()
+    fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
+
+        firestore.collection(DatabaseCollection.articles).document(articleId).get()
+            .addOnSuccessListener {document ->
+                if (document != null) {
+                    val article = document.toObject(Article::class.java)
+                    onSuccess(article!!)
+                }
+            }.addOnFailureListener { e ->
+
+            }
+    }
+}
+/*
+* firestore.collection(DatabaseCollection.articles).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
                     val articles = it.documents.map {
@@ -26,6 +39,4 @@ class ArticleDetailViewModel(application: Application): AndroidViewModel(applica
                 }
             }
             .addOnFailureListener {
-            }
-    }
-}
+            }*/
