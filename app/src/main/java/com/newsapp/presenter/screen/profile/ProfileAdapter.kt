@@ -11,9 +11,9 @@ import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
 
-class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener: OnItemClickListener):
+class ProfileAdapter(private var list: List<Article>, val context: Context,
+                     private val listener: OnItemClickListener):
     RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
-    private val prefs by lazy { SharedPrefsManager.getInstance(context) }
     inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -32,8 +32,14 @@ class ProfileAdapter(private var list: List<Article>, val context: Context, priv
         bindTheViews(holder,position)
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
-        holder.itemView.setOnClickListener {
+        holder.binding.tvHeadline.setOnClickListener {
             listener.onItemClick(list[position].articleId)
+        }
+        holder.binding.cvNewsImg.setOnClickListener {
+            listener.onItemClick(list[position].articleId)
+        }
+        holder.binding.includeRecentItem.icSave.setOnClickListener {
+            listener.onArticleSaveListener(list[position].articleId)
         }
         holder.binding.tvHeadline.text = list[position].title
         glideImage(list[position].image, holder.binding.ivNewsImg)

@@ -48,13 +48,14 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         )
 
         val recentList: MutableList<Article> = mutableListOf()
+        showProgress()
         viewModel.getArticleData { articleList ->
             for (article in articleList) {
                 recentList.add(article)
             }
             binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
-
+        hideProgress()
     }
     private fun fabColorChange() {
         val color = ContextCompat.getColor(requireContext(), R.color.white)
@@ -94,4 +95,11 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
             "articleId" to articleId)
         )
     }
+
+    override fun onArticleSaveListener(articleId: String) {
+        findNavController().navigate(R.id.navigation_bookmark, bundleOf(
+            "articleId" to articleId)
+        )
+    }
+
 }

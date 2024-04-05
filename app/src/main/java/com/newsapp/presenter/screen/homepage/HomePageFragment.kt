@@ -1,12 +1,13 @@
 package com.newsapp.presenter.screen.homepage
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,13 +26,13 @@ import com.newsapp.presenter.viewmodel.HomePageViewModel
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.OnTextSelectedListener
 import com.newsapp.util.SharedPrefsManager
+import com.newsapp.util.glideImage
 
 class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener{
 
     private lateinit var binding: FragmentHomePageBinding
     private val viewModel by activityViewModels<HomePageViewModel>()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
-    private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,13 +57,6 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-
-//        viewModel.getArticleData { articleList ->
-//            for (article in articleList) {
-//                recentList.add(article)
-//            }
-//
-//        }
     }
     private fun setUpHome(){
         binding.recyclerTag.layoutManager = LinearLayoutManager(
@@ -76,7 +70,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
         if (currentUser != null) {
             binding.tvPersonName.text = currentUser.userName
             if (currentUser.profile != "") {
-                glideImage(currentUser)
+                glideImage(binding.cvPageProfile, currentUser.profile)
             }
         }
     }
@@ -156,22 +150,27 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
     override fun onBackPress(){
         requireActivity().finish()
     }
-    private fun glideImage(user: User) {
-        Glide.with(requireContext())
-            .load(user.profile!!.toUri())
-            .into(binding.cvPageProfile)
-    }
     override fun onItemClick(articleId: String) {
-        val x = articleId
+        findNavController().navigate(R.id.articleDetailsFragment, bundleOf(
+            "articleId" to articleId)
+        )
+    }
+
+    override fun onArticleSaveListener(articleId: String) {
+        findNavController().navigate(R.id.navigation_bookmark, bundleOf(
+            "articleId" to articleId)
+        )
     }
 
     override fun onTextSelected(topic: String) {
+        showProgress()
          viewModel.getSelectedData(topic) {
              val recentList: MutableList<Article> = mutableListOf()
              for (list in it) {
                  recentList.add(list)
              }
              binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
+             hideProgress()
          }
     }
 

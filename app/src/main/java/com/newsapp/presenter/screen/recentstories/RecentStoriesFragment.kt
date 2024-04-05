@@ -63,6 +63,10 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
         TODO("Not yet implemented")
     }
 
+    override fun onArticleSaveListener(articleId: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun onTextSelected(topic: String) {
         TODO("Not yet implemented")
     }

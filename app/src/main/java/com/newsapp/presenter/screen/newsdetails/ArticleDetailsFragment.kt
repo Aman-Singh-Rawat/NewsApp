@@ -31,6 +31,7 @@ class ArticleDetailsFragment: BaseFragment() {
     }
 
     private fun firebaseSetup() {
+        showProgress()
         viewModel.getArticleData(articleId) {article ->
             glideImage(binding.fullImg, article.image)
             glideImage(binding.imgChannelLogo, article.image)
@@ -41,6 +42,7 @@ class ArticleDetailsFragment: BaseFragment() {
             binding.rvNewsTags.adapter = TagsAdapter(article.tags)
 
         }
+        hideProgress()
     }
     private fun calculateElapsedTime(timestamp: Long): String {
         val currentTime = System.currentTimeMillis()
