@@ -21,6 +21,7 @@ import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentEditProfileBinding
 import com.newsapp.presenter.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
+import com.newsapp.util.glideImage
 
 @Suppress("DEPRECATION")
 class EditProfileFragment : Fragment() {
@@ -100,7 +101,7 @@ class EditProfileFragment : Fragment() {
     private fun dataOnEditText() {
         val user = prefs.getUser()
         if (user?.profile != null && user.profile != "") {
-            glideImage(user)
+            glideImage(binding.imgEditProfile, user.profile)
         }
         binding.includeEditFragment.etFillEmail.setText(user?.fullName)
         binding.includeEditFragment.etFillPassWord.setText(user?.userName)
@@ -122,9 +123,5 @@ class EditProfileFragment : Fragment() {
                 Toast.LENGTH_SHORT).show()
         }
     }
-    private fun glideImage(user: User) {
-        Glide.with(requireContext())
-            .load(user.profile!!.toUri())
-            .into(binding.imgEditProfile)
-    }
+
 }

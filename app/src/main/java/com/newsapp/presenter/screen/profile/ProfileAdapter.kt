@@ -46,7 +46,6 @@ class ProfileAdapter(private var list: List<Article>, val context: Context, priv
         glideImage(list[position].authorProfile, holder.binding.includeRecentItem.imgChannelLogo)
         holder.binding.includeRecentItem.tvChannelName.text = list[position].authorName
         holder.binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
-
     }
     private fun glideImage(image: String, imageView: ImageView ) {
         Glide.with(context)

@@ -24,6 +24,7 @@ import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
+import com.newsapp.util.glideImage
 
 class HomePageFragment : BaseFragment(), OnItemClickListener {
 
@@ -50,6 +51,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
         setUp()
         setUpStoriesTag()
     }
+
     private fun setUp() {
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
@@ -69,7 +71,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
         if (currentUser != null) {
             binding.tvPersonName.text = currentUser.userName
             if (currentUser.profile != "") {
-                glideImage(currentUser)
+                glideImage(binding.cvPageProfile, user!!.profile)
             }
         }
     }
@@ -80,7 +82,6 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
             LinearLayoutManager.HORIZONTAL, false
         )
     }
-
 
 
     // Trending Recycler View
@@ -129,15 +130,17 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
             )
         )
     }
+
     //Tags
     private fun setUpStoriesTag() {
         setUpLinearLayout(binding.recyclerTag)
         binding.recyclerTag.adapter = TagsRecyclerView(featureList())
     }
+
     /* return feature list */
     private fun featureList(): List<String> {
         return listOf(
-            "All","Politics","Technology","Business"
+            "All", "Politics", "Technology", "Business"
         )
     }
 
@@ -151,46 +154,11 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
         }
     }
 
-    override fun onBackPress(){
+    override fun onBackPress() {
         requireActivity().finish()
     }
-    private fun glideImage(user: User) {
-        Glide.with(requireContext())
-            .load(user.profile!!.toUri())
-            .into(binding.cvPageProfile)
-    }
+
     override fun onItemClick(articleId: String, position: Int) {
         val x = articleId
     }
-
-    /* Its return List of NewsArticlesRecycler */
-//    private fun resentStory(): List<RecentDataClass> {
-//
-//        val recentList: MutableList<RecentDataClass> = mutableListOf()
-//        viewModel.getArticleData { articleList ->
-//            for (index in articleList.indices) {
-//                val recentData = RecentDataClass(
-//                    tvHeadline = articleList[index].title, list[index].ivNewsImg,
-//                    list[index].tvChannelName, list[index].imgChannelLogo, list[index].tvDaysAgo,
-//                    list[index].tvTotalViews, list[index].tvTotalComments
-//                )
-//
-//                recentList.add(recentData)
-//            }
-//        }
-//        return recentList
-//    }
-
-    // Recent Stories
-//    private fun setUpStories() {
-//        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
-//            requireContext(), LinearLayoutManager.VERTICAL, false
-//        )
-//        binding.rvNewsGroups.adapter = NewsArticlesRecyclerView(insertInTagsRV())
-//
-//    }
-//     //Recent Stories Types
-
-
-
 }

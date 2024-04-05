@@ -20,6 +20,7 @@ import com.newsapp.databinding.FragmentProfileBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
+import com.newsapp.util.glideImage
 
 class ProfileFragment : BaseFragment(), OnItemClickListener {
     lateinit var binding: FragmentProfileBinding
@@ -84,15 +85,10 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
         if (user?.profile != null && user.profile != "") {
-            glideImage(user)
+            glideImage(binding.cvPageProfile, user.profile)
         }
     }
 
-    private fun glideImage(user: User) {
-        Glide.with(requireContext())
-            .load(user.profile!!.toUri())
-            .into(binding.cvPageProfile)
-    }
     override fun onItemClick(articleId: String, position: Int) {
         findNavController().navigate(R.id.articleDetailsFragment, bundleOf(
             "articleId" to articleId, "position" to position )
