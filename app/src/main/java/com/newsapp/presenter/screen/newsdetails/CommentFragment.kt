@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentCommentBinding
-import com.newsapp.databinding.FragmentFullDetailsBinding
 
 class CommentFragment : Fragment() {
     private lateinit var binding: FragmentCommentBinding

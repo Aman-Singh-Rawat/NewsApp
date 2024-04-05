@@ -14,12 +14,12 @@ import com.bumptech.glide.Glide
 import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
+import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
 
-class ProfileAdapter(private var list: List<Article>, val context: Context):
+class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener: OnItemClickListener):
     RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
     private val prefs by lazy { SharedPrefsManager.getInstance(context) }
-        private var navController: NavController? = null
     inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -39,20 +39,14 @@ class ProfileAdapter(private var list: List<Article>, val context: Context):
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         holder.itemView.setOnClickListener {
-            navController?.navigate(R.id.fullDeatilsFragment)
+            listener.onItemClick(list[position].articleId, position)
         }
         holder.binding.tvHeadline.text = list[position].title
         glideImage(list[position].image, holder.binding.ivNewsImg)
+        glideImage(list[position].authorProfile, holder.binding.includeRecentItem.imgChannelLogo)
+        holder.binding.includeRecentItem.tvChannelName.text = list[position].authorName
         holder.binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
-        Log.d("Timing", calculateElapsedTime(list[position].time))
-//        holder.binding.ivNewsImg.setImageResource(list[position].ivNewsImg)
-//
-//        holder.binding.includeRecentItem.apply {
-//            imgChannelLogo.setImageResource(list[position].imgChannelLogo)
-//            tvDaysAgo.text = list[position].tvDaysAgo
-//            tvTotalViews.text = list[position].tvTotalViews
-//            tvTotalComments.text = list[position].tvTotalComments
-//        }
+
     }
     private fun glideImage(image: String, imageView: ImageView ) {
         Glide.with(context)

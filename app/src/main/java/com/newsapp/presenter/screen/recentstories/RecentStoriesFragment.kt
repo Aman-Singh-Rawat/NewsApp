@@ -9,12 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentRecentStoriesBinding
 import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.util.OnItemClickListener
 
-class RecentStoriesFragment : Fragment() {
+class RecentStoriesFragment : BaseFragment(), OnItemClickListener {
     private lateinit var binding: FragmentRecentStoriesBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,7 @@ class RecentStoriesFragment : Fragment() {
             for (article in articleList) {
                 recentList.add(article)
             }
-            binding.rvNewsArticles.adapter = ProfileAdapter(recentList, requireContext())
+            binding.rvNewsArticles.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
     }
 
@@ -102,6 +104,9 @@ class RecentStoriesFragment : Fragment() {
         binding.imgRecentBack.setOnClickListener {
             findNavController().navigateUp()
         }
+    }
+    override fun onItemClick(articleId: String, position: Int) {
+        TODO("Not yet implemented")
     }
 
 }

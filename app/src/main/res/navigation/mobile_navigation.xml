@@ -52,10 +52,10 @@
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/fullDeatilsFragment"
-        android:name="com.newsapp.presenter.screen.newsdetails.FullDeatilsFragment"
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.newsapp.presenter.screen.newsdetails.ArticleDetailsFragment"
         android:label="fragment_full_details"
-        tools:layout="@layout/fragment_full_details" />
+        tools:layout="@layout/fragment_article_details" />
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.newsapp.presenter.screen.profile.EditProfileFragment"

@@ -22,9 +22,10 @@ import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
 
-class HomePageFragment : BaseFragment() {
+class HomePageFragment : BaseFragment(), OnItemClickListener {
 
     private lateinit var binding: FragmentHomePageBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
@@ -58,7 +59,7 @@ class HomePageFragment : BaseFragment() {
             for (article in articleList) {
                 recentList.add(article)
             }
-            binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext())
+            binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
 
     }
@@ -157,6 +158,9 @@ class HomePageFragment : BaseFragment() {
         Glide.with(requireContext())
             .load(user.profile!!.toUri())
             .into(binding.cvPageProfile)
+    }
+    override fun onItemClick(articleId: String, position: Int) {
+        val x = articleId
     }
 
     /* Its return List of NewsArticlesRecycler */

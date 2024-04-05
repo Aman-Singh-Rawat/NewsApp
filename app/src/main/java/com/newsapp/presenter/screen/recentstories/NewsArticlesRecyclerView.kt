@@ -1,10 +1,7 @@
 package com.newsapp.presenter.screen.recentstories
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
@@ -37,7 +34,7 @@ class NewsArticlesRecyclerView(private var list: List<RecentDataClass>):
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         holder.itemView.setOnClickListener {
-            navController?.navigate(R.id.fullDeatilsFragment)
+            navController?.navigate(R.id.articleDetailsFragment)
         }
         holder.binding.tvHeadline.text = list[position].tvHeadline
         holder.binding.ivNewsImg.setImageResource(list[position].ivNewsImg)
