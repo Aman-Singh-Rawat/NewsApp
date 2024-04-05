@@ -89,9 +89,9 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         }
     }
 
-    override fun onItemClick(articleId: String, position: Int) {
+    override fun onItemClick(articleId: String) {
         findNavController().navigate(R.id.articleDetailsFragment, bundleOf(
-            "articleId" to articleId, "position" to position )
+            "articleId" to articleId)
         )
     }
 }

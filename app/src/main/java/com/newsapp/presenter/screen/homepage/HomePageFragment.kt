@@ -2,6 +2,7 @@ package com.newsapp.presenter.screen.homepage
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +22,14 @@ import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
 import com.newsapp.presenter.viewmodel.HomePageViewModel
+import com.newsapp.util.OnItemClickListener
+import com.newsapp.util.OnTextSelectedListener
 import com.newsapp.util.SharedPrefsManager
 
-class HomePageFragment : BaseFragment(){
+class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener{
 
     private lateinit var binding: FragmentHomePageBinding
-    private val viewModel by activityViewModels<CreateArticleViewModel>()
-    private val viewModelHome by activityViewModels<HomePageViewModel>()
+    private val viewModel by activityViewModels<HomePageViewModel>()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
@@ -54,25 +56,19 @@ class HomePageFragment : BaseFragment(){
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        val recentList: MutableList<Article> = mutableListOf()
-        viewModel.getArticleData { articleList ->
-            for (article in articleList) {
-                recentList.add(article)
-            }
-           // binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
-        }
+
+//        viewModel.getArticleData { articleList ->
+//            for (article in articleList) {
+//                recentList.add(article)
+//            }
+//
+//        }
     }
     private fun setUpHome(){
         binding.recyclerTag.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
+            requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        val tagList: MutableList<Article> = mutableListOf()
-        viewModelHome.getSelectedData{ articleList ->
-            for (article in articleList) {
-                tagList.add(article)
-            }
-            //binding.recyclerTag.adapter = TagsRecyclerView(tagList)
-        }
+        binding.recyclerTag.adapter = TagsRecyclerView(featureList(), this)
     }
 
     private fun setUpUi() {
@@ -165,37 +161,18 @@ class HomePageFragment : BaseFragment(){
             .load(user.profile!!.toUri())
             .into(binding.cvPageProfile)
     }
+    override fun onItemClick(articleId: String) {
+        val x = articleId
+    }
 
-
-
-    /* Its return List of NewsArticlesRecycler */
-//    private fun resentStory(): List<RecentDataClass> {
-//
-//        val recentList: MutableList<RecentDataClass> = mutableListOf()
-//        viewModel.getArticleData { articleList ->
-//            for (index in articleList.indices) {
-//                val recentData = RecentDataClass(
-//                    tvHeadline = articleList[index].title, list[index].ivNewsImg,
-//                    list[index].tvChannelName, list[index].imgChannelLogo, list[index].tvDaysAgo,
-//                    list[index].tvTotalViews, list[index].tvTotalComments
-//                )
-//
-//                recentList.add(recentData)
-//            }
-//        }
-//        return recentList
-//    }
-
-    // Recent Stories
-//    private fun setUpStories() {
-//        binding.rvNewsGroups.layoutManager = LinearLayoutManager(
-//            requireContext(), LinearLayoutManager.VERTICAL, false
-//        )
-//        binding.rvNewsGroups.adapter = NewsArticlesRecyclerView(insertInTagsRV())
-//
-//    }
-//     //Recent Stories Types
-
-
+    override fun onTextSelected(topic: String) {
+         viewModel.getSelectedData(topic) {
+             val recentList: MutableList<Article> = mutableListOf()
+             for (list in it) {
+                 recentList.add(list)
+             }
+             binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
+         }
+    }
 
 }

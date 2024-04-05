@@ -1,6 +1,7 @@
 package com.newsapp.presenter.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -14,14 +15,14 @@ class HomePageViewModel(private val application: Application) : AndroidViewModel
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
 
-    fun getSelectedData(onSuccess: (List<Article>) -> Unit) {
+    fun getSelectedData(topic: String, onSuccess: (List<Article>) -> Unit) {
         firestore.collection(DatabaseCollection.articles).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
                     val articles = it.documents.map {
                         val json = gson.toJson(it.data)
                         gson.fromJson(json, Article::class.java)
-                    }.filter { it.topic == prefs.getUser()?.uid }
+                    }.filter { it.topic == topic }
                     onSuccess(articles)
                 }
             }

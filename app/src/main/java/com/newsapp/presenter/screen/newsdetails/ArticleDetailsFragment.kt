@@ -15,7 +15,6 @@ class ArticleDetailsFragment: BaseFragment() {
     private lateinit var binding: FragmentArticleDetailsBinding
     private val viewModel by activityViewModels<ArticleDetailViewModel>()
     private val articleId by lazy {arguments?.getString("articleId") ?: ""}
-    private val position by lazy {arguments?.getInt("position") ?: 0}
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

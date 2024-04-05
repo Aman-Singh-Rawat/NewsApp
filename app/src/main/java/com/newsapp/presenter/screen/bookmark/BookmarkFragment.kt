@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.newsapp.databinding.FragmentBookmarkBinding
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
+import com.newsapp.util.OnTextSelectedListener
 
-class BookmarkFragment : Fragment() {
+class BookmarkFragment : Fragment(), OnTextSelectedListener {
     private lateinit var binding: FragmentBookmarkBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,12 +23,16 @@ class BookmarkFragment : Fragment() {
         return binding.root
     }
     private fun setUpStoriesTag() {
-        val tagsRecyclerView = TagsRecyclerView(featureList(), true, requireContext(), findNavController())
+        val tagsRecyclerView = TagsRecyclerView(featureList(), true, requireContext(), findNavController(), this)
         binding.rvBookmarkTag.adapter = tagsRecyclerView
     }
     private fun featureList(): List<String> {
         return listOf(
             "All","Politics","Technology","Business"
         )
+    }
+
+    override fun onTextSelected(topic: String) {
+        TODO("Not yet implemented")
     }
 }
