@@ -2,10 +2,10 @@ package com.newsapp.presenter.screen.homepage
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -18,17 +18,17 @@ import com.newsapp.data.models.Article
 import com.newsapp.data.models.User
 import com.newsapp.databinding.FragmentHomePageBinding
 import com.newsapp.presenter.screen.profile.ProfileAdapter
-import com.newsapp.presenter.screen.recentstories.NewsArticlesRecyclerView
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
-import com.newsapp.util.OnItemClickListener
+import com.newsapp.presenter.viewmodel.HomePageViewModel
 import com.newsapp.util.SharedPrefsManager
 
-class HomePageFragment : BaseFragment(), OnItemClickListener {
+class HomePageFragment : BaseFragment(){
 
     private lateinit var binding: FragmentHomePageBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
+    private val viewModelHome by activityViewModels<HomePageViewModel>()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
     private val user by lazy { SharedPrefsManager.getInstance(requireContext()).getUser() }
     override fun onCreateView(
@@ -48,7 +48,8 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
         setUpTrendRecycler()
         navigation()
         setUp()
-        setUpStoriesTag()
+        setUpHome()
+
     }
     private fun setUp() {
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
@@ -61,7 +62,18 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
             }
             binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
-
+    }
+    private fun setUpHome(){
+        binding.recyclerTag.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+        val tagList: MutableList<Article> = mutableListOf()
+        viewModelHome.getSelectedData{ articleList ->
+            for (article in articleList) {
+                tagList.add(article)
+            }
+            binding.recyclerTag.adapter = TagsRecyclerView(tagList, requireContext(), this)
+        }
     }
 
     private fun setUpUi() {
@@ -129,12 +141,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
             )
         )
     }
-    //Tags
-    private fun setUpStoriesTag() {
-        setUpLinearLayout(binding.recyclerTag)
-        binding.recyclerTag.adapter = TagsRecyclerView(featureList())
-    }
-    /* return feature list */
+//    /* return feature list */
     private fun featureList(): List<String> {
         return listOf(
             "All","Politics","Technology","Business"
@@ -159,9 +166,8 @@ class HomePageFragment : BaseFragment(), OnItemClickListener {
             .load(user.profile!!.toUri())
             .into(binding.cvPageProfile)
     }
-    override fun onItemClick(articleId: String, position: Int) {
-        val x = articleId
-    }
+
+
 
     /* Its return List of NewsArticlesRecycler */
 //    private fun resentStory(): List<RecentDataClass> {

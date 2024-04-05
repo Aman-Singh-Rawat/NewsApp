@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.recentstories
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ class TagsRecyclerView(private val list: List<String>):
         this.findNavController = findNavController
     }
     inner class TagsRecyclerAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("NotifyDataSetChanged")
         fun onBind(itemView: View, s: String, position: Int) {
             itemView.isSelected = selectedIndex == position
             val tvRecyclerAddTags: TextView = itemView.findViewById(R.id.tvRecyclerAddTags)
