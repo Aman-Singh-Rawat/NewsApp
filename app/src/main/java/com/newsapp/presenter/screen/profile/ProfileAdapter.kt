@@ -1,17 +1,11 @@
 package com.newsapp.presenter.screen.profile
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.net.toUri
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
@@ -39,7 +33,7 @@ class ProfileAdapter(private var list: List<Article>, val context: Context, priv
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         holder.itemView.setOnClickListener {
-            listener.onItemClick(list[position].articleId, position)
+            listener.onItemClick(list[position].articleId)
         }
         holder.binding.tvHeadline.text = list[position].title
         glideImage(list[position].image, holder.binding.ivNewsImg)

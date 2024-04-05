@@ -14,9 +14,10 @@ import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentRecentStoriesBinding
 import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.util.OnItemClickListener
+import com.newsapp.util.OnTextSelectedListener
 
-
-class RecentStoriesFragment : BaseFragment() {
+class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener {
     private lateinit var binding: FragmentRecentStoriesBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +46,7 @@ class RecentStoriesFragment : BaseFragment() {
         binding.rvRecentTag.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        binding.rvRecentTag.adapter = TagsRecyclerView(tagList())
+        binding.rvRecentTag.adapter = TagsRecyclerView(tagList(), this)
     }
 
     private fun tagList(): List<String> {
@@ -58,6 +59,12 @@ class RecentStoriesFragment : BaseFragment() {
             findNavController().navigateUp()
         }
     }
-   
+    override fun onItemClick(articleId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTextSelected(topic: String) {
+        TODO("Not yet implemented")
+    }
 
 }
