@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -60,7 +59,7 @@ class HomePageFragment : BaseFragment(){
             for (article in articleList) {
                 recentList.add(article)
             }
-            binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
+           // binding.rvNewsGroups.adapter = ProfileAdapter(recentList, requireContext(), this)
         }
     }
     private fun setUpHome(){
@@ -72,7 +71,7 @@ class HomePageFragment : BaseFragment(){
             for (article in articleList) {
                 tagList.add(article)
             }
-            binding.recyclerTag.adapter = TagsRecyclerView(tagList, requireContext(), this)
+            //binding.recyclerTag.adapter = TagsRecyclerView(tagList)
         }
     }
 
