@@ -31,7 +31,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                 if (it.isSuccessful) {
                     prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                     it.result.user?.let { user ->
-                        firestore.collection(DatabaseCollection.users).document(user.uid).get()
+                        firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
                             .addOnCompleteListener {
                                 if (it.result.data != null) {
                                     val json = gson.toJson(it.result.data)
@@ -73,7 +73,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
             if (it.isSuccessful) {
                 prefs.putBoolean(PrefKeys.IS_LOGGED_IN, true)
                 it.result.user?.let { user ->
-                    firestore.collection(DatabaseCollection.users).document(user.uid).get()
+                    firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
                         .addOnCompleteListener {
                             if (it.result.data != null) {
                                 val json = gson.toJson(it.result.data)
@@ -81,7 +81,7 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                                 onSuccessSignIn.invoke()
                             } else {
                                 prefs.saveUser(User(uid = user.uid, email = user.email?:""))
-                                firestore.collection(DatabaseCollection.users).document(user.uid).set(
+                                firestore.collection(DatabaseCollection.USERS).document(user.uid).set(
                                     User(uid = user.uid, email = user.email?:"")
                                 )
                                 onSuccessSignup.invoke()

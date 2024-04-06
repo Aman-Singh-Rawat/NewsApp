@@ -1,7 +1,6 @@
 package com.newsapp.presenter.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -13,9 +12,9 @@ import com.newsapp.util.SharedPrefsManager
 class HomePageViewModel(private val application: Application) : AndroidViewModel(application)  {
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
-
+    private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getSelectedData(topic: String, onSuccess: (List<Article>) -> Unit) {
-        firestore.collection(DatabaseCollection.articles).get()
+        firestore.collection(DatabaseCollection.ARTICLES).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
                     if (topic != "All") {
@@ -34,5 +33,18 @@ class HomePageViewModel(private val application: Application) : AndroidViewModel
             }
             .addOnFailureListener {
         }
+    }
+
+    fun saveArticle(saveArticle: MutableList<String>) {
+        prefs.getUser()?.let {
+            firestore.collection(DatabaseCollection.BOOKMARK).document(it.uid).set(mapOf("bookmark" to saveArticle))
+                .addOnSuccessListener {
+
+                }
+                .addOnFailureListener {
+
+                }
+        }
+
     }
 }

@@ -21,7 +21,7 @@ class NewsInterestViewModel(private val application: Application) : AndroidViewM
         prefs.saveUserInterest(interest.toSet())
 //        val json = gson.toJson(interest)
         prefs.getUser()?.let {
-            firestore.collection(DatabaseCollection.userInterest).document(it.uid)
+            firestore.collection(DatabaseCollection.USER_INTEREST).document(it.uid)
                 .set(mapOf("interest" to interest))
         }
     }

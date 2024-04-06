@@ -8,7 +8,6 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.newsapp.data.models.Article
-import com.newsapp.data.models.User
 import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 import java.util.UUID
@@ -35,7 +34,7 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
             val articleId = UUID.randomUUID().toString()
             currentArticle = currentArticle?.copy(articleId = articleId, topic = topic, tags = tags, authorId = user.uid, authorName = user.userName, authorProfile = user.profile)
             currentArticle?.let { article ->
-                firestore.collection(DatabaseCollection.articles).document(articleId).set(article)
+                firestore.collection(DatabaseCollection.ARTICLES).document(articleId).set(article)
                     .addOnSuccessListener { documentReference ->
 
                     }.addOnFailureListener { e ->
@@ -67,7 +66,7 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         }
     }
     fun getArticleData(onSuccess: (List<Article>) -> Unit) {
-        firestore.collection(DatabaseCollection.articles).get()
+        firestore.collection(DatabaseCollection.ARTICLES).get()
             .addOnSuccessListener {
                 if (!it.isEmpty) {
                     val articles = it.documents.map {

@@ -96,10 +96,9 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         )
     }
 
-    override fun onArticleSaveListener(articleId: String) {
-        findNavController().navigate(R.id.navigation_bookmark, bundleOf(
-            "articleId" to articleId)
-        )
+    override fun onArticleSaveListener(selectedItems: MutableList<String>) {
+        val x = selectedItems
     }
+
 
 }

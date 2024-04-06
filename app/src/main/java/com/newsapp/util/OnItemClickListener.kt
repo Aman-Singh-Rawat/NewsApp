@@ -2,7 +2,7 @@ package com.newsapp.util
 
 interface OnItemClickListener {
     fun onItemClick(articleId: String)
-    fun onArticleSaveListener(articleId: String)
+    fun onArticleSaveListener(selectedItems: MutableList<String>)
 }
 
 interface OnTextSelectedListener {

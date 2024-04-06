@@ -1,19 +1,22 @@
 package com.newsapp.presenter.screen.profile
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
 
-class ProfileAdapter(private var list: List<Article>, val context: Context,
-                     private val listener: OnItemClickListener):
-    RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
+class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener:
+OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
+
+    private val selectedItems = mutableListOf<String>()
     inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -32,6 +35,9 @@ class ProfileAdapter(private var list: List<Article>, val context: Context,
         bindTheViews(holder,position)
     }
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
+        val isSelected = selectedItems.contains(list[position].articleId)
+        holder.itemView.isSelected = isSelected
+
         holder.binding.tvHeadline.setOnClickListener {
             listener.onItemClick(list[position].articleId)
         }
@@ -39,7 +45,14 @@ class ProfileAdapter(private var list: List<Article>, val context: Context,
             listener.onItemClick(list[position].articleId)
         }
         holder.binding.includeRecentItem.icSave.setOnClickListener {
-            listener.onArticleSaveListener(list[position].articleId)
+            if (selectedItems.contains(list[position].articleId)) {
+                selectedItems.remove(list[position].articleId)
+                listener.onArticleSaveListener(selectedItems)
+            } else {
+                selectedItems.add(list[position].articleId)
+                listener.onArticleSaveListener(selectedItems)
+            }
+            notifyDataSetChanged()
         }
         holder.binding.tvHeadline.text = list[position].title
         glideImage(list[position].image, holder.binding.ivNewsImg)

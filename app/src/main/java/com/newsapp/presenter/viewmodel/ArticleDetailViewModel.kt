@@ -1,7 +1,6 @@
 package com.newsapp.presenter.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -16,7 +15,7 @@ class ArticleDetailViewModel(application: Application): AndroidViewModel(applica
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
 
-        firestore.collection(DatabaseCollection.articles).document(articleId).get()
+        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
             .addOnSuccessListener {document ->
                 if (document != null) {
                     val article = document.toObject(Article::class.java)
@@ -27,16 +26,3 @@ class ArticleDetailViewModel(application: Application): AndroidViewModel(applica
             }
     }
 }
-/*
-* firestore.collection(DatabaseCollection.articles).get()
-            .addOnSuccessListener {
-                if (!it.isEmpty) {
-                    val articles = it.documents.map {
-                        val json = gson.toJson(it.data)
-                        gson.fromJson(json, Article::class.java)
-                    }.filter { it.articleId == articleId }
-                    onSuccess(articles)
-                }
-            }
-            .addOnFailureListener {
-            }*/

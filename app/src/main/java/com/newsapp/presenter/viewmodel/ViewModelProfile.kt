@@ -4,7 +4,6 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.newsapp.util.DatabaseCollection
@@ -20,7 +19,7 @@ class ViewModelProfile(private val application: Application): AndroidViewModel(a
         if (currentUser != null) {
             val user = currentUser.copy(fullName = fullName, userName = userName, bio = bio, website = website)
             prefs.saveUser(user)
-            firestore.collection(DatabaseCollection.users).document(user.uid).set(user)
+            firestore.collection(DatabaseCollection.USERS).document(user.uid).set(user)
         }
     }
     fun updateUserProfile(imageUri: Uri) {

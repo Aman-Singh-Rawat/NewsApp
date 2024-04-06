@@ -11,4 +11,5 @@ data class Article(
     val authorId: String = "",
     val authorName: String = "",
     val authorProfile: String = "",
+    val saveArticleList: String = ""
 )

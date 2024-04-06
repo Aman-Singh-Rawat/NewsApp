@@ -24,7 +24,7 @@ class RegisterViewModel(private val application: Application) : AndroidViewModel
                 if (it.isSuccessful) {
                     it.result.user?.let { user ->
                         prefs.saveUser(User(uid = user.uid, email = user.email?:""))
-                        firestore.collection(DatabaseCollection.users).document(user.uid).set(User(uid = user.uid, email = user.email?:""))
+                        firestore.collection(DatabaseCollection.USERS).document(user.uid).set(User(uid = user.uid, email = user.email?:""))
                     }
                     onSuccess.invoke()
                 } else {
