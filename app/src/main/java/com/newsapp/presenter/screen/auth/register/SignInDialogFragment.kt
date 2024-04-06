@@ -10,32 +10,50 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.newsapp.MainActivity
 import com.newsapp.R
+import com.newsapp.databinding.FragmentSignInDialogBinding
 
 @Suppress("UNREACHABLE_CODE")
 class SignInDialogFragment : DialogFragment() {
-
-
+    private lateinit var binding: FragmentSignInDialogBinding
+    private val isForgetPassword by lazy { arguments?.getBoolean("forgetPassword") ?: false }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in_dialog, container, false)
+    ): View {
+        binding = FragmentSignInDialogBinding.inflate(layoutInflater)
+        return binding.root
     }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),android.R.color.transparent))
         return dialog
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        },2000)
+        if (isForgetPassword) {
+            binding.tvSignInSucc.text = "Reset Password\nSuccessful!"
+            binding.tvHomePage.text = "Please checkout your Email"
+            Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(
+                    R.id.signInFragment,
+                    null,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.signInFragment, true)
+                        .build()
+                )
+            }, 2000)
+        } else {
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }, 2000)
+        }
 
         dialog?.setCancelable(false)
     }

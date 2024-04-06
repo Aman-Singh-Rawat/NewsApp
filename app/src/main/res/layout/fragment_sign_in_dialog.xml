@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.92" />
+
             <ImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="80dp"
@@ -46,6 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.2"/>
+
             <TextView
                 android:id="@+id/tvSignInSucc"
                 android:layout_width="wrap_content"
@@ -54,6 +56,7 @@
                 android:textSize="20dp"
                 android:textColor="@color/blue"
                 android:text="Sign in succssful!"
+                android:textAlignment="center"
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
                 app:layout_constraintTop_toBottomOf="@id/ivProfile"

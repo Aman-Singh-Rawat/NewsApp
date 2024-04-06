@@ -93,7 +93,7 @@
                     app:layout_constraintTop_toBottomOf="@id/etFillPassWord" />
 
                 <TextView
-                    android:id="@+id/tvTerms"
+                    android:id="@+id/tvForgetPass"
                     style="@style/singleBoldText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

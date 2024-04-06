@@ -47,5 +47,10 @@
         android:name="com.newsapp.presenter.screen.auth.register.SignInDialogFragment"
         android:label="SignInDialog"
         tools:layout="@layout/fragment_sign_in_dialog" />
+    <fragment
+        android:id="@+id/forgetPassword"
+        android:name="com.newsapp.presenter.screen.auth.login.ForgetPassword"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
 
 </navigation>

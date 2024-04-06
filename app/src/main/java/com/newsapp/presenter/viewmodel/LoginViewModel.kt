@@ -100,4 +100,13 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
         auth.signOut()
         getGoogleSignInClient()?.signOut()
     }
+    fun resetPassword(email: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        auth.sendPasswordResetEmail(email)
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }
+            .addOnFailureListener {
+                onError.invoke(it.message.toString())
+            }
+    }
 }
