@@ -20,6 +20,7 @@ class ArticleDetailsFragment: BaseFragment() {
     private val commentAdapter: CommentAdapter = CommentAdapter()
     private val viewModel by activityViewModels<ArticleDetailViewModel>()
     private val articleId by lazy {arguments?.getString("articleId") ?: ""}
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,7 +56,10 @@ class ArticleDetailsFragment: BaseFragment() {
         viewModel.getArticleData(articleId) {article ->
             glideImage(binding.fullImg, article.image)
             glideImage(binding.imgChannelLogo, article.image)
+            glideImage(binding.imgLogo, article.authorProfile)
+            binding.tvName.text = article.authorName
             binding.tvFullHead.text = article.title
+            binding.tvChannelName.text = article.authorName
             binding.tvNewsDesc.text = article.story
             binding.tvMinuteRead.text = calculateElapsedTime(article.time)
 

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +15,14 @@ import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentRecentStoriesBinding
 import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.presenter.viewmodel.HomePageViewModel
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.OnTextSelectedListener
 
 class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener {
     private lateinit var binding: FragmentRecentStoriesBinding
-    private val viewModel by activityViewModels<CreateArticleViewModel>()
+    private val viewModel by activityViewModels<HomePageViewModel>()
+    private lateinit var profileAdapter: ProfileAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentRecentStoriesBinding.inflate(
@@ -33,13 +36,6 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
         binding.rvNewsArticles.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        val recentList: MutableList<Article> = mutableListOf()
-        viewModel.getArticleData { articleList ->
-            for (article in articleList) {
-                recentList.add(article)
-            }
-            binding.rvNewsArticles.adapter = ProfileAdapter(recentList, requireContext(), this)
-        }
     }
 
     private fun setupTagRecycler() {
@@ -60,15 +56,26 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
         }
     }
     override fun onItemClick(articleId: String) {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.articleDetailsFragment, bundleOf(
+            "articleId" to articleId)
+        )
     }
 
     override fun onArticleSaveListener(selectedItems: MutableList<String>) {
-        TODO("Not yet implemented")
+        viewModel.saveArticle(selectedItems)
     }
 
     override fun onTextSelected(topic: String) {
-        TODO("Not yet implemented")
+        showProgress()
+        viewModel.getSelectedData(topic) {
+            val articleList: MutableList<Article> = mutableListOf()
+            for (list in it) {
+                articleList.add(list)
+            }
+            profileAdapter = ProfileAdapter(articleList, requireContext(), this)
+            binding.rvNewsArticles.adapter = profileAdapter
+            hideProgress()
+        }
     }
 
 }

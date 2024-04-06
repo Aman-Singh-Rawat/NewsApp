@@ -233,11 +233,11 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
-                style="@style/writeStories"
+                style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CNN News"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="14dp"
                 app:layout_constraintStart_toEndOf="@+id/imgLogo"
                 app:layout_constraintTop_toTopOf="@+id/imgLogo" />
@@ -248,7 +248,6 @@
                 android:layout_height="wrap_content"
                 android:text="19.2M followers"
                 style="@style/channelFollowers"
-                android:layout_marginTop="5dp"
                 android:textColor="@color/grey"
                 app:layout_constraintTop_toBottomOf="@+id/tvName"
                 app:layout_constraintStart_toStartOf="@id/tvName"/>
@@ -259,9 +258,11 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/selecter_tag"
                 android:letterSpacing="0.01"
-                android:paddingHorizontal="13dp"
-                android:paddingVertical="6dp"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="6dp"
                 android:text="Following"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="@+id/tvTotalFollowers"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintTop_toTopOf="@+id/tvName" />

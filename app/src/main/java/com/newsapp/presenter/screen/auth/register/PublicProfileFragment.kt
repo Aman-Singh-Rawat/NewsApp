@@ -21,7 +21,6 @@ import com.newsapp.util.SharedPrefsManager
 class PublicProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfilePublicBinding
     private val viewModel : ViewModelProfile by viewModels()
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
