@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:text="245.8k"
                 style="@style/verySmallText"
-                android:drawableStart="@drawable/ic_eye"
+                android:drawableStart="@drawable/img_visible_eye"
                 app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
                 app:layout_constraintTop_toTopOf="@+id/tvDaysAgo"
                 app:layout_constraintBottom_toBottomOf="@id/tvDaysAgo"

@@ -2,10 +2,14 @@ package com.newsapp.presenter.screen.auth.register
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,7 +18,7 @@ import com.newsapp.databinding.FragmentCreateAccountBinding
 import com.newsapp.presenter.viewmodel.RegisterViewModel
 
 class CreateAccountFragment : Fragment() {
-
+    private var isPasswordVisible = false
     private lateinit var binding: FragmentCreateAccountBinding
     private val viewModel: RegisterViewModel by viewModels()
 
@@ -30,8 +34,39 @@ class CreateAccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val etPassword = binding.includeFragAccount.etFillPassWord
+
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye)
+        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
+        passVisibleOrNot(etPassword)
+
         setupUI()
 
+    }
+    private fun passVisibleOrNot(etPassword: EditText) {
+        etPassword.transformationMethod = PasswordTransformationMethod()
+
+// Set an OnTouchListener for the EditText
+        etPassword.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (etPassword.right - etPassword.compoundPaddingRight)) {
+                    isPasswordVisible = !isPasswordVisible
+
+                    // Update the transformation method and drawable based on the current visibility state
+                    if (isPasswordVisible) {
+                        etPassword.transformationMethod = null // Show password as plain text
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireActivity(), R.drawable.img_visible_eye), null)
+                    } else {
+                        etPassword.transformationMethod = PasswordTransformationMethod() // Show password as dots
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye), null)
+                    }
+                    etPassword.setSelection(etPassword.length()) // Move the cursor to the end
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
     }
 
 

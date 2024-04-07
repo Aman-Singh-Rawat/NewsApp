@@ -3,12 +3,15 @@ package com.newsapp.presenter.screen.auth.login
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
-import androidx.core.os.bundleOf
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
@@ -18,7 +21,7 @@ import com.newsapp.presenter.viewmodel.LoginViewModel
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
-
+    private var isPasswordVisible = false
     private val viewModel : LoginViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,7 +29,36 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
+
+
+// Set an OnTouchListener for the EditText
+
         return binding.root
+    }
+
+    private fun passVisibleOrNot(etPassword: EditText) {
+        etPassword.transformationMethod = PasswordTransformationMethod()
+
+// Set an OnTouchListener for the EditText
+        etPassword.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (etPassword.right - etPassword.compoundPaddingRight)) {
+                    isPasswordVisible = !isPasswordVisible
+
+                    // Update the transformation method and drawable based on the current visibility state
+                    if (isPasswordVisible) {
+                        etPassword.transformationMethod = null // Show password as plain text
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireActivity(), R.drawable.img_visible_eye), null)
+                    } else {
+                        etPassword.transformationMethod = PasswordTransformationMethod() // Show password as dots
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye), null)
+                    }
+                    etPassword.setSelection(etPassword.length()) // Move the cursor to the end
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,6 +66,13 @@ class SignInFragment : Fragment() {
         binding.tvForgetPass.setOnClickListener {
             findNavController().navigate(R.id.forgetPassword)
         }
+
+        val etPassword = binding.includeFragSignIn.etFillPassWord
+
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye)
+        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
+        passVisibleOrNot(etPassword)
+
         setupUI()
     }
 
