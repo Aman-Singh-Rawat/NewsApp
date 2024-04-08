@@ -8,6 +8,8 @@ data class Article(
     val topic: String = "",
     val tags: List<String> = emptyList(),
     val time: Long = 0L,
+    val userViewed: List<String> = emptyList(),
+    val comments: Long = 0L,
     val authorId: String = "",
     val authorName: String = "",
     val authorProfile: String = "",

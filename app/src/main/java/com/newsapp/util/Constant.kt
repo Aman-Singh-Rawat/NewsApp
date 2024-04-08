@@ -5,4 +5,5 @@ object DatabaseCollection {
     const val USER_INTEREST = "userInterest"
     const val ARTICLES = "articles"
     const val BOOKMARK = "bookmark"
+    const val COMMENTS = "comments"
 }

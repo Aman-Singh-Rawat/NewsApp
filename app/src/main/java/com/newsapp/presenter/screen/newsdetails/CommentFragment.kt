@@ -14,6 +14,7 @@ import com.newsapp.databinding.FragmentCommentBinding
 class CommentFragment : Fragment() {
     private lateinit var binding: FragmentCommentBinding
     private val adapter: CommentAdapter = CommentAdapter()
+    private val articleId by lazy {arguments?.getString("articleId") ?: ""}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,39 +37,20 @@ class CommentFragment : Fragment() {
     }
 
     private fun rvCommentSetup() {
+        val comment = binding.etCommentTitle.text
         binding.rvCommentScreen.layoutManager =
             LinearLayoutManager(
                 requireContext(), LinearLayoutManager.VERTICAL,
                 false
             )
+
         binding.rvCommentScreen.adapter = adapter
-        adapter.updateUi(getComment())
+//        adapter.updateUi(getComment())
+
+        binding.ivSendBtn.setOnClickListener {
+
+        }
     }
 
-    private fun getComment(): List<CommentData> {
-        return listOf(
-            CommentData(
-                R.drawable.img_girl_profile,
-                "Sanjuanita Ordonez",
-                "3 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "256"
-            ),
-            CommentData(
-                R.drawable.imp_person_one,
-                "Sanju Ordonez",
-                "2 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "36"
-            ),
-            CommentData(
-                R.drawable.img_girl_profile,
-                "anita Ordonez",
-                "1 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "144"
-            )
 
-        )
-    }
 }

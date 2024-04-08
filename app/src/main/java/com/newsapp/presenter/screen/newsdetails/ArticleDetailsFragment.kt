@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +34,7 @@ class ArticleDetailsFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvCommentViewAll.setOnClickListener {
-            findNavController().navigate(R.id.commentFragment)
+            findNavController().navigate(R.id.commentFragment, bundleOf("articleId" to articleId))
         }
         binding.ivbackArrow.setOnClickListener {
             findNavController().navigateUp()
@@ -52,8 +53,11 @@ class ArticleDetailsFragment: BaseFragment() {
     }
 
     private fun firebaseSetup() {
-        showProgress()
         viewModel.getArticleData(articleId) {article ->
+            viewModel.articleVisited(article)
+            binding.nsvRoot.visibility = View.VISIBLE
+            binding.progress.visibility = View.GONE
+            binding.tvTotalViews.text = article.userViewed.size.toString()
             glideImage(binding.fullImg, article.image)
             glideImage(binding.imgChannelLogo, article.image)
             glideImage(binding.imgLogo, article.authorProfile)
@@ -61,13 +65,12 @@ class ArticleDetailsFragment: BaseFragment() {
             binding.tvFullHead.text = article.title
             binding.tvChannelName.text = article.authorName
             binding.tvNewsDesc.text = article.story
-            binding.tvMinuteRead.text = calculateElapsedTime(article.time)
-
+            binding.tvDaysAgo.text = calculateElapsedTime(article.time)
             binding.rvNewsTags.adapter = TagsAdapter(article.tags)
-
+            binding.tvCommentTime.text = "${article.comments} comments"
         }
-        hideProgress()
     }
+
     private fun calculateElapsedTime(timestamp: Long): String {
         val currentTime = System.currentTimeMillis()
         val elapsedTimeMillis = currentTime - timestamp
@@ -76,6 +79,7 @@ class ArticleDetailsFragment: BaseFragment() {
         val minutes = seconds / 60
         val hours = minutes / 60
 
+        //Add days Ago and months ago
         return when {
             hours > 0 -> "$hours hours ago"
             minutes > 0 -> "$minutes minutes ago"
@@ -90,32 +94,26 @@ class ArticleDetailsFragment: BaseFragment() {
                 false
             )
         binding.rvComment.adapter = commentAdapter
-        commentAdapter.updateUi(getComment())
+        //commentAdapter.updateUi(getComment())
     }
 
-    private fun getdata(): List<String> {
+   /* private fun getComment(): List<Comment> {
         return listOf(
-            "politics", "corruption", "investiagtion", "crime", "government", "report", "cnn"
-        )
-    }
-
-    private fun getComment(): List<CommentData> {
-        return listOf(
-            CommentData(
+            Comment(
                 R.drawable.img_girl_profile,
                 "Sanjuanita Ordonez",
                 "3 day ago",
                 "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
                 "256"
             ),
-            CommentData(
+            Comment(
                 R.drawable.imp_person_one,
                 "Sanju Ordonez",
                 "2 day ago",
                 "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
                 "36"
             ),
-            CommentData(
+            Comment(
                 R.drawable.img_girl_profile,
                 "anita Ordonez",
                 "1 day ago",
@@ -126,5 +124,5 @@ class ArticleDetailsFragment: BaseFragment() {
         )
 
 
-    }
+    }*/
 }

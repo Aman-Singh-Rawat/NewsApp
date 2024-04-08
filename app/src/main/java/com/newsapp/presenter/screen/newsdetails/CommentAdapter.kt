@@ -2,34 +2,26 @@ package com.newsapp.presenter.screen.newsdetails
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.newsapp.R
+import com.newsapp.databinding.CommentRecycleItemBinding
 
 class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
-    private var commentList = mutableListOf<CommentData>()
+    private var commentList = mutableListOf<Comment>()
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(itemView: View, commentData: CommentData) {
-            val cvProfile = itemView.findViewById<ImageView>(R.id.cvProfile)
-            val tvUserName = itemView.findViewById<TextView>(R.id.tvUserName)
-            val tvCommentDays = itemView.findViewById<TextView>(R.id.tvCommentDays)
-            val tvFullComment = itemView.findViewById<TextView>(R.id.tvFullComment)
-
-            cvProfile.setImageResource(commentData.cvProfile)
-            tvUserName.text = commentData.tvUserName
-            tvCommentDays.text = commentData.tvCommentDays
-            tvFullComment.text = commentData.tvFullComment
-
+    class ViewHolder(private val binding: CommentRecycleItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(comment: Comment) {
+//            binding.cvProfile.setImageResource(comment.authorProfile)
+            binding.tvUserName.text = comment.authorName
+            binding.tvCommentDays.text = comment.postedAt
+            binding.tvFullComment.text = comment.comment
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.comment_recycle_item, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val view = CommentRecycleItemBinding.inflate(inflater, parent, false)
         return ViewHolder(view)
     }
 
@@ -38,11 +30,11 @@ class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(holder.itemView, commentList[position])
+        holder.onBind(commentList[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateUi(comment: List<CommentData>) {
+    fun updateUi(comment: List<Comment>) {
         this.commentList = comment.toMutableList()
         notifyDataSetChanged()
     }
