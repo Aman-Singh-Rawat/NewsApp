@@ -9,20 +9,31 @@ import com.newsapp.data.models.Article
 import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 
-class ArticleDetailViewModel(application: Application): AndroidViewModel(application) {
+class ArticleDetailViewModel(application: Application) : AndroidViewModel(application) {
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
 
         firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
-            .addOnSuccessListener {document ->
+            .addOnSuccessListener { document ->
                 if (document != null) {
                     val article = document.toObject(Article::class.java)
-                    onSuccess(article!!)
+                    article?.let(onSuccess)
                 }
             }.addOnFailureListener { e ->
 
             }
+    }
+
+    fun articleVisited(article: Article) {
+        prefs.getUser()?.let { user ->
+            val visitedUsers = article.userViewed.toMutableList()
+            if (!visitedUsers.contains(user.uid)) {
+                visitedUsers.add(user.uid)
+                firestore.collection(DatabaseCollection.ARTICLES).document(article.articleId)
+                    .set(article.copy(userViewed = visitedUsers))
+            }
+        }
     }
 }
