@@ -53,7 +53,7 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
             for (article in articleList) {
                 recentList.add(article)
             }
-            binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireContext(), this)
+            binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireActivity(), this)
         }
         hideProgress()
     }

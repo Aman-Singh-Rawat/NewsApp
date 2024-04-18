@@ -7,24 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
+import com.newsapp.databinding.LayoutHomePageRecyclerBinding
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
 
 class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Adapter<HpTrendRecycler.HpTrendAdapter>() {
-    inner class HpTrendAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val recyclerImage: ImageView = itemView.findViewById(R.id.imgHpNews)
-        val tvNewsHeading: TextView = itemView.findViewById(R.id.tvNewsHeading)
-        val view: View = itemView.findViewById(R.id.includeHpItem)
-        val imgChannelLogo: ImageView = view.findViewById(R.id.imgChannelLogo)
-        val tvChannelName: TextView = view.findViewById(R.id.tvChannelName)
-        val tvDaysAgo: TextView = view.findViewById(R.id.tvDaysAgo)
-        val tvTotalViews: TextView = view.findViewById(R.id.tvTotalViews)
-        val tvTotalComments: TextView = view.findViewById(R.id.tvTotalComments)
-    }
+    inner class HpTrendAdapter(val binding: LayoutHomePageRecyclerBinding): RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HpTrendAdapter {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_home_page_recycler, parent, false)
-        return HpTrendAdapter(view)
+        val binding = LayoutHomePageRecyclerBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
+        return HpTrendAdapter(binding)
     }
 
     override fun getItemCount(): Int {
@@ -32,12 +24,14 @@ class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: HpTrendAdapter, position: Int) {
-        holder.recyclerImage.setImageResource(list[position].ivNewsImg)
-        holder.imgChannelLogo.setImageResource(list[position].imgChannelLogo)
-        holder.tvChannelName.text = list[position].tvChannelName
-        holder.tvDaysAgo.text = list[position].tvDaysAgo
-        holder.tvNewsHeading.text = list[position].tvHeadline
-        holder.tvTotalViews.text = list[position].tvTotalViews
-        holder.tvTotalComments.text = list[position].tvTotalComments
+        holder.binding.imgHpNews.setImageResource(list[position].ivNewsImg)
+        holder.binding.tvNewsHeading.text = list[position].tvHeadline
+        holder.binding.includeHpItem.apply {
+            imgChannelLogo.setImageResource(list[position].imgChannelLogo)
+            tvChannelName.text = list[position].tvChannelName
+            tvDaysAgo.text = list[position].tvDaysAgo
+            tvTotalViews.text = list[position].tvTotalViews
+            tvTotalComments.text = list[position].tvTotalComments
+        }
     }
 }
