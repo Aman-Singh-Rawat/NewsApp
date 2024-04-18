@@ -3,6 +3,7 @@ package com.newsapp.presenter.screen.bookmark
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
             val toast = Toast(requireContext())
             val customToast = layoutInflater.inflate(R.layout.dialog_save, null)
             toast.view = customToast
+            toast.setGravity(Gravity.CENTER, 0, 0)
             toast.duration = Toast.LENGTH_SHORT
             toast.show()
         }

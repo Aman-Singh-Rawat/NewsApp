@@ -24,7 +24,7 @@ import com.newsapp.util.glideImage
 
 class ProfileFragment : BaseFragment(), OnItemClickListener {
     lateinit var binding: FragmentProfileBinding
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity()) }
     private val viewModel by activityViewModels<CreateArticleViewModel>()
 
     override fun onCreateView(
@@ -35,6 +35,8 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         binding = FragmentProfileBinding
             .inflate(inflater, container, false
             )
+        requireActivity()
+        requireActivity()
 
         return binding.root
     }
@@ -44,7 +46,7 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
 
     private fun setUpStories() {
         binding.rvProfileNews.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
+            requireActivity(), LinearLayoutManager.VERTICAL, false
         )
 
         val recentList: MutableList<Article> = mutableListOf()
@@ -58,7 +60,7 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         hideProgress()
     }
     private fun fabColorChange() {
-        val color = ContextCompat.getColor(requireContext(), R.color.white)
+        val color = ContextCompat.getColor(requireActivity(), R.color.white)
         binding.fbAddStory.imageTintList = ColorStateList.valueOf(color)
     }
 

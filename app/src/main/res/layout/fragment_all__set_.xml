@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/glAllStart"
@@ -32,7 +32,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.95" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivBackArrowSet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="5dp"
-                android:text="You're All Set!"
+                android:text="@string/you_re_all_set"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
                 app:layout_constraintStart_toStartOf="@id/glAllStart"
@@ -77,7 +77,7 @@
                 android:gravity="center"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="6dp"
-                android:text="Start exploring, discovering, and engaging with the news."
+                android:text="@string/start_exploring_discovering_and_engaging_with_the_news"
                 app:layout_constraintEnd_toEndOf="@id/glAllEnd"
                 app:layout_constraintStart_toStartOf="@id/glAllStart"
                 app:layout_constraintTop_toBottomOf="@id/tvAllSet" />

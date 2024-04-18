@@ -20,7 +20,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgBackArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivStory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:letterSpacing="0.01"
-                android:text="Title"
+                android:text="@string/title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvImage" />
 
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/bg_rectangle"
-                android:hint="Your Title "
+                android:hint="@string/your_title"
                 android:letterSpacing="0.01"
                 android:padding="20dp"
                 android:ellipsize="end"
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:letterSpacing="0.01"
-                android:text="Story"
+                android:text="@string/story"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
 

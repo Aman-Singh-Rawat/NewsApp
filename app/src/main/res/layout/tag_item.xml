@@ -12,4 +12,4 @@
     android:paddingTop="9dp"
     android:paddingEnd="20dp"
     android:paddingBottom="9dp"
-    android:text="politics" />
+    android:text="@string/politics" />

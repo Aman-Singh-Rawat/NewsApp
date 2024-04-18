@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivArrowFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="30dp"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:text="Customize your news feed"
+                android:text="@string/customize_your_news_feed"
                 app:drawableRightCompat="@drawable/img_star"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:lineSpacingExtra="5dp"
-                android:text="Tell us what you're interested in to tailor your news experience. Don't worry, you can always update your preference later"
+                android:text="@string/tell_us_what_you_re_interested_in_to_tailor_your_news_experience_don_t_worry_you_can_always_update_your_preference_later"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/tvCustomize" />

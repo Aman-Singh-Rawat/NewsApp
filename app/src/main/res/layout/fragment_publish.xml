@@ -40,7 +40,7 @@
                 style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Publish"
+                android:text="@string/publish"
                 android:textColor="@color/blue"
                 android:layout_marginTop="23dp"
                 android:background="?android:attr/selectableItemBackground"
@@ -60,7 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imgPublishBack"
                 app:layout_constraintEnd_toEndOf="@id/guideline8">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgPublish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 style="@style/articleHeading"
-                android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
+                android:text="@string/the_rise_of_artificial_intelligence_how_ai_is_shaping_our_lives"
                 android:textColor="@color/black"
                 android:lineSpacingExtra="3dp"
                 android:letterSpacing="0.01"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Select Topic"
+                android:text="@string/select_topic"
                 android:letterSpacing="0.01"
                 app:layout_constraintStart_toStartOf="@id/guideline7"
                 app:layout_constraintTop_toBottomOf="@+id/tvTheRise" />
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Add Tags"
+                android:text="@string/add_tags"
                 android:letterSpacing="0.01"
                 app:layout_constraintStart_toStartOf="@id/guideline7"
                 app:layout_constraintTop_toBottomOf="@id/spinnerPublish" />
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_rectangle"
-                android:hint="Type tag and enter ..."
+                android:hint="@string/type_tag_and_enter"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 android:gravity="start"

@@ -22,7 +22,7 @@
         android:layout_margin="20dp"
         android:layout_marginEnd="257dp"
         android:includeFontPadding="false"
-        android:text="Profile"
+        android:text="@string/profile"
         app:layout_constraintEnd_toStartOf="@+id/icLogout"
         app:layout_constraintStart_toEndOf="@+id/imgN"
         app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="20dp"
-                android:text="Andrew Ainsley"
+                android:text="@string/andrew_ainsley"
                 app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,7 +107,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="4dp"
                 android:includeFontPadding="false"
-                android:text="andrew_ainsley"
+                android:text="@string/andrew_ainsley"
                 android:textColor="@color/grey"
                 app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
                 app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
@@ -134,7 +134,7 @@
                 android:layout_marginTop="14dp"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.02"
-                android:text="Tech enthusiast, likes to share stories about technology, and the digital world."
+                android:text="@string/tech_enthusiast_likes_to_share_stories_about_technology_and_the_digital_world"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintTop_toBottomOf="@id/tvPersonEmail" />
@@ -148,7 +148,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="5dp"
-                android:text="www.andrewainsley.yourdomain"
+                android:text="@string/www_andrewainsley_yourdomain"
                 android:textColor="@color/blue"
                 android:background="?android:attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
@@ -165,7 +165,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="126"
+                android:text="@string/_126"
                 app:layout_constraintEnd_toEndOf="@+id/tvProfileStories"
                 app:layout_constraintStart_toStartOf="@+id/tvProfileStories"
                 app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
@@ -180,7 +180,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="4.259"
+                android:text="@string/_4_259"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatTextView3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
@@ -205,7 +205,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="145"
+                android:text="@string/_145"
                 app:layout_constraintEnd_toEndOf="@+id/tvProfileFollowing"
                 app:layout_constraintStart_toStartOf="@+id/tvProfileFollowing"
                 app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
@@ -229,7 +229,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="Stories"
+                android:text="@string/stories"
                 app:layout_constraintStart_toStartOf="@+id/guideline11"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowing" />
 
@@ -243,7 +243,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="Followers"
+                android:text="@string/followers"
                 app:layout_constraintEnd_toEndOf="@+id/guideline12"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/guideline11"
@@ -260,7 +260,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="Following"
+                android:text="@string/following"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowing" />
 
@@ -304,6 +304,7 @@
         android:src="@drawable/ic_float_btn"
         app:borderWidth="0dp"
         app:fabSize="normal"
+        android:contentDescription="@string/fab_transformation_scrim_behavior"
         android:background="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/white"
@@ -20,7 +19,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginEnd="18dp">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivBackArrowSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,12 +35,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Welcome Back"
+                android:text="@string/welcome_back"
                 android:drawablePadding="10dp"
                 android:gravity="center"
-                android:drawableEnd="@drawable/img_hello_emojy"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivBackArrowSignIn" />
+                app:layout_constraintTop_toBottomOf="@id/ivBackArrowSignIn"
+                app:drawableEndCompat="@drawable/img_hello_emojy" />
 
             <TextView
                 android:id="@+id/tvEnterNameOrEmail"
@@ -49,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Please enter your email and password to sign in."
+                android:text="@string/please_enter_your_email_and_password_to_sign_in"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWelcomeBack" />

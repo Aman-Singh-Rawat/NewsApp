@@ -42,7 +42,7 @@
         android:gravity="center"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="6dp"
-        android:text="Don't forget to share with your friends to let them know you have an amazing story!"
+        android:text="@string/don_t_forget_to_share_with_your_friends_to_let_them_know_you_have_an_amazing_story"
         app:layout_constraintEnd_toEndOf="@id/guideline6"
         app:layout_constraintStart_toStartOf="@id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/tvStoryPublished" />

@@ -13,6 +13,7 @@
         android:backgroundTint="@color/blue"
         app:fabCustomSize="46dp"
         android:visibility="gone"
+        android:contentDescription="@string/fab_transformation_scrim_behavior"
         android:background="?android:attr/selectableItemBackground"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -30,7 +31,7 @@
         android:paddingTop="5dp"
         android:paddingEnd="20dp"
         android:paddingBottom="5dp"
-        android:text="All" />
+        android:text="@string/all" />
 </LinearLayout>
 
 

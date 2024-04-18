@@ -19,7 +19,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginEnd="18dp">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivBackArrowCreate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,12 +35,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:drawableEnd="@drawable/img_girl_with_laptop"
                 android:drawablePadding="10dp"
                 android:gravity="center"
                 android:text="@string/txt_create_account"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivBackArrowCreate" />
+                app:layout_constraintTop_toBottomOf="@id/ivBackArrowCreate"
+                app:drawableEndCompat="@drawable/img_girl_with_laptop" />
 
             <TextView
                 android:id="@+id/tvNewsExperience"

@@ -27,9 +27,9 @@
                 android:background="?android:attr/selectableItemBackground"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Trending"
+                android:text="@string/trending"
                 android:layout_gravity="center"
                 style="@style/headText"
                 android:gravity="center"

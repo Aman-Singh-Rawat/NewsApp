@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="5dp"
-            android:text="Welcome back"
+            android:text="@string/welcome_back"
             app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:includeFontPadding="false"
-            android:text="Andrew Ainsley"
+            android:text="@string/andrew_ainsley"
             app:layout_constraintStart_toEndOf="@+id/cvPageProfile"
             app:layout_constraintTop_toBottomOf="@+id/tvPageWelcome" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:includeFontPadding="false"
-                    android:text="Trending"
+                    android:text="@string/trending"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,10 +106,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:background="?android:attr/selectableItemBackground"
-                    android:drawableRight="@drawable/img_right_arrow"
+                    android:drawableEnd="@drawable/img_right_arrow"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="View All"
+                    android:text="@string/view_all"
                     android:textColor="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:includeFontPadding="false"
-                android:text="All Stories"
+                android:text="@string/all_stories"
                 app:layout_constraintStart_toStartOf="@id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/clTrendingStories" />
 
@@ -147,10 +147,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="?android:attr/selectableItemBackground"
-                android:drawableRight="@drawable/img_right_arrow"
+                android:drawableEnd="@drawable/img_right_arrow"
                 android:drawablePadding="10dp"
                 android:gravity="center"
-                android:text="View All"
+                android:text="@string/view_all"
                 android:textColor="@color/blue"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/guideline4"

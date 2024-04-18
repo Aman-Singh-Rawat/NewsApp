@@ -6,7 +6,8 @@
     app:cardCornerRadius="11dp"
     app:cardBackgroundColor="#caf0f8"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,8 +19,8 @@
         android:layout_gravity="center"
         android:drawablePadding="20dp"
         android:background="@drawable/bg_save_diloge"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="25dp"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="20dp"
         app:drawableStartCompat="@drawable/ic_tick" />
 
 </androidx.cardview.widget.CardView>

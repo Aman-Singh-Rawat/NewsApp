@@ -22,7 +22,7 @@
             android:textColor="@color/blue"
             android:background="@drawable/bg_button"
             android:backgroundTint="#edf2fb"
-            android:text="Skip"
+            android:text="@string/skip"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -37,7 +37,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="18dp"
             android:background="@drawable/bg_button"
-            android:text="Continue"
+            android:text="@string/_continue"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
 

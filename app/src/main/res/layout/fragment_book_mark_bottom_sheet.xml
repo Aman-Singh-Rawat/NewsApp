@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Save to bookmark"
+        android:text="@string/save_to_bookmark"
         app:layout_constraintStart_toStartOf="@id/glBottomSheetStart"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_add_chat"
-        android:text="New"
+        android:text="@string/_new"
         style="@style/empty"
         android:textColor="@color/blue"
         android:drawablePadding="10dp"

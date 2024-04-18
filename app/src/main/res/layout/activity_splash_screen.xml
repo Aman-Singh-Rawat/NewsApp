@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Newsline"
+        android:text="@string/newsline"
         android:includeFontPadding="false"
         android:textColor="@color/white"
         android:layout_marginTop="12dp"

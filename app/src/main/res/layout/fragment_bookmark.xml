@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:includeFontPadding="false"
-        android:text="Bookmark"
+        android:text="@string/bookmark"
         app:layout_constraintEnd_toEndOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Empty"
+        android:text="@string/empty"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/guideline14"
         app:layout_constraintHorizontal_bias="0.0"
@@ -88,7 +88,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:includeFontPadding="false"
-        android:text="You have not saved ant stories to this\ncollection"
+        android:text="@string/you_have_not_saved_ant_stories_to_this_ncollection"
         app:layout_constraintEnd_toEndOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />

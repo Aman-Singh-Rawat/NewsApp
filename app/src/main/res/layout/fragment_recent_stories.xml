@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Recent Stories"
+        android:text="@string/recent_stories"
         app:layout_constraintBottom_toBottomOf="@+id/imgRecentBack"
         app:layout_constraintEnd_toEndOf="@id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/imgRecentBack"

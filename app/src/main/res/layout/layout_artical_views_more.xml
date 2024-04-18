@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="CNN News"
+            android:text="@string/cnn_news"
             app:layout_constraintBottom_toBottomOf="@+id/imgChannelLogo"
             app:layout_constraintStart_toEndOf="@+id/imgChannelLogo"
             app:layout_constraintTop_toTopOf="@+id/imgChannelLogo" />
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="3 days ago"
+            android:text="@string/_3_days_ago"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgChannelLogo" />
 
@@ -38,7 +38,7 @@
             android:id="@+id/tvTotalViews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="245.8k"
+            android:text="@string/_245_8k"
             style="@style/verySmallText"
             android:drawableStart="@drawable/img_eye_view"
             app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
@@ -52,7 +52,7 @@
             android:id="@+id/tvTotalComments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3.2k"
+            android:text="@string/_3_2k"
             style="@style/verySmallText"
             android:drawableStart="@drawable/ic_msg"
             app:layout_constraintStart_toEndOf="@+id/tvTotalViews"
@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tvTotalComments"
             android:src="@drawable/ic_share"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

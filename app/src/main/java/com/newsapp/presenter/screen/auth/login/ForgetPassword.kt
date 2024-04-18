@@ -33,9 +33,9 @@ class ForgetPassword : Fragment() {
 
     private fun setUp() {
         binding.includeButton.btnAllInOne.apply {
-            text = "Continue"
+            text = resources.getString(R.string._continue)
             setOnClickListener {
-                if (binding.etFillEmail.text.isNotEmpty()) {
+                if (binding.etFillEmail.text?.isNotEmpty() == true) {
                     viewModel.resetPassword(binding.etFillEmail.text.toString(), {
                         findNavController().navigate(R.id.signInDialogFragment, bundleOf("forgetPassword" to true))
                     }, {
@@ -45,5 +45,4 @@ class ForgetPassword : Fragment() {
             }
         }
     }
-
 }

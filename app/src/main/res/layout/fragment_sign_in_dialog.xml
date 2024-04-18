@@ -36,7 +36,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.92" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -53,9 +53,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/greenColorText"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/blue"
-                android:text="Sign in succssful!"
+                android:text="@string/sign_in_succssful"
                 android:textAlignment="center"
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/smallText"
-                android:text="Please wait..."
+                android:text="@string/please_wait"
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
                 app:layout_constraintTop_toBottomOf="@id/tvSignInSucc"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 style="@style/smallText"
                 android:gravity="center"
-                android:text="You will be directed to the homepage."
+                android:text="@string/you_will_be_directed_to_the_homepage"
                 app:layout_constraintStart_toStartOf="@id/glPopSecondStart"
                 app:layout_constraintEnd_toEndOf="@id/glPopSecondEnd"
                 app:layout_constraintTop_toBottomOf="@id/tvPleaseWait"

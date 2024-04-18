@@ -20,7 +20,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.96" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivArrowStory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         style="@style/writeStories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preview"
+        android:text="@string/preview"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/ivArrowStory"
         app:layout_constraintEnd_toStartOf="@id/tvContinue"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
-        android:text="continue"
+        android:text="@string/_continue"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="@+id/tvPreview"
         app:layout_constraintEnd_toEndOf="@id/glPreViewEnd"
@@ -81,7 +81,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgPreview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -103,7 +103,7 @@
                 android:lineSpacingExtra="4dp"
                 android:ellipsize="start"
                 android:maxLines="2"
-                android:text="The Rise of Artificial Intelligence: How Ai is Shaping Our Lives"
+                android:text="@string/the_rise_of_artificial_intelligence_how_ai_is_shaping_our_lives"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cvImage" />
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Andrew Ainsley  "
+                android:text="@string/andrew_ainsley"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
                 app:layout_constraintStart_toEndOf="@id/ivProfile"
                 app:layout_constraintTop_toTopOf="@+id/ivProfile" />
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
-                android:text="You"
+                android:text="@string/you"
                 android:textColor="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/tvProfileName"
                 app:layout_constraintStart_toEndOf="@id/tvProfileName"
@@ -147,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="5 mins read"
+                android:text="@string/_5_mins_read"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvYou" />
 
@@ -157,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Now"
+                android:text="@string/now"
                 app:layout_constraintBottom_toBottomOf="@id/tvAgo"
                 app:layout_constraintStart_toEndOf="@id/tvAgo"
                 app:layout_constraintTop_toTopOf="@+id/tvAgo" />
@@ -169,7 +169,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="15dp"
                 android:gravity="top"
-                android:text="Your Story"
+                android:text="@string/your_story"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
