@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icLogout"
+        android:id="@+id/icSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -44,7 +44,7 @@
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icLogout"
+        app:layout_constraintTop_toBottomOf="@+id/icSearch"
         tools:listitem="@layout/recent_stories" />
 
     <androidx.recyclerview.widget.RecyclerView

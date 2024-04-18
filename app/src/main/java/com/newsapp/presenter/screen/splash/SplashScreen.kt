@@ -21,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
         Handler(mainLooper).postDelayed({
             checkUserSession()
             finish()
-        }, 3000)
+        }, 2500)
     }
     private fun checkUserSession() {
         val isLoggedIn = prefs.getBoolean(PrefKeys.IS_LOGGED_IN, false)
