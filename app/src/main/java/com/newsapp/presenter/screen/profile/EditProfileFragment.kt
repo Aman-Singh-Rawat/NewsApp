@@ -23,11 +23,10 @@ import com.newsapp.presenter.viewmodel.ViewModelProfile
 import com.newsapp.util.SharedPrefsManager
 import com.newsapp.util.glideImage
 
-@Suppress("DEPRECATION")
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
     private val viewModelProfile : ViewModelProfile by viewModels()
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity().applicationContext) }
     private var imageUri: Uri? = null
 
     override fun onCreateView(
@@ -119,7 +118,7 @@ class EditProfileFragment : Fragment() {
             viewModelProfile.updateUserProfile(fullName, name, bio, website)
             findNavController().navigateUp()
         } else {
-            Toast.makeText(requireContext(), "name and username must be fill",
+            Toast.makeText(requireActivity(), "name and username must be fill",
                 Toast.LENGTH_SHORT).show()
         }
     }
