@@ -40,7 +40,7 @@
     </string-array>
 
     <string name="txt_add_cover_image">Add cover image </string>
-    <string name="txt_the_rise">The Rise of Artifical Intelligence: How AI is Shaping Our Lives</string>
+    <string name="txt_the_rise">The Rise of Artificial Intelligence: How AI is Shaping Our Lives</string>
     <string name="txt_signup">Sign Up</string>
     <string name="txt_continue">continue</string>
     <string name="full_name">Full Name</string>
@@ -115,11 +115,11 @@
     <string name="publish">Publish</string>
     <string name="select_topic">Select Topic</string>
     <string name="add_tags">Add Tags</string>
-    <string name="type_tag_and_enter">Type tag and enter ...</string>
+    <string name="type_tag_and_enter">Type tag and enter&#8230;</string>
     <string name="recent_stories">Recent Stories</string>
     <string name="please_enter_your_email_and_password_to_sign_in">Please enter your email and password to sign in.</string>
     <string name="sign_in_succssful">Sign in succssful!</string>
-    <string name="please_wait">Please wait...</string>
+    <string name="please_wait">Please wait&#8230;</string>
     <string name="you_will_be_directed_to_the_homepage">You will be directed to the homepage.</string>
     <string name="don_t_forget_to_share_with_your_friends_to_let_them_know_you_have_an_amazing_story">Don\'t forget to share with your friends to let them know you have an amazing story!</string>
     <string name="unmasking_the_truth_investigative_report_exposes_widespread_political_corruption">Unmasking the Truth: Investigative Report Exposes Widespread Political Corruption</string>

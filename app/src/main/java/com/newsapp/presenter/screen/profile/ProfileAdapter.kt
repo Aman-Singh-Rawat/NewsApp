@@ -1,17 +1,15 @@
 package com.newsapp.presenter.screen.profile
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
-import com.newsapp.util.SharedPrefsManager
 import com.newsapp.util.calculateElapsedTime
 
 class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener:
@@ -35,6 +33,7 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     override fun onBindViewHolder(holder: NewsArticlesAdapter, position: Int) {
         bindTheViews(holder,position)
     }
+    @SuppressLint("NotifyDataSetChanged")
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         val isSelected = selectedItems.contains(list[position].articleId)
         holder.itemView.isSelected = isSelected
