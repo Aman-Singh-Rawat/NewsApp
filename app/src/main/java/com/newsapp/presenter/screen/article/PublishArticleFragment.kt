@@ -72,11 +72,11 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
                 viewModel.uploadImageToFirebase(onSuccess = {
                     viewModel.publishArticle(mTopic!!, tags)
                     hideProgress()
+                    viewModel.clearArticleData()
                     findNavController().navigate(R.id.fragmentStoryPublished)
                 })
             } else {
                 Toast.makeText(requireContext(), "please enter the all values", Toast.LENGTH_SHORT).show()
-                Log.d("mTopic", mTopic.toString())
             }
         }
         binding.imgPublishBack.setOnClickListener {
@@ -107,7 +107,6 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
         }
         binding.chipGroup.addView(chip)
         tags.add(chip.text.toString())
-        Log.d("tags", chip.text.toString())
     }
 
 
