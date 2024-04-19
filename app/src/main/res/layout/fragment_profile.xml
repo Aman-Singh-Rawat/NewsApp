@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -165,7 +165,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
-                android:text="@string/_126"
+                android:text="@string/_0"
                 app:layout_constraintEnd_toEndOf="@+id/tvProfileStories"
                 app:layout_constraintStart_toStartOf="@+id/tvProfileStories"
                 app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
@@ -281,7 +281,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="?attr/actionBarSize"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -291,14 +291,14 @@
                 tools:listitem="@layout/recent_recycle_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbAddStory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/blue"
         android:elevation="6dp"
         android:src="@drawable/ic_float_btn"

@@ -28,19 +28,17 @@ class ArticlePublishedFragment : BaseFragment() {
 
         binding.includePublished.btnOnboardingSkip.setOnClickListener {
             findNavController()
-                .navigate(R.id.navigation_profile)
+                .navigate(R.id.navigation_home)
         }
         binding.includePublished.btnOnboardingContinue.setOnClickListener {
             findNavController()
-//                .navigate(R.id.navigation_profile)
+                .navigate(R.id.navigation_profile)
         }
         btnTextChange()
     }
-
-    @SuppressLint("SetTextI18n")
     private fun btnTextChange() {
-        binding.includePublished.btnOnboardingSkip.text = "Back to Home"
-        binding.includePublished.btnOnboardingContinue.text = "View Story"
+        binding.includePublished.btnOnboardingSkip.text = resources.getString(R.string.back_to_home)
+        binding.includePublished.btnOnboardingContinue.text = resources.getString(R.string.view_story)
     }
     override fun onBackPress() {
         super.onBackPress()

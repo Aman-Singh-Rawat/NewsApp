@@ -12,6 +12,7 @@ import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
+import com.newsapp.util.calculateElapsedTime
 
 class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener:
 OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
@@ -64,19 +65,5 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         Glide.with(context)
             .load(image)
             .into(imageView)
-    }
-    private fun calculateElapsedTime(timestamp: Long): String {
-        val currentTime = System.currentTimeMillis()
-        val elapsedTimeMillis = currentTime - timestamp
-
-        val seconds = elapsedTimeMillis / 1000
-        val minutes = seconds / 60
-        val hours = minutes / 60
-
-        return when {
-            hours > 0 -> "$hours hours ago"
-            minutes > 0 -> "$minutes minutes ago"
-            else -> "$seconds seconds ago"
-        }
     }
 }

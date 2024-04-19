@@ -1,10 +1,14 @@
 package com.newsapp.presenter.screen.profile
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
@@ -35,8 +39,6 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         binding = FragmentProfileBinding
             .inflate(inflater, container, false
             )
-        requireActivity()
-        requireActivity()
 
         return binding.root
     }
@@ -56,6 +58,7 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
                 recentList.add(article)
             }
             binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireActivity(), this)
+            binding.tvTotalStories.text = recentList.size.toString()
         }
         hideProgress()
     }
@@ -69,9 +72,31 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         binding.fbAddStory.setOnClickListener{
             findNavController().navigate(R.id.navigation_CreateStory)
         }
+
         fabColorChange()
         setUpStories()
 
+        binding.tvWebsite.setOnClickListener {
+            val urlText = binding.tvWebsite.text.toString().trim()
+            val uri = try {
+                if (urlText.startsWith("http://") || urlText.startsWith("https://")) {
+                    Uri.parse(urlText)
+                } else {
+                    Uri.parse("http://$urlText")
+                }
+            } catch (e: Exception) {
+                // Handle the case where the text is not a valid URL
+                Toast.makeText(requireActivity(), "Invalid URL: $urlText", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val searchIntent = Intent(Intent.ACTION_VIEW, uri)
+            try {
+                startActivity(searchIntent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(requireActivity(), "No browser app available", Toast.LENGTH_SHORT).show()
+            }
+        }
         binding.editProfile.setOnClickListener {
             navigateAnotherActivity()
         }

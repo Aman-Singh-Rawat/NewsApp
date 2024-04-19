@@ -1,6 +1,7 @@
 package com.newsapp.presenter.screen.article
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,7 @@ class PreviewArticleFragment : Fragment() {
             viewModel.getArticle()?.let { article ->
                 binding.imgPreview.setImageURI(viewModel.imageUri)
                 tvTitle.text = article.title
-                tvStory.text = article.story
+                binding.tvStory.text = Html.fromHtml(article.story, Html.FROM_HTML_MODE_LEGACY)
             }
         }
     }

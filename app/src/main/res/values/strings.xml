@@ -107,7 +107,7 @@
     <string name="profile">Profile</string>
     <string name="www_andrewainsley_yourdomain">www.andrewainsley.yourdomain</string>
     <string name="tech_enthusiast_likes_to_share_stories_about_technology_and_the_digital_world">Tech enthusiast, likes to share stories about technology, and the digital world.</string>
-    <string name="_126">126</string>
+    <string name="_0">0</string>
     <string name="_4_259">4.259</string>
     <string name="_145">145</string>
     <string name="stories">Stories</string>
@@ -129,4 +129,7 @@
     <string name="politics">politics</string>
     <string name="stay_informed_anytime_anywhere">Stay Informed, Anytime, Anywhere</string>
     <string name="welcome_to_our_news_app_your_go_to_source_for_breaking_news_exclusive">Welcome to our news app, your go-to source for breaking news, exclusive</string>
+
+    <string name="back_to_home">Back to Home</string>
+    <string name="view_story">View Story</string>
 </resources>

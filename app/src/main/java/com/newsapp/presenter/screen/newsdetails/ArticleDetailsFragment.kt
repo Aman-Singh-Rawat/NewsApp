@@ -1,6 +1,7 @@
 package com.newsapp.presenter.screen.newsdetails
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentArticleDetailsBinding
 import com.newsapp.presenter.viewmodel.ArticleDetailViewModel
+import com.newsapp.util.calculateElapsedTime
 import com.newsapp.util.glideImage
 
 class ArticleDetailsFragment: BaseFragment() {
@@ -59,33 +61,20 @@ class ArticleDetailsFragment: BaseFragment() {
             binding.progress.visibility = View.GONE
             binding.tvTotalViews.text = article.userViewed.size.toString()
             glideImage(binding.fullImg, article.image)
-            glideImage(binding.imgChannelLogo, article.image)
+            glideImage(binding.imgChannelLogo, article.authorProfile)
             glideImage(binding.imgLogo, article.authorProfile)
             binding.tvName.text = article.authorName
             binding.tvFullHead.text = article.title
             binding.tvChannelName.text = article.authorName
-            binding.tvNewsDesc.text = article.story
+            binding.tvNewsDesc.text = Html.fromHtml(article.story, Html.FROM_HTML_MODE_LEGACY)
             binding.tvDaysAgo.text = calculateElapsedTime(article.time)
             binding.rvNewsTags.adapter = TagsAdapter(article.tags)
             binding.tvCommentTime.text = "${article.comments} comments"
         }
+
     }
 
-    private fun calculateElapsedTime(timestamp: Long): String {
-        val currentTime = System.currentTimeMillis()
-        val elapsedTimeMillis = currentTime - timestamp
 
-        val seconds = elapsedTimeMillis / 1000
-        val minutes = seconds / 60
-        val hours = minutes / 60
-
-        //Add days Ago and months ago
-        return when {
-            hours > 0 -> "$hours hours ago"
-            minutes > 0 -> "$minutes minutes ago"
-            else -> "$seconds seconds ago"
-        }
-    }
 
     private fun rvCommentSetup() {
         binding.rvComment.layoutManager =
