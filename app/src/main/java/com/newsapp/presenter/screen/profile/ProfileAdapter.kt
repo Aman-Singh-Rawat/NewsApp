@@ -58,6 +58,7 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         holder.binding.tvHeadline.text = list[position].title
         glideImage(list[position].image, holder.binding.ivNewsImg)
         glideImage(list[position].authorProfile, holder.binding.includeRecentItem.imgChannelLogo)
+        holder.binding.includeRecentItem.tvTotalViews.text = list[position].userViewed.size.toString()
         holder.binding.includeRecentItem.tvChannelName.text = list[position].authorName
         holder.binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
     }

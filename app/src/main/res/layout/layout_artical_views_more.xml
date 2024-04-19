@@ -38,7 +38,7 @@
             android:id="@+id/tvTotalViews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_245_8k"
+            android:text="@string/_0"
             style="@style/verySmallText"
             android:drawableStart="@drawable/img_eye_view"
             app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"

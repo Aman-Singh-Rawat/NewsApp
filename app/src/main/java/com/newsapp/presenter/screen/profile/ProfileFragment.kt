@@ -59,8 +59,8 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
             }
             binding.rvProfileNews.adapter = ProfileAdapter(recentList, requireActivity(), this)
             binding.tvTotalStories.text = recentList.size.toString()
+            hideProgress()
         }
-        hideProgress()
     }
     private fun fabColorChange() {
         val color = ContextCompat.getColor(requireActivity(), R.color.white)
