@@ -66,7 +66,7 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
-            if (tags.isNotEmpty() && !mTopic.isNullOrEmpty() && mTopic != "Select") {
+            if (!mTopic.isNullOrEmpty() && mTopic != "Select") {
                 showProgress()
                 //viewModel.imageUri?.let { it1 -> viewModel.uploadImageToFirebase(it1)}
                 viewModel.uploadImageToFirebase(onSuccess = {
@@ -76,7 +76,7 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
                     findNavController().navigate(R.id.fragmentStoryPublished)
                 })
             } else {
-                Toast.makeText(requireContext(), "please enter the all values", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), "please enter the all values", Toast.LENGTH_SHORT).show()
             }
         }
         binding.imgPublishBack.setOnClickListener {
@@ -87,19 +87,17 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
 
     private fun spinnerFunctionality() {
         val arrayAdapter = ArrayAdapter.createFromResource(
-            requireContext(), R.array.stringSelectTopic,
+            requireActivity(), R.array.stringSelectTopic,
             android.R.layout.simple_spinner_item
         )
         arrayAdapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerPublish.adapter = arrayAdapter
-
-
     }
 
     private fun addChips(text: String) {
-        val chip = Chip(requireContext())
+        val chip = Chip(requireActivity())
         chip.text = text
         chip.isCloseIconVisible = true
         chip.setOnCloseIconClickListener {
@@ -107,8 +105,11 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
         }
         binding.chipGroup.addView(chip)
         tags.add(chip.text.toString())
+        chip.setOnCloseIconClickListener{
+            binding.chipGroup.removeView(chip)
+            tags.remove(chip.text)
+        }
     }
-
 
     private fun setData() {
 

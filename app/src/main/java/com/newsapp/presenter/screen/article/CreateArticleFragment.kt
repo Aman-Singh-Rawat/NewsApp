@@ -69,7 +69,7 @@ class CreateArticleFragment : BaseFragment() {
                     findNavController().navigate(R.id.previewStoryFragment)
                 } else {
                     Toast.makeText(
-                        requireContext(),
+                        requireActivity(),
                         "Please do not be lazy input all Values",
                         Toast.LENGTH_LONG
                     ).show()
