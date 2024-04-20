@@ -35,22 +35,6 @@ class ViewModelProfile(private val application: Application): AndroidViewModel(a
             }
         }
     }
-
-    fun articleDataUpdate(onSuccess: (List<Article>) -> Unit) {
-        firestore.collection(DatabaseCollection.ARTICLES).get()
-            .addOnSuccessListener {
-                if (!it.isEmpty) {
-                    val articles = it.documents.map {
-                        val json = gson.toJson(it.data)
-                        gson.fromJson(json, Article::class.java)
-                    }.filter { it.authorId == prefs.getUser()?.uid }
-                    onSuccess(articles)
-                }
-            }
-            .addOnFailureListener {
-            }
-    }
-
     private fun articleDataUpdate() {
         val batch = firestore.batch()
         firestore.collection(DatabaseCollection.ARTICLES)
@@ -69,15 +53,6 @@ class ViewModelProfile(private val application: Application): AndroidViewModel(a
                     // Articles updated successfully
                 }
             }
-    }
-
-    fun updateUserProfile(imageUri: Uri) {
-        /*var currentUser = prefs.getUser()
-        if (currentUser != null) {
-            val user = currentUser.copy(profile = imageUri)
-        }
-        prefs.saveUser(user)
-        firestore.collection(DatabaseCollection.users).document()*/
     }
     fun updateUserProfile(imageUri: Uri, onSuccess: () -> Unit) {
         val storageRef = storageRef.child(System.currentTimeMillis().toString())
