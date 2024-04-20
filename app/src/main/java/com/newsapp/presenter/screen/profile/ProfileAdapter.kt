@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.newsapp.R
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
@@ -64,6 +65,8 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     private fun glideImage(image: String, imageView: ImageView ) {
         Glide.with(context)
             .load(image)
+            .centerCrop()
+            .placeholder(R.drawable.ic_image)
             .into(imageView)
     }
 }
