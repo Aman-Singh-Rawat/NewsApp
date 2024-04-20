@@ -265,20 +265,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvName"
                 app:layout_constraintStart_toStartOf="@id/tvName"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/editProfile"
+            <Button
+                android:id="@+id/followed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selecter_tag"
+                android:backgroundTint="@color/white"
                 android:letterSpacing="0.01"
-                android:paddingHorizontal="12dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="6dp"
-                android:text="@string/following"
+                android:text="@string/follow"
                 android:textAlignment="center"
+                app:cornerRadius="50dp"
+                style="@style/editProfile"
+                android:includeFontPadding="false"
                 app:layout_constraintBottom_toBottomOf="@+id/tvTotalFollowers"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-                app:layout_constraintTop_toTopOf="@+id/tvName" />
+                app:layout_constraintTop_toTopOf="@+id/tvName"
+                app:strokeColor="@color/black"
+                app:strokeWidth="0.5dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvChannelDesc"

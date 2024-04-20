@@ -17,6 +17,7 @@ class ProfileAdapter(private var list: List<Article>, val context: Context, priv
 OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
 
     private val selectedItems = mutableListOf<String>()
+    //TODO add delete option for profile Fragment
     inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
 
     }

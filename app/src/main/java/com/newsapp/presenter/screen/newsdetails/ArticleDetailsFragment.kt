@@ -1,5 +1,6 @@
 package com.newsapp.presenter.screen.newsdetails
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
@@ -43,6 +44,17 @@ class ArticleDetailsFragment: BaseFragment() {
         }
         binding.ivBookMark.setOnClickListener {
             findNavController().navigate(R.id.bookMarkBottomSheetFragment)
+        }
+        binding.followed.setOnClickListener {
+            if (binding.followed.text.toString() == resources.getString(R.string.follow)) {
+                binding.followed.text = resources.getString(R.string.following)
+                binding.followed.setBackgroundColor(Color.BLACK)
+                binding.followed.setTextColor(Color.WHITE)
+            } else if(binding.followed.text.toString() == resources.getString(R.string.following)) {
+                binding.followed.text = resources.getString(R.string.follow)
+                binding.followed.setBackgroundColor(Color.WHITE)
+                binding.followed.setTextColor(Color.BLACK)
+            }
         }
 
         firebaseSetup()
