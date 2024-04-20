@@ -36,13 +36,13 @@ class AllSetFragment : Fragment() {
     private fun openActivityMain() {
         if (binding.cbAgree.isChecked) {
         val intent = Intent(
-            requireContext(),
+            requireActivity(),
             MainActivity::class.java
         )
         startActivity(intent)
             requireActivity().finish()
         }else{
-            Toast.makeText(requireContext(), "Please accept the T&C", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Please accept the T&C", Toast.LENGTH_SHORT).show()
         }
 
 

@@ -75,11 +75,11 @@ class WelcomeFragment : Fragment() {
                 }, onSuccessSignup = {
                     findNavController().navigate(R.id.newsFeedFragment)
                 }, onError = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
                 })
             }
         } else {
-            Toast.makeText(requireContext(), "Failed to signIn from google.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Failed to signIn from google.", Toast.LENGTH_SHORT).show()
         }
     }
 }

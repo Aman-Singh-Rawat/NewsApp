@@ -40,7 +40,7 @@ class CommentFragment : Fragment() {
         val comment = binding.etCommentTitle.text
         binding.rvCommentScreen.layoutManager =
             LinearLayoutManager(
-                requireContext(), LinearLayoutManager.VERTICAL,
+                requireActivity(), LinearLayoutManager.VERTICAL,
                 false
             )
 

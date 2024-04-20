@@ -35,7 +35,7 @@ open class BaseFragment : Fragment() {
 
     internal fun showProgress() {
         if (progressDialog?.isShowing != true) {
-            progressDialog = Dialog(requireContext())
+            progressDialog = Dialog(requireActivity())
             progressDialog?.let {
                 it.setContentView(R.layout.layout_progress_dialog)
                 it.setCancelable(false)

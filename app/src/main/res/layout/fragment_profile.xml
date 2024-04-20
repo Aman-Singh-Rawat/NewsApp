@@ -142,7 +142,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvWebsite"
                 style="@style/profileDesc"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:includeFontPadding="false"
@@ -151,7 +151,6 @@
                 android:text="@string/www_andrewainsley_yourdomain"
                 android:textColor="@color/blue"
                 android:background="?android:attr/selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintStart_toStartOf="@id/guideline11"
                 app:layout_constraintTop_toBottomOf="@id/tvProfileDesc" />
 

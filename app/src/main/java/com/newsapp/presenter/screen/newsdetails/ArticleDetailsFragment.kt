@@ -79,7 +79,7 @@ class ArticleDetailsFragment: BaseFragment() {
     private fun rvCommentSetup() {
         binding.rvComment.layoutManager =
             LinearLayoutManager(
-                requireContext(), LinearLayoutManager.VERTICAL,
+                requireActivity(), LinearLayoutManager.VERTICAL,
                 false
             )
         binding.rvComment.adapter = commentAdapter

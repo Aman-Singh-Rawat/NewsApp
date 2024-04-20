@@ -51,7 +51,7 @@ class SignInFragment : Fragment() {
                         etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireActivity(), R.drawable.img_visible_eye), null)
                     } else {
                         etPassword.transformationMethod = PasswordTransformationMethod() // Show password as dots
-                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye), null)
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ContextCompat.getDrawable(requireActivity(), R.drawable.img_invisible_eye), null)
                     }
                     etPassword.setSelection(etPassword.length()) // Move the cursor to the end
                     return@setOnTouchListener true
@@ -69,7 +69,7 @@ class SignInFragment : Fragment() {
 
         val etPassword = binding.includeFragSignIn.etFillPassWord
 
-        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.img_invisible_eye)
+        val drawable = ContextCompat.getDrawable(requireActivity(), R.drawable.img_invisible_eye)
         etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
         passVisibleOrNot(etPassword)
 
@@ -84,12 +84,12 @@ class SignInFragment : Fragment() {
             viewModel.login(email,password, onSuccess = {
                 findNavController().navigate(R.id.signInDialogFragment)
             }, onError = {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
             })
         }
 
         binding.ivBackArrowSignIn.setOnClickListener {
-            startActivity(Intent(requireContext(),SignUpActivity::class.java))
+            startActivity(Intent(requireActivity(),SignUpActivity::class.java))
         }
 
         binding.includeSignUp.tvSgnIn.setOnClickListener {

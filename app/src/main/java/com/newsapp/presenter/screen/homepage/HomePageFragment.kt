@@ -32,7 +32,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
     private lateinit var profileAdapter: ProfileAdapter
     private lateinit var binding: FragmentHomePageBinding
     private val viewModel by activityViewModels<HomePageViewModel>()
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext().applicationContext) }
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity().applicationContext) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,12 +56,12 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
     }
     private fun setUp() {
         binding.rvNewsGroups.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
+            requireActivity(), LinearLayoutManager.VERTICAL, false
         )
     }
     private fun setUpHome(){
         binding.recyclerTag.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.HORIZONTAL, false
+            requireActivity(), LinearLayoutManager.HORIZONTAL, false
         )
         binding.recyclerTag.adapter = TagsRecyclerView(featureList(), this)
     }
@@ -78,7 +78,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
     // Trending Recycler View
     private fun setUpTrendRecycler() {
         binding.rvTrending.layoutManager = LinearLayoutManager(
-            requireContext(),
+            requireActivity(),
             LinearLayoutManager.HORIZONTAL, false
         )
         binding.rvTrending.adapter = HpTrendRecycler(insertInTagsRV())
@@ -155,13 +155,13 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
     }
 
     override fun onTextSelected(topic: String) {
-        showProgress()
          viewModel.getSelectedData(topic) {
+             showProgress()
              val articleList: MutableList<Article> = mutableListOf()
              for (list in it) {
                  articleList.add(list)
              }
-             profileAdapter = ProfileAdapter(articleList, requireContext(), this)
+             profileAdapter = ProfileAdapter(articleList, requireActivity(), this)
              binding.rvNewsGroups.adapter = profileAdapter
              hideProgress()
          }

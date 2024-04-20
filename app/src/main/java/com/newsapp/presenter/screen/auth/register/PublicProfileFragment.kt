@@ -83,7 +83,7 @@ class PublicProfileFragment : Fragment() {
             viewModel.updateUserProfile(fullName, name, bio, website)
             findNavController().navigate(R.id.all_Set_Fragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill the userName or name", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Please fill the userName or name", Toast.LENGTH_SHORT).show()
         }
 
     }

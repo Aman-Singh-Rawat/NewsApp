@@ -29,7 +29,7 @@ class TrendingFragment : Fragment() {
     }
     private fun setUpArticleRecycler() {
         binding.rvTrendArticles.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
+            requireActivity(), LinearLayoutManager.VERTICAL, false
         )
         binding.rvTrendArticles.adapter = NewsArticlesRecyclerView(findNavController(), insertInTagsRV())
     }

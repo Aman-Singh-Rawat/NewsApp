@@ -34,13 +34,13 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
     }
     private fun setUp() {
         binding.rvNewsArticles.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.VERTICAL, false
+            requireActivity(), LinearLayoutManager.VERTICAL, false
         )
     }
 
     private fun setupTagRecycler() {
         binding.rvRecentTag.layoutManager = LinearLayoutManager(
-            requireContext(), LinearLayoutManager.HORIZONTAL, false
+            requireActivity(), LinearLayoutManager.HORIZONTAL, false
         )
         binding.rvRecentTag.adapter = TagsRecyclerView(tagList(), this)
     }
@@ -72,7 +72,7 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
             for (list in it) {
                 articleList.add(list)
             }
-            profileAdapter = ProfileAdapter(articleList, requireContext(), this)
+            profileAdapter = ProfileAdapter(articleList, requireActivity(), this)
             binding.rvNewsArticles.adapter = profileAdapter
             hideProgress()
         }

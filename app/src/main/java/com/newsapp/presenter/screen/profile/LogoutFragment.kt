@@ -18,7 +18,7 @@ import com.newsapp.util.SharedPrefsManager
 class LogoutFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentLogoutBinding
     private val loginViewModel : LoginViewModel by viewModels()
-    private val prefs by lazy { SharedPrefsManager.getInstance(requireContext()) }
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +45,7 @@ class LogoutFragment : BottomSheetDialogFragment() {
     private fun openSignInFragment() {
 
         prefs.putBoolean(IS_LOGGED_IN, false)
-        startActivity(Intent(requireContext(),SignUpActivity::class.java))
+        startActivity(Intent(requireActivity(),SignUpActivity::class.java))
         loginViewModel.logout()
         requireActivity().finish()
     }

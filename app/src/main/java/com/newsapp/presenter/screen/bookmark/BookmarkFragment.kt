@@ -23,7 +23,7 @@ class BookmarkFragment : Fragment(), OnTextSelectedListener {
         return binding.root
     }
     private fun setUpStoriesTag() {
-        val tagsRecyclerView = TagsRecyclerView(featureList(), true, requireContext(), findNavController(), this)
+        val tagsRecyclerView = TagsRecyclerView(featureList(), true, requireActivity(), findNavController(), this)
         binding.rvBookmarkTag.adapter = tagsRecyclerView
     }
     private fun featureList(): List<String> {

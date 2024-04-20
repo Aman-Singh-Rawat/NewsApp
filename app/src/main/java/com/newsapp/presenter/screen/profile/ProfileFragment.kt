@@ -52,8 +52,8 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         )
 
         val recentList: MutableList<Article> = mutableListOf()
-        showProgress()
         viewModel.getArticleData { articleList ->
+            showProgress()
             for (article in articleList) {
                 recentList.add(article)
             }

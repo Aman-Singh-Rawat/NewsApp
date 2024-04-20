@@ -31,7 +31,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
 
         binding.rvSelected.adapter = bottomSheetAdapter
         binding.rvSelected.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         bottomSheetAdapter.update(getData())
 
         binding.includeBookButton.btnOnboardingSkip.setOnClickListener {
@@ -39,7 +39,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         binding.includeBookButton.btnOnboardingContinue.setOnClickListener {
-            val toast = Toast(requireContext())
+            val toast = Toast(requireActivity())
             val customToast = layoutInflater.inflate(R.layout.dialog_save, null)
             toast.view = customToast
             toast.setGravity(Gravity.CENTER, 0, 0)

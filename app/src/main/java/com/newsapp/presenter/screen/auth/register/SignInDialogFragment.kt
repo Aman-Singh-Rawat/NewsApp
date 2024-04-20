@@ -30,7 +30,7 @@ class SignInDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val dialog = super.onCreateDialog(savedInstanceState)
-        dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(),android.R.color.transparent))
+        dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireActivity(),android.R.color.transparent))
         return dialog
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,7 +49,7 @@ class SignInDialogFragment : DialogFragment() {
             }, 2000)
         } else {
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent(requireContext(), MainActivity::class.java)
+                val intent = Intent(requireActivity(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             }, 2000)

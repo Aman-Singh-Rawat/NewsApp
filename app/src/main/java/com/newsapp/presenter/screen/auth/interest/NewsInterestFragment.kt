@@ -33,8 +33,8 @@ class NewsInterestFragment : Fragment() {
     }
 
     private fun setUpUi() {
-        interestAdapter = NewsInterestAdapter(requireContext(), viewModel.getInterests())
-        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        interestAdapter = NewsInterestAdapter(requireActivity(), viewModel.getInterests())
+        binding.recyclerView.layoutManager = GridLayoutManager(requireActivity(), 3)
 
         binding.recyclerView.adapter = interestAdapter
         binding.btnNewFeed.btnAllInOne.setOnClickListener {
@@ -43,7 +43,7 @@ class NewsInterestFragment : Fragment() {
                 viewModel.saveUserInterests(interest)
                 findNavController().navigate(R.id.public_Profile_Fragment)
             }else{
-                Toast.makeText(requireContext(), "Please select atleast one interest.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), "Please select atleast one interest.", Toast.LENGTH_SHORT).show()
             }
         }
         binding.ivArrowFeed.setOnClickListener { // navigate previous fragment
