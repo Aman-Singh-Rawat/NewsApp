@@ -32,7 +32,7 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
     fun publishArticle(topic: String, tags: List<String>) {
         prefs.getUser()?.let { user ->
             val articleId = UUID.randomUUID().toString()
-            currentArticle = currentArticle?.copy(articleId = articleId, topic = topic, tags = tags, authorId = user.uid, authorName = user.userName, authorProfile = user.profile)
+            currentArticle = currentArticle?.copy(articleId = articleId, topic = topic, tags = tags, authorId = user.uid, authorName = user.userName, authorProfile = user.profile, authorDescription = user.bio)
             currentArticle?.let { article ->
                 firestore.collection(DatabaseCollection.ARTICLES).document(articleId).set(article)
                     .addOnSuccessListener { documentReference ->

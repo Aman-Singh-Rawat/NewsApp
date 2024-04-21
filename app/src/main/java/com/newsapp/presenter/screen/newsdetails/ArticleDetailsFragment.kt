@@ -3,6 +3,7 @@ package com.newsapp.presenter.screen.newsdetails
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentArticleDetailsBinding
 import com.newsapp.presenter.viewmodel.ArticleDetailViewModel
+import com.newsapp.util.SharedPrefsManager
 import com.newsapp.util.calculateElapsedTime
 import com.newsapp.util.glideImage
 
@@ -24,6 +26,7 @@ class ArticleDetailsFragment: BaseFragment() {
     private val commentAdapter: CommentAdapter = CommentAdapter()
     private val viewModel by activityViewModels<ArticleDetailViewModel>()
     private val articleId by lazy {arguments?.getString("articleId") ?: ""}
+    private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,16 +48,12 @@ class ArticleDetailsFragment: BaseFragment() {
         binding.ivBookMark.setOnClickListener {
             findNavController().navigate(R.id.bookMarkBottomSheetFragment)
         }
-        binding.followed.setOnClickListener {
-            if (binding.followed.text.toString() == resources.getString(R.string.follow)) {
-                binding.followed.text = resources.getString(R.string.following)
-                binding.followed.setBackgroundColor(Color.BLACK)
-                binding.followed.setTextColor(Color.WHITE)
-            } else if(binding.followed.text.toString() == resources.getString(R.string.following)) {
-                binding.followed.text = resources.getString(R.string.follow)
-                binding.followed.setBackgroundColor(Color.WHITE)
-                binding.followed.setTextColor(Color.BLACK)
-            }
+        binding.btnFollow.setOnClickListener {
+            followButton()
+        }
+
+        viewModel.getFollowing {
+            doFollowOrNot(it)
         }
 
         firebaseSetup()
@@ -64,6 +63,31 @@ class ArticleDetailsFragment: BaseFragment() {
         binding.rvNewsTags.layoutManager =
             StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL)
 
+    }
+
+    private fun doFollowOrNot(it: Boolean) {
+        if (it) {
+            binding.btnFollow.text = resources.getString(R.string.following)
+            binding.btnFollow.setBackgroundColor(Color.BLACK)
+            binding.btnFollow.setTextColor(Color.WHITE)
+        } else {
+            binding.btnFollow.text = resources.getString(R.string.follow)
+            binding.btnFollow.setBackgroundColor(Color.WHITE)
+            binding.btnFollow.setTextColor(Color.BLACK)
+        }
+    }
+
+    private fun followButton() {
+        if (binding.btnFollow.text.toString() == resources.getString(R.string.follow)) {
+            viewModel.followedOrNot(true) {
+                doFollowOrNot(it)
+            }
+        } else {
+            Log.d("working", "followBtnElse")
+            viewModel.followedOrNot(false) {
+                doFollowOrNot(it)
+            }
+        }
     }
 
     private fun firebaseSetup() {
@@ -78,10 +102,17 @@ class ArticleDetailsFragment: BaseFragment() {
             binding.tvName.text = article.authorName
             binding.tvFullHead.text = article.title
             binding.tvChannelName.text = article.authorName
+            binding.tvChannelDesc.text = article.authorDescription
             binding.tvNewsDesc.text = Html.fromHtml(article.story, Html.FROM_HTML_MODE_LEGACY)
             binding.tvDaysAgo.text = calculateElapsedTime(article.time)
             binding.rvNewsTags.adapter = TagsAdapter(article.tags)
             binding.tvCommentTime.text = "${article.comments} comments"
+
+            prefs.getUser()?.let {
+                if (article.authorId == it.uid) {
+                    binding.btnFollow.visibility = View.GONE
+                }
+            }
         }
 
     }
@@ -97,33 +128,4 @@ class ArticleDetailsFragment: BaseFragment() {
         binding.rvComment.adapter = commentAdapter
         //commentAdapter.updateUi(getComment())
     }
-
-   /* private fun getComment(): List<Comment> {
-        return listOf(
-            Comment(
-                R.drawable.img_girl_profile,
-                "Sanjuanita Ordonez",
-                "3 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "256"
-            ),
-            Comment(
-                R.drawable.imp_person_one,
-                "Sanju Ordonez",
-                "2 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "36"
-            ),
-            Comment(
-                R.drawable.img_girl_profile,
-                "anita Ordonez",
-                "1 day ago",
-                "This investigative report is a powerful reminder of the importance of transparency and accountability in our political system.",
-                "144"
-            )
-
-        )
-
-
-    }*/
 }

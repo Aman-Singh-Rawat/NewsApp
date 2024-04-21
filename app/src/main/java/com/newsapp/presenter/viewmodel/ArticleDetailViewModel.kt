@@ -1,11 +1,13 @@
 package com.newsapp.presenter.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.google.gson.Gson
 import com.newsapp.data.models.Article
+import com.newsapp.data.models.User
 import com.newsapp.util.DatabaseCollection
 import com.newsapp.util.SharedPrefsManager
 
@@ -36,4 +38,43 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
             }
         }
     }
+
+    fun followedOrNot(flag: Boolean, onSuccess: (Boolean) -> Unit) {
+        var followingList: MutableList<String>
+        prefs.getUser()?.let {currentUser ->
+            followingList = currentUser.followingList
+            if (flag && !followingList.contains(currentUser.uid)) {
+                followingList.add(currentUser.uid)
+            } else {
+                Log.d("working", "remove")
+                followingList.remove(currentUser.uid)
+            }
+            val user = currentUser.copy(followingList = followingList)
+            prefs.saveUser(user)
+            firestore.collection(DatabaseCollection.USERS).document(currentUser.uid)
+                .update(mapOf("followingList" to followingList))
+                .addOnSuccessListener {
+                    Log.d("working", "${followingList.contains(currentUser.uid)}")
+                    onSuccess(followingList.contains(currentUser.uid))
+                }
+        }
+    }
+
+    fun getFollowing(onSuccess: (Boolean) -> Unit) {
+        prefs.getUser()?.let {user ->
+            firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
+                .addOnCompleteListener {
+                    if (it.result.data != null) {
+                        val json = gson.toJson(it.result.data)
+                        val data = gson.fromJson(json, User::class.java)
+                        if (data.followingList.contains(user.uid))
+                            onSuccess(true)
+                        else
+                            onSuccess(false)
+                    }
+                }
+        }
+
+    }
+
 }

@@ -112,6 +112,8 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
         binding.tvPersonEmail.text = user?.userName
         binding.tvProfileDesc.text = user?.bio
         binding.tvWebsite.text = user?.website
+        binding.tvTotalFollowing.text = user?.followingList?.size.toString()
+
         if (user?.profile != null && user.profile != "") {
             glideImage(binding.cvPageProfile, user.profile)
         }
