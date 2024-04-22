@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.databinding.CommentRecycleItemBinding
+import com.newsapp.util.calculateElapsedTime
 
 class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
     private var commentList = mutableListOf<Comment>()
@@ -14,7 +15,7 @@ class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
         fun onBind(comment: Comment) {
 //            binding.cvProfile.setImageResource(comment.authorProfile)
             binding.tvUserName.text = comment.authorName
-            binding.tvCommentDays.text = comment.postedAt
+            binding.tvCommentDays.text = calculateElapsedTime(comment.postedAt.toLong())
             binding.tvFullComment.text = comment.comment
         }
     }
@@ -35,7 +36,8 @@ class CommentAdapter() : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateUi(comment: List<Comment>) {
-        this.commentList = comment.toMutableList()
+        commentList.clear()
+        commentList.addAll(comment)
         notifyDataSetChanged()
     }
 }

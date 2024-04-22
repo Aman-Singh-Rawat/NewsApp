@@ -80,6 +80,10 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
             }
     }
 
+    fun articleUpdate(articleId: String) {
+        //TODO ADD ARTICLE ID
+    }
+
     fun clearArticleData() {
         currentArticle = null
     }

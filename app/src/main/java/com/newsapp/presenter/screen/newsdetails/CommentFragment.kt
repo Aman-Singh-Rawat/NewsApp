@@ -1,11 +1,14 @@
 package com.newsapp.presenter.screen.newsdetails
 
+import com.newsapp.presenter.viewmodel.CommentViewModel
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
@@ -15,6 +18,7 @@ class CommentFragment : Fragment() {
     private lateinit var binding: FragmentCommentBinding
     private val adapter: CommentAdapter = CommentAdapter()
     private val articleId by lazy {arguments?.getString("articleId") ?: ""}
+    private val viewModel by activityViewModels<CommentViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +38,15 @@ class CommentFragment : Fragment() {
             findNavController().navigateUp()
         }
         rvCommentSetup()
+        binding.ivSendBtn.setOnClickListener {
+            viewModel.setData(binding.etCommentTitle.text.toString(), articleId) {
+                binding.etCommentTitle.setText("")
+                rvCommentSetup()
+            }
+        }
     }
 
     private fun rvCommentSetup() {
-        val comment = binding.etCommentTitle.text
         binding.rvCommentScreen.layoutManager =
             LinearLayoutManager(
                 requireActivity(), LinearLayoutManager.VERTICAL,
@@ -45,12 +54,9 @@ class CommentFragment : Fragment() {
             )
 
         binding.rvCommentScreen.adapter = adapter
-//        adapter.updateUi(getComment())
-
-        binding.ivSendBtn.setOnClickListener {
-
+        viewModel.getComments(articleId) {
+            Log.d("comments", it.toString())
+            adapter.updateUi(it)
         }
     }
-
-
 }
