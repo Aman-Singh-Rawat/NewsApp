@@ -23,6 +23,7 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
     private lateinit var binding: FragmentRecentStoriesBinding
     private val viewModel by activityViewModels<HomePageViewModel>()
     private lateinit var profileAdapter: ProfileAdapter
+    private val tagAdapter = TagsRecyclerView(this)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentRecentStoriesBinding.inflate(
@@ -42,7 +43,8 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
         binding.rvRecentTag.layoutManager = LinearLayoutManager(
             requireActivity(), LinearLayoutManager.HORIZONTAL, false
         )
-        binding.rvRecentTag.adapter = TagsRecyclerView(tagList(), this)
+        binding.rvRecentTag.adapter = tagAdapter
+        tagAdapter.updateUi(tagList())
     }
 
     private fun tagList(): List<String> {

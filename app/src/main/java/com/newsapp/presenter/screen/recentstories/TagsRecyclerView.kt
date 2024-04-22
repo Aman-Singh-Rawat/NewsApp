@@ -16,26 +16,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.newsapp.R
 import com.newsapp.util.OnTextSelectedListener
 
-class TagsRecyclerView(private val list: List<String>,
-                       private val listener: OnTextSelectedListener):
+class TagsRecyclerView(private val listener: OnTextSelectedListener):
     RecyclerView.Adapter<TagsRecyclerView.TagsRecyclerAdapter>() {
     private var selectedIndex = 0
-    private var flag = false
-    private lateinit var context: Context
-    private lateinit var findNavController: NavController
-    constructor(list: List<String>, flag:Boolean, context: Context,
-                findNavController: NavController, listener: OnTextSelectedListener): this(list, listener) {
-        this.flag = flag
-        this.context = context
-        this.findNavController = findNavController
-    }
-
+    private var list: MutableList<String> = mutableListOf()
     inner class TagsRecyclerAdapter(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun onBind(itemView: View, s: String, position: Int) {
             itemView.isSelected = selectedIndex == position
             val tvRecyclerAddTags: TextView = itemView.findViewById(R.id.tvRecyclerAddTags)
-            val fabBtn: FloatingActionButton = itemView.findViewById(R.id.fabButton)
             tvRecyclerAddTags.text = s
 
             if (itemView.isSelected) {
@@ -48,15 +37,6 @@ class TagsRecyclerView(private val list: List<String>,
                 selectedIndex = position
                 notifyDataSetChanged()
             }
-            if (flag && position == 0) {
-                fabBtn.visibility = View.VISIBLE
-                val color = ContextCompat.getColor(context, R.color.white)
-                fabBtn.imageTintList = ColorStateList.valueOf(color)
-            }
-            fabBtn.setOnClickListener {
-                findNavController.navigate(R.id.collectionBottomFragment)
-            }
-
         }
     }
 
@@ -73,5 +53,9 @@ class TagsRecyclerView(private val list: List<String>,
 
     override fun onBindViewHolder(holder: TagsRecyclerAdapter, position: Int) {
         holder.onBind(holder.itemView, list[position], position)
+    }
+    fun updateUi(list: List<String>,) {
+        this.list = list.toMutableList()
+        notifyDataSetChanged()
     }
 }

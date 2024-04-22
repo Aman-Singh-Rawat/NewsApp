@@ -31,6 +31,7 @@ import com.newsapp.util.glideImage
 class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener{
     private lateinit var profileAdapter: ProfileAdapter
     private lateinit var binding: FragmentHomePageBinding
+    private val tagAdapter = TagsRecyclerView(this)
     private val viewModel by activityViewModels<HomePageViewModel>()
     private val prefs by lazy { SharedPrefsManager.getInstance(requireActivity().applicationContext) }
 
@@ -63,7 +64,8 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
         binding.recyclerTag.layoutManager = LinearLayoutManager(
             requireActivity(), LinearLayoutManager.HORIZONTAL, false
         )
-        binding.recyclerTag.adapter = TagsRecyclerView(featureList(), this)
+        binding.recyclerTag.adapter = tagAdapter
+        tagAdapter.updateUi(featureList())
     }
 
     private fun setUpUi() {

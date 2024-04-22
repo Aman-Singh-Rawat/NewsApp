@@ -4,18 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/ic_add_chat"
-        android:backgroundTint="@color/blue"
-        app:fabCustomSize="46dp"
-        android:visibility="gone"
-        android:contentDescription="@string/fab_transformation_scrim_behavior"
-        android:background="?android:attr/selectableItemBackground"/>
-
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +13,7 @@
         android:layout_marginBottom="5dp"
         android:drawablePadding="10dp"
         android:gravity="center"
+        android:includeFontPadding="false"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:paddingStart="20dp"
