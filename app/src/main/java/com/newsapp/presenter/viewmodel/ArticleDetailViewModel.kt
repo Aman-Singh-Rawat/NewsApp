@@ -77,4 +77,19 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
 
     }
 
+    fun saveCommentsSize(articleId: String, commentsSize: Int) {
+        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val article = document.toObject(Article::class.java)
+                    article?.let{
+                        firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
+                            .update(mapOf("comments" to commentsSize.toLong()))
+                            .addOnSuccessListener {}
+                    }
+                }
+            }.addOnFailureListener { e ->
+
+            }
+    }
 }

@@ -16,12 +16,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.newsapp.R
 import com.newsapp.databinding.FragmentBookMarkBottomSheetBinding
 import com.newsapp.presenter.viewmodel.BookmarkViewModel
+import com.newsapp.util.OnTextSelectedListener
 
 
-class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
+class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedListener {
     private lateinit var binding: FragmentBookMarkBottomSheetBinding
     private val viewModel by activityViewModels<BookmarkViewModel>()
-    private val bottomSheetAdapter: BottomSheetAdapter = BottomSheetAdapter()
+    private val articleId by lazy {arguments?.getString("articleId") ?: ""}
+    val list: MutableList<String> = mutableListOf()
+
+    private val bottomSheetAdapter: BottomSheetAdapter = BottomSheetAdapter(this)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +40,10 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         binding.rvSelected.adapter = bottomSheetAdapter
         binding.rvSelected.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        bottomSheetAdapter.update(getData())
+
+        viewModel.getBookmarkList {
+            bottomSheetAdapter.update(it)
+        }
     }
 
     private fun printToastInCenter() {
@@ -44,7 +51,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         val customToast = layoutInflater.inflate(R.layout.dialog_save, null)
         toast.view = customToast
         toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.duration = Toast.LENGTH_SHORT
+        toast.duration = Toast.LENGTH_LONG
         toast.show()
     }
 
@@ -60,11 +67,26 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         binding.includeBookButton.btnOnboardingContinue.setOnClickListener {
-            printToastInCenter()
+            if (list.isNotEmpty()) {
+                viewModel.isArticleSavedOrNot(articleId) {
+                    if (it) {
+                        viewModel.doArticleSave(articleId, list, false) {
+                            printToastInCenter()
+                            dismiss()
+                        }
+                    } else {
+                        viewModel.doArticleSave(articleId, list, true) {
+                            printToastInCenter()
+                            dismiss()
+                        }
+                    }
+                }
+
+            }
         }
 
         binding.ivAdd.setOnClickListener {
-
+            findNavController().navigate(R.id.collectionBottomFragment)
         }
     }
     private fun textChangeButton() {
@@ -72,10 +94,17 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment() {
         binding.includeBookButton.btnOnboardingContinue.text = resources.getString(R.string.done)
     }
 
-    private fun getData(): List<String> {
-        return listOf(
-            "Reading List", "References", "Reading List", "References", "Reading List", "References"
-        )
+    override fun onTextSelected(topic: String) {
+
+        if (topic.endsWith("true")) {
+            list.add(topic.substringBefore("true"))
+        } else if (topic.endsWith("false")) {
+            val string = topic.substringBefore("false")
+
+            if (list.contains(string)) {
+                list.remove(topic.substringBefore("false"))
+            }
+        }
     }
 }
 

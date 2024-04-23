@@ -4,6 +4,6 @@ object DatabaseCollection {
     const val USERS = "users"
     const val USER_INTEREST = "userInterest"
     const val ARTICLES = "articles"
-    const val BOOKMARK = "bookmark"
+    const val BOOKMARK = "bookmarkList"
     const val COMMENTS = "comments"
 }

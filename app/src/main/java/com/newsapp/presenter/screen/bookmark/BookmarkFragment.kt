@@ -11,12 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentBookmarkBinding
 import com.newsapp.presenter.screen.recentstories.TagsRecyclerView
 import com.newsapp.presenter.viewmodel.BookmarkViewModel
 import com.newsapp.util.OnTextSelectedListener
 
-class BookmarkFragment : Fragment(), OnTextSelectedListener {
+class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
     private lateinit var binding: FragmentBookmarkBinding
     val tagsRecyclerView = TagsRecyclerView(this)
     private val viewModel by activityViewModels<BookmarkViewModel>()
@@ -33,20 +34,23 @@ class BookmarkFragment : Fragment(), OnTextSelectedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpStoriesTag()
+
         val color = ContextCompat.getColor(requireActivity(), R.color.white)
         binding.fabButton.imageTintList = ColorStateList.valueOf(color)
 
         binding.fabButton.setOnClickListener {
             findNavController().navigate(R.id.collectionBottomFragment)
         }
-        setUpStoriesTag()
     }
 
     private fun setUpStoriesTag() {
+        showProgress()
         viewModel.getBookmarkList {
             binding.rvBookmarkTag.adapter = tagsRecyclerView
             tagsRecyclerView.updateUi(it)
         }
+        hideProgress()
     }
     override fun onTextSelected(topic: String) {
         val x = topic

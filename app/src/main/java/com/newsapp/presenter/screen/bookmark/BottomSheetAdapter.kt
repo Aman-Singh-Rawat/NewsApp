@@ -1,13 +1,17 @@
 package com.newsapp.presenter.screen.bookmark
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.R
-class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
+import com.newsapp.util.OnTextSelectedListener
+
+class BottomSheetAdapter(private val listener: OnTextSelectedListener) : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>() {
 
     private var bottomSheet = mutableListOf<String>()
 
@@ -18,9 +22,16 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.ViewHolder>()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvSaveName = itemView.findViewById<TextView>(R.id.tvSaveName)
+        val tvSaveName = itemView.findViewById<CheckBox>(R.id.tvSaveName)
         fun onBind(s: String) {
             tvSaveName.text = s
+            itemView.setOnClickListener {
+                if (tvSaveName.isChecked) {
+                    listener.onTextSelected(s+"true")
+                } else {
+                    listener.onTextSelected(s+"false")
+                }
+            }
         }
     }
 

@@ -62,6 +62,7 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         holder.binding.includeRecentItem.tvTotalViews.text = list[position].userViewed.size.toString()
         holder.binding.includeRecentItem.tvChannelName.text = list[position].authorName
         holder.binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
+        holder.binding.includeRecentItem.tvTotalComments.text = "${list[position].comments} comments"
     }
     private fun glideImage(image: String, imageView: ImageView ) {
         Glide.with(context)
