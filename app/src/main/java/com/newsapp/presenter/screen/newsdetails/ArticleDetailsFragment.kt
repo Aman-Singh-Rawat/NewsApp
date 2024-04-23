@@ -79,7 +79,7 @@ class ArticleDetailsFragment: BaseFragment() {
             }
         }
 
-        viewModel.getFollowing {
+        viewModel.getFollowing(articleId) {
             doFollowOrNot(it)
         }
 
@@ -89,6 +89,7 @@ class ArticleDetailsFragment: BaseFragment() {
     }
 
     private fun doFollowOrNot(it: Boolean) {
+        Log.d("debugging", "it is:: $it")
         if (it) {
             binding.btnFollow.text = resources.getString(R.string.following)
             binding.btnFollow.setBackgroundColor(Color.BLACK)
@@ -102,12 +103,11 @@ class ArticleDetailsFragment: BaseFragment() {
 
     private fun followButton() {
         if (binding.btnFollow.text.toString() == resources.getString(R.string.follow)) {
-            viewModel.followedOrNot(true) {
+            viewModel.followedOrNot(articleId, true) {
                 doFollowOrNot(it)
             }
         } else {
-            Log.d("working", "followBtnElse")
-            viewModel.followedOrNot(false) {
+            viewModel.followedOrNot(articleId, false) {
                 doFollowOrNot(it)
             }
         }

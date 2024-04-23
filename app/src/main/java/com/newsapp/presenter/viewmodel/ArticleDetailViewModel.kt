@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.toObject
 import com.google.gson.Gson
 import com.newsapp.data.models.Article
 import com.newsapp.data.models.User
@@ -14,6 +15,7 @@ import com.newsapp.util.SharedPrefsManager
 class ArticleDetailViewModel(application: Application) : AndroidViewModel(application) {
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
+    var followingList: MutableList<String> = mutableListOf()
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
 
@@ -39,42 +41,56 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    fun followedOrNot(flag: Boolean, onSuccess: (Boolean) -> Unit) {
-        var followingList: MutableList<String>
-        prefs.getUser()?.let {currentUser ->
-            followingList = currentUser.followingList
-            if (flag && !followingList.contains(currentUser.uid)) {
-                followingList.add(currentUser.uid)
-            } else {
-                Log.d("working", "remove")
-                followingList.remove(currentUser.uid)
+    fun followedOrNot(articleId: String, flag: Boolean, onSuccess: (Boolean) -> Unit) {
+        followingList.clear()
+        getArticleData(articleId) {article ->
+            prefs.getUser()?.let {user ->
+                firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
+                    .addOnSuccessListener {document ->
+                        if (document != null) {
+                            val userData = document.toObject(User::class.java)
+                            userData?.let { currentUser->
+                                followingList = currentUser.followingList
+                                if (flag && !followingList.contains(article.authorId)) {
+                                    followingList.add(article.authorId)
+                                } else if(!flag && followingList.contains(article.authorId)) {
+                                    followingList.remove(article.authorId)
+                                }
+                                val userObject = currentUser.copy(followingList = followingList)
+                                prefs.saveUser(userObject)
+                                Log.d("debugging", "userObject is ${userObject.followingList}")
+                                firestore.collection(DatabaseCollection.USERS).document(currentUser.uid)
+                                    .update(mapOf("followingList" to followingList))
+                                    .addOnSuccessListener {
+                                        onSuccess(followingList.contains(article.authorId))
+                                    }
+                            }
+                        }
+                    }
             }
-            val user = currentUser.copy(followingList = followingList)
-            prefs.saveUser(user)
-            firestore.collection(DatabaseCollection.USERS).document(currentUser.uid)
-                .update(mapOf("followingList" to followingList))
-                .addOnSuccessListener {
-                    Log.d("working", "${followingList.contains(currentUser.uid)}")
-                    onSuccess(followingList.contains(currentUser.uid))
-                }
         }
     }
 
-    fun getFollowing(onSuccess: (Boolean) -> Unit) {
-        prefs.getUser()?.let {user ->
-            firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
-                .addOnCompleteListener {
-                    if (it.result.data != null) {
-                        val json = gson.toJson(it.result.data)
-                        val data = gson.fromJson(json, User::class.java)
-                        if (data.followingList.contains(user.uid))
-                            onSuccess(true)
-                        else
-                            onSuccess(false)
+    fun getFollowing(articleId: String, onSuccess: (Boolean) -> Unit) {
+        getArticleData(articleId) {article ->
+            prefs.getUser()?.let {currentUser ->
+                firestore.collection(DatabaseCollection.USERS).document(currentUser.uid).get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            val user = document.toObject(User::class.java)
+                            user?.let {
+                                Log.d("debugging", "getFollowing is:: ${user.followingList.toString()}")
+                                if (it.followingList.contains(article.authorId)) {
+                                    Log.d("debugging", "getFollowing is:: ${user.followingList.contains(article.authorId)}")
+                                    onSuccess(true)
+                                } else {
+                                    onSuccess(false)
+                                }
+                            }
+                        }
                     }
-                }
+            }
         }
-
     }
 
     fun saveCommentsSize(articleId: String, commentsSize: Int) {
