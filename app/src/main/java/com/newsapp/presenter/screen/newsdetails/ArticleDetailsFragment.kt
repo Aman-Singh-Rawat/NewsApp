@@ -63,10 +63,12 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
     private fun setUpUserRecycler() {
         binding.rvUserRecycler.adapter = trendingAdapter
         viewModel.getAllArticles(articleId) {
-            if(it[0].authorId != prefs.getUser()?.uid)
+            if(it[0].authorId != prefs.getUser()?.uid) {
                 binding.clTrendingStories.visibility = View.VISIBLE
-            else
                 trendingAdapter.updateUi(it, requireActivity())
+            } else {
+                binding.clTrendingStories.visibility = View.GONE
+            }
         }
     }
 
