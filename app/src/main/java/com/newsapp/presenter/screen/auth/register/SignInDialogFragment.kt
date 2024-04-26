@@ -20,6 +20,7 @@ import com.newsapp.databinding.FragmentSignInDialogBinding
 class SignInDialogFragment : DialogFragment() {
     private lateinit var binding: FragmentSignInDialogBinding
     private val isForgetPassword by lazy { arguments?.getBoolean("forgetPassword") ?: false }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,18 +28,31 @@ class SignInDialogFragment : DialogFragment() {
         binding = FragmentSignInDialogBinding.inflate(layoutInflater)
         return binding.root
     }
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
-        dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireActivity(),android.R.color.transparent))
+        dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireActivity(), android.R.color.transparent))
         return dialog
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (isForgetPassword) {
             binding.tvSignInSucc.text = "Reset Password\nSuccessful!"
             binding.tvHomePage.text = "Please checkout your Email"
-            Handler(Looper.getMainLooper()).postDelayed({
+            navigateToSignInFragment()
+        } else {
+            openMainActivity()
+        }
+
+        dialog?.setCancelable(false)
+    }
+
+    private fun navigateToSignInFragment() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Check if the fragment is still added before navigating
+            if (isAdded) {
                 findNavController().navigate(
                     R.id.signInFragment,
                     null,
@@ -46,20 +60,18 @@ class SignInDialogFragment : DialogFragment() {
                         .setPopUpTo(R.id.signInFragment, true)
                         .build()
                 )
-            }, 2000)
-        } else {
-            Handler(Looper.getMainLooper()).postDelayed({
+            }
+        }, 2000)
+    }
+
+    private fun openMainActivity() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Check if the fragment is still added before starting the activity
+            if (isAdded) {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
-            }, 2000)
-        }
-
-        dialog?.setCancelable(false)
+            }
+        }, 2000)
     }
-
-
-
 }
-
-

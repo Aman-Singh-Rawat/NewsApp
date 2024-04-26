@@ -21,12 +21,13 @@ class CollectionBottomFragment : BottomSheetDialogFragment() {
         binding = FragmentCollectionBottomBinding.inflate(
             inflater, container, false
         )
+        buttonNameChange()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buttonNameChange()
 
         binding.includeButtons.btnOnboardingContinue.setOnClickListener {
             if (binding.etCollectionTitle.text?.isNotEmpty() != null) {

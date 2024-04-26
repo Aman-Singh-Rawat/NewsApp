@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/editStory"
+        android:icon="@drawable/ic_edit_story"
+        android:title="@string/edit_story"/>
+
+    <item
+        android:id="@+id/deleteStory"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_story"/>
+
+
+</menu>

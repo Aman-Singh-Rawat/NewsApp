@@ -133,4 +133,7 @@
     <string name="back_to_home">Back to Home</string>
     <string name="view_story">View Story</string>
     <string name="follow">Follow</string>
+    <string name="edit_story">Edit Story</string>
+    <string name="delete_story">Delete Story</string>
+    <string name="more_from">More from</string>
 </resources>

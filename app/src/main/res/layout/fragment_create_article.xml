@@ -140,15 +140,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etFillTitle" />
 
+            <jp.wasabeef.richeditor.RichEditor
+                android:id="@+id/editor"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                style="@style/profileDesc"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rectangle"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/lightGrey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llRichEditor"/>
+
             <LinearLayout
                 android:id="@+id/llRichEditor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rectangle"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStory">
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/action_bold"
@@ -207,22 +221,6 @@
                     android:contentDescription="@null"
                     android:src="@drawable/ic_image_text" />
             </LinearLayout>
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/lightGrey"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llRichEditor"/>
-
-            <jp.wasabeef.richeditor.RichEditor
-                android:id="@+id/editor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_rectangle"/>
 
         </LinearLayout>
 

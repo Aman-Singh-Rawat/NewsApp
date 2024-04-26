@@ -100,7 +100,7 @@ class EditProfileFragment : Fragment() {
     private fun dataOnEditText() {
         val user = prefs.getUser()
         if (user?.profile != null && user.profile != "") {
-            glideImage(binding.imgEditProfile, user.profile)
+            glideImage(requireActivity(), binding.imgEditProfile, user.profile, true)
         }
         binding.includeEditFragment.etFillEmail.setText(user?.fullName)
         binding.includeEditFragment.etFillPassWord.setText(user?.userName)

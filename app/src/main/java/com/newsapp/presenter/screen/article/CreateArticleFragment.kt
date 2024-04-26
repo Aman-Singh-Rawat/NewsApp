@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentCreateArticleBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.util.glideImage
 
 
 class CreateArticleFragment : BaseFragment() {
@@ -21,6 +23,7 @@ class CreateArticleFragment : BaseFragment() {
     private lateinit var binding: FragmentCreateArticleBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     private var imageUri: Uri? = null
+    private val articleId by lazy {arguments?.getString("articleId") ?: ""}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +35,22 @@ class CreateArticleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (articleId.isNotEmpty()) {
+            updateArticle()
+        }
         setUpUi()
         setData()
+    }
+
+    private fun updateArticle() {
+        viewModel.getParticularArticle(articleId) { article ->
+            binding.apply {
+                glideImage(requireActivity(), ivStory, article.image)
+                etFillTitle.setText(article.title)
+                editor.html = article.story
+            }
+        }
     }
 
     private fun setData() {

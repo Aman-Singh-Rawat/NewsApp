@@ -1,16 +1,23 @@
 package com.newsapp.presenter.screen.homepage
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.newsapp.R
+import com.newsapp.data.models.Article
 import com.newsapp.databinding.LayoutHomePageRecyclerBinding
 import com.newsapp.presenter.screen.recentstories.RecentDataClass
+import com.newsapp.util.calculateElapsedTime
+import com.newsapp.util.glideImage
 
-class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Adapter<HpTrendRecycler.HpTrendAdapter>() {
+class HpTrendRecycler(): RecyclerView.Adapter<HpTrendRecycler.HpTrendAdapter>() {
+    private var list: List<Article> = emptyList()
+    private lateinit var context: Context
     inner class HpTrendAdapter(val binding: LayoutHomePageRecyclerBinding): RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HpTrendAdapter {
@@ -24,14 +31,21 @@ class HpTrendRecycler(private val list: List<RecentDataClass>): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: HpTrendAdapter, position: Int) {
-        holder.binding.imgHpNews.setImageResource(list[position].ivNewsImg)
-        holder.binding.tvNewsHeading.text = list[position].tvHeadline
-        holder.binding.includeHpItem.apply {
-            imgChannelLogo.setImageResource(list[position].imgChannelLogo)
-            tvChannelName.text = list[position].tvChannelName
-            tvDaysAgo.text = list[position].tvDaysAgo
-            tvTotalViews.text = list[position].tvTotalViews
-            tvTotalComments.text = list[position].tvTotalComments
+        holder.apply {
+            glideImage(context, binding.imgHpNews, list[position].image)
+            binding.tvNewsHeading.text = list[position].title
+            binding.includeHpItem.apply {
+                glideImage(context, imgChannelLogo, list[position].authorProfile, true)
+                tvChannelName.text = list[position].authorName
+                tvDaysAgo.text = calculateElapsedTime(list[position].time)
+                tvTotalViews.text = list[position].userViewed.size.toString()
+                tvTotalComments.text = list[position].comments.toString()
+            }
         }
+    }
+    fun updateUi(list: List<Article>, context: Context) {
+        this.list = list
+        this.context = context
+        notifyDataSetChanged()
     }
 }

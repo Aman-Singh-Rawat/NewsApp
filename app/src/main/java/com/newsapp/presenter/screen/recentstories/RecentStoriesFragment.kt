@@ -22,7 +22,7 @@ import com.newsapp.util.OnTextSelectedListener
 class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener {
     private lateinit var binding: FragmentRecentStoriesBinding
     private val viewModel by activityViewModels<HomePageViewModel>()
-    private lateinit var profileAdapter: ProfileAdapter
+    private val profileAdapter = ProfileAdapter(this)
     private val tagAdapter = TagsRecyclerView(this)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -74,8 +74,8 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
             for (list in it) {
                 articleList.add(list)
             }
-            profileAdapter = ProfileAdapter(articleList, requireActivity(), this)
             binding.rvNewsArticles.adapter = profileAdapter
+            profileAdapter.updateUi(articleList, false, requireActivity())
             hideProgress()
         }
     }

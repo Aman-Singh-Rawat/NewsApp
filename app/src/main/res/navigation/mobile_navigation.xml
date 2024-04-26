@@ -86,5 +86,10 @@
         android:name="com.newsapp.presenter.screen.profile.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.newsapp.presenter.screen.profile.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 
 </navigation>

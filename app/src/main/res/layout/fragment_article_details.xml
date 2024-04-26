@@ -49,8 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_back_arrow"
                 android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_back_arrow"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,9 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="22dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_bookmark"
                 app:layout_constraintEnd_toStartOf="@id/ivShare"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,8 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_share"
                 android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_share"
                 app:layout_constraintBottom_toBottomOf="@+id/ivBookMark"
                 app:layout_constraintStart_toStartOf="@+id/ivBookMark"
                 app:layout_constraintTop_toTopOf="@+id/ivBookMark" />
@@ -83,8 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:src="@drawable/ic_three_dot_chat"
                 android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_three_dot_chat"
                 app:layout_constraintBottom_toBottomOf="@+id/ivShare"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@+id/ivShare"
@@ -97,8 +97,8 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_white"
                 app:cardCornerRadius="12dp"
-                app:layout_constraintDimensionRatio="16:10"
                 app:cardUseCompatPadding="false"
+                app:layout_constraintDimensionRatio="16:10"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toBottomOf="@+id/ivBookMark">
@@ -119,9 +119,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/txt_unmasking"
-                android:lineSpacingExtra="1dp"
                 android:letterSpacing="0.01"
+                android:lineSpacingExtra="1dp"
+                android:text="@string/txt_unmasking"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toBottomOf="@id/cvNewsImage" />
@@ -133,7 +133,7 @@
                 android:layout_marginTop="6dp"
                 android:src="@drawable/ic_cnn_news"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvFullHead"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvFullHead" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvChannelName"
@@ -163,50 +163,50 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
                 android:text="@string/_3_days_ago"
-                app:layout_constraintTop_toTopOf="@+id/tvMinuteRead"
                 app:layout_constraintBottom_toBottomOf="@id/tvMinuteRead"
-                app:layout_constraintStart_toEndOf="@id/tvMinuteRead"/>
+                app:layout_constraintStart_toEndOf="@id/tvMinuteRead"
+                app:layout_constraintTop_toTopOf="@+id/tvMinuteRead" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTotalViews"
+                style="@style/verySmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_245_8k"
-                style="@style/verySmallText"
-                android:drawableStart="@drawable/img_eye_view"
-                app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
-                app:layout_constraintTop_toTopOf="@+id/tvDaysAgo"
-                app:layout_constraintBottom_toBottomOf="@id/tvDaysAgo"
                 android:layout_marginStart="22dp"
+                android:drawableStart="@drawable/img_eye_view"
+                android:drawablePadding="8dp"
                 android:gravity="center"
-                android:drawablePadding="8dp"/>
+                android:text="@string/_245_8k"
+                app:layout_constraintBottom_toBottomOf="@id/tvDaysAgo"
+                app:layout_constraintStart_toEndOf="@+id/tvDaysAgo"
+                app:layout_constraintTop_toTopOf="@+id/tvDaysAgo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTotalComments"
+                style="@style/verySmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_3_2k"
-                style="@style/verySmallText"
-                android:drawableStart="@drawable/ic_msg"
-                app:layout_constraintStart_toEndOf="@+id/tvTotalViews"
-                app:layout_constraintTop_toTopOf="@+id/tvTotalViews"
-                app:layout_constraintBottom_toBottomOf="@id/tvTotalViews"
                 android:layout_marginStart="22dp"
+                android:drawableStart="@drawable/ic_msg"
+                android:drawablePadding="10dp"
                 android:gravity="center"
-                android:drawablePadding="10dp"/>
+                android:text="@string/_3_2k"
+                app:layout_constraintBottom_toBottomOf="@id/tvTotalViews"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalViews"
+                app:layout_constraintTop_toTopOf="@+id/tvTotalViews" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNewsDesc"
+                style="@style/poppins"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/poppins"
-                android:lineSpacingExtra="4dp"
-                android:letterSpacing="0.05"
                 android:layout_marginTop="22dp"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="4dp"
                 android:text="@string/in_a_groundbreaking_investigative_report_a_team_of_journalists_has_unveiled_a_web_of_political_corruption_that_has_been_shrouded_in_secrecy_for_far_too_long_this_in_depth_expose_shines_a_light_on_the_dark_underbelly_of_power_revealing_shocking_revelations_and_implicating_high_profile_figures_in_a_complex_network_of_unethical_practices"
-                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-                app:layout_constraintTop_toBottomOf="@+id/tvMinuteRead"/>
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvMinuteRead" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/rvNewsTags"
@@ -219,63 +219,63 @@
                 app:chipSpacingHorizontal="8dp"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc" />
 
             <View
                 android:id="@+id/viewFullDetails"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/dark_white"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
-                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                android:background="@color/dark_white"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-                app:layout_constraintTop_toBottomOf="@+id/rvNewsTags"/>
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/rvNewsTags" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgLogo"
+                style="@style/roundedImageViewRounded"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_cnn_news"
-                style="@style/roundedImageViewRounded"
-                app:civ_border_width="1dp"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/ic_cnn_news"
                 app:civ_border_color="@color/lightWhite"
+                app:civ_border_width="1dp"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-                app:layout_constraintTop_toBottomOf="@id/viewFullDetails"/>
+                app:layout_constraintTop_toBottomOf="@id/viewFullDetails" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
                 style="@style/singleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cnn_news"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="14dp"
+                android:text="@string/cnn_news"
                 app:layout_constraintStart_toEndOf="@+id/imgLogo"
                 app:layout_constraintTop_toTopOf="@+id/imgLogo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTotalFollowers"
+                style="@style/channelFollowers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_19_2m_followers"
-                style="@style/channelFollowers"
                 android:textColor="@color/grey"
-                app:layout_constraintTop_toBottomOf="@+id/tvName"
-                app:layout_constraintStart_toStartOf="@id/tvName"/>
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <Button
                 android:id="@+id/btnFollow"
+                style="@style/editProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
+                android:includeFontPadding="false"
                 android:letterSpacing="0.01"
                 android:text="@string/follow"
                 android:textAlignment="center"
                 app:cornerRadius="50dp"
-                style="@style/editProfile"
-                android:includeFontPadding="false"
                 app:layout_constraintBottom_toBottomOf="@+id/tvTotalFollowers"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintTop_toTopOf="@+id/tvName"
@@ -284,67 +284,130 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvChannelDesc"
+                style="@style/comment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                style="@style/comment"
-                android:lineSpacingExtra="4dp"
                 android:letterSpacing="0.01"
+                android:lineSpacingExtra="4dp"
                 android:text="@string/the_cable_news_network_is_a_multinational_news_channel_and_website_headquartered_in_atlanta_georgia_u_s"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowers"
+                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
-                app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvTotalFollowers" />
 
             <View
                 android:id="@+id/viewFullDetailsSec"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:background="@color/dark_white"
                 android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                android:background="@color/dark_white"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
-                app:layout_constraintTop_toBottomOf="@+id/tvChannelDesc"/>
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvChannelDesc" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clComments"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
+                app:layout_constraintStart_toStartOf="@id/glBookMarkStart"
                 app:layout_constraintTop_toBottomOf="@id/viewFullDetailsSec">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCommentTime"
+                    style="@style/writeStories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_3_2k_comments"
-                    style="@style/writeStories"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCommentViewAll"
+                    style="@style/personName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/view_all"
-                    android:drawableEnd="@drawable/img_right_arrow"
-                    style="@style/personName"
-                    android:drawablePadding="10dp"
-                    android:textColor="@color/blue"
                     android:background="?android:attr/selectableItemBackground"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:drawableEnd="@drawable/img_right_arrow"
+                    android:drawablePadding="10dp"
+                    android:text="@string/view_all"
+                    android:textColor="@color/blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvComment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/comment_recycle_item"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCommentViewAll"/>
+                    app:layout_constraintTop_toBottomOf="@+id/tvCommentViewAll"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/comment_recycle_item" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clTrendingStories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clComments">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMoreFrom"
+                    style="@style/articleHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/more_from"
+                    app:layout_constraintStart_toStartOf="@id/guideline23"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvViewAll"
+                    style="@style/personName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:drawableEnd="@drawable/img_right_arrow"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="@string/view_all"
+                    android:textColor="@color/blue"
+                    app:layout_constraintEnd_toEndOf="@id/guideline24"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvUserRecycler"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvViewAll"
+                    tools:listitem="@layout/layout_home_page_recycler" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -29,7 +29,7 @@ import com.newsapp.util.SharedPrefsManager
 import com.newsapp.util.glideImage
 
 class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedListener{
-    private lateinit var profileAdapter: ProfileAdapter
+    private val profileAdapter = ProfileAdapter(this)
     private lateinit var binding: FragmentHomePageBinding
     private val tagAdapter = TagsRecyclerView(this)
     private val viewModel by activityViewModels<HomePageViewModel>()
@@ -73,7 +73,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
         if (currentUser != null) {
             binding.tvPersonName.text = currentUser.userName
             if (currentUser.profile != "") {
-                glideImage(binding.cvPageProfile, currentUser.profile)
+                glideImage(requireActivity(), binding.cvPageProfile, currentUser.profile, true)
             }
         }
     }
@@ -83,7 +83,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
             requireActivity(),
             LinearLayoutManager.HORIZONTAL, false
         )
-        binding.rvTrending.adapter = HpTrendRecycler(insertInTagsRV())
+        binding.rvTrending.adapter = HpTrendRecycler()
     }
 
     private fun insertInTagsRV(): List<RecentDataClass> {
@@ -163,8 +163,8 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
              for (list in it) {
                  articleList.add(list)
              }
-             profileAdapter = ProfileAdapter(articleList, requireActivity(), this)
              binding.rvNewsGroups.adapter = profileAdapter
+             profileAdapter.updateUi(articleList, false, requireActivity())
              hideProgress()
          }
     }

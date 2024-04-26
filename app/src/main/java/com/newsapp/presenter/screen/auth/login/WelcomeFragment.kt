@@ -64,9 +64,9 @@ class WelcomeFragment : Fragment() {
     /* Google Authentication */
     private val launcher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == Activity.RESULT_OK) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             if (task.isSuccessful) {
                 val account: GoogleSignInAccount? = task.result
                 val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
@@ -77,8 +77,17 @@ class WelcomeFragment : Fragment() {
                 }, onError = {
                     Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
                 })
+            } else {
+                // Google Sign-In failed
+                task.exception?.let { exception ->
+                    Toast.makeText(requireActivity(), "Google Sign-In failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+                }
             }
+        } else if (result.resultCode == Activity.RESULT_CANCELED) {
+            // User canceled the Google Sign-In process
+            Toast.makeText(requireActivity(), "Google Sign-In canceled", Toast.LENGTH_SHORT).show()
         } else {
+            // Other result codes
             Toast.makeText(requireActivity(), "Failed to signIn from google.", Toast.LENGTH_SHORT).show()
         }
     }

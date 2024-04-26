@@ -15,7 +15,8 @@ import com.newsapp.util.SharedPrefsManager
 class ArticleDetailViewModel(application: Application) : AndroidViewModel(application) {
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
-    var followingList: MutableList<String> = mutableListOf()
+    private var followingList: MutableList<String> = mutableListOf()
+
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
 
@@ -42,7 +43,8 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
     }
 
     fun followedOrNot(articleId: String, flag: Boolean, onSuccess: (Boolean) -> Unit) {
-        followingList.clear()
+        var followingList: MutableList<String> = mutableListOf()
+
         getArticleData(articleId) {article ->
             prefs.getUser()?.let {user ->
                 firestore.collection(DatabaseCollection.USERS).document(user.uid).get()
@@ -51,18 +53,27 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
                             val userData = document.toObject(User::class.java)
                             userData?.let { currentUser->
                                 followingList = currentUser.followingList
+
                                 if (flag && !followingList.contains(article.authorId)) {
                                     followingList.add(article.authorId)
                                 } else if(!flag && followingList.contains(article.authorId)) {
                                     followingList.remove(article.authorId)
                                 }
-                                val userObject = currentUser.copy(followingList = followingList)
-                                prefs.saveUser(userObject)
-                                Log.d("debugging", "userObject is ${userObject.followingList}")
                                 firestore.collection(DatabaseCollection.USERS).document(currentUser.uid)
                                     .update(mapOf("followingList" to followingList))
                                     .addOnSuccessListener {
-                                        onSuccess(followingList.contains(article.authorId))
+                                        prefs.saveUser(currentUser.copy(followingList = followingList))
+                                        totalFollowers() {followerList ->
+                                            firestore.collection(DatabaseCollection.USERS).document(article.authorId)
+                                                .set(mapOf("followerList" to followerList))
+                                                .addOnSuccessListener {
+                                                    Log.d("debugging", "success")
+                                                    onSuccess(followingList.contains(article.authorId))
+                                                }
+                                                .addOnFailureListener {
+                                                    Log.d("debugging", it.message.toString())
+                                                }
+                                        }
                                     }
                             }
                         }
@@ -106,6 +117,56 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
                 }
             }.addOnFailureListener { e ->
 
+            }
+    }
+
+    private fun totalFollowers(onSuccess: (MutableList<String>) -> Unit) {
+        val followersList: MutableList<String> = mutableListOf()
+        prefs.getUser()?.let {currentUser ->
+            firestore.collection(DatabaseCollection.USERS).get()
+                .addOnSuccessListener {
+                    if (!it.isEmpty) {
+                        val users = it.documents.map {
+                            val json = gson.toJson(it.data)
+                            gson.fromJson(json, User::class.java)
+                        }
+                        for (user in users) {
+                            if (user.followingList.contains(currentUser.uid)) {
+                                followersList.add(user.uid)
+                            }
+                        }
+                        onSuccess(followersList)
+                    }
+                }
+                .addOnFailureListener {
+                }
+        }
+    }
+
+    fun getAllArticles(articleId: String, onSuccess: (List<Article>) -> Unit) {
+        firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val article = documentSnapshot.toObject(Article::class.java)
+                    article?.authorId?.let {authorId ->
+                        firestore.collection(DatabaseCollection.ARTICLES).get()
+                            .addOnSuccessListener {
+                                if (!it.isEmpty) {
+                                val articles = it.documents.map {
+                                    val json = gson.toJson(it.data)
+                                    gson.fromJson(json, Article::class.java)
+                                }.filter { it.authorId == authorId }
+                                onSuccess(articles)
+                }
+                            }
+                            .addOnFailureListener {
+                            }
+
+                    }
+                }
+            }
+            .addOnFailureListener {
             }
     }
 }

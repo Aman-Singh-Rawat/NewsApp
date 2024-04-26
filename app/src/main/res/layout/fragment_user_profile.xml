@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.screen.profile.ProfileFragment">
+    tools:context=".presenter.screen.profile.UserProfileFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:src="@drawable/img_n"
+        android:src="@drawable/ic_back_arrow"
         app:layout_constraintStart_toStartOf="@id/guideline9"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +23,8 @@
         android:layout_marginEnd="257dp"
         android:includeFontPadding="false"
         android:text="@string/profile"
-        app:layout_constraintEnd_toStartOf="@+id/icLogout"
-        app:layout_constraintStart_toEndOf="@+id/imgN"
+        app:layout_constraintStart_toStartOf="@id/guideline9"
+        app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -32,18 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:layout_marginEnd="26dp"
         android:src="@drawable/ic_share"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintEnd_toStartOf="@+id/icLogout"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:src="@drawable/ic_logout"
         android:background="?android:attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/guideline10"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icLogout">
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clNonScroll"
@@ -121,7 +110,7 @@
                 android:letterSpacing="0.01"
                 android:paddingHorizontal="13dp"
                 android:paddingVertical="6dp"
-                android:text="@string/edit_profile"
+                android:text="@string/following"
                 app:layout_constraintBottom_toTopOf="@+id/tvPersonEmail"
                 app:layout_constraintEnd_toEndOf="@id/guideline12"
                 app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
@@ -290,24 +279,8 @@
                 tools:listitem="@layout/recent_recycle_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbAddStory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="@color/blue"
-        android:elevation="6dp"
-        android:src="@drawable/ic_float_btn"
-        app:borderWidth="0dp"
-        app:fabSize="normal"
-        android:contentDescription="@string/fab_transformation_scrim_behavior"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="50dp" />
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"

@@ -2,9 +2,12 @@ package com.newsapp.presenter.screen.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsapp.R
@@ -12,12 +15,14 @@ import com.newsapp.data.models.Article
 import com.newsapp.databinding.RecentRecycleItemBinding
 import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.calculateElapsedTime
+import com.newsapp.util.glideImage
 
-class ProfileAdapter(private var list: List<Article>, val context: Context, private val listener:
+class ProfileAdapter(private val listener:
 OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
-
+    private var list: List<Article> = emptyList()
+    private var flag = false
     private val selectedItems = mutableListOf<String>()
-    //TODO add delete option for profile Fragment
+    private lateinit var context: Context
     inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -38,37 +43,70 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     @SuppressLint("NotifyDataSetChanged")
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         val isSelected = selectedItems.contains(list[position].articleId)
-        holder.itemView.isSelected = isSelected
 
-        holder.binding.tvHeadline.setOnClickListener {
-            listener.onItemClick(list[position].articleId)
-        }
-        holder.binding.cvNewsImg.setOnClickListener {
-            listener.onItemClick(list[position].articleId)
-        }
-        holder.binding.includeRecentItem.icSave.setOnClickListener {
-            if (selectedItems.contains(list[position].articleId)) {
-                selectedItems.remove(list[position].articleId)
-                listener.onArticleSaveListener(selectedItems)
-            } else {
-                selectedItems.add(list[position].articleId)
-                listener.onArticleSaveListener(selectedItems)
+        holder.apply {
+            itemView.isSelected = isSelected
+
+            binding.tvHeadline.setOnClickListener {
+                listener.onItemClick(list[position].articleId)
             }
-            notifyDataSetChanged()
+            binding.cvNewsImg.setOnClickListener {
+                listener.onItemClick(list[position].articleId)
+            }
+
+            binding.includeRecentItem.icSave.setOnClickListener {
+                if (selectedItems.contains(list[position].articleId)) {
+                    selectedItems.remove(list[position].articleId)
+                    listener.onArticleSaveListener(selectedItems)
+                } else {
+                    selectedItems.add(list[position].articleId)
+                    listener.onArticleSaveListener(selectedItems)
+                }
+                notifyDataSetChanged()
+            }
+            if (flag) {
+                setUpMenu(binding, position)
+            }
+            binding.tvHeadline.text = list[position].title
+            glideImage(context, binding.ivNewsImg, list[position].image)
+            glideImage(context, binding.includeRecentItem.imgChannelLogo, list[position].authorProfile, true )
+            binding.includeRecentItem.tvTotalViews.text = list[position].userViewed.size.toString()
+            binding.includeRecentItem.tvChannelName.text = list[position].authorName
+            binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
+            binding.includeRecentItem.tvTotalComments.text = "${list[position].comments} comments"
         }
-        holder.binding.tvHeadline.text = list[position].title
-        glideImage(list[position].image, holder.binding.ivNewsImg)
-        glideImage(list[position].authorProfile, holder.binding.includeRecentItem.imgChannelLogo)
-        holder.binding.includeRecentItem.tvTotalViews.text = list[position].userViewed.size.toString()
-        holder.binding.includeRecentItem.tvChannelName.text = list[position].authorName
-        holder.binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
-        holder.binding.includeRecentItem.tvTotalComments.text = "${list[position].comments} comments"
+
     }
-    private fun glideImage(image: String, imageView: ImageView ) {
-        Glide.with(context)
-            .load(image)
-            .centerCrop()
-            .placeholder(R.drawable.ic_image)
-            .into(imageView)
+
+    private fun setUpMenu(binding: RecentRecycleItemBinding, position: Int) {
+        binding.includeRecentItem.icSave.setImageResource(R.drawable.ic_three_dot_chat)
+        binding.includeRecentItem.icSave.setOnClickListener {
+            val popupMenu = PopupMenu(context, it)
+            popupMenu.inflate(R.menu.profile_menu)
+            popupMenu.setOnMenuItemClickListener {menuItem ->
+                when(menuItem.itemId) {
+                    R.id.editStory -> {
+                        listener.onItemClick(list[position].articleId+"editStory")
+                        true
+                    } R.id.deleteStory -> {
+                        listener.onItemClick(list[position].articleId+"deleteStory")
+                        true
+                    }
+                    else -> true
+                }
+            }
+            popupMenu.show()
+            val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+            popup.isAccessible = true
+            val menu = popup.get(popupMenu)
+            menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                .invoke(menu, true)
+        }
     }
+    fun updateUi(list: List<Article>, flag: Boolean, context: Context) {
+        this.flag = flag
+        this.context = context
+        this.list = list
+    }
+
 }

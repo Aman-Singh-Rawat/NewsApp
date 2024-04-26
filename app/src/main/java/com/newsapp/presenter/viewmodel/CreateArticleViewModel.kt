@@ -2,9 +2,12 @@ package com.newsapp.presenter.viewmodel
 
 import android.app.Application
 import android.net.Uri
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.newsapp.data.models.Article
@@ -81,9 +84,39 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
     }
 
     fun articleUpdate(articleId: String) {
-        //TODO ADD ARTICLE ID
-    }
 
+    }
+    fun deleteArticle(articleId: String, onSuccess: () -> Unit) {
+        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
+            .addOnSuccessListener {
+                val article = it.toObject(Article::class.java)
+                if (article != null) {
+                    firestore.collection(DatabaseCollection.ARTICLES).document(articleId).delete()
+                        .addOnSuccessListener {
+                            Log.d("debugging", article.image)
+                            storageRef.child("Images/${article.image}")
+                                .delete()
+                                .addOnSuccessListener {
+                                    Log.d("debugging", article.image)
+                                    onSuccess.invoke()
+                                }
+                                .addOnFailureListener {
+                                    Log.d("debugging", it.message.toString())
+                                }
+                        }
+                }
+            }
+    }
+    fun getParticularArticle(articleId: String, onSuccess: (Article) -> Unit) {
+        firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
+            .get()
+            .addOnSuccessListener {
+                val article = it.toObject(Article::class.java)
+                if (article != null) {
+                    onSuccess(article)
+                }
+            }
+    }
     fun clearArticleData() {
         currentArticle = null
     }
