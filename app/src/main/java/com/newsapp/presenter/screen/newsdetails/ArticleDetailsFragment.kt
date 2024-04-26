@@ -63,7 +63,10 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
     private fun setUpUserRecycler() {
         binding.rvUserRecycler.adapter = trendingAdapter
         viewModel.getAllArticles(articleId) {
-            trendingAdapter.updateUi(it, requireActivity())
+            if(it[0].authorId != prefs.getUser()?.uid)
+                binding.clTrendingStories.visibility = View.VISIBLE
+            else
+                trendingAdapter.updateUi(it, requireActivity())
         }
     }
 
@@ -87,7 +90,7 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
             }
         }
         binding.tvViewAll.setOnClickListener {
-            findNavController().navigate(R.id.userProfileFragment)
+            findNavController().navigate(R.id.userProfileFragment, bundleOf("articleId" to articleId))
         }
 
         bookMarkFunctionality()
