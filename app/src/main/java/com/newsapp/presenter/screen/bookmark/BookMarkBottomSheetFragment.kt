@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -33,6 +34,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
         binding = FragmentBookMarkBottomSheetBinding.inflate(
             inflater, container, false
         )
+        viewModel.getBookmarkList()
         return binding.root
     }
 
@@ -41,9 +43,9 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
         binding.rvSelected.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-        viewModel.getBookmarkList {
+        viewModel.bookmarkLiveData.observe(requireActivity(), Observer {
             bottomSheetAdapter.update(it)
-        }
+        })
     }
 
     private fun printToastInCenter() {

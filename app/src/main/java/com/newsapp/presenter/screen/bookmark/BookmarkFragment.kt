@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentBookmarkBinding
@@ -19,7 +21,7 @@ import com.newsapp.util.OnTextSelectedListener
 
 class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
     private lateinit var binding: FragmentBookmarkBinding
-    val tagsRecyclerView = TagsRecyclerView(this)
+    private val tagsRecyclerView = TagsRecyclerView(this)
     private val viewModel by activityViewModels<BookmarkViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,7 @@ class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getBookmarkList()
         setUpStoriesTag()
 
         val color = ContextCompat.getColor(requireActivity(), R.color.white)
@@ -46,10 +49,10 @@ class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
 
     private fun setUpStoriesTag() {
         showProgress()
-        viewModel.getBookmarkList {
+        viewModel.bookmarkLiveData.observe(requireActivity(), Observer {
             binding.rvBookmarkTag.adapter = tagsRecyclerView
             tagsRecyclerView.updateUi(it)
-        }
+        })
         hideProgress()
     }
     override fun onTextSelected(topic: String) {

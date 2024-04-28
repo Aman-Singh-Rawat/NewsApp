@@ -3,6 +3,8 @@ package com.newsapp.presenter.viewmodel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
@@ -12,6 +14,7 @@ import com.newsapp.util.SharedPrefsManager
 
 class BookmarkViewModel(application: Application): AndroidViewModel(application) {
     private val bookmarkList: MutableList<String> = mutableListOf()
+    val bookmarkLiveData: MutableLiveData<List<String>> = MutableLiveData()
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
     fun saveBookmarkList(item: String, onSuccess: () -> Unit) {
@@ -23,9 +26,10 @@ class BookmarkViewModel(application: Application): AndroidViewModel(application)
                     onSuccess.invoke()
                 }
         }
+        bookmarkLiveData.value = bookmarkList
     }
 
-    fun getBookmarkList(onSuccess: (MutableList<String>) -> Unit) {
+    fun getBookmarkList() {
         bookmarkList.clear()
         prefs.getUser()?.let { user ->
             firestore.collection(DatabaseCollection.BOOKMARK).document(user.uid)
@@ -36,7 +40,7 @@ class BookmarkViewModel(application: Application): AndroidViewModel(application)
 
                         bookmarkStringList?.let {
                             bookmarkList.addAll(it)
-                            onSuccess(bookmarkList)
+                            bookmarkLiveData.value = it
                         }
                     }
                 }
