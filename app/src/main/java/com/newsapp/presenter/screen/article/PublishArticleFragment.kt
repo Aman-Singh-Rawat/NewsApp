@@ -21,10 +21,13 @@ import com.newsapp.core.base.BaseFragment
 import com.newsapp.data.models.Article
 import com.newsapp.databinding.FragmentPublishBinding
 import com.newsapp.presenter.viewmodel.CreateArticleViewModel
+import com.newsapp.util.glideImage
 import com.newsapp.util.hideKeyboard
 
 class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
     private lateinit var binding: FragmentPublishBinding
+    private val articleId by lazy { arguments?.getString("articleId") ?: "" }
+    private val isSecond by lazy { arguments?.getBoolean("isSecond") ?: false }
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     private val tags = mutableListOf<String>()
     private var mTopic: String? = null
@@ -66,15 +69,26 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
         //recyclerViewFunctionality()
 
         binding.tvPublish.setOnClickListener {
-            if (!mTopic.isNullOrEmpty() && mTopic != "Select") {
+            if (!mTopic.isNullOrEmpty() && mTopic != "Select" && articleId.isEmpty()) {
                 showProgress()
-                //viewModel.imageUri?.let { it1 -> viewModel.uploadImageToFirebase(it1)}
-                viewModel.uploadImageToFirebase(onSuccess = {
+                viewModel.uploadImageToFirebase(isSecond, onSuccess = {
                     viewModel.publishArticle(mTopic!!, tags)
                     hideProgress()
-                    viewModel.clearArticleData()
                     findNavController().navigate(R.id.fragmentStoryPublished)
+                    viewModel.clearArticleData()
                 })
+            } else if (!mTopic.isNullOrEmpty() && mTopic != "Select" && articleId.isNotEmpty()) {
+                showProgress()
+                viewModel.uploadImageToFirebase(isSecond) {
+                    viewModel.updateArticle(mTopic!!, tags, articleId, {
+                        viewModel.clearArticleData()
+                        hideProgress()
+                        Toast.makeText(requireActivity(), "Successfully updated", Toast.LENGTH_LONG).show()
+                        findNavController().navigate(R.id.fragmentStoryPublished)
+                    }) {
+                        hideProgress()
+                    }
+                }
             } else {
                 Toast.makeText(requireActivity(), "please enter the all values", Toast.LENGTH_SHORT).show()
             }
@@ -115,7 +129,10 @@ class PublishArticleFragment : BaseFragment(), OnItemSelectedListener {
 
         viewModel.getArticle()?.let { article ->
             binding.tvTheRise.text = article.title
-            binding.imgPublish.setImageURI(viewModel.imageUri)
+            if (articleId.isEmpty() || isSecond)
+                binding.imgPublish.setImageURI(viewModel.imageUri)
+            else
+                glideImage(requireActivity(), binding.imgPublish, article.image)
         }
 
     }

@@ -29,7 +29,6 @@ open class BaseFragment : Fragment() {
     }
 
     open fun onBackPress(){
-        Log.d(TAG, "onBackPress: ")
         findNavController().navigateUp()
     }
 

@@ -46,8 +46,28 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
             }
         }
     }
+    fun updateArticle(topic: String, tags: List<String>, articleId: String, onSuccess: () -> Unit, onError: () -> Unit) {
+        currentArticle = currentArticle?.copy(topic = topic, tags = tags)
+        currentArticle?.let { article ->
+            val userMap = mapOf(
+                "image" to article.image,
+                "story" to article.story,
+                "tags" to article.tags,
+                "topic" to article.topic,
+                "title" to article.title
+            )
+            firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
+                .update(userMap).addOnSuccessListener {
+                    onSuccess.invoke()
+                }
+                .addOnFailureListener {
+                    onError.invoke()
+                }
+        }
 
-    fun uploadImageToFirebase(onSuccess: () -> Unit) {
+    }
+
+    fun uploadImageToFirebase(flag: Boolean, onSuccess: () -> Unit) {
         val storageRef = storageRef.child(System.currentTimeMillis().toString())
         val uploadTask = storageRef.putFile(imageUri!!)
 
@@ -61,11 +81,15 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUri = task.result.toString()
-                currentArticle = currentArticle?.copy(image = downloadUri, time = System.currentTimeMillis())
+                currentArticle = if(flag)
+                    currentArticle?.copy(image = downloadUri)
+                else
+                    currentArticle?.copy(image = downloadUri, time = System.currentTimeMillis())
+
                 onSuccess()
             } else {
-                //callback(null)
             }
+        }.addOnFailureListener {
         }
     }
     fun getArticleData(onSuccess: (List<Article>) -> Unit) {
@@ -93,15 +117,12 @@ class CreateArticleViewModel(private val application: Application) : AndroidView
                 if (article != null) {
                     firestore.collection(DatabaseCollection.ARTICLES).document(articleId).delete()
                         .addOnSuccessListener {
-                            Log.d("debugging", article.image)
                             storageRef.child("Images/${article.image}")
                                 .delete()
                                 .addOnSuccessListener {
-                                    Log.d("debugging", article.image)
                                     onSuccess.invoke()
                                 }
                                 .addOnFailureListener {
-                                    Log.d("debugging", it.message.toString())
                                 }
                         }
                 }

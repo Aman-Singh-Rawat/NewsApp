@@ -63,11 +63,9 @@ class BookmarkViewModel(application: Application): AndroidViewModel(application)
                         }
                         firestore.collection(DatabaseCollection.ARTICLES).document(articleId).update(mapData)
                             .addOnSuccessListener {
-                                Log.d("debugging", "done")
                                 onSuccess()
                             }
                             .addOnFailureListener {
-                                Log.d("debugging", it.message.toString())
                             }
                     }
                 }

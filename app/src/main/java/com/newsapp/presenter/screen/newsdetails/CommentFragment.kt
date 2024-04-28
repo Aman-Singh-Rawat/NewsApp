@@ -55,7 +55,6 @@ class CommentFragment : Fragment() {
 
         binding.rvCommentScreen.adapter = adapter
         viewModel.getComments(articleId) {
-            Log.d("comments", it.toString())
             adapter.updateUi(it)
         }
     }

@@ -67,11 +67,9 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
                                             firestore.collection(DatabaseCollection.USERS).document(article.authorId)
                                                 .set(mapOf("followerList" to followerList))
                                                 .addOnSuccessListener {
-                                                    Log.d("debugging", "success")
                                                     onSuccess(followingList.contains(article.authorId))
                                                 }
                                                 .addOnFailureListener {
-                                                    Log.d("debugging", it.message.toString())
                                                 }
                                         }
                                     }
@@ -90,9 +88,7 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
                         if (document != null) {
                             val user = document.toObject(User::class.java)
                             user?.let {
-                                Log.d("debugging", "getFollowing is:: ${user.followingList.toString()}")
                                 if (it.followingList.contains(article.authorId)) {
-                                    Log.d("debugging", "getFollowing is:: ${user.followingList.contains(article.authorId)}")
                                     onSuccess(true)
                                 } else {
                                     onSuccess(false)

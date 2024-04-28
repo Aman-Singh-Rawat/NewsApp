@@ -3,12 +3,14 @@ package com.newsapp.presenter.screen.article
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.newsapp.R
@@ -23,6 +25,7 @@ class CreateArticleFragment : BaseFragment() {
     private lateinit var binding: FragmentCreateArticleBinding
     private val viewModel by activityViewModels<CreateArticleViewModel>()
     private var imageUri: Uri? = null
+    private var imageUrl: String = ""
     private val articleId by lazy {arguments?.getString("articleId") ?: ""}
 
     override fun onCreateView(
@@ -46,6 +49,7 @@ class CreateArticleFragment : BaseFragment() {
     private fun updateArticle() {
         viewModel.getParticularArticle(articleId) { article ->
             binding.apply {
+                imageUrl = article.image
                 glideImage(requireActivity(), ivStory, article.image)
                 etFillTitle.setText(article.title)
                 editor.html = article.story
@@ -76,7 +80,7 @@ class CreateArticleFragment : BaseFragment() {
             actionInsertNumbers.setOnClickListener { editor.setNumbers() }
 
             tvPreview.setOnClickListener {
-                if (validationOfViews() && imageUri != null) {
+                if (validationOfViews() && imageUri != null && articleId.isEmpty()) {
                     viewModel.imageUri = imageUri
                     viewModel.addArticle(
                         "",
@@ -84,6 +88,25 @@ class CreateArticleFragment : BaseFragment() {
                         story = editor.html
                     )
                     findNavController().navigate(R.id.previewStoryFragment)
+
+                } else if (validationOfViews() && imageUri != null && articleId.isNotEmpty()) {
+                    viewModel.imageUri = imageUri
+                    viewModel.addArticle(
+                        "",
+                        title = etFillTitle.text.toString(),
+                        story = editor.html
+                    )
+                    findNavController().navigate(R.id.previewStoryFragment,
+                        bundleOf("isSecond" to true, "articleId" to articleId))
+
+                } else if (validationOfViews() && articleId.isNotEmpty()) {
+                    viewModel.addArticle(
+                        imageUrl,
+                        title = etFillTitle.text.toString(),
+                        story = editor.html
+                    )
+                    findNavController().navigate(R.id.previewStoryFragment,
+                        bundleOf("articleId" to articleId))
                 } else {
                     Toast.makeText(
                         requireActivity(),
@@ -100,7 +123,7 @@ class CreateArticleFragment : BaseFragment() {
     private fun validationOfViews(): Boolean {
         val editorText = binding.editor.html
         return binding.etFillTitle.text.toString().isNotEmpty() &&
-                editorText.isNotEmpty()
+                editorText != null
     }
 
     private val resultLauncher = registerForActivityResult(
