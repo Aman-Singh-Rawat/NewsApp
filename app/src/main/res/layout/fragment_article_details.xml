@@ -63,7 +63,6 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:visibility="gone"
                 android:src="@drawable/ic_bookmark"
                 app:layout_constraintEnd_toStartOf="@id/ivShare"
                 app:layout_constraintTop_toTopOf="parent" />

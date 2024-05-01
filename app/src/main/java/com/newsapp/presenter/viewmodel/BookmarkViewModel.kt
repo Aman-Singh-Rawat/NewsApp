@@ -15,6 +15,9 @@ import com.newsapp.util.SharedPrefsManager
 class BookmarkViewModel(application: Application): AndroidViewModel(application) {
     private val bookmarkList: MutableList<String> = mutableListOf()
     val bookmarkLiveData: MutableLiveData<List<String>> = MutableLiveData()
+    val articleLiveData: MutableLiveData<List<String>> = MutableLiveData()
+    var articleList: MutableList<String> = mutableListOf()
+
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
     fun saveBookmarkList(item: String, onSuccess: () -> Unit) {
@@ -47,45 +50,46 @@ class BookmarkViewModel(application: Application): AndroidViewModel(application)
         }
     }
 
-    fun doArticleSave(articleId: String, list: MutableList<String>, flag: Boolean, onSuccess: () -> Unit) {
-        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
-            .addOnSuccessListener {
-                if (it.exists()) {
-                    val article = it.toObject(Article::class.java)
-                    article?.let {
-                        val mapData: Map<String, Any>
-                        if (flag) {
-                            mapData = mapOf(
-                                "topicList" to list,
-                                "articleSaved" to true
-                            )
-                        } else {
-                            mapData = mapOf(
-                                "topicList" to emptyList<String>(),
-                                "articleSaved" to false
-                            )
-                        }
-                        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).update(mapData)
-                            .addOnSuccessListener {
-                                onSuccess()
-                            }
-                            .addOnFailureListener {
-                            }
+    fun doArticleSave(articleId: String, list: MutableList<String>, onSuccess: (Boolean) -> Unit) {
+        var flag = false
+        articleList.clear()
+        getArticleSaved(articleId) { listOfArticles ->
+            listOfArticles.value?.let {
+                articleList = it.toMutableList()
+                prefs.getUser()?.let {
+                    if (articleList.contains(it.uid)) {
+                        Log.d("debugging", "contains")
+                        articleList.remove(it.uid)
                     }
+                    else {
+                        Log.d("debugging", "not contains")
+                        articleList.add(it.uid)
+                        flag = true
+                    }
+                    articleLiveData.value = articleList
+                    Log.d("debugging", "live data is:: ${articleLiveData.value}")
+                    firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
+                        .update(mapOf("topicList" to list, "savedArticleList" to articleList))
+                        .addOnSuccessListener {
+                            onSuccess(flag)
+                        }
                 }
             }
+        }
     }
 
-    fun isArticleSavedOrNot(articleId: String, onSuccess: (Boolean) -> Unit) {
+    fun getArticleSaved(articleId: String, onSuccess: (MutableLiveData<List<String>>) -> Unit) {
+        articleList.clear()
         firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
             .addOnSuccessListener {docSnapshot ->
-                if (docSnapshot.exists()) {
-                    val article = docSnapshot.toObject(Article::class.java)
-                    article?.let {
-                        onSuccess(article.articleSaved)
-                    }
+                val article = docSnapshot.toObject(Article::class.java)
+                if (article != null) {
+                    articleList = article.savedArticleList.toMutableList()
+
+                    articleLiveData.value = articleList
+                    onSuccess(articleLiveData)
                 }
+
             }
     }
-
 }

@@ -69,21 +69,12 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
         }
 
         binding.includeBookButton.btnOnboardingContinue.setOnClickListener {
+            Log.d("debugging", "btnOnboardingContinue")
             if (list.isNotEmpty()) {
-                viewModel.isArticleSavedOrNot(articleId) {
-                    if (it) {
-                        viewModel.doArticleSave(articleId, list, false) {
-                            printToastInCenter()
-                            dismiss()
-                        }
-                    } else {
-                        viewModel.doArticleSave(articleId, list, true) {
-                            printToastInCenter()
-                            dismiss()
-                        }
-                    }
+                viewModel.doArticleSave(articleId, list) {
+                    printToastInCenter()
+                    findNavController().navigateUp()
                 }
-
             }
         }
 

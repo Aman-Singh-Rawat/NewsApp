@@ -3,20 +3,17 @@ package com.newsapp.presenter.screen.newsdetails
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.print.PrintAttributes.Margins
 import android.text.Html
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.view.marginEnd
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.chip.Chip
 import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
@@ -56,7 +53,6 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
         viewModel.getFollowing(articleId) {
             doFollowOrNot(it, followString, followingString)
         }
-
         return binding.root
     }
 
@@ -75,6 +71,14 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("debugging", "onViewCreated.toString()")
+        bookmarkViewModel.getArticleSaved(articleId) {
+            it.observe(requireActivity(), Observer {
+                articleSavedOrNot(it)
+            })
+
+        }
+
         binding.tvCommentViewAll.setOnClickListener {
             findNavController().navigate(R.id.commentFragment, bundleOf("articleId" to articleId))
         }
@@ -84,13 +88,7 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
         binding.btnFollow.setOnClickListener {
             followButton()
         }
-        bookmarkViewModel.isArticleSavedOrNot(articleId) {
-            if (it) {
-                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_fill)
-            } else {
-                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
-            }
-        }
+
         binding.tvViewAll.setOnClickListener {
             findNavController().navigate(R.id.userProfileFragment, bundleOf("articleId" to articleId))
         }
@@ -102,25 +100,29 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
 
     }
 
+    private fun articleSavedOrNot(savedList: List<String>) {
+        prefs.getUser()?.let {
+            if (savedList.contains(it.uid))
+                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_fill)
+            else
+                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
+        }
+    }
+
     private fun bookMarkFunctionality() {
         binding.ivBookMark.setOnClickListener {
-            bookmarkViewModel.isArticleSavedOrNot(articleId) {
-                if (it) {
-                    bookmarkViewModel.doArticleSave(
-                        articleId,
-                        emptyList<String>().toMutableList(),
-                        false
-                    ) {
-                        binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
+            bookmarkViewModel.getArticleSaved(articleId) {
+                it.observe(requireActivity(), Observer { savedList ->
+                    if (savedList.contains(prefs.getUser()?.uid)) {
+                        bookmarkViewModel.doArticleSave(articleId, emptyList<String>().toMutableList()) { flag ->
+                            if (!flag)
+                                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
+                        }
+                    } else {
+                        findNavController().navigate(R.id.bookMarkBottomSheetFragment,
+                            bundleOf("articleId" to articleId))
                     }
-                } else {
-                    binding.ivBookMark.setOnClickListener {
-                        findNavController().navigate(
-                            R.id.bookMarkBottomSheetFragment,
-                            bundleOf("articleId" to articleId)
-                        )
-                    }
-                }
+                })
             }
         }
     }
