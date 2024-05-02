@@ -38,7 +38,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            style="@style/feedText"
+            app:queryBackground="@drawable/bg_search_view"
             app:searchIcon="@drawable/ic_search"
+            app:searchHintIcon="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="@id/guideline14"
             app:layout_constraintTop_toTopOf="parent" />
 
