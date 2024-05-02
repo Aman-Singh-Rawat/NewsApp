@@ -42,6 +42,7 @@ class UserProfileFragment : BaseFragment(), OnItemClickListener {
 
     private fun userArticles(user: User) {
         viewModel.getUserArticles(user.uid) {
+            binding.tvTotalStories.text = it.size.toString()
             binding.rvProfileNews.adapter = profileAdapter
             profileAdapter.updateUi(it, false, requireActivity())
         }

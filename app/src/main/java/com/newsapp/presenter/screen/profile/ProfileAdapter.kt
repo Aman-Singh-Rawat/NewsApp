@@ -2,6 +2,7 @@ package com.newsapp.presenter.screen.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,12 +24,16 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     private var flag = false
     private val selectedItems = mutableListOf<String>()
     private lateinit var context: Context
-    inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding): RecyclerView.ViewHolder(binding.root) {
+
+    inner class NewsArticlesAdapter(val binding: RecentRecycleItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsArticlesAdapter {
         val binding = RecentRecycleItemBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false)
+            LayoutInflater.from(parent.context), parent, false
+        )
 
         return NewsArticlesAdapter(binding)
     }
@@ -38,8 +43,9 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     }
 
     override fun onBindViewHolder(holder: NewsArticlesAdapter, position: Int) {
-        bindTheViews(holder,position)
+        bindTheViews(holder, position)
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         val isSelected = selectedItems.contains(list[position].articleId)
@@ -47,33 +53,46 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         holder.apply {
             itemView.isSelected = isSelected
 
-            binding.tvHeadline.setOnClickListener {
-                listener.onItemClick(list[position].articleId)
-            }
-            binding.cvNewsImg.setOnClickListener {
-                listener.onItemClick(list[position].articleId)
-            }
-
-            binding.includeRecentItem.icSave.setOnClickListener {
-                if (selectedItems.contains(list[position].articleId)) {
-                    selectedItems.remove(list[position].articleId)
-                    listener.onArticleSaveListener(selectedItems)
-                } else {
-                    selectedItems.add(list[position].articleId)
-                    listener.onArticleSaveListener(selectedItems)
+            binding.apply {
+                tvHeadline.setOnClickListener {
+                    listener.onItemClick(list[position].articleId)
                 }
-                notifyDataSetChanged()
+                cvNewsImg.setOnClickListener {
+                    listener.onItemClick(list[position].articleId)
+                }
+
+                includeRecentItem.apply {
+                    icSave.setOnClickListener {
+                        if (selectedItems.contains(list[position].articleId)) {
+                            selectedItems.remove(list[position].articleId)
+                            listener.onArticleSaveListener(selectedItems)
+                        } else {
+                            selectedItems.add(list[position].articleId)
+                            listener.onArticleSaveListener(selectedItems)
+                        }
+                        notifyDataSetChanged()
+                    }
+                    if (flag) {
+                        setUpMenu(binding, position)
+                    }
+                    tvHeadline.text = list[position].title
+                    glideImage(context, binding.ivNewsImg, list[position].image)
+                    glideImage(
+                        context,
+                        imgChannelLogo,
+                        list[position].authorProfile,
+                        true
+                    )
+                    tvTotalViews.text = list[position].userViewed.size.toString()
+                    tvChannelName.text = list[position].authorName
+                    tvDaysAgo.text = calculateElapsedTime(list[position].time)
+                    tvTotalComments.text = "${list[position].comments} comments"
+
+                    icShare.setOnClickListener {
+                        shareArticle(context, list[position])
+                    }
+                }
             }
-            if (flag) {
-                setUpMenu(binding, position)
-            }
-            binding.tvHeadline.text = list[position].title
-            glideImage(context, binding.ivNewsImg, list[position].image)
-            glideImage(context, binding.includeRecentItem.imgChannelLogo, list[position].authorProfile, true )
-            binding.includeRecentItem.tvTotalViews.text = list[position].userViewed.size.toString()
-            binding.includeRecentItem.tvChannelName.text = list[position].authorName
-            binding.includeRecentItem.tvDaysAgo.text = calculateElapsedTime(list[position].time)
-            binding.includeRecentItem.tvTotalComments.text = "${list[position].comments} comments"
         }
 
     }
@@ -83,15 +102,18 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         binding.includeRecentItem.icSave.setOnClickListener {
             val popupMenu = PopupMenu(context, it)
             popupMenu.inflate(R.menu.profile_menu)
-            popupMenu.setOnMenuItemClickListener {menuItem ->
-                when(menuItem.itemId) {
+            popupMenu.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
                     R.id.editStory -> {
-                        listener.onItemClick(list[position].articleId+"editStory")
-                        true
-                    } R.id.deleteStory -> {
-                        listener.onItemClick(list[position].articleId+"deleteStory")
+                        listener.onItemClick(list[position].articleId + "editStory")
                         true
                     }
+
+                    R.id.deleteStory -> {
+                        listener.onItemClick(list[position].articleId + "deleteStory")
+                        true
+                    }
+
                     else -> true
                 }
             }
@@ -103,10 +125,18 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
                 .invoke(menu, true)
         }
     }
+
     fun updateUi(list: List<Article>, flag: Boolean, context: Context) {
         this.flag = flag
         this.context = context
         this.list = list
     }
 
+    private fun shareArticle(context: Context, article: Article) {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Shared Article")
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this article: ${article.title}\n${article.story}")
+        context.startActivity(Intent.createChooser(shareIntent, "Share via"))
+    }
 }

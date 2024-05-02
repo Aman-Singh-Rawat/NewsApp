@@ -274,13 +274,14 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
                 android:text="@string/follow"
+                android:textColor="@color/grey"
                 android:textAlignment="center"
                 app:cornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvTotalFollowers"
                 app:layout_constraintEnd_toEndOf="@id/glBookMarkEnd"
                 app:layout_constraintTop_toTopOf="@+id/tvName"
                 app:strokeColor="@color/black"
-                app:strokeWidth="0.5dp" />
+                app:strokeWidth="1dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvChannelDesc"

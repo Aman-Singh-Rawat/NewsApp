@@ -15,10 +15,10 @@
             android:id="@+id/imgN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:src="@drawable/img_n"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
             app:layout_constraintStart_toStartOf="@id/guideline13"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView2"
@@ -28,16 +28,17 @@
             android:layout_marginTop="20dp"
             android:includeFontPadding="false"
             android:text="@string/bookmark"
+            app:layout_constraintBottom_toBottomOf="@+id/icSearch"
             app:layout_constraintEnd_toEndOf="@+id/guideline14"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/icSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_search"
+            app:searchIcon="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="@id/guideline14"
             app:layout_constraintTop_toTopOf="parent" />
 
