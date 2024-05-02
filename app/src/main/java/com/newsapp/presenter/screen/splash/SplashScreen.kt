@@ -26,7 +26,12 @@ class SplashScreen : AppCompatActivity() {
     private fun checkUserSession() {
         val isLoggedIn = prefs.getBoolean(PrefKeys.IS_LOGGED_IN, false)
         val intent: Intent = if (isLoggedIn) {
-            Intent(this, MainActivity::class.java)
+            val user = prefs.getUser()
+            if(user?.userName.isNullOrEmpty()){
+                Intent(this,OnboardingActivity ::class.java)
+            }else{
+                Intent(this, MainActivity::class.java)
+            }
         } else {
             Intent(this,OnboardingActivity ::class.java)
         }
