@@ -15,8 +15,15 @@ class NewsInterestViewModel(private val application: Application) : AndroidViewM
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
     private val gson by lazy { Gson() }
+    private val selectedInterest = mutableListOf<NewsInterest>()
+
+    fun getUserInterests(): MutableList<NewsInterest> {
+        return selectedInterest
+    }
 
     fun saveUserInterests(selectedInterest: MutableList<NewsInterest>) {
+        this.selectedInterest.clear()
+        this.selectedInterest.addAll(selectedInterest)
         val interest = selectedInterest.map { it.interestName }
         prefs.saveUserInterest(interest.toSet())
 //        val json = gson.toJson(interest)

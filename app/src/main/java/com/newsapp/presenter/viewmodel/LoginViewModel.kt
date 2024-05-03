@@ -77,8 +77,13 @@ class LoginViewModel(private val application: Application) : AndroidViewModel(ap
                         .addOnCompleteListener {
                             if (it.result.data != null) {
                                 val json = gson.toJson(it.result.data)
-                                prefs.saveUser(gson.fromJson(json, User::class.java))
-                                onSuccessSignIn.invoke()
+                                val userData = gson.fromJson(json, User::class.java)
+                                prefs.saveUser(userData)
+                                if(userData.userName.isNotEmpty()){
+                                    onSuccessSignIn.invoke()
+                                }else{
+                                    onSuccessSignup.invoke()
+                                }
                             } else {
                                 prefs.saveUser(User(uid = user.uid, email = user.email?:""))
                                 firestore.collection(DatabaseCollection.USERS).document(user.uid).set(

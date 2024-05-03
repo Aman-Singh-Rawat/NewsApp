@@ -38,58 +38,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            style="@style/feedText"
-            app:queryBackground="@drawable/bg_search_view"
-            app:searchIcon="@drawable/ic_search"
-            app:searchHintIcon="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="@id/guideline14"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:searchIcon="@drawable/ic_search" />
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBookmarkCategory"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icSearch">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/fabButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="20dp"
+                android:background="@drawable/bg_profile"
+                android:padding="10dp"
+                android:src="@drawable/ic_add_chat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/rvBookmarkTag"
+                app:layout_constraintHorizontal_weight="0.11"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white"
+                tools:ignore="ContentDescription" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_add_chat"
-                    android:backgroundTint="@color/blue"
-                    app:fabCustomSize="46dp"
-                    android:layout_marginTop="20dp"
-                    android:contentDescription="@string/fab_transformation_scrim_behavior"
-                    android:background="?android:attr/selectableItemBackground"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBookmarkTag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.9"
+                app:layout_constraintStart_toEndOf="@+id/fabButton"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/recent_stories" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBookmarkTag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="22dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/recent_stories" />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSavedArticles"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline14"
             app:layout_constraintStart_toStartOf="@id/guideline13"
-            app:layout_constraintEnd_toEndOf="@id/guideline14"/>
+            app:layout_constraintTop_toBottomOf="@id/clBookmarkCategory" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgClipBoard"
@@ -107,9 +112,9 @@
             style="@style/empty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/empty"
-            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="@+id/guideline14"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
@@ -120,8 +125,8 @@
             style="@style/stories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:includeFontPadding="false"
             android:text="@string/you_have_not_saved_ant_stories_to_this_ncollection"
             app:layout_constraintEnd_toEndOf="@+id/guideline14"

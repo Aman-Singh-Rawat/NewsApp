@@ -1,95 +1,125 @@
 package com.newsapp.presenter.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.toObject
+import com.google.gson.Gson
 import com.newsapp.data.models.Article
 import com.newsapp.util.DatabaseCollection
+import com.newsapp.util.DatabaseEntity
 import com.newsapp.util.SharedPrefsManager
 
-class BookmarkViewModel(application: Application): AndroidViewModel(application) {
-    private val bookmarkList: MutableList<String> = mutableListOf()
-    val bookmarkLiveData: MutableLiveData<List<String>> = MutableLiveData()
-    val articleLiveData: MutableLiveData<List<String>> = MutableLiveData()
-    var articleList: MutableList<String> = mutableListOf()
+class BookmarkViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val gson by lazy { Gson() }
+    private val bookmarkCategoryList: MutableList<String> = mutableListOf()
+    val bookmarkCategory: MutableLiveData<List<String>> = MutableLiveData()
+    val bookmarkArticles: MutableLiveData<List<Article?>> = MutableLiveData()
 
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
-    fun saveBookmarkList(item: String, onSuccess: () -> Unit) {
-        bookmarkList.add(item)
-        prefs.getUser()?.let { user ->
-            firestore.collection(DatabaseCollection.BOOKMARK).document(user.uid)
-                .set(mapOf("bookmarkList" to bookmarkList))
-                .addOnSuccessListener {
-                    onSuccess.invoke()
-                }
-        }
-        bookmarkLiveData.value = bookmarkList
-    }
 
-    fun getBookmarkList() {
-        bookmarkList.clear()
-        prefs.getUser()?.let { user ->
-            firestore.collection(DatabaseCollection.BOOKMARK).document(user.uid)
-                .get().addOnSuccessListener {documentSnap ->
-                    if (documentSnap.exists()) {
-                        val bookmarkData = documentSnap.data
-                        val bookmarkStringList = bookmarkData?.get("bookmarkList") as? List<String>
-
-                        bookmarkStringList?.let {
-                            bookmarkList.addAll(it)
-                            bookmarkLiveData.value = it
-                        }
+    fun saveBookmarkCategory(item: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        if (bookmarkCategoryList.contains(item)) {
+            onFailure("Bookmark category already exist.")
+        } else {
+            bookmarkCategoryList.add(item)
+            bookmarkCategory.postValue(bookmarkCategoryList)
+            prefs.getUser()?.let { user ->
+                firestore.collection(DatabaseCollection.BOOKMARK_CATEGORY).document(user.uid)
+                    .set(mapOf(DatabaseEntity.CATEGORY to bookmarkCategoryList))
+                    .addOnSuccessListener {
+                        onSuccess.invoke()
+                    }.addOnFailureListener {
+                        onFailure(it.message.toString())
                     }
-                }
-        }
-    }
-
-    fun doArticleSave(articleId: String, list: MutableList<String>, onSuccess: (Boolean) -> Unit) {
-        var flag = false
-        articleList.clear()
-        getArticleSaved(articleId) { listOfArticles ->
-            listOfArticles.value?.let {
-                articleList = it.toMutableList()
-                prefs.getUser()?.let {
-                    if (articleList.contains(it.uid)) {
-                        Log.d("debugging", "contains")
-                        articleList.remove(it.uid)
-                    }
-                    else {
-                        Log.d("debugging", "not contains")
-                        articleList.add(it.uid)
-                        flag = true
-                    }
-                    articleLiveData.value = articleList
-                    Log.d("debugging", "live data is:: ${articleLiveData.value}")
-                    firestore.collection(DatabaseCollection.ARTICLES).document(articleId)
-                        .update(mapOf("topicList" to list, "savedArticleList" to articleList))
-                        .addOnSuccessListener {
-                            onSuccess(flag)
-                        }
-                }
             }
         }
     }
 
-    fun getArticleSaved(articleId: String, onSuccess: (MutableLiveData<List<String>>) -> Unit) {
-        articleList.clear()
-        firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
-            .addOnSuccessListener {docSnapshot ->
-                val article = docSnapshot.toObject(Article::class.java)
-                if (article != null) {
-                    articleList = article.savedArticleList.toMutableList()
-
-                    articleLiveData.value = articleList
-                    onSuccess(articleLiveData)
+    fun getBookmarkCategory() {
+        prefs.getUser()?.let { user ->
+            firestore.collection(DatabaseCollection.BOOKMARK_CATEGORY).document(user.uid)
+                .get().addOnSuccessListener { documentSnap ->
+                    try {
+                        val bookmarkCategory =
+                            (documentSnap.data?.get(DatabaseEntity.CATEGORY) as? List<String>)
+                                ?: emptyList()
+                        bookmarkCategoryList.addAll(bookmarkCategory)
+                        this.bookmarkCategory.postValue(bookmarkCategory)
+                        prefs.saveUser(user.copy(bookmarkCategoryList = bookmarkCategory.toMutableList()))
+                    } catch (e: Exception) {
+                        bookmarkCategoryList.addAll(emptyList())
+                        bookmarkCategory.postValue(emptyList())
+                    }
                 }
-
-            }
+        }
     }
+
+    fun isBookmarked(articleId: String): Boolean {
+        return prefs.getUser()?.bookmarkList?.contains(articleId) ?: false
+    }
+
+    fun getBookmarkArticles() {
+        prefs.getUser()?.let { user ->
+            firestore.collection(DatabaseCollection.ARTICLES)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    val articles =
+                        querySnapshot.documents.filter { user.bookmarkList.contains(it.id) }
+                            .map { it.toObject(Article::class.java) }
+                    bookmarkArticles.postValue(articles)
+                }.addOnFailureListener {
+                    bookmarkArticles.postValue(emptyList())
+                }
+        }
+    }
+
+    fun checkBookmark(
+        articleId: String,
+        onSuccess: (Boolean) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        prefs.getUser()?.let { user ->
+            val bookmarks = if (user.bookmarkList.contains(articleId)) {
+                user.bookmarkList.apply { remove(articleId) }
+            } else {
+                user.bookmarkList.apply { add(articleId) }
+            }
+            onSuccess(bookmarks.contains(articleId))
+            firestore.collection(DatabaseCollection.USERS).document(user.uid)
+                .set(user.copy(bookmarkList = bookmarks)).addOnSuccessListener {
+                    prefs.saveUser(user.copy(bookmarkList = bookmarks))
+                    onSuccess(bookmarks.contains(articleId))
+                }.addOnFailureListener {
+                    onFailure(it.message.toString())
+                }
+        }
+    }
+
+//    fun bookmarkArticle(
+//        articleId: String,
+//        bookmarkCategory: String,
+//        onSuccess: (Boolean) -> Unit,
+//        onFailure: (String) -> Unit
+//    ) {
+//        prefs.getUser()?.let { user ->
+//            val bookmarks = if (user.bookmarkList.contains(articleId)) {
+//                user.bookmarkList.apply { remove(articleId) }
+//            } else {
+//                user.bookmarkList.apply { add(articleId) }
+//            }
+//            onSuccess(bookmarks.contains(articleId))
+//            firestore.collection(DatabaseCollection.BOOKMARKS).document(user.uid)
+//                .set(user.copy(bookmarkList = bookmarks)).addOnSuccessListener {
+//                    prefs.saveUser(user.copy(bookmarkList = bookmarks))
+//                    onSuccess(bookmarks.contains(articleId))
+//                }.addOnFailureListener {
+//                    onFailure(it.message.toString())
+//                }
+//        }
+//
+//    }
 }

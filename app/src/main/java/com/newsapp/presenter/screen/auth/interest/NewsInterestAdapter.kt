@@ -64,4 +64,10 @@ class NewsInterestAdapter(private val context: Context, private val itemList: Li
     ) {
         holder.bind(itemList[position], position)
     }
+
+    fun setSelectedInterest(interests: List<NewsInterest>) {
+        selectedItems.clear()
+        selectedItems.addAll(interests)
+        notifyDataSetChanged()
+    }
 }

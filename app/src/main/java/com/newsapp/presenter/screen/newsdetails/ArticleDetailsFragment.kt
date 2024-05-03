@@ -4,14 +4,13 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
@@ -19,18 +18,15 @@ import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentArticleDetailsBinding
 import com.newsapp.presenter.screen.homepage.HpTrendRecycler
-import com.newsapp.presenter.screen.profile.ProfileAdapter
 import com.newsapp.presenter.viewmodel.ArticleDetailViewModel
 import com.newsapp.presenter.viewmodel.BookmarkViewModel
 import com.newsapp.presenter.viewmodel.CommentViewModel
-import com.newsapp.util.OnItemClickListener
 import com.newsapp.util.SharedPrefsManager
 import com.newsapp.util.calculateElapsedTime
 import com.newsapp.util.glideImage
 
-class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
+class ArticleDetailsFragment: BaseFragment() {
     private lateinit var binding: FragmentArticleDetailsBinding
-    private val profileAdapter = ProfileAdapter(this)
     private val trendingAdapter = HpTrendRecycler()
     private val commentAdapter: CommentAdapter = CommentAdapter()
     private val commentViewModel by activityViewModels<CommentViewModel> ()
@@ -71,14 +67,6 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("debugging", "onViewCreated.toString()")
-        bookmarkViewModel.getArticleSaved(articleId) {
-            it.observe(requireActivity(), Observer {
-                articleSavedOrNot(it)
-            })
-
-        }
-
         binding.tvCommentViewAll.setOnClickListener {
             findNavController().navigate(R.id.commentFragment, bundleOf("articleId" to articleId))
         }
@@ -92,39 +80,25 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
         binding.tvViewAll.setOnClickListener {
             findNavController().navigate(R.id.userProfileFragment, bundleOf("articleId" to articleId))
         }
-
-        bookMarkFunctionality()
-        setUpUserRecycler()
-        firebaseSetup()
-        rvCommentSetup()
-
-    }
-
-    private fun articleSavedOrNot(savedList: List<String>) {
-        prefs.getUser()?.let {
-            if (savedList.contains(it.uid))
-                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark_fill)
-            else
-                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
-        }
-    }
-
-    private fun bookMarkFunctionality() {
         binding.ivBookMark.setOnClickListener {
-            bookmarkViewModel.getArticleSaved(articleId) {
-                it.observe(requireActivity(), Observer { savedList ->
-                    if (savedList.contains(prefs.getUser()?.uid)) {
-                        bookmarkViewModel.doArticleSave(articleId, emptyList<String>().toMutableList()) { flag ->
-                            if (!flag)
-                                binding.ivBookMark.setImageResource(R.drawable.ic_bookmark)
-                        }
-                    } else {
-                        findNavController().navigate(R.id.bookMarkBottomSheetFragment,
-                            bundleOf("articleId" to articleId))
-                    }
-                })
-            }
+            bookmarkArticle()
         }
+        setupUi()
+    }
+
+    private fun setupUi() {
+        updateArticleData()
+        setUpUserRecycler()
+        rvCommentSetup()
+    }
+
+    //bookmark the article
+    private fun bookmarkArticle() {
+        bookmarkViewModel.checkBookmark(articleId, onSuccess = {
+            binding.ivBookMark.isSelected = it
+        }, onFailure = {
+            Toast.makeText(requireContext(), "Failed to bookmark..", Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun doFollowOrNot(isFollowing: Boolean, followString: String, followingString: String) {
@@ -151,9 +125,10 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
         }
     }
 
-    private fun firebaseSetup() {
+    private fun updateArticleData() {
         viewModel.getArticleData(articleId) {article ->
             viewModel.articleVisited(article)
+            binding.ivBookMark.isSelected = bookmarkViewModel.isBookmarked(articleId)
             binding.nsvRoot.visibility = View.VISIBLE
             binding.progress.visibility = View.GONE
             binding.tvTotalViews.text = article.userViewed.size.toString()
@@ -221,13 +196,5 @@ class ArticleDetailsFragment: BaseFragment(), OnItemClickListener {
             else
                 commentAdapter.updateUi(it)
         }
-    }
-
-    override fun onItemClick(articleId: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onArticleSaveListener(selectedItems: MutableList<String>) {
-        TODO("Not yet implemented")
     }
 }

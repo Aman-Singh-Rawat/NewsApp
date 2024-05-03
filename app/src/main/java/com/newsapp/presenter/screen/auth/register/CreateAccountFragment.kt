@@ -75,7 +75,7 @@ class CreateAccountFragment : Fragment() {
             val email = binding.includeFragAccount.etFillEmail.text.toString()
             val password = binding.includeFragAccount.etFillPassWord.text.toString()
             viewModel.register(email, password, onSuccess = {
-                findNavController().navigate(R.id.newsFeedFragment)
+                findNavController().navigate(R.id.newsInterestFragment)
             }, onError = {
                 Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
             })

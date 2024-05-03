@@ -32,6 +32,11 @@ class NewsInterestFragment : Fragment() {
         setUpUi()
     }
 
+    override fun onResume() {
+        super.onResume()
+        interestAdapter.setSelectedInterest(viewModel.getUserInterests())
+    }
+
     private fun setUpUi() {
         interestAdapter = NewsInterestAdapter(requireActivity(), viewModel.getInterests())
         binding.recyclerView.layoutManager = GridLayoutManager(requireActivity(), 3)

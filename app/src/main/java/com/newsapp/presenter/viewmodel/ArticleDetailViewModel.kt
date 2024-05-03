@@ -19,7 +19,6 @@ class ArticleDetailViewModel(application: Application) : AndroidViewModel(applic
 
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     fun getArticleData(articleId: String, onSuccess: (Article) -> Unit) {
-
         firestore.collection(DatabaseCollection.ARTICLES).document(articleId).get()
             .addOnSuccessListener { document ->
                 if (document != null) {

@@ -19,7 +19,7 @@
 
 
     <fragment
-        android:id="@+id/newsFeedFragment"
+        android:id="@+id/newsInterestFragment"
         android:name="com.newsapp.presenter.screen.auth.interest.NewsInterestFragment"
         android:label="News_Feed_Fragment"
         tools:layout="@layout/fragment_news_feed"/>

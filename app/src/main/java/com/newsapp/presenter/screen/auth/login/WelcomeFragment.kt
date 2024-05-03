@@ -73,7 +73,7 @@ class WelcomeFragment : Fragment() {
                 viewModel.authenticateGoogleLogin(credential, onSuccessSignIn = {
                     findNavController().navigate(R.id.signInDialogFragment)
                 }, onSuccessSignup = {
-                    findNavController().navigate(R.id.newsFeedFragment)
+                    findNavController().navigate(R.id.newsInterestFragment)
                 }, onError = {
                     Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
                 })

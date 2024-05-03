@@ -8,6 +8,8 @@ data class User(
     val profile: String = "",
     val bio: String = "",
     val website: String = "",
+    val bookmarkList: MutableList<String> = mutableListOf(),
+    val bookmarkCategoryList: MutableList<String> = mutableListOf(),
     val followerList: MutableList<String> = mutableListOf(),
     val followingList: MutableList<String> = mutableListOf()
 )

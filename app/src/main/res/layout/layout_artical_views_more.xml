@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/icShare"
             app:layout_constraintBottom_toBottomOf="@id/icShare"
-            android:src="@drawable/selecter_bookmark"
+            android:src="@drawable/ic_bookmark"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"/>
 
