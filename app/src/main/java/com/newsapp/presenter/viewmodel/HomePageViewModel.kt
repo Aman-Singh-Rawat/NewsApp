@@ -37,7 +37,7 @@ class HomePageViewModel(private val application: Application) : AndroidViewModel
 
     fun saveArticle(saveArticle: MutableList<String>) {
         prefs.getUser()?.let {
-            firestore.collection(DatabaseCollection.BOOKMARK).document(it.uid).set(mapOf("bookmark" to saveArticle))
+            firestore.collection(DatabaseCollection.BOOKMARK_CATEGORY).document(it.uid).set(mapOf("bookmark" to saveArticle))
                 .addOnSuccessListener {
 
                 }

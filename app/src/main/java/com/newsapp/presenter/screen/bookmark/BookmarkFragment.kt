@@ -2,16 +2,12 @@ package com.newsapp.presenter.screen.bookmark
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.newsapp.R
 import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentBookmarkBinding
@@ -35,10 +31,10 @@ class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.getBookmarkList()
-        setUpStoriesTag()
-
+        showProgress()
+        viewModel.getBookmarkCategory()
+        viewModel.getBookmarkArticles()
+        setupObserver()
         val color = ContextCompat.getColor(requireActivity(), R.color.white)
         binding.fabButton.imageTintList = ColorStateList.valueOf(color)
 
@@ -47,13 +43,18 @@ class BookmarkFragment : BaseFragment(), OnTextSelectedListener {
         }
     }
 
-    private fun setUpStoriesTag() {
-        showProgress()
-        viewModel.bookmarkLiveData.observe(requireActivity(), Observer {
+    private fun setupObserver() {
+        viewModel.bookmarkCategory.observe(viewLifecycleOwner) {
+            hideProgress()
             binding.rvBookmarkTag.adapter = tagsRecyclerView
             tagsRecyclerView.updateUi(it)
-        })
-        hideProgress()
+        }
+
+        viewModel.bookmarkArticles.observe(viewLifecycleOwner) {
+            hideProgress()
+            //TODO update bookmarked article list in recycler here
+            //TODO also check if list is empty show empty view otherwise article list view
+        }
     }
     override fun onTextSelected(topic: String) {
         val x = topic

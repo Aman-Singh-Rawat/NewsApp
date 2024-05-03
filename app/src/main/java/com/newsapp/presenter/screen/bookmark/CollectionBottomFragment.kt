@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.newsapp.R
-import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentCollectionBottomBinding
 import com.newsapp.presenter.viewmodel.BookmarkViewModel
 
@@ -21,25 +21,30 @@ class CollectionBottomFragment : BottomSheetDialogFragment() {
         binding = FragmentCollectionBottomBinding.inflate(
             inflater, container, false
         )
-        buttonNameChange()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        buttonNameChange()
         binding.includeButtons.btnOnboardingContinue.setOnClickListener {
             if (binding.etCollectionTitle.text?.isNotEmpty() != null) {
-                viewModel.saveBookmarkList(binding.etCollectionTitle.text.toString()) {
-                    binding.etCollectionTitle.setText("")
-                    dismiss()
-                }
+                viewModel.saveBookmarkCategory(
+                    binding.etCollectionTitle.text.toString(),
+                    onSuccess = {
+                        binding.etCollectionTitle.setText("")
+                        dismiss()
+                    },
+                    onFailure = {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                        dismiss()
+                    })
             }
         }
     }
+
     private fun buttonNameChange() {
-        binding.includeButtons.btnOnboardingSkip.text = resources.getString(R.string.cancle)
-        binding.includeButtons.btnOnboardingContinue.text = resources.getString(R.string.done)
+        binding.includeButtons.btnOnboardingSkip.text = requireActivity().applicationContext.resources.getString(R.string.cancle)
+        binding.includeButtons.btnOnboardingContinue.text = requireActivity().applicationContext.resources.getString(R.string.done)
     }
 }

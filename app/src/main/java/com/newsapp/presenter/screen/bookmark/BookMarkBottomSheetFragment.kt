@@ -1,6 +1,5 @@
 package com.newsapp.presenter.screen.bookmark
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -8,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -34,7 +32,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
         binding = FragmentBookMarkBottomSheetBinding.inflate(
             inflater, container, false
         )
-        viewModel.getBookmarkList()
+        viewModel.getBookmarkCategory()
         return binding.root
     }
 
@@ -43,7 +41,7 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
         binding.rvSelected.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
-        viewModel.bookmarkLiveData.observe(requireActivity(), Observer {
+        viewModel.bookmarkCategory.observe(requireActivity(), Observer {
             bottomSheetAdapter.update(it)
         })
     }
@@ -70,12 +68,12 @@ class BookMarkBottomSheetFragment : BottomSheetDialogFragment(), OnTextSelectedL
 
         binding.includeBookButton.btnOnboardingContinue.setOnClickListener {
             Log.d("debugging", "btnOnboardingContinue")
-            if (list.isNotEmpty()) {
-                viewModel.doArticleSave(articleId, list) {
-                    printToastInCenter()
-                    findNavController().navigateUp()
-                }
-            }
+//            if (list.isNotEmpty()) {
+//                viewModel.doArticleSave(articleId, list) {
+//                    printToastInCenter()
+//                    findNavController().navigateUp()
+//                }
+//            }
         }
 
         binding.ivAdd.setOnClickListener {
