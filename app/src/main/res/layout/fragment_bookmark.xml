@@ -38,9 +38,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            style="@style/feedText"
+            app:queryBackground="@drawable/bg_search_view"
+            app:searchIcon="@drawable/ic_search"
+            app:searchHintIcon="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="@id/guideline14"
-            app:layout_constraintTop_toTopOf="parent"
-            app:searchIcon="@drawable/ic_search" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBookmarkCategory"
@@ -90,48 +93,63 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
-            android:visibility="gone"
+            tools:listitem="recent_recycle_item"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline14"
             app:layout_constraintStart_toStartOf="@id/guideline13"
             app:layout_constraintTop_toBottomOf="@id/clBookmarkCategory" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgClipBoard"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/emptyConstraint"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/img_two_clipboard"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="6:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvEmpty"
-            style="@style/empty"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/empty"
-            app:layout_constraintEnd_toEndOf="@+id/guideline14"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/imgClipBoard" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgClipBoard"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/img_two_clipboard"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="6:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvEmptyDesc"
-            style="@style/stories"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:text="@string/you_have_not_saved_ant_stories_to_this_ncollection"
-            app:layout_constraintEnd_toEndOf="@+id/guideline14"
-            app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmpty"
+                style="@style/empty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/empty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgClipBoard" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmptyDesc"
+                style="@style/stories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/you_have_not_saved_ant_stories_to_this_ncollection"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmpty" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline13"

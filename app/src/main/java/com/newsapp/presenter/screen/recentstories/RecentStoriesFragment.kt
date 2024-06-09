@@ -75,7 +75,7 @@ class RecentStoriesFragment : BaseFragment(), OnItemClickListener, OnTextSelecte
                 articleList.add(list)
             }
             binding.rvNewsArticles.adapter = profileAdapter
-            profileAdapter.updateUi(articleList, false, requireActivity())
+            profileAdapter.updateUi(articleList, "false", requireActivity())
             hideProgress()
         }
     }

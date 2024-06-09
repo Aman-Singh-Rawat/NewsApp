@@ -55,7 +55,15 @@
         android:id="@+id/articleDetailsFragment"
         android:name="com.newsapp.presenter.screen.newsdetails.ArticleDetailsFragment"
         android:label="fragment_full_details"
-        tools:layout="@layout/fragment_article_details" />
+        tools:layout="@layout/fragment_article_details">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.example.com/article/{articleId}" />
+        <argument
+            android:name="articleId"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.newsapp.presenter.screen.profile.EditProfileFragment"

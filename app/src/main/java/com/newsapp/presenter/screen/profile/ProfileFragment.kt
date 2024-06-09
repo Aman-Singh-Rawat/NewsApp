@@ -17,6 +17,7 @@ import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -63,7 +64,7 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
                     recentList.add(article)
                 }
                 binding.rvProfileNews.adapter = profileAdapter
-                profileAdapter.updateUi(recentList, true, activity)
+                profileAdapter.updateUi(recentList, "true", activity)
                 binding.tvTotalStories.text = recentList.size.toString()
             }
         }
@@ -129,7 +130,11 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
     }
 
     override fun onItemClick(articleId: String) {
-        if ("editStory" in articleId) {
+        Log.d("articleId", "articleId in onItemClick is:: $articleId")
+        if ("shareArticles" in articleId) {
+            val anotherPart = articleId.substringBefore("shareArticles")
+            shareArticle(anotherPart)
+        } else if ("editStory" in articleId) {
             val anotherPart = articleId.substringBefore("editStory")
             findNavController().navigate(R.id.navigation_CreateStory, bundleOf(
                 "articleId" to anotherPart))
@@ -139,6 +144,22 @@ class ProfileFragment : BaseFragment(), OnItemClickListener {
             findNavController().navigate(R.id.articleDetailsFragment, bundleOf(
                 "articleId" to articleId))
         }
+    }
+
+    private fun shareArticle(anotherPart: String) {
+        val deepLinkPendingIntent = NavDeepLinkBuilder(requireContext())
+            .setGraph(R.navigation.mobile_navigation)
+            .setDestination(R.id.articleDetailsFragment)
+            .setArguments(bundleOf("articleId" to anotherPart))
+            .createPendingIntent()
+
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, deepLinkPendingIntent.intentSender)
+        }
+
+        startActivity(Intent.createChooser(intent, "Share Article"))
     }
 
     private fun setUpAlertDialog(articleId: String) {

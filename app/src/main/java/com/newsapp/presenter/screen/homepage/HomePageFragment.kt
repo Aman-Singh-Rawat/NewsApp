@@ -164,7 +164,7 @@ class HomePageFragment : BaseFragment(), OnItemClickListener, OnTextSelectedList
                  articleList.add(list)
              }
              binding.rvNewsGroups.adapter = profileAdapter
-             profileAdapter.updateUi(articleList, false, requireActivity())
+             profileAdapter.updateUi(articleList, "false", requireActivity())
              hideProgress()
          }
     }

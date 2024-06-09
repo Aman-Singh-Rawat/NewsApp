@@ -16,7 +16,7 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
     private val gson by lazy { Gson() }
     private val bookmarkCategoryList: MutableList<String> = mutableListOf()
     val bookmarkCategory: MutableLiveData<List<String>> = MutableLiveData()
-    val bookmarkArticles: MutableLiveData<List<Article?>> = MutableLiveData()
+    val bookmarkArticles: MutableLiveData<List<Article>> = MutableLiveData()
 
     private val prefs by lazy { SharedPrefsManager.getInstance(application.applicationContext) }
     private val firestore by lazy { Firebase.firestore }
@@ -70,7 +70,8 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
                     val articles =
                         querySnapshot.documents.filter { user.bookmarkList.contains(it.id) }
                             .map { it.toObject(Article::class.java) }
-                    bookmarkArticles.postValue(articles)
+
+                    bookmarkArticles.postValue(articles as List<Article>? ?: emptyList())
                 }.addOnFailureListener {
                     bookmarkArticles.postValue(emptyList())
                 }
@@ -88,7 +89,6 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
             } else {
                 user.bookmarkList.apply { add(articleId) }
             }
-            onSuccess(bookmarks.contains(articleId))
             firestore.collection(DatabaseCollection.USERS).document(user.uid)
                 .set(user.copy(bookmarkList = bookmarks)).addOnSuccessListener {
                     prefs.saveUser(user.copy(bookmarkList = bookmarks))

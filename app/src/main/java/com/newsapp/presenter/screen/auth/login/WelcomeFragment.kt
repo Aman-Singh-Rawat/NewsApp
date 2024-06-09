@@ -15,10 +15,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.GoogleAuthProvider
 import com.newsapp.R
+import com.newsapp.core.base.BaseFragment
 import com.newsapp.databinding.FragmentWelcomeBinding
 import com.newsapp.presenter.viewmodel.LoginViewModel
 
-class WelcomeFragment : Fragment() {
+class WelcomeFragment : BaseFragment() {
     private lateinit var binding: FragmentWelcomeBinding
     private val viewModel: LoginViewModel by viewModels()
 
@@ -42,6 +43,7 @@ class WelcomeFragment : Fragment() {
             openCreateAccountFragment()
         }
         binding.tvContinueWithGoogle.setOnClickListener {
+            showProgress()
             viewModel.getGoogleSignInClient()?.signInIntent?.let { launcher.launch(it) }
         }
         changeText()
@@ -90,5 +92,6 @@ class WelcomeFragment : Fragment() {
             // Other result codes
             Toast.makeText(requireActivity(), "Failed to signIn from google.", Toast.LENGTH_SHORT).show()
         }
+        hideProgress()
     }
 }

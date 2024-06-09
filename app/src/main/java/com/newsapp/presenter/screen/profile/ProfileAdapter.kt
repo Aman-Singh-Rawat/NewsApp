@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsapp.R
@@ -21,7 +23,7 @@ import com.newsapp.util.glideImage
 class ProfileAdapter(private val listener:
 OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>() {
     private var list: List<Article> = emptyList()
-    private var flag = false
+    private var flag = ""
     private val selectedItems = mutableListOf<String>()
     private lateinit var context: Context
 
@@ -49,7 +51,10 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
     @SuppressLint("NotifyDataSetChanged")
     private fun bindTheViews(holder: NewsArticlesAdapter, position: Int) {
         val isSelected = selectedItems.contains(list[position].articleId)
-
+        holder.binding.includeRecentItem.icShare.setOnClickListener {
+            Log.d("articleId", "articleId in adapter is:: ${list[position].articleId}")
+            listener.onItemClick(list[position].articleId + "shareArticles")
+        }
         holder.apply {
             itemView.isSelected = isSelected
 
@@ -72,9 +77,11 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
                         }
                         notifyDataSetChanged()
                     }
-                    if (flag) {
+                    if (flag == "true")
                         setUpMenu(binding, position)
-                    }
+                    else if (flag == "delete")
+                        setUpBookMenu(binding, position)
+
                     tvHeadline.text = list[position].title
                     glideImage(context, binding.ivNewsImg, list[position].image)
                     glideImage(
@@ -88,13 +95,17 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
                     tvDaysAgo.text = calculateElapsedTime(list[position].time)
                     tvTotalComments.text = "${list[position].comments} comments"
 
-                    icShare.setOnClickListener {
-                        shareArticle(context, list[position])
-                    }
                 }
             }
         }
 
+    }
+
+    private fun setUpBookMenu(binding: RecentRecycleItemBinding, position: Int) {
+        binding.includeRecentItem.icSave.setImageResource(R.drawable.ic_delete)
+        binding.includeRecentItem.icSave.setOnClickListener {
+            listener.onItemClick(list[position].articleId)
+        }
     }
 
     private fun setUpMenu(binding: RecentRecycleItemBinding, position: Int) {
@@ -126,17 +137,9 @@ OnItemClickListener): RecyclerView.Adapter<ProfileAdapter.NewsArticlesAdapter>()
         }
     }
 
-    fun updateUi(list: List<Article>, flag: Boolean, context: Context) {
+    fun updateUi(list: List<Article>, flag: String, context: Context) {
         this.flag = flag
         this.context = context
         this.list = list
-    }
-
-    private fun shareArticle(context: Context, article: Article) {
-        val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Shared Article")
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this article: ${article.title}\n${article.story}")
-        context.startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 }

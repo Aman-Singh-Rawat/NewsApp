@@ -42,7 +42,10 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan|adjustResize"
-            android:exported="false" />
+            android:exported="false">
+            <nav-graph android:value="@navigation/mobile_navigation"/>
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
