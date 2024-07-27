@@ -3,6 +3,7 @@ package com.newsapp.presenter.screen.auth.login
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,6 +88,7 @@ class WelcomeFragment : BaseFragment() {
             }
         } else if (result.resultCode == Activity.RESULT_CANCELED) {
             // User canceled the Google Sign-In process
+            Log.d("debugging", result.resultCode.toString())
             Toast.makeText(requireActivity(), "Google Sign-In canceled", Toast.LENGTH_SHORT).show()
         } else {
             // Other result codes
