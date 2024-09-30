@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.newsapp.R
 import com.newsapp.databinding.ActivityOnboardingBinding
@@ -21,7 +23,11 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 //        btnOnboardingSkip = binding.twoButton.root.findViewById(R.id.btnOnboardingSkip)
 //        btnOnboardingContinue = binding.twoButton.root.findViewById(R.id.btnOnboardingContinue)
 //        btnGetStarted = binding.btnGetStarted.root.findViewById(R.id.btnAllInOne)

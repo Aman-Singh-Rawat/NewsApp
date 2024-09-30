@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_splash_background"
     tools:context=".presenter.screen.splash.SplashScreen">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -19,13 +18,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNewsLine"
-        style="@style/splash"
+        app:fontFamily="@font/poppins_medium"
+        android:textSize="50sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/newsline"
         android:includeFontPadding="false"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="20dp"
-        android:indeterminateTint="@color/white"/>
+        android:indeterminateTint="@color/blue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
